@@ -41,6 +41,7 @@
 }
 #index-hot-sale {
 	width: 100%;
+	padding-bottom: 58px;
 	/*overflow: scroll;*/
 }
 #index-hot-sale img {
@@ -54,12 +55,117 @@
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	padding: 10px 0;
+	padding: 8px 0;
+	/*padding-bottom: 27px;*/
 	font-size: 15px;
+	border-top: 1px solid #bbb;
 }
 #common-nav .row > div.active {
 	color: #24dfc2;
 }
 #common-nav .col-xs-4 {
 	text-align: center;
+}
+.head-top {
+	height: 43px;
+	text-align: center;
+	font-size: 18px;
+	padding: 13px 10px 0 10px;
+	font-family: "黑体";
+}
+#homepage-head .head-top span:last-child {
+	margin-left: -12px;
+}
+#homepage-head .head-top {
+	color: #fff;
+	background: #24dfc2;
+	border: none;
+}
+.head-bottom {
+	background: #24dfc2;
+	border: none;
+	text-align: center;
+	padding: 15px 0;
+	color: #fff;
+	font-size: 20px;
+	font-family: "黑体";
+}
+.head-bottom img {
+	width: 80px;
+	height: 80px;
+	margin-bottom: 10px;
+}
+#homepage-nav .col-xs-3 {
+	text-align: center;
+	padding: 28px 0;
+	font-family: "黑体";
+	border-bottom: 1px solid rgb(245,245,245);
+
+}
+#homepage-nav .col-xs-3 dt img {
+	width: 40px;
+	height: 40px;
+	margin-bottom: 10px;
+}
+#login-head {
+	margin-bottom: 10px;
+}
+.user-info-input {
+	width: 100%;
+	border-top: 1px solid rgb(246,246,246);
+	border-bottom: 1px solid rgb(246,246,246);
+	height: 40px;
+	padding: 0 16px;
+	margin: 10px 0;
+}
+.user-info-input .spliter {
+	height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	border-left-color: #ccc; ;
+}
+.user-info-input input[type='text'] {
+	height: 38px;
+	padding-left: 10px;
+	width: 88%;
+	font-size: 14px;
+	font-family: "黑体";
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	border: none;
+}
+#login-input .user-info-input .glyphicon {
+	color: #24dfc2;
+	font-size: 17px;
+	width: 9%;
+	text-align: right;
+	padding-right: 5px;
+}
+#login-button {
+	width: 88%;
+	margin: 25px auto;
+	margin-bottom: 15px;
+	display: block;
+	height: 40px;
+	color: #fff;
+	background-color: #ff573a;
+	border: none;
+	font-family: "黑体";
+	font-size: 17px;
+	border-radius: 3px;
+}
+#login-button-bottom {
+	font-family: "黑体";
+	padding: 0 11px;
+}
+#login-button-bottom input[type='checkbox'] {
+	vertical-align: sub;
+	color:  #ff573a;
+}
+#login-button-bottom a{
+	color: #ff573a;
+}
+#login-button-bottom > span:last-child a {
+	text-decoration: underline;
 }

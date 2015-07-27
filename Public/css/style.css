@@ -1,3 +1,6 @@
+body {
+	font-family: "黑体";
+}
 #index-head {
 	height: 45px;
 	background-color: #24dfc2;
@@ -31,8 +34,9 @@
 #index-nav-part .row dd {
 	font-family: "黑体";
 	font-size: 6px;
-	width: 60px;
+	width: 58px;
 	margin-top: 3px;
+	text-align: center;
 }
 #index-nav-part .row img {
 	width: 43px;
@@ -110,6 +114,9 @@
 #login-head {
 	margin-bottom: 10px;
 }
+#login-head .head-bottom img {
+	width: 100px;
+}
 .user-info-input {
 	width: 100%;
 	border-top: 1px solid rgb(246,246,246);
@@ -142,6 +149,7 @@
 	text-align: right;
 	padding-right: 5px;
 }
+#quitlog-button,
 #login-button {
 	width: 88%;
 	margin: 25px auto;
@@ -154,6 +162,7 @@
 	font-family: "黑体";
 	font-size: 17px;
 	border-radius: 3px;
+	outline: none;
 }
 #login-button-bottom {
 	font-family: "黑体";
@@ -168,4 +177,43 @@
 }
 #login-button-bottom > span:last-child a {
 	text-decoration: underline;
+}
+
+/*userinfo*/
+#userinfo-input {
+	font-family: "黑体";
+}
+.user-info-input {
+	padding: 10px 8px 0 8px;
+}
+.user-info-input .fl {
+	font-size: 16px;
+}
+.user-info-input .fr {
+	font-size: 14px;
+}
+
+/*settings*/
+#settings-head {
+	border-bottom: 1px solid #eee;
+}
+#settings-head .head-top span:last-child {
+	margin-top: 3px;
+	margin-left: -20px;
+	display: inline-block;
+}
+
+/*aboutus*/
+#aboutfu-head-bottom img {
+	width: 100%;
+	height: auto;
+}
+#aboutforu-head .head-top span:last-child {
+	margin-top: 3px;
+	margin-left: -20px;
+	display: inline-block;
+}
+#about-foru-body {
+	padding: 5px;
+	font-size: 14px;
 }

@@ -52,6 +52,9 @@ i, cite, em {
 .w {
 	 width: 100%
 }
+.h {
+	height: 100%;
+}
 /*页面整体宽度控制*/
 .fl { 
 	float: left;

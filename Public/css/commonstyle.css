@@ -53,10 +53,6 @@ i, cite, em {
 	 width: 100%
 }
 /*页面整体宽度控制*/
-.wrapper { 
-	width: 1100px; 
-	margin:0 auto;
-}
 .fl { 
 	float: left;
 }

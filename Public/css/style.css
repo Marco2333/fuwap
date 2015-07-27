@@ -1,0 +1,65 @@
+#index-head {
+	height: 45px;
+	background-color: #24dfc2;
+	width: 100%;
+	padding: 10px 10px 0 10px;
+	/*padding-top: 10px;*/
+}
+#index-head .glyphicon {
+	font-size: 21px;
+	color: rgba(245,245,245,.8);
+}
+#index-head .col-xs-8 {
+	font-size: 18px;
+	/*margin: 1px 10px 0 65px;*/
+	font-family: "黑体";
+	color: rgba(248,248,248,.9);
+	font-weight: 100;
+	text-align: center;
+	margin-top: 3px;
+}
+/*#index-head span:last-child {
+	margin-right: 10px;
+}*/
+#slide-wrapper .carousel-inner img {
+	width: 100%;
+	height: auto;
+}
+#index-nav-part .row {
+	margin:20px 0;
+}
+#index-nav-part .row dd {
+	font-family: "黑体";
+	font-size: 6px;
+	width: 60px;
+	margin-top: 3px;
+}
+#index-nav-part .row img {
+	width: 43px;
+	/*height: auto;*/
+	height: 43px;
+}
+#index-hot-sale {
+	width: 100%;
+	/*overflow: scroll;*/
+}
+#index-hot-sale img {
+	width: 100%;
+	height: auto;
+}
+#common-nav {
+	background: #fff;
+	font-family: "黑体";
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 10px 0;
+	font-size: 15px;
+}
+#common-nav .row > div.active {
+	color: #24dfc2;
+}
+#common-nav .col-xs-4 {
+	text-align: center;
+}

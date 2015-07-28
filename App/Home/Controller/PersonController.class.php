@@ -7,4 +7,10 @@ class PersonController extends Controller {
     public function index(){
         $this->display();
     }
+	public function address(){
+		$this->display();
+	}
+	public function newAddress(){
+		$this->display();
+	}
 }

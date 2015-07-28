@@ -1,3 +1,12 @@
+.fl{
+	float: left;
+}
+.ri{
+	float: right;
+}
+.bo{
+	margin-top: 15px;
+}
 .register-head{
 	height: 43px;
 	padding: 13px 10px 0 10px;
@@ -12,7 +21,7 @@
 	
 }
 
-
+/*表单部分*/
 .register-info-input,
 .register-info-input-short{
 	width: 100%;
@@ -82,3 +91,233 @@
 	font-family: "黑体";
 }
 
+
+/*=================确认订单=================*/
+.orderconfirm-head{
+	height: 43px;
+	padding: 13px 10px 0 10px;
+	text-align: center;
+	color: #333;
+	font-size: 18px;
+	font-family: "黑体";
+	border-bottom: 1px solid #eee;
+	background-color: white;
+}
+
+
+.consumer-info{
+	width: 100%;
+	height: 40px;
+	padding: 0 16px;
+/*	margin-top: 10px;*/
+	background-color: white;
+
+}
+.consumer-info .glyphicon{
+	display: inline-block;
+	padding-right: 10px;
+	color: #333333;
+	font-size: 17px;
+	text-align: right;
+	width: 10%;
+/*	top: 12px;*/
+}
+.consumer-info .consumer-name{
+	display: inline-block;
+	margin-top: 11px;
+	font-family: "黑体";
+	font-size: 20px;
+	width: 25%;
+	color: #333;
+}
+.consumer-info .consumer-phone{
+/*	display: inline-block;
+	margin-top: 11px;*/
+	font-family: "黑体";
+	font-size: 19px;
+	width: 60%;
+	color: #222;
+}
+.consumer-info .consumer-rightarrow{
+	font-family: "黑体";
+	font-size: 20px;
+	width: 5%;
+	margin-left: 40px;
+	font-weight: bold;
+}
+
+
+/*add*/
+.consumer-info-add{
+	width: 100%;
+	height: 40px;
+	padding: 0 16px;
+/*	margin-top: 10px;*/
+	border-bottom: 1px solid #eee;
+	background-color: white;
+}
+.consumer-info-add .consumer-address{
+	display: inline-block;
+	font-family: "黑体";
+	width: 80%;
+	margin-top: 3px;
+	height: 35px;
+}
+.consumer-info-add .glyphicon {
+	display: inline-block;
+	padding-right: 10px;
+	color: #333333;
+	font-size: 17px;
+	text-align: right;
+	width: 10%;
+	top: -6px;
+}
+
+/*待购商品*/
+.orderconfirm-goodsdetail{
+	width: 100%;
+	height: 120px;
+	padding: 0 16px;
+	margin-top: 10px;
+	background-color: white;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+.orderconfirm-goodsimg{
+	overflow: hidden;
+	width: 100px;
+	height: 100px;
+	margin: 10px 10px 10px 0;
+	float: left;
+}
+.orderconfirm-goods-txt{
+	width: 55%;
+	height: 100px;
+	margin: 10px 10px 10px 0;
+/*	background-color: pink;*/
+	float: left
+}
+.orderconfirm-goods-txt .orderconfirm-price{
+	color: #FE6045;
+	font-size: 18px;
+}
+.orderconfirm-goods-txt .orgin-price{
+	color: #AEAEAE;
+	font-size: 12px;
+	text-decoration: line-through;
+	display: inline-block;
+}
+
+
+a.sub-goods,
+a.add-goods {
+	width: 21px;
+	height: 21px;
+	border: 1px solid #aaa;
+	/* border-radius: 4px; */
+	display: inline-block;
+	color: #24dfc2;
+	text-align: center;
+	font-size: 16px;
+	float: left;
+	text-decoration: none;
+}
+a.sub-goods {
+	border-bottom-left-radius:4px;
+	border-top-left-radius:4px;
+	border-right: none;
+}
+a.add-goods {
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+	border-left: none;
+}
+input.goods-count {
+	width: 26px;
+	height: 21px;
+	color: #aaa;
+	float: left;
+	text-align: center;
+	font-size: 10px;
+	outline: none;
+	background: #fff;
+	border: 1px solid #aaa;
+}
+.orderconfirm-goods-txt span.block .goods-count {
+	color: #F76C3A;
+}
+
+
+/*到达时间*/
+.orderconfirm-arrivetime{
+	height: 40px;
+	padding: 0 16px;
+	margin-top: 10px;
+	background-color: white;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+.orderconfirm-arrivetime span{
+	margin-top: 10px;
+	font-family: "黑体";
+	font-size: 16px;
+}
+/*支付方式*/
+.payment-orderconfirm{
+	padding: 0 16px;
+	height: 90px;
+	margin-top: 10px;
+	background-color: white;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+.payment-orderconfirm .payment-method-oc{
+	margin-top: 10px;
+	font-family: "黑体";
+	font-size: 16px;
+}
+.payment-orderconfirm img{
+	width: 16px;
+	height: 16px;
+}
+/*留言*/
+.orderconfirm-message{
+	padding: 0 16px;
+	height: 70px;
+	margin-top: 10px;
+	background-color: white;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+.orderconfirm-message textarea{
+	border: none;
+}
+/*总金额*/
+.orderconfirm-totalamount{
+	height: 20px;
+	padding: 0 16px;
+	margin-top: 10px;
+	text-align: center;
+	color: #FE6045;
+	font-size: 15px;
+/*	background-color: white;*/
+/*	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;*/
+}
+.orderconfirm-totalamount .orgin-price{
+	color: #333333;
+	font-size: 15px;
+	text-decoration: line-through;
+	display: inline-block;
+}
+/*结算按钮*/
+.orderconfirm-btn-pay{
+	padding: 0 16px;
+	height: 40px;
+	margin-top: 10px;
+	
+}
+.orderconfirm-btn-pay .register-info-submit-btn{
+	width: 100%;
+/*	margin-top: 10px 0;*/
+}

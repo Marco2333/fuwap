@@ -13,4 +13,10 @@ class PersonController extends Controller {
 	public function newAddress(){
 		$this->display();
 	}
+	public function comment(){
+		$this->display();
+	}
+	public function aboutOrder(){
+		$this->display();
+	}
 }

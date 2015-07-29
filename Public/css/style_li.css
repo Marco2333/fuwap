@@ -1,12 +1,34 @@
 .inlineB{ display: inline-block;}
 .special-bgcolor{ background-color: #FAFAFA;}
+.cRow{ width: 100%; height: 50px;line-height: 50px; background-color: #FFFFFF; margin-top:10px;position: relative;}
+.rown{ width: 100%; background-color: #FFFFFF; margin-top:10px;position: relative;}
+.cnRow{ padding: 10px 0;}
+div.nrow{ height: auto;}
+.one{ width: 9%;}
+.two{width: 19%;}
+.three{ width: 29%;}
+.four{ width: 39%;}
+.six{ width: 57%;}
+.seven{ width: 67%;}
+.eight{ width: 77%;}
+.nine{ width: 87%;}
+.txt-color{color: #DBDBDB;}
+.zero{ margin-top: 0;}
+.padding-5{ padding: 5px 0;}
+.txtstart{ text-align: start;}
+.txtend{ text-align: end;}
+.thingMargin{ margin-left: 5px;}
+textarea{ width: 100%; height: 50px; border: 1px solid #F9F9F9; }
+.special-button{ background-color: transparent; color: #FD9E8C; padding: 0 10px; border: 1px solid #FFBEB2; border-radius: 3px;}
+
+.thingsubmit div{width: 98%;border-radius: 4px; background-color: #ff573a; margin: 0 auto; height: 30px; line-height: 30px;}
+.thingsubmit span.glyphicon{font-size: 17px; color: white; margin-right: 22px;}
 
 *{padding: 0; margin: 0;}
 body{ text-align: center; font-family: "黑体";}
 .head{width: 100%; height: 50px; text-align: start; line-height: 50px;}
 .head span{font-size: 20px; margin: 0 auto; display: inline-block; margin-left: 24%;}
 .main{ width: 100%; background-color: #fafafa;}
-.cRow{ width: 100%; height: 50px; line-height: 50px; background-color: #FFFFFF; margin-top:10px;}
 .icon{ font-size: 30px; display: inline-block; line-height: 100%; width: 12%; text-align: start;}
 .line{display: inline-block; width:2px; height: 60%; background-color: #aaaaaa;  vertical-align: middle;}
 .input{ width: 50%; height: 60%; vertical-align: middle; line-height: 30px; border: 0; font-size: 17px;}
@@ -36,10 +58,9 @@ input.innerAD{ width: 71%;}
 .Aicon{width: 30%; display: inline-block; text-align: start;}
 .Atitle{ width: 65%; display: inline-block; text-align: start;}
 .Amain{ background-color: #fafafa;}
-.Amain .cRow{position: relative; height: 40px; line-height: 40px; margin-top: 20px;}
 .Amain span{ display: inline-block;}
 .Amain .round{ border:1px solid #fed1cb; border-radius: 15px; width: 30px; height: 30px; position: absolute; left: 10px; top: 5px;}
-.Amain .plus{position: absolute; font-size: 36px; left: 16px; top: 0px; color: #fed1cb;}
+.Amain .plus{position: absolute; font-size: 36px; left: 16px; top: -4px; color: #fed1cb;}
 .Amain .tonewA{ position: absolute; left: 60px; color: #fed1cb; font-size: 17px;}
 .userT{ width: 90%; line-height: 15px; text-align: start; margin-top: 5px;}
 .userT span{ display: inline-block; padding: 0;}
@@ -47,7 +68,7 @@ input.innerAD{ width: 71%;}
 
 /*thing*/
 .specialicon{ padding: 3px; border-radius: 3px; color: white; margin-left: 10px;}
-.thingMargin{ margin-left: 5px;}
+
 .Tcarousel img{ width: 100%; height: auto;}
 .Tcarousel .left{ text-align-last: center;}
 .thingMain .cRow{ line-height: 20px; height: auto;}
@@ -60,9 +81,9 @@ input.innerAD{ width: 71%;}
 .inforleft img{ width: 15%;}
 .information .inforright{ width: 35%; line-height: 10px;}
 .special-color{color: #cecece;}
-.special-color2{color: ##7A7A7A;}
+.special-color2{color: #7A7A7A;}
 .thingsubmit input{width: 70%; border: 0; background-color: transparent; line-height: 30px; color: white; letter-spacing: 5px; font-size: 13px;}
-.cnRow{ padding: 10px 0;}
+
 .special-top{vertical-align: -2px;}
 
 /*cate*/
@@ -75,12 +96,12 @@ input.innerAD{ width: 71%;}
 .rect{ width: 30px; height: 30px; font-size: 20px; border: 1px solid #AAAAAA; padding: 5px;}
 
 
-.thingsubmit div{width: 98%;border-radius: 4px; background-color: #ff573a; margin: 0 auto; height: 30px; line-height: 30px;}
-.thingsubmit span.glyphicon{font-size: 17px; color: white; margin-right: 22px;}
+/*comment*/
+.comment-img{ width: 60px;height: 60px;}
 
-
-
-
-
+/*aboutorder*/
+.special-icon{ font-size: 20px;}
+.font-15{ font-size: 15px;}
+.font-17{ font-size: 17px;}
 
 

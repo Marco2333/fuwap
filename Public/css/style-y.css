@@ -308,6 +308,11 @@ input.goods-count {
 	height: 45px;
 	padding: 3px 8px;
 }
+
+/*#text-oc1::-webkit-input-placeholder::after {
+    display:block;
+    content:"Line 2\A Line 3";
+}*/
 /*总金额*/
 .orderconfirm-totalamount{
 	height: 20px;

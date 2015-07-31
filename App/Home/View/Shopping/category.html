@@ -19,12 +19,12 @@
 			</div>
 			<span class="Atitle">商品详情</span>
 		</div>
-		<div class="cateMain">
-			<div class="cateimg1" style="height: 100px; position: relative;">
+		<div class="cateMain special-bgcolor">
+			<div class="cateimg1" style=" position: relative;">
 				<div style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; background-color: rgba(178,178,178,.7);"></div>
 				<img src="__PUBLIC__/img/hotsale.png"/>
 			</div>
-			<div class="cRow cateMain1" style="position: relative;">
+			<div class="cRow cateMain1 cnRow" style="position: relative; margin-top: 0;">
 				<img src="__PUBLIC__/img/hotsale.png"/>
 				<span class="gradeActive" style="font-size: 17px; margin-left: 60px;">
 				<span>￥：</span>
@@ -33,8 +33,8 @@
 				<span><del>5.5</del></span>
 				<span class="gradeActive">(省<span>5</span>元)</span>
 			</div>
-			<div class="cRow Hauto" style="line-height:20px; overflow: hidden;">
-				<div class="cateT">
+			<div class="cRow Hauto cnRow" style="line-height:20px; overflow: hidden;">
+				<div class="cateT thingMargin">
 					产地
 				</div>
 				<div class="cateC">
@@ -44,8 +44,8 @@
 					<span>s苏州</span>
 				</div>
 			</div>
-			<div class="cRow Hauto" style="line-height:20px; overflow: hidden; ">
-				<div class="cateT">
+			<div class="cRow Hauto cnRow" style="line-height:20px; overflow: hidden; ">
+				<div class="cateT  thingMargin">
 					颜色
 				</div>
 				<div class="cateC">
@@ -55,17 +55,18 @@
 					<span>s苏州</span>
 				</div>
 			</div>
-			<div class="cRow">
+			<div class="cRow cnRow">
 				<div class="inlineB" style="width: 50%; text-align: start;">购买数量</div>
 				<div class="inlineB" style="position: relative; line-height: 20px; width: 40%; text-align: end;">
-					<span class="inlineB rect text-special" style="text-align: center;">-</span>
-					<span class="inlineB rect" style="text-align: center;">1</span>
-					<span class="inlineB rect text-special" style="text-align: center;">+</span>
+					<a class="inlineB rect text-special" style="text-align: center;">-</a>
+					<!--<a class="inlineB rect" style="text-align: center;">1</a>-->
+					<input type="text" id="" value="" class="rect " style="vertical-align: 2px; margin-left: -7px; padding: 0;"/>
+					<a class="inlineB rect text-special special-left" style="text-align: center;">+</a>
 				</div>
 			</div>
 			<div class="cRow thingsubmit">
-				<div style="width: 98%;border-radius: 4px; background-color: #ff573a; margin: 0 auto; height: 100%;">
-					<span class="glyphicon glyphicon-shopping-cart" style="font-size: 17px; color: white; "></span>
+				<div ">
+					<span class="glyphicon glyphicon-shopping-cart" ></span>
 					<span class="line" style="background-color: white;"></span>
 					<input type="button" id="" value="立即购买" />
 				</div>

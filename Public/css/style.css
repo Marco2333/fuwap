@@ -1,13 +1,13 @@
-@media screen and (max-width:1800px){
+@media all and (max-width:1800px){
 	body {
-		width: 400px;
+		width: 500px;
 		margin: 0 auto;
 	}
 	#common-nav {
 		width: 400px;
 	}
 }
-@media screen and (max-width:400px) {
+@media all and (max-width:500px) {
 	body {
 		width: 100%;
 	}

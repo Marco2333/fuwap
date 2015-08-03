@@ -10,16 +10,17 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
 
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.cookie.js"></script>
 		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/login.js"></script>
 	</head>
 	<body>
 		<div id="login-head">
 			<div class="head-top background-special">
 				<span class="glyphicon glyphicon-chevron-left fl"></span>
 				<span class="head-title">个人中心</span>
-				<span class="fr">注册</span>
+				<span class="fr"><a href="__URL__/toRegister">注册</a></span>
 			</div>
 			<div class="head-bottom">
 				<dl>
@@ -37,20 +38,23 @@
 		   		<div class="user-info-input">
 		   			<span class="glyphicon glyphicon-earphone"></span>
 		   			<span class="spliter"></span>
-		   			<input type="text" placeholder="请输入手机号">
+		   			<input type="text" id="username" name="username" placeholder="请输入手机号">
 		   		</div>
 		   		<div class="user-info-input">
 		   			<span class="glyphicon glyphicon-lock"></span>
 		   			<span class="spliter"></span>
-		   			<input type="text" placeholder="请输入密码">
+		   			<input id="password" type="text" name="password" placeholder="请输入密码">
 		   		</div>
-		   		<input type="submit" id="login-button" value="登陆">
+		   		<input type="button" id="login-button" value="登陆" onclick="login();">
 		   		<div id="login-button-bottom">
 		   			<input type="checkbox">
 		   			<span>已阅读并同意<a href="">《For优用户服务协议》</a></span>
 		   			<span class="fr"><a href="">忘记密码</a></span>
 		   		</div>
 		   </form>
+		   <div id="error-message">
+
+		   </div>
 		</div>
 		<div id="common-nav">
 			<div class="row">
@@ -75,7 +79,7 @@
 			   			<dt>
 			   				<span class="glyphicon glyphicon-user"></span>
 			   			</dt>
-			   			<dd>购物车</dd>
+			   			<dd>我的</dd>
 			   		</dl>
 			   </div>
 			</div>

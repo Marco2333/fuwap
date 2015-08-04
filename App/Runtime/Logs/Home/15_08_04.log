@@ -1,0 +1,106 @@
+[ 2015-08-04T13:25:55+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+
+[ 2015-08-04T13:26:06+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T13:31:34+08:00 ] 127.0.0.1 /fuwebapp/index.php/home/Home/searchonly
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Home
+
+[ 2015-08-04T13:31:44+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/44searchonly
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:44searchonly
+
+[ 2015-08-04T13:31:50+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/searchonly
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T13:32:39+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Shopping/thing
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T13:33:34+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/searchgood
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:searchgood
+
+[ 2015-08-04T13:33:37+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/searchgoods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+
+[ 2015-08-04T13:34:12+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-04T13:34:41+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/comment
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T13:35:04+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T13:49:06+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:28+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:29+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:30+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:30+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:30+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:30+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+ERR: 非法操作:orderconfirm
+
+[ 2015-08-04T13:50:31+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/orderconfirm
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:orderconfirm
+

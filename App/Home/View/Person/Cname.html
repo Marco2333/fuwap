@@ -18,12 +18,14 @@
 			修改昵称
 		</div>
 		<div class="wrapper">
-			<div class="kongbai"></div>
-			<input class="userinfo-change-input" type="text" placeholder="请输入昵称"/>
-			<div class="kongbai"></div>
-			<button class="userinfo-change-btn btn">
-					提交
+			<form action="{:U('Person/infoRevise',array('campusId'=>cookie('campusId'),'field'=>'nickname'))}" method="post">
+				<div class="kongbai"></div>
+				<input class="userinfo-change-input" type="text" name="revise-nickname" placeholder="请输入昵称"/>
+				<div class="kongbai"></div>
+				<button class="userinfo-change-btn btn">
+						提交
 				</button>
+			</form>
 		</div>
 	</body>
 </html>

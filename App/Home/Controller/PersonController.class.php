@@ -25,6 +25,13 @@ class PersonController extends Controller {
     	$this->display('userInfo');
     }
 
+    public function infoRevise($field){
+        $Users = D('Users');
+        $Users->reviseInfo($field);
+
+        $this->redirect('Home/Person/userinfo');
+    }
+
     public function addressManage(){
     	$Receiver = D('Receiver');
 
@@ -56,5 +63,7 @@ class PersonController extends Controller {
             // 新地址保存失败
         }
     }
+
+
 
 }

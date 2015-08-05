@@ -47,6 +47,22 @@ class UsersModel extends Model{
 
 		return $info;
 	}
+
+	public function reviseInfo($field){
+		$Users = M('users');
+
+		$where = array(
+			'phone'	=> $_SESSION['username'],
+			);
+
+		$data[$field] = I('revise-'.$field);
+
+		$res = $Users->where($where)
+					 ->save($data);
+	}
+
+	
+
 }
 
 

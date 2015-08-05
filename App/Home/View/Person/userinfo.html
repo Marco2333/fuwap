@@ -32,36 +32,55 @@
 		</div>
 		<div id="userinfo-body">
 		   <form action="">
-		   		<div class="user-info-input">
-		   			<span class="fl">昵称</span>
-		   			<span class="fr">{$info.nickname} &gt;</span>
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="fl">性别</span>
-		   			<span class="fr">
-		   			<?php
-		   				if ($info['sex'] != 0)
-		   				{
-		   					echo "女";
-		   				}
-		   				else
-		   				{
-		   					echo "男";
-		   				}
-		   			?> &gt;</span>
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="fl">学院</span>
-		   			<span class="fr">{$info.academy} &gt;</span>
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="fl">QQ号</span>
-		   			<span class="fr">{$info.qq} &gt;</span>
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="fl">微信号</span>
-		   			<span class="fr">{$info.weixin} &gt;</span>
-		   		</div>
+		   		<a href="{:U('Person/Cname')}">
+			   		<div class="user-info-input">
+			   			<span class="fl">昵称</span>
+			   			<span class="fr">
+			   				{$info.nickname} &gt;
+			   			</span>
+			   		</div>
+			   	</a>
+			   	<a href="{:U('Person/Csex')}">
+			   		<div class="user-info-input">
+			   			<span class="fl">性别</span>
+			   			<span class="fr">
+			   			<?php
+			   				if ($info['sex'] != 0)
+			   				{
+			   					echo "女";
+			   				}
+			   				else
+			   				{
+			   					echo "男";
+			   				}
+			   			?> &gt;
+			   		</span>
+			   		</div>
+			   	</a>
+		   		<a href="{:U('Person/Cacademy')}">
+		   			<div class="user-info-input">
+			   			<span class="fl">学院</span>
+			   			<span class="fr">
+			   					{$info.academy} &gt;
+			   			</span>
+		   			</div>
+		   		</a>
+		   		<a href="{:U('Person/Cqq')}">
+			   		<div class="user-info-input">
+			   			<span class="fl">QQ号</span>
+			   			<span class="fr">
+			   				{$info.qq} &gt;
+			   			</span>
+			   		</div>
+			   	</a>
+			   	<a href="{:U('Person/Cwechat')}">
+			   		<div class="user-info-input">
+			   			<span class="fl">微信号</span>
+			   			<span class="fr">
+			   				{$info.weixin} &gt;
+			   			</span>
+			   		</div>
+			   	</a>
 		   </form>
 		</div>
 		<div id="common-nav">

@@ -11,11 +11,9 @@
 	color: #333;
 	font-size: 18px;
 	font-family: "黑体";
-	border-bottom: 1px solid #eee;
 }
 .register-head .glyphicon{
 	font-size: 20px;
-	
 }
 
 /*表单部分*/
@@ -46,7 +44,7 @@
 .register-info-input input{
 	height: 38px;
 	padding-left: 10px;
-	width: 70%;
+	width: 80%;
 	font-size: 14px;
 	font-family: "黑体";
 	box-sizing:border-box;
@@ -62,6 +60,10 @@
 	display: block;
 	font-size: 20px;
 	font-family: "黑体";
+	outline: none;
+}
+.btn.focus, .btn:focus, .btn:hover {
+	color: #fff;
 }
 .register-info-input-short  input[type="text"]{
 	height: 38px;

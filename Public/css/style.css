@@ -85,6 +85,9 @@ input {
 	font-size: 15px;
 	border-top: 1px solid #bbb;
 }
+#common-nav .row > div a {
+	text-decoration: none;
+}
 #common-nav .row > div.active a {
 	color: #24dfc2;
 }
@@ -100,6 +103,11 @@ input {
 }
 
 /*personhomepage*/
+.history-back {
+	color: #24DFC2;;
+	font-weight: bold;
+	font-size: 22px;
+}
 #homepage-head .head-top {
 	color: #fff;
 	background: #24dfc2;
@@ -138,6 +146,9 @@ input {
 /*login*/
 #login-head {
 	margin-bottom: 10px;
+}
+#login-head .head-title {
+	margin: 1px 0 0 18px;
 }
 #login-head .head-bottom img {
 	width: 100px;
@@ -205,12 +216,21 @@ input {
 #rm-password > span:last-child a {
 	text-decoration: underline;
 }
-#error-message {
+.error-message-wrapper {
 	text-align: center;
 	color: rgb(255, 87, 58);
-	border: 1px solid rgb(246, 179, 179);
-	padding: 5px;
+	/*border: 1px solid rgb(246, 179, 179);*/
 	background-color: #ffebeb;
+	border-left: none;
+	border-right: none;
+	margin-top: 3px;
+}
+.error-message {
+	text-align: center;
+	color: rgb(255, 87, 58);
+	padding-top: 7px;
+	display: inline-block;
+	height: 28px;
 }
 /*userinfo*/
 #userinfo-body .user-info-input {

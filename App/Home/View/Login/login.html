@@ -14,9 +14,9 @@
 	<body>
 		<div id="login-head">
 			<div class="head-top background-special">
-				<span class="glyphicon glyphicon-chevron-left fl"></span>
-				<span>个人中心</span>
-				<span class="fr"><a href="__URL__/toRegister">注册</a></span>
+				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
+				<span class="head-title">登陆</span>
+				<span class="fr"><a class="text-middle" href="__URL__/register">注册</a></span>
 			</div>
 			<div class="head-bottom">
 				<dl>
@@ -30,8 +30,8 @@
 			</div>
 		</div>
 		<div id="login-input">
-			<div id="error-message" class="none">
-				
+			<div class="error-message-wrapper none">
+				 <label class="error-message" ></label>
 	   		</div>
 	   		<div class="user-info-input">
 	   			<span class="glyphicon glyphicon-earphone"></span>
@@ -51,10 +51,11 @@
 	   		<input type="button" id="login-button" value="登陆" onclick="login();">
 		</div>
 		
-		<include file='App/Home/View/Common/commonnav3.html'/>
+		<!-- <include file='App/Home/View/Common/commonnav3.html'/> -->
 		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.cookie.js"></script>
-		<script src="__PUBLIC__/script/login.js"></script>
+		<script src="__PUBLIC__/script/login.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/script/common.js" type="text/javascript"></script>
 	</body>
 </html>

@@ -42,8 +42,8 @@ a:active {
 	text-decoration: none;
 }
 a:hover { 
-	color: #E4393C; 
-	text-decoration: underline;
+	color: #24dfc2; 
+	text-decoration: none;
 }
 i, cite, em { 
 	font-style: normal;
@@ -84,22 +84,22 @@ i, cite, em {
 .text-left{
 	text-align: left;
 }
-.text-center{
+.text-center {
 	text-align: center;
 }
-.text-right{
+.text-right {
 	text-align: right;
 }
-.b{
+.b{ 
 	font-weight: bold;
 }
-.cl{
+.cl {
 	clear: left;
 }
-.cr{
+.cr {
 	clear: right;
 }
-.cb{
+.cb {
 	clear: both;
 }
 .text-white{
@@ -108,8 +108,17 @@ i, cite, em {
 .text-black{
 	color:#000;
 }
+.text-middle {
+	color: #888;
+}
+.text-light {
+	color: #ccc;
+}
 .text-special{
 	color:#24dfc2;
+}
+button.disabled {
+	background-color: #aaa;
 }
 .bground-special {
 	background-color: #24dfc2;

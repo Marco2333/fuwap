@@ -9,77 +9,66 @@
 		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
-
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" />
 	</head>
 	<body>
 		<div class="register-head">
-			<span class="glyphicon glyphicon-chevron-left fl"></span>
+			<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
 			<span class="head-title">注册</span>
 		</div><!--register-head-->
-		<form action>
-			<div class="register-info-input-short">
-						<span class="glyphicon glyphicon-earphone"></span>
-						<span class="spliter"></span>
-						<input  type="text" placeholder="请输入手机号">
-						<button class="btn verify-code">发送验证码</button>	
-			</div>
-			<div class="register-info-input">
-				<span class="glyphicon glyphicon-th-large"></span>
-				<span class="spliter"></span>
-				<input type="text" placeholder="手机验证码">
-			</div>
+		<form id="register-form" action="__URL__/toRegister">
 			<div class="register-info-input">
 				<span class="glyphicon glyphicon-user"></span>
 				<span class="spliter"></span>
-				<input type="text" placeholder="昵称">
+				<input type="text" name="nickname" placeholder="用户昵称">
 			</div>
+			<div class="error-message-wrapper">
+				
+	   		</div>
+
 			<div class="register-info-input">
 				<span class="glyphicon glyphicon-lock"></span>
 				<span class="spliter"></span>
-				<input type="text" placeholder="输入密码">
+				<input type="password" name="password" placeholder="输入密码">
 			</div>
+			<div class="error-message-wrapper">
+				
+	   		</div>
+
 			<div class="register-info-input">
 				<span class="glyphicon glyphicon-lock"></span>
 				<span class="spliter"></span>
-				<input type="text" placeholder="确认密码">
+				<input type="password" name="confirm-password" placeholder="确认密码">
 			</div>
-				<button class="btn register-info-submit-btn">
-					提交
-				</button>
+			<div class="error-message-wrapper">
+				
+	   		</div>
+
+			<div class="register-info-input">
+				<span class="glyphicon glyphicon-phone"></span>
+				<span class="spliter"></span>
+				<input type="text" name="phone" placeholder="手机号码">
+			</div>
+			<div class="error-message-wrapper">
+				
+	   		</div>
+
+			<div class="register-info-input">
+				<span class="glyphicon glyphicon-envelope"></span>
+				<span class="spliter"></span>
+				<input  type="text" name="mail" placeholder="验证邮箱">
+				<!-- <button class="btn verify-code">发送验证码</button>	 -->
+			</div>
+			<div class="error-message-wrapper">
+				
+	   		</div>
+
+			<input type="submit" value="立即注册" class="btn register-info-submit-btn">
 		</form>
-			
-		
-		<div id="common-nav">
-				<div class="row">
-				   <div class="col-xs-4">
-				   		<dl>
-				   			<dt>
-				   				<span class="glyphicon glyphicon-home"></span>
-				   			</dt>
-				   			<dd>首页</dd>
-				   		</dl>
-				   </div>
-				   <div class="col-xs-4">
-				   		<dl>
-				   			<dt>
-				   				<span class="glyphicon glyphicon-shopping-cart"></span>
-				   			</dt>
-				   			<dd>购物车</dd>
-				   		</dl>
-				   </div>
-				    <div class="col-xs-4 active">
-				   		<dl>
-				   			<dt>
-				   				<span class="glyphicon glyphicon-user"></span>
-				   			</dt>
-				   			<dd>个人中心</dd>
-				   		</dl>
-				   </div>
-				</div>
-		</div><!--common-nav-->
+
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.validate.js"></script>
+		<script src="__PUBLIC__/script/register.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/script/common.js" type="text/javascript"></script>
 	</body>
 </html>

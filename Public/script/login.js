@@ -11,6 +11,19 @@ function login() {
 	var username = $("#username").val();
 	var password = $("#password").val();
 	 
+	if(username.trim() == ""){
+		 $('.error-message').text("用户名不能为空！");
+		 $(".error-message-wrapper").slideDown(150); 
+          return;
+	}
+	if(password.trim() == "") {
+		 $('.error-message').text("密码不能为空！");
+		 $(".error-message-wrapper").slideDown(150); 
+          return;
+	}
+	$('.error-message').text("");
+	$(".error-message-wrapper").slideUp(150); 
+                  
 	if (document.getElementById("ck_rmbUser").checked) {
 	    $.cookie("rmbUser", "true", { expires: 7 }); 
 	    $.cookie("username", username, { expires: 7 });
@@ -33,8 +46,8 @@ function login() {
 			if(data.status=='success'){
                     window.location.href="/fuwebapp/index.php";
          		}else{
-                  $('#error-message').text(data.message)
-                  .slideDown(150);
+         			 $('.error-message').text("data.message");
+		 			 $(".error-message-wrapper") .slideDown(150);  
          	}
 		}
 	});

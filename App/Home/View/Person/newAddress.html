@@ -13,34 +13,38 @@
 		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body >
-		<div class="ADhead">
-			<div class="star">&lt;</div>
-			<div class="hMain">新增收货地址</div>
-			<div class="save">保存</div>
-		</div>
-		<div class="NAmain">
-			<div class="ADrow">
-				<div class="star">联系人</div>
-				<input type="text" id="" placeholder="请填写收货人的姓名" />
+		<form action="{:U('Person/saveNewAddress')}" method="post">
+			<div class="ADhead">
+				<div class="star">&lt;</div>
+				<div class="hMain">新增收货地址</div>
+				<div class="save">
+					<input type="submit" value="保存" />
+				</div>
 			</div>
-			<div class="ADrow">
-				<div class="star">手机号</div>
-				<input type="text" id="" />
+			<div class="NAmain">
+				<div class="ADrow">
+					<div class="star">联系人</div>
+					<input type="text" name="new-receiver" id="" placeholder="请填写收货人的姓名" />
+				</div>
+				<div class="ADrow">
+					<div class="star">手机号</div>
+					<input type="text" name="new-phone" id="" />
+				</div>
+				<div class="ADrow">
+					<div class="star">所在地区</div>
+					<input type="text" name="new-location" id="" placeholder="省·市·区" class="innerAD"/>
+					<span class="toChange">&gt;</span>
+				</div>
+				<div class="ADrow">
+					<div class="star">街道</div>
+					<input type="text" name="new-block" id="" placeholder=""  class="innerAD"/>
+					<span class="toChange">&gt;</span>
+				</div>
+				<div class="ADrow">
+					<div class="star">地址</div>
+					<input type="text" name="new-deLocation" id="" placeholder="" />
+				</div>
 			</div>
-			<div class="ADrow">
-				<div class="star">所在地区</div>
-				<input type="text" id="" placeholder="省·市·区" class="innerAD"/>
-				<span class="toChange">&gt;</span>
-			</div>
-			<div class="ADrow">
-				<div class="star">街道</div>
-				<input type="text" id="" placeholder=""  class="innerAD"/>
-				<span class="toChange">&gt;</span>
-			</div>
-			<div class="ADrow">
-				<div class="star">地址</div>
-				<input type="text" id="" placeholder="" />
-			</div>
-		</div>
+		</form>
 	</body>
 </html>

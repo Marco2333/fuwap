@@ -85,7 +85,7 @@ input {
 	font-size: 15px;
 	border-top: 1px solid #bbb;
 }
-#common-nav .row > div.active {
+#common-nav .row > div.active a {
 	color: #24dfc2;
 }
 #common-nav .col-xs-4 {
@@ -118,6 +118,7 @@ input {
 	width: 80px;
 	height: 80px;
 	margin-bottom: 10px;
+	border-radius: 50px;
 }
 #homepage-nav .col-xs-3 {
 	text-align: center;
@@ -155,7 +156,8 @@ input {
 	vertical-align: middle;
 	border-left-color: #ccc; ;
 }
-.user-info-input input[type='text'] {
+.user-info-input input[type='text'],
+.user-info-input input[type='password'] {
 	height: 38px;
 	padding-left: 10px;
 	width: 86%;
@@ -189,21 +191,27 @@ input {
 	border-radius: 3px;
 	outline: none;
 }
-#login-button-bottom {
+#rm-password {
 	font-family: "黑体";
-	padding: 0 11px;
+	padding: 0 25px;
 }
-#login-button-bottom input[type='checkbox'] {
+#rm-password input[type='checkbox'] {
 	vertical-align: sub;
 	color:  #ff573a;
 }
-#login-button-bottom a{
+#rm-password a{
 	color: #ff573a;
 }
-#login-button-bottom > span:last-child a {
+#rm-password > span:last-child a {
 	text-decoration: underline;
 }
-
+#error-message {
+	text-align: center;
+	color: rgb(255, 87, 58);
+	border: 1px solid rgb(246, 179, 179);
+	padding: 5px;
+	background-color: #ffebeb;
+}
 /*userinfo*/
 #userinfo-body .user-info-input {
 	padding: 10px 8px 0 8px;
@@ -236,7 +244,6 @@ input {
 }
 
 /*selectcompus*/
-
 #selectcampus-body-search {
 	background: #24dfc2;
 	padding: 8px;

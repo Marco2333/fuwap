@@ -27,16 +27,21 @@
 					<span class="tonewA">新增收货地址</span>
 				</a>
 			</div>
-			<div class="cRow">
-				<div class="inlineB userT">
-					<span>乌龙茶多酚</span>
-					<span>12345678909</span><br />
-					<span>苍茫的山河是我的爱</span>
+			<foreach name="address" item="v"> 
+				<div class="cRow">
+					<div class="inlineB userT">
+						<span>{$v.name}</span>
+						<span>{$v.phone_id}</span><br />
+						<span>{$v.address}</span>
+					</div>
+					<div class="inlineB userA">
+						&gt;
+					</div>
 				</div>
-				<div class="inlineB userA">
-					&gt;
-				</div>
-			</div>
+			</foreach>
+		</div>
+		<div class="msg-page">
+			 <div class="page">{$addressPage}</div>
 		</div>
 		<div id="common-nav">
 	<div class="row">

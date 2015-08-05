@@ -58,6 +58,12 @@ i, cite, em {
 .h {
 	height: 100%;
 }
+.w-none {
+	width: 0;
+}
+.h-none {
+	height: 0;
+}
 /*页面整体宽度控制*/
 .fl { 
 	float: left;

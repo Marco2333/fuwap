@@ -43,7 +43,6 @@
 	vertical-align: middle;
 	border-left-color: #ccc;
 }
-
 .register-info-input input{
 	height: 38px;
 	padding-left: 10px;
@@ -64,8 +63,6 @@
 	font-size: 20px;
 	font-family: "黑体";
 }
-
-
 .register-info-input-short  input[type="text"]{
 	height: 38px;
 	padding-left: 10px;
@@ -87,7 +84,6 @@
 	font-family: "黑体";
 }
 
-
 /*=================确认订单=================*/
 .orderconfirm-head{
 	height: 43px;
@@ -99,7 +95,6 @@
 	border-bottom: 1px solid #eee;
 	background-color: white;
 }
-
 .consumer-info{
 	width: 100%;
 	height: 40px;
@@ -126,8 +121,6 @@
 	color: #333;
 }
 .consumer-info .consumer-phone{
-/*	display: inline-block;
-	margin-top: 11px;*/
 	font-family: "黑体";
 	font-size: 19px;
 	width: 60%;
@@ -140,7 +133,6 @@
 	margin-left: 40px;
 	font-weight: bold;
 }
-
 
 /*add*/
 .consumer-info-add{
@@ -202,7 +194,6 @@
 	font-size: 12px;
 	margin-top: 15px;
 }
-
 .orderconfirm-goods-txt {
 	width: 61%;
 	height: 100px;
@@ -295,8 +286,6 @@ input.goods-count {
 }
 /*留言*/
 .orderconfirm-message{
-/*	padding: 0 16px;*/
-/*	height: 70px;*/
 	margin-top: 10px;
 	background-color: white;
 	border-bottom: 1px solid #eee;
@@ -309,10 +298,6 @@ input.goods-count {
 	padding: 3px 8px;
 }
 
-/*#text-oc1::-webkit-input-placeholder::after {
-    display:block;
-    content:"Line 2\A Line 3";
-}*/
 /*总金额*/
 .orderconfirm-totalamount{
 	height: 20px;
@@ -321,9 +306,6 @@ input.goods-count {
 	text-align: center;
 	color: #FE6045;
 	font-size: 15px;
-/*	background-color: white;*/
-/*	border-bottom: 1px solid #eee;
-	border-top: 1px solid #eee;*/
 }
 .orderconfirm-totalamount .orgin-price{
 	color: #333333;
@@ -340,9 +322,7 @@ input.goods-count {
 }
 .orderconfirm-btn-pay .register-info-submit-btn{
 	width: 100%;
-/*	margin-top: 10px 0;*/
 }
-
 /*===============商品分类goodsclassify==============*/
 .goodsclassify-head{
 	height: 43px;
@@ -385,12 +365,10 @@ input.goods-count {
 	text-align: center;
 	font-family: "微软雅黑";
 }
-
 .body-y{
 	width: 100%;
 	padding-bottom: 59px;
 }
-
 .goodsclassify-goodsdetail{
 	width: 100%;
 	height: 120px;
@@ -441,13 +419,7 @@ input.goods-count {
 	margin-top:15px ;
 }
 
-
-
-
-
 /*==================搜索商品==================*/
-
-
 /*热门搜索*/
 .left-icon-sg{
 	display: inline-block;
@@ -471,18 +443,29 @@ input.goods-count {
 	float:right;
 }
 .searchgoods-search span.glyphicon {
-	width: 42%;
+	width: 6%;
 	text-align: right;
+	vertical-align: -1px;
+	-webkit-transition: all 0.15s ease-in-out;
+	-ms-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
 }
 .searchgoods-search input {
+	padding-left: 8px;
 	height: 25px;
 	border-radius: 3px;
-	width: 55%;
+	width: 92%;
 	background: #61efdf;
 	border: none;
+	-webkit-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	/*text-align: center;*/
 }
-
-
 .example-heading{
 	font-family: "黑体";
 	font-size: 15px;
@@ -495,7 +478,7 @@ input.goods-count {
 .searchgoods-example{
 	width: 100%;
 	background-color: white;
-	border-bottom: solid 1px #EEEEEE;
+	border-bottom: solid 1px #eee;
 }
 .example-group{
 /*	width: 100%;*/
@@ -510,9 +493,7 @@ input.goods-count {
 	border: solid 1px #D3D3D3;
 	margin-right: 15px;
 	color: #4F4F4F;
-	
 }
-
 .searchgoods-goodsexample{
 	width: 100%;
 	/*padding: 0 10px;*/
@@ -603,8 +584,6 @@ input.goods-count {
 	background: #61efdf;
 	border: none;
 }
-
-
 /*推荐*/
 .suggest{
 	width: 100%;
@@ -613,12 +592,11 @@ input.goods-count {
 .suggest li{
 	height: 35px;
 	padding-left: 20px;
-	border-bottom: 1px solid #EEEEEE;
+	border-bottom: 1px solid #eee;
 	padding-top: 10px;
 	font-size: 14px;
 	color: #636363;
 }
-
 .clearhistory{
 	width: 100%;
 	height: 35px;
@@ -635,6 +613,8 @@ input.goods-count {
 	width: 100%;
 	background: #fff;
 	font-size: 15px;
+	overflow: hidden;
+	/*height: 0;*/
 }
 .search-history-item {
 	width: 100%;
@@ -650,7 +630,7 @@ input.goods-count {
 	color: #999;
 }
 #clear-history-list {
-
+	
 }
 #clear-history-list span,
 #clear-history-list a {
@@ -661,6 +641,6 @@ input.goods-count {
 	text-align: center;
 	color: #999;
 	padding: 5px 0;
-	background: rgb(248,248,248);
+	background: rgb(250,250,250);
 	text-decoration: none;
 }

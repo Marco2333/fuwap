@@ -44,7 +44,7 @@ class ReceiverModel extends Model{
 						 ->limit($limit)
 						 ->select();
 		}
-
+		
 		return $info;
 	}
 
@@ -170,11 +170,9 @@ class ReceiverModel extends Model{
     					->save($date);
 
     	if ($res !== false) {
-    		echo '7';
     		return true;
     	}
     	else {
-    		echo '8';
     		return false;
     	}
     }
@@ -196,11 +194,11 @@ class ReceiverModel extends Model{
         if ($res !== false) {
 	        if(!$this->hasDefaultAddress() && !$this->addressIsEmpty()) {
 	        	$res = $this->setDefaultAddress();
-echo '3';
-	        	if ($res !== false) {echo '2';
+
+	        	if ($res !== false) {
 	        		return true;
 	        	}
-	        	else {echo '0';
+	        	else {
 	        		return false;
 	        	}
 	        }
@@ -208,7 +206,7 @@ echo '3';
 	        	return true;
 	        }
 	    }
-	    else {echo '1';
+	    else {
 	    	return false;
 	    }
     }

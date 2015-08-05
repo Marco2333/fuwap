@@ -17,11 +17,7 @@ class ReceiverModel extends Model{
 			)
 		);
 
-	public function getAddressInfo($limit = ''){
-		$where = array(
-			'phone'  => $_SESSION['username'],
-			'is_out' => 0
-			);
+	public function getAddressInfo($limit = '',$rank = ''){
 		$field = array(
 			'phone',
 			'rank',
@@ -33,27 +29,45 @@ class ReceiverModel extends Model{
 		$order = array(
 			'tag asc'
 			);
-		$info = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0')
-					 ->field($field)
-					 ->order($order)
-					 ->limit($limit)
-					 ->select();
+
+		if ($rank != '') {
+			$info = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0'.' and '.'rank='.$rank)
+						 ->field($field)
+						 ->order($order)
+						 ->limit($limit)
+						 ->select();
+		}
+		else {
+			$info = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0')
+						 ->field($field)
+						 ->order($order)
+						 ->limit($limit)
+						 ->select();
+		}
 
 		return $info;
 	}
 
 	public function addressConnect($address){
-		for ($i = 0; $i < count($address); $i++) 
-		{ 
+		for ($i = 0; $i < count($address); $i++) { 
 			$addressList = explode('^',$address[$i]['address']);
 			$address[$i]['address'] = '';
 
-			for ($j = 0; $j < count($addressList); $j++) 
-			{ 
+			for ($j = 0; $j < count($addressList); $j++) { 
 				$address[$i]['address'] .= $addressList[$j];
 			}
 		}
 
+		return $address;
+	}
+
+	public function addressSplit($address){
+		$addressList = explode('^',$address['address']);
+
+		$address['address'] = $addressList[0];
+		$address['block']   = $addressList[1];
+		$address['detail']  = $addressList[2];
+		
 		return $address;
 	}
 
@@ -82,12 +96,10 @@ class ReceiverModel extends Model{
 	public function saveAddress(){
 		$Receiver = M('receiver');
 
-		if (!$this->addressIsEmpty())
-		{	
+		if (!$this->addressIsEmpty()) {	
 			$tag = 1;
 		}
-		else
-		{
+		else {
 			$tag = 0;
 		}
 
@@ -106,7 +118,6 @@ class ReceiverModel extends Model{
 			'is_out'    => 0,
 			'campus_id' => $campus_id
 			);
-		dump($data);
 
 		$res = $Receiver->data($data)
 					 	->add();
@@ -121,19 +132,82 @@ class ReceiverModel extends Model{
             'is_out'=> 0,
             '_logic'=> 'and'
             );
-        $address  = $Receiver->where($where)
-                             ->field()
-                             ->select();
+        $count = $Receiver->where($where)
+                          ->count();
 
-        if (count($address) != 0)
-        {
+        if ($count != 0) {
             return false;
         }
-        else
-        {
+        else {
             return true;
         }
     }
+
+    public function hasDefaultAddress(){
+    	$count = $this->where('phone='.$_SESSION['username'].' and '.'is_out='.0.' and '.'tag='.0)
+    				  ->count();
+
+    	if ($count != 0) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+
+    public function setDefaultAddress(){
+    	$Receiver = M('receiver');
+    	$where    = array(
+            'phone' => $_SESSION['username'],
+            'is_out'=> 0,
+            '_logic'=> 'and'
+            );
+    	$data     = array(
+        	'tag' => 0;
+        	);
+
+    	$res = $Receiver->where($where)
+    					->save($date);
+
+    	if ($res !== false) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+
+    public function removeAddress(){
+    	$Receiver = M('receiver');
+        $where    = array(
+            'phone' => $_SESSION['username'],
+            'rank'  => I('rank'),
+            'is_out'=> 0,
+            '_logic'=> 'and'
+            );
+        $data     = array(
+        	'is_out'=> 1;
+        	);
+        $res = $Receiver->where($where)
+        				->save($data);
+
+        if ($res !== false) {
+	        if(hasDefaultAddress() && !addressIsEmpty()) {
+	        	$res = $this->setDefaultAddress();
+
+	        	if ($res != false) {
+	        		return true;
+	        	}
+	        	else {
+	        		return false;
+	        	}
+	        }
+	    }
+	    else {
+	    	return false;
+	    }
+    }
+
 
 }
 

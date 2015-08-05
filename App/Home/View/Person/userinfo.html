@@ -10,9 +10,6 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
 
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div id="userinfo-head">
@@ -40,21 +37,20 @@
 			   			</span>
 			   		</div>
 			   	</a>
-			   	<a href="{:U('Person/Csex')}">
+			   	<a class="revise-sex">
 			   		<div class="user-info-input">
 			   			<span class="fl">性别</span>
 			   			<span class="fr">
 			   			<?php
-			   				if ($info['sex'] != 0)
-			   				{
+			   				if ($info['sex'] != 0) {
 			   					echo "女";
 			   				}
-			   				else
-			   				{
+			   				else {
 			   					echo "男";
 			   				}
-			   			?> &gt;
-			   		</span>
+			   			?> &gt;	   			
+			   			</span>
+			   		<input type="text" class="sex-none none" value="{$info.sex}"/>
 			   		</div>
 			   	</a>
 		   		<a href="{:U('Person/Cacademy')}">
@@ -111,5 +107,9 @@
 			   </div>
 			</div>
 		</div>
+
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/userinfo.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

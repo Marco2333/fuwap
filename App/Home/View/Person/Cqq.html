@@ -18,12 +18,14 @@
 			修改QQ
 		</div>
 		<div class="wrapper">
-			<div class="kongbai"></div>
-			<input class="userinfo-change-input" type="text" placeholder="请输入QQ号"/>
-			<div class="kongbai"></div>
-			<button class="userinfo-change-btn btn">
-					提交
+			<form action="{:U('Person/infoRevise',array('campusId'=>cookie('campusId'),'field'=>'qq'))}" method="post">
+				<div class="kongbai"></div>
+				<input class="userinfo-change-input" type="text" name="revise-qq" placeholder="请输入QQ号"/>
+				<div class="kongbai"></div>
+				<button class="userinfo-change-btn btn">
+						提交
 				</button>
+			</form>
 		</div>
 	</body>
 </html>

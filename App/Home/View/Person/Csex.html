@@ -15,12 +15,15 @@
 	</head>
 	<body>
 		<div class="userinfo-change-head">
-			修改微信号
+			修改性别
 		</div>
 		<div class="wrapper">
-			<form action="{:U('Person/infoRevise',array('campusId'=>cookie('campusId'),'field'=>'weixin'))}" method="post">
+			<form action="{:U('Person/infoRevise',array('campusId'=>cookie('campusId'),'field'=>'sex'))}" method="post">
 				<div class="kongbai"></div>
-				<input class="userinfo-change-input" type="text" name="revise-weixin" placeholder="请输入微信号"/>
+				<input class="userinfo-change-input" type="radio" name="revise-sex" value="0" checked="checked">
+				男</input>
+				<input class="userinfo-change-input" type="radio" name="revise-sex" value="1">
+				女</input>
 				<div class="kongbai"></div>
 				<button class="userinfo-change-btn btn">
 						提交

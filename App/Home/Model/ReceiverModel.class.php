@@ -80,6 +80,8 @@ class ReceiverModel extends Model{
 	}
 
 	public function saveAddress(){
+		$Receiver = M('receiver');
+
 		if (!$this->addressIsEmpty())
 		{	
 			$tag = 1;
@@ -88,6 +90,7 @@ class ReceiverModel extends Model{
 		{
 			$tag = 0;
 		}
+
 		$rank = time();
 		$campus_id = 1;
 
@@ -105,8 +108,8 @@ class ReceiverModel extends Model{
 			);
 		dump($data);
 
-		$res = M('receiver')->data($data)
-							->add();
+		$res = $Receiver->data($data)
+					 	->add();
 							
 	}
 

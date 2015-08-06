@@ -7,7 +7,7 @@ class PersonController extends Controller {
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {
-			$this->redirect('Home/Person/personHomePage');
+			$this->redirect('Home/Login/personHomePage');
 		}
 	}
 
@@ -116,12 +116,70 @@ class PersonController extends Controller {
         }
     }
 
-    public function personHomePage(){
-        $Users = D('Users');
-        $info  = $Users->getUserInfo();
-        
-        $this->assign('info',$info);
-        $this->display('personhomepage');
+    public function changePWord(){
+        $this->display('changepword');
+    }
+
+    public function verify(){
+        $Verify = new \Think\Verify();
+        $Verify->fontSize = 23;
+        $Verify->length   = 4;
+        $Verify->useNoise = false;
+        $Verify->codeSet  = '0123456789';
+        $Verify->imageW = 150;
+        $Verify->imageH = 53;
+        $Verify->entry();
+    }
+
+    public function saveNewPWord($phone,$verify,$pVerify,$pword){
+        if ($phone != $_SESSION['username']) {
+            $res =  array(
+                'result'  => 0,
+                'message' => '手机号与账户不匹配！'
+                );
+            $this->ajaxReturn($res);
+        }
+
+        if (!check_verify($verify)) {
+            $res =  array(
+                'result'  => 0,
+                'message' => '验证码输入不正确！'
+                );
+            $this->ajaxReturn($res);
+        }
+
+        $Users  = D('Users');
+        $result = $Users->changePWord($pword);
+
+        if ($result == -1) {
+            $res =  array(
+                'result'  => 0,
+                'message' => '重置密码不能与先前密码相同！'
+                );
+            $this->ajaxReturn($res);
+        }
+        else if ($result == -2) {
+            $res =  array(
+                'result'  => 0,
+                'message' => '密码不能少于8位！'
+                );
+            $this->ajaxReturn($res);
+        }
+        else if ($result !== false) {
+            $res =  array(
+                'result'  => 1,
+                'message' => '密码修改成功！'
+                );
+            $this->ajaxReturn($res);
+        }
+        else {
+            $res =  array(
+                'result'  => 0,
+                'message' => '密码修改失败，请重试！'
+                );
+            $this->ajaxReturn($res);
+        }
+
     }
 
 }

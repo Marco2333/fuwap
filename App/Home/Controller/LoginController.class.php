@@ -88,4 +88,12 @@ class LoginController extends Controller {
              $this->ajaxReturn($result);
         }
     }
+
+    public function personHomePage(){
+        $Users = D('Users');
+        $info  = $Users->getUserInfo();
+        
+        $this->assign('info',$info);
+        $this->display('personhomepage');
+    }
 }

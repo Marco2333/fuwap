@@ -23,10 +23,14 @@
 			<div class="head-bottom">
 				<dl>
 					<dt>
-						<img src="{$info.img_url}" alt="">
+						<img src="__PUBLIC__/img/userhead.png" alt="">
 					</dt>
+
 					<dd>
+					<if condition="$info['nickname'] neq '点击登陆'">
 						{$info.nickname}
+					<else/><a href="{:U('Login/login')}">点击登陆</a>
+					</if>
 					</dd>
 				</dl>
 			</div>

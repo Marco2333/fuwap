@@ -27,7 +27,7 @@ class UsersModel extends Model{
 		if (!isset($_SESSION['username'])) {
 			$info = array(
 				'nickname' => '点击登陆',
-				'img_url'  => '__PUBLIC__/img/userhead.png'
+				'img_url'  => '/fuwebapp/Public/img/userhead.png'
 				);
 		}
 		else {
@@ -45,7 +45,7 @@ class UsersModel extends Model{
 						 ->find();
 
 			if ($info['img_url'] == null) {
-				$info['img_url'] = '__PUBLIC__/img/userhead.png';
+				$info['img_url'] = '/fuwebapp/Public/img/userhead.png';
 			}
 
 		}
@@ -79,7 +79,26 @@ class UsersModel extends Model{
 					 ->save($data);
 	}
 
-	
+	public function changePWord($pword){
+		if (strlen($pword) < 8) {
+			return -2;
+		}
+
+		$data = $this->where('phone='.$_SESSION['username'])
+					 ->field('password')
+					 ->find();
+
+		if (md5($pword) != $data['password']) {
+			$data['password'] = md5($pword);
+			$res = M('users')->where('phone='.$_SESSION['username'])
+							 ->save($data);
+
+			return $res;
+		}
+		else {
+			return -1;
+		}
+	}
 
 }
 

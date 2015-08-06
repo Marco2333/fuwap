@@ -44,7 +44,7 @@ class ReceiverModel extends Model{
 						 ->limit($limit)
 						 ->select();
 		}
-
+		
 		return $info;
 	}
 
@@ -144,7 +144,7 @@ class ReceiverModel extends Model{
     }
 
     public function hasDefaultAddress(){
-    	$count = $this->where('phone='.$_SESSION['username'].' and '.'is_out='.0.' and '.'tag='.0)
+    	$count = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0'.' and '.'tag=0')
     				  ->count();
 
     	if ($count != 0) {
@@ -162,10 +162,10 @@ class ReceiverModel extends Model{
             'is_out'=> 0,
             '_logic'=> 'and'
             );
-    	$data     = array(
-        	'tag' => 0;
-        	);
+    	$data     = $Receiver->where($where)
+    						 ->find();
 
+    	$data['tag'] = 0;
     	$res = $Receiver->where($where)
     					->save($date);
 
@@ -186,21 +186,24 @@ class ReceiverModel extends Model{
             '_logic'=> 'and'
             );
         $data     = array(
-        	'is_out'=> 1;
+        	'is_out'=> 1
         	);
         $res = $Receiver->where($where)
         				->save($data);
 
         if ($res !== false) {
-	        if(hasDefaultAddress() && !addressIsEmpty()) {
+	        if(!$this->hasDefaultAddress() && !$this->addressIsEmpty()) {
 	        	$res = $this->setDefaultAddress();
 
-	        	if ($res != false) {
+	        	if ($res !== false) {
 	        		return true;
 	        	}
 	        	else {
 	        		return false;
 	        	}
+	        }
+	        else {
+	        	return true;
 	        }
 	    }
 	    else {

@@ -7,7 +7,7 @@ class PersonController extends Controller {
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {
-			$this->redirect('Home/Login/index');
+			$this->redirect('Home/Person/personHomePage');
 		}
 	}
 
@@ -114,6 +114,14 @@ class PersonController extends Controller {
         else {
             // 修改地址失败
         }
+    }
+
+    public function personHomePage(){
+        $Users = D('Users');
+        $info  = $Users->getUserInfo();
+        
+        $this->assign('info',$info);
+        $this->display('personhomepage');
     }
 
 }

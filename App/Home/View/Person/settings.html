@@ -26,14 +26,18 @@
 		   		<div class="user-info-input">
 		   			<span class="fl"><a class="w h inline-block"href="tel:18896554856">联系客服</a></span>
 		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="fl">关于我们</span>
-		   			<span class="fr">&gt;</span>
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="fl">修改密码</span>
-		   			<span class="fr">&gt;</span>
-		   		</div>
+		   		<a href="{:U('Person/aboutforu')}">
+			   		<div class="user-info-input">
+			   			<span class="fl">关于我们</span>
+			   			<span class="fr">&gt;</span>
+			   		</div>
+			   	</a>	
+		   		<a href="{:U('Person/changepword')}">
+			   		<div class="user-info-input">
+			   			<span class="fl">修改密码</span>
+			   			<span class="fr">&gt;</span>
+			   		</div>
+			   	</a>
 		   		<input type="submit" id="quitlog-button" value="退出登陆">
 		   </form>
 		</div>

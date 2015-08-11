@@ -13,15 +13,14 @@
 		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div class="Ahead">
+		<div class="Ahead color24dfc2">
 			<div class="Aicon">
-				&lt;
+				<a href="goodsinfo.html"><span class="fl history-back glyphicon glyphicon-circle-arrow-left colorwhite"></span></a>
 			</div>
-			<span class="Atitle">商品详情</span>
+			<span class="Atitle colorwhite">商品详情</span>
 		</div>
 		<div class="cateMain special-bgcolor">
 			<div class="cateimg1" style=" position: relative;">
-				<div style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; background-color: rgba(178,178,178,.7);"></div>
 				<img src="__PUBLIC__/img/hotsale.png"/>
 			</div>
 			<div class="cRow cateMain1 cnRow" style="position: relative; margin-top: 0;">
@@ -55,13 +54,13 @@
 					<span>s苏州</span>
 				</div>
 			</div>
-			<div class="cRow cnRow">
-				<div class="inlineB" style="width: 50%; text-align: start;">购买数量</div>
-				<div class="inlineB" style="position: relative; line-height: 20px; width: 40%; text-align: end;">
-					<a class="inlineB rect text-special" style="text-align: center;">-</a>
-					<!--<a class="inlineB rect" style="text-align: center;">1</a>-->
-					<input type="text" id="" value="" class="rect " style="vertical-align: 2px; margin-left: -7px; padding: 0;"/>
-					<a class="inlineB rect text-special special-left" style="text-align: center;">+</a>
+			<div class="cRow cnRow specialrow">
+				<span class="inlineB">购买数量</span>
+				<div class="inlineB">
+					<a class="inlineB rect text-special righta">-</a>
+					<input type="text" id="ordernumber" value="" class="rect" disabled="true"/>
+					<a class="inlineB rect text-special lefta">+</a>
+				</div>
 				</div>
 			</div>
 			<div class="cRow thingsubmit">
@@ -72,5 +71,6 @@
 				</div>
 			</div>
 		</div>
+		<script src="__PUBLIC__/script/infodetailed.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

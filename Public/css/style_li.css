@@ -1,7 +1,7 @@
 .inlineB{ display: inline-block;}
 .special-bgcolor{ background-color: #FAFAFA;}
 .cRow{ width: 100%; height: 50px;line-height: 50px; background-color: #FFFFFF; margin-top:10px;position: relative;}
-.rown{ width: 100%; background-color: #FFFFFF; margin-top:10px;position: relative;}
+.rown{ width: 100%; background-color: #FFFFFF; position: relative;}
 .cnRow{ padding: 10px 0;}
 div.nrow{ height: auto;}
 .one{ width: 9%;}
@@ -31,11 +31,12 @@ body{ text-align: center; font-family: "黑体";}
 .main{ width: 100%; background-color: #fafafa;}
 .icon{ font-size: 30px; display: inline-block; line-height: 100%; width: 12%; text-align: start;}
 .line{display: inline-block; width:2px; height: 60%; background-color: #aaaaaa;  vertical-align: middle;}
-.input{ width: 50%; height: 60%; vertical-align: middle; line-height: 30px; border: 0; font-size: 17px;}
+.input{ width: 50%; height: 60%; vertical-align: middle; line-height: 30px; border: 0; font-size: 15px;}
 #cCheck{ width: 27%; height: 60%; vertical-align: middle; line-height: 18px;}
 .input-img{ width: 56%;}
 .input-2{ width: 78%;}
-.checkImg{ width:30%; border: 1px solid #aaaaaa; display: inline-block;}
+.checkImg{ width:30%;  display: inline-block;}
+.checkImg img{ width: 101px; height: 48px;}
 .cMargin{ width: 5%; display: inline-block; background-color: #fafafa; height: 100%; vertical-align: middle;}
 .btn{ border-radius: 3px; background-color: #ff573a; color: white;}
 #main-submit{ height: 70%; line-height: 24px; width: 100%; font-size: 17px; letter-spacing: 5px;}
@@ -47,21 +48,22 @@ body{ text-align: center; font-family: "黑体";}
 .star{ width: 18%; display: inline-block; font-size: 13px; text-align: start;}
 .hMain{ width: 58%;}
 .save{ width: 18%; color: #fc8d7a;}
-.NAmain{ padding-top: 20px; background-color: #fafafa;}
+.save input{ border: 0; background-color: transparent; position: absolute; top: 0; right: 10px; font-size: 18px;}
+.NAmain{ padding-top: 2px; background-color: #fafafa;}
 .NAmain input{width: 75%; height: 30px; line-height: 30px; margin-top: 6px; border: 0; font-size: 15px;}
 .ADrow{ height: 40px; line-height: 30px; background-color: white;}
 input.innerAD{ width: 71%;} 
 
 
 /*address*/
-.Ahead{ font-size: 20px;height: 30px; line-height: 30px;}
-.Aicon{width: 30%; display: inline-block; text-align: start;}
-.Atitle{ width: 65%; display: inline-block; text-align: start;}
+.Ahead{ height: 43px; line-height: 43px; position: relative; text-align: center; font-size: 22px;}
+.Aicon{position: absolute; top: 50%; left: 10px; margin-top: -11px;}
+.Atitle{ width: 100%; display: inline-block; font-size: 18px;}
 .Amain{ background-color: #fafafa;}
 .Amain span{ display: inline-block;}
 .Amain .round{ border:1px solid #fed1cb; border-radius: 15px; width: 30px; height: 30px; position: absolute; left: 10px; top: 5px;}
-.Amain .plus{position: absolute; font-size: 36px; left: 16px; top: -4px; color: #fed1cb;}
-.Amain .tonewA{ position: absolute; left: 60px; color: #fed1cb; font-size: 17px;}
+.Amain .plus{position: absolute; font-size: 36px; left: 16px; top: -5px; color: #fed1cb;}
+.Amain .tonewA{ position: absolute; left: 60px; color: #fed1cb; font-size: 17px; top: -4px;}
 .userT{ width: 90%; line-height: 15px; text-align: start; margin-top: 5px;}
 .userT span{ display: inline-block; padding: 0;}
 .userA{ width: 5%; vertical-align: 10px;}
@@ -87,13 +89,12 @@ input.innerAD{ width: 71%;}
 .special-top{vertical-align: -2px;}
 
 /*cate*/
-.special-left{margin-left: -7px;}
 .Hauto{ height: auto;}
 .cateimg1 img{ width: 100%; height: 100%;}
 .cateMain1 img{ width:80px; height: 80px; border: 2px solid white; position: absolute; left: 10px; top: -50px;}
 .cateT{ font-size: 17px; text-align: start; padding: 5px 5px;}
 .cateC span{ display: inline-block; padding: 0 5px; border: 1px solid #aaaaaa; margin-left: 5px; float: left; margin-top: 5px; border-radius: 3px;}
-.rect{ width: 30px; height: 30px; font-size: 20px; border: 1px solid #AAAAAA; padding: 5px;}
+.rect{ width: 27px; height: 27px; font-size: 20px; border: 1px solid #AAAAAA; line-height: 27px;}
 
 
 /*comment*/
@@ -106,3 +107,14 @@ input.innerAD{ width: 71%;}
 
 
 .row-check{background-color:#FFEBEB; color:#FF9989; font-size: 15px;}
+.color24dfc2{background-color: #24dfc2;}
+.colorwhite{ color: white;}
+.font27{ font-size: 27px;}
+.textmargin{ margin-top: 7px; margin-left: 5px;}
+.specialrow{ overflow: hidden;}
+.specialrow span{ float: left; margin-left: 15px; margin-top: -5px;}
+.specialrow div{ float: right; margin-right: 13px;}
+.specialrow input{background-color: white; margin-left: -7px; vertical-align: 1px; text-align: center;}
+.specialrow a{ border-radius: 3px;}
+.specialrow .lefta{ margin-left: -7px;}
+

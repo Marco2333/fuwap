@@ -14,7 +14,7 @@
 	<body>
 		<div id="userinfo-head">
 			<div class="head-top bground-special">
-				<span class="glyphicon glyphicon-chevron-left fl"></span>
+				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
 			</div>
 			<div class="head-bottom">
 				<dl>
@@ -29,7 +29,7 @@
 		</div>
 		<div id="userinfo-body">
 		   <form action="">
-		   		<a href="{:U('Person/Cname')}">
+		   		<a href="{:U('Person/cname')}">
 			   		<div class="user-info-input">
 			   			<span class="fl">昵称</span>
 			   			<span class="fr">
@@ -53,7 +53,7 @@
 			   		<input type="text" class="sex-none none" value="{$info.sex}"/>
 			   		</div>
 			   	</a>
-		   		<a href="{:U('Person/Cacademy')}">
+		   		<a href="{:U('Person/cacademy')}">
 		   			<div class="user-info-input">
 			   			<span class="fl">学院</span>
 			   			<span class="fr">
@@ -61,7 +61,7 @@
 			   			</span>
 		   			</div>
 		   		</a>
-		   		<a href="{:U('Person/Cqq')}">
+		   		<a href="{:U('Person/cqq')}">
 			   		<div class="user-info-input">
 			   			<span class="fl">QQ号</span>
 			   			<span class="fr">
@@ -69,7 +69,7 @@
 			   			</span>
 			   		</div>
 			   	</a>
-			   	<a href="{:U('Person/Cwechat')}">
+			   	<a href="{:U('Person/cwechat')}">
 			   		<div class="user-info-input">
 			   			<span class="fl">微信号</span>
 			   			<span class="fr">
@@ -79,37 +79,11 @@
 			   	</a>
 		   </form>
 		</div>
-		<div id="common-nav">
-			<div class="row">
-			   <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-home"></span>
-			   			</dt>
-			   			<dd>首页</dd>
-			   		</dl>
-			   </div>
-			   <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-shopping-cart"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			    <div class="col-xs-4 active">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-user"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			</div>
-		</div>
+
+		<include file='App/Home/View/Common/commonnav3.html'/>
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/script/userinfo.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/common.js" type="text/javascript"></script>
 	</body>
 </html>

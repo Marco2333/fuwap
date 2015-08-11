@@ -10,9 +10,6 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
 
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div id="shoppingcart-head">
@@ -52,10 +49,6 @@
 					</li>
 					<li class="shopcart-goods-list clearfix">
 						<div class="check">
-							<!-- <div class="roundedTwo">
-							  <input type="checkbox" value="None" id="roundedTwo" name="check" checked />
-							  <label for="roundedTwo"></label>
-							</div> -->
 							<input type="checkbox">
 						</div>
 
@@ -104,10 +97,6 @@
 					</li>
 					<li class="shopcart-goods-list clearfix">
 						<div class="check">
-							<!-- <div class="roundedTwo">
-							  <input type="checkbox" value="None" id="roundedTwo" name="check" checked />
-							  <label for="roundedTwo"></label>
-							</div> -->
 							<input type="checkbox">
 						</div>
 
@@ -177,33 +166,10 @@
 			</dl>
 		</div>
 
-		<div id="common-nav" class="container">
-			<div class="row">
-			   <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-home"></span>
-			   			</dt>
-			   			<dd>首页</dd>
-			   		</dl>
-			   </div>
-			   <div class="col-xs-4  active">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-shopping-cart"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			    <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-user"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			</div>
-		</div>
+		<include file='App/Home/View/Common/commonnav2.html'/>
+
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

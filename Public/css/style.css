@@ -121,6 +121,9 @@ input {
 }
 
 /*personhomepage*/
+#homepage-head .history-back {
+	color: #fff;
+}
 .history-back {
 	color: #24DFC2;;
 	font-weight: bold;
@@ -251,6 +254,9 @@ input {
 	height: 28px;
 }
 /*userinfo*/
+#userinfo-head .history-back {
+	color: #fff;
+}
 #userinfo-body .user-info-input {
 	padding: 10px 8px 0 8px;
 }
@@ -264,6 +270,18 @@ input {
 /*settings*/
 #settings-head {
 	border-bottom: 1px solid #eee;
+}
+#call-service span,
+#call-service a {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+#call-service a {
+	padding-top: 10px;
+}
+#settings-body a > .user-info-input {
+	padding-top: 10px;
 }
 
 /*aboutus*/

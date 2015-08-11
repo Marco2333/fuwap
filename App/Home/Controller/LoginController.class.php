@@ -89,11 +89,11 @@ class LoginController extends Controller {
         }
     }
 
-    public function personHomePage(){
+    public function homePage(){
         $Users = D('Users');
         $info  = $Users->getUserInfo();
         
         $this->assign('info',$info);
-        $this->display('personhomepage');
+        $this->display('homepage');
     }
 }

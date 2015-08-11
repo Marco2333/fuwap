@@ -7,7 +7,7 @@ class PersonController extends Controller {
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {
-			$this->redirect('Home/Login/personHomePage');
+			$this->redirect('Home/Login/homePage');
 		}
 	}
 

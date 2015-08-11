@@ -40,13 +40,13 @@ function login() {
 		url: "../Login/tologin",
 		data:{
 			username : username,
-			password: password,
+			password: password
 		},
 		success : function(data) {		
 			if(data.status=='success'){
                     window.location.href="/fuwebapp/index.php";
          		}else{
-         			 $('.error-message').text("data.message");
+         			 $('.error-message').text(data.message);
 		 			 $(".error-message-wrapper") .slideDown(150);  
          	}
 		}

@@ -3,6 +3,17 @@
 namespace Home\Model;
 use Think\Model;
 
+/**
+ * 用户管理模型
+ * 
+ * @package     app
+ * @subpackage  Home
+ * @category    MODEL
+ * @author      Tony<879833043@qq.com>
+ *
+ */ 
+
+
 class UsersModel extends Model{
 	protected $fields = array(
 		'users' => array(
@@ -23,6 +34,13 @@ class UsersModel extends Model{
 			)
 		);
 
+	/**
+     * 模型函数
+     * 取得用户基本信息
+     * @access public
+     * @param  null
+     * @return array(array()) 用户数据
+     */
 	public function getUserInfo(){
 		if (!isset($_SESSION['username'])) {
 			$info = array(
@@ -53,6 +71,13 @@ class UsersModel extends Model{
 		return $info;
 	}
 
+	/**
+     * 模型函数
+     * 修改用户基本信息
+     * @access public
+     * @param  null
+     * @return null
+     */
 	public function reviseInfo($field){
 		$Users = M('users');
 
@@ -79,6 +104,16 @@ class UsersModel extends Model{
 					 ->save($data);
 	}
 
+	/**
+     * 模型函数
+     * 修改密码
+     * @access public
+     * @param  String $pword 新密码
+     * @return int -2：新密码长度小于8位
+     *             -1：新密码与旧密码一样
+     *         boolean  false：修改失败
+     *                 !false：修改成功
+     */
 	public function changePWord($pword){
 		if (strlen($pword) < 8) {
 			return -2;

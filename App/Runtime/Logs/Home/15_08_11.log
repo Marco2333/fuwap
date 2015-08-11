@@ -1,0 +1,89 @@
+[ 2015-08-11T14:36:50+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000494s ]
+
+[ 2015-08-11T14:36:55+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+
+[ 2015-08-11T14:37:30+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000840s ]
+
+[ 2015-08-11T14:38:37+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000497s ]
+
+[ 2015-08-11T14:38:37+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/__/PUBLIC__/script/goodsclassify.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000477s ]
+ERR: 非法操作:__
+
+[ 2015-08-11T14:38:59+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000542s ]
+
+[ 2015-08-11T14:38:59+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/__/PUBLIC__/script/goodsclassify.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000470s ]
+ERR: 非法操作:__
+
+[ 2015-08-11T14:39:11+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000742s ]
+
+[ 2015-08-11T14:39:11+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/__/PUBLIC__/script/goodsclassify.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000482s ]
+ERR: 非法操作:__
+
+[ 2015-08-11T14:40:51+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000451s ]
+
+[ 2015-08-11T14:40:51+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/__/PUBLIC__/script/goodsclassify.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001101s ]
+ERR: 非法操作:__
+
+[ 2015-08-11T14:41:42+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000488s ]
+
+[ 2015-08-11T14:42:04+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000460s ]
+
+[ 2015-08-11T14:42:20+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000485s ]
+
+[ 2015-08-11T14:42:50+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001049s ]
+
+[ 2015-08-11T14:43:06+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000582s ]
+
+[ 2015-08-11T14:43:32+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000534s ]
+

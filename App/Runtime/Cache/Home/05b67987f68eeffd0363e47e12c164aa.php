@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 	<head>
 		<title>For优 商品分类</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1" />	
-		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
-		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
-		<script src="__PUBLIC__/script/goodsclassify.js"></script>
-		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" />
+		<link href="/fuwebapp/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/commonstyle.css" />
+		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/style.css" />
+		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery-1.11.2.js"></script>
+		<script src="/fuwebapp/Public/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/fuwebapp/Public/script/goodsclassify.js"></script>
+		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/style-y.css" />
 		<style>
 			body{
 				background-color: #FAFAFA;
@@ -46,7 +46,7 @@
 			<!--<div class="goodsclassify-item w">-->
 			<div class="goodsclassify-goodsdetail">
 				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
+					<img src="/fuwebapp/Public/img/light-ps.png" />
 				</div>
 				<div class="goodsclassify-goods-txt">
 					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
@@ -66,7 +66,7 @@
 			<!--<div class="goodsclassify-item w">-->
 			<div class="goodsclassify-goodsdetail">
 				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
+					<img src="/fuwebapp/Public/img/light-ps.png" />
 				</div>
 				<div class="goodsclassify-goods-txt">
 					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
@@ -86,7 +86,7 @@
 			<!--<div class="goodsclassify-item w">-->
 			<div class="goodsclassify-goodsdetail">
 				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
+					<img src="/fuwebapp/Public/img/light-ps.png" />
 				</div>
 				<div class="goodsclassify-goods-txt">
 					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
@@ -106,7 +106,7 @@
 			<!--<div class="goodsclassify-item w">-->
 			<div class="goodsclassify-goodsdetail">
 				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
+					<img src="/fuwebapp/Public/img/light-ps.png" />
 				</div>
 				<div class="goodsclassify-goods-txt">
 					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
@@ -126,7 +126,7 @@
 			<!--<div class="goodsclassify-item w">-->
 			<div class="goodsclassify-goodsdetail">
 				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
+					<img src="/fuwebapp/Public/img/light-ps.png" />
 				</div>
 				<div class="goodsclassify-goods-txt">
 					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
@@ -145,8 +145,41 @@
 			<!--</div>-->
 		</div>	
 		
-		<include file='App/Home/View/Common/commonnav1.html'/>
+		<div id="common-nav">
+	<div class="row">
+	   <div class="col-xs-4  active">
+	   		<a href="<?php echo U('Index/index');?>">
+	   			<dl>
+	   				<dt>
+	   					<span class="glyphicon glyphicon-home"></span>
+	   				</dt>
+	   				<dd>首页</dd>
+	   			</dl>
+	   		</a> 		
+	   </div>
+	   <div class="col-xs-4">
+	   		<a href="<?php echo U('Index/shoppingcart');?>">
+		   		<dl>
+		   			<dt>
+		   				<span class="glyphicon glyphicon-shopping-cart"></span>
+		   			</dt>
+		   			<dd>购物车</dd>
+		   		</dl>
+	   		</a>
+	   </div>
+	    <div class="col-xs-4">
+	    	<a href="<?php echo U('Login/homepage');?>">
+		   		<dl>
+		   			<dt>
+		   				<span class="glyphicon glyphicon-user"></span>
+		   			</dt>
+		   			<dd>个人中心</dd>
+		   		</dl>
+	   		</a>
+	   </div>
+	</div>
+</div>
 		
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery-1.11.2.js"></script>
 	</body>
 </html>

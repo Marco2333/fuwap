@@ -3,6 +3,17 @@
 namespace Home\Model;
 use Think\Model;
 
+/**
+ * 收货地址管理模型
+ * 
+ * @package     app
+ * @subpackage  Home
+ * @category    MODEL
+ * @author      Tony<879833043@qq.com>
+ *
+ */ 
+
+
 class ReceiverModel extends Model{
 	protected $fields = array(
 		'receiver' => array(
@@ -17,7 +28,15 @@ class ReceiverModel extends Model{
 			)
 		);
 
-	public function getAddressInfo($limit = '',$rank = ''){
+	/**
+     * 模型函数
+     * 取得用户收货地址信息
+     * @access public
+     * @param  String $limit 分页条件
+     * @param  String $rank  时间戳
+     * @return array(array()) 购物车数据
+     */
+	public function getAddressInfo($limit = '0,9',$rank = ''){
 		$field = array(
 			'phone',
 			'rank',
@@ -48,6 +67,13 @@ class ReceiverModel extends Model{
 		return $info;
 	}
 
+	/**
+     * 模型函数
+     * 用户收货地址拆分粘结
+     * @access public
+     * @param  array(array()) $address 用户收货地址
+     * @return array(array()) 地址粘接后的用户收货地址
+     */
 	public function addressConnect($address){
 		for ($i = 0; $i < count($address); $i++) { 
 			$addressList = explode('^',$address[$i]['address']);
@@ -61,6 +87,13 @@ class ReceiverModel extends Model{
 		return $address;
 	}
 
+	/**
+     * 模型函数
+     * 用户收货地址拆分
+     * @access public
+     * @param  array(array()) $address 用户收货地址
+     * @return array(array()) 地址拆分后的用户收货地址
+     */
 	public function addressSplit($address){
 		$addressList = explode('^',$address['address']);
 
@@ -71,6 +104,13 @@ class ReceiverModel extends Model{
 		return $address;
 	}
 
+	/**
+     * 模型函数
+     * 取得用户收货地址数量
+     * @access public
+     * @param  null
+     * @return int  用户收货地址数量
+     */
 	public function count(){
 		$count = M('receiver')
 			    ->where('phone='.$_SESSION['username'].' and '.'is_out=0')
@@ -80,6 +120,14 @@ class ReceiverModel extends Model{
 
 	}
 
+	/**
+     * 模型函数
+     * 制作分页模块
+     * @access public
+     * @param  int $count 总行数
+     * @param  int $row   一页几行
+     * @return Page 分页模块
+     */
 	public function pageProduce($count,$row){
 		$page = new \Think\Page($count,$row);
         $page->setConfig('header','条数据');
@@ -93,6 +141,13 @@ class ReceiverModel extends Model{
         return $page;
 	}
 
+	/**
+     * 模型函数
+     * 存储新增用户收货地址
+     * @access public
+     * @param  null
+     * @return null
+     */
 	public function saveAddress(){
 		$Receiver = M('receiver');
 
@@ -124,6 +179,14 @@ class ReceiverModel extends Model{
 							
 	}
 
+	/**
+     * 模型函数
+     * 判断用户收货地址数量是否为零
+     * @access public
+     * @param  null
+     * @return boolean 用户收货地址数量为零true
+     *                 用户收货地址数量不为零false
+     */
 	public function addressIsEmpty(){
         $Receiver = M('receiver');
         $where    = array(
@@ -143,6 +206,14 @@ class ReceiverModel extends Model{
         }
     }
 
+    /**
+     * 模型函数
+     * 判断用户是否具有默认收货地址
+     * @access public
+     * @param  null
+     * @return boolean 用户具有默认收货地址true
+     *                 用户不具有默认收货地址false
+     */
     public function hasDefaultAddress(){
     	$count = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0'.' and '.'tag=0')
     				  ->count();
@@ -155,6 +226,14 @@ class ReceiverModel extends Model{
     	}
     }
 
+    /**
+     * 模型函数
+     * 设置用户默认收货地址
+     * @access public
+     * @param  null
+     * @return boolean 设置成功true
+     *                 设置失败false
+     */
     public function setDefaultAddress(){
     	$Receiver = M('receiver');
     	$where    = array(
@@ -177,6 +256,14 @@ class ReceiverModel extends Model{
     	}
     }
 
+    /**
+     * 模型函数
+     * 删除用户收货地址
+     * @access public
+     * @param  null
+     * @return boolean 用户收货地址删除成功true
+     *                 用户收货地址删除失败false
+     */
     public function removeAddress(){
     	$Receiver = M('receiver');
         $where    = array(

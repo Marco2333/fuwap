@@ -96,9 +96,29 @@ class OrdersModel extends Model{
 		return $price;
 	}
 
-	public function updateOrderCount($order_count){
+	/**
+     * 模型函数
+     * 点击加减按钮修改物品购买数量
+     * @access public
+     * @param  String $order_id 订单号
+     * @param  int    $order_count 物品购买数量
+     * @return boolean
+     */
+	public function updateOrderCount($order_id,$order_count){
 		$Orders = M('orders');
 		
+		$where = array(
+			'phone'    => $_SESSION['username'],
+			'order_id' => $order_id, 
+			);
+		$data  = array(
+			'order_count' => $order_count
+			);
+
+		$res = $Orders->where($where)
+					  ->save($data);
+
+		return $res;
 	}
 }
 

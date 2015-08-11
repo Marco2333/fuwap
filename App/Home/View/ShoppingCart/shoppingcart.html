@@ -32,12 +32,16 @@
 				<ul>
 					<foreach name="cart" item="goods">
 						<li class="shopcart-goods-list clearfix">
-							<div class="check">
+							<div class="check-goods">
 								<!-- <div class="roundedTwo">
 								  <input type="checkbox" value="None" id="roundedTwo" name="check" checked />
 								  <label for="roundedTwo"></label>
 								</div> -->
-								<input type="checkbox">
+								<input class="input-locate" type="checkbox">
+								<input class="order-count-none none" value="{$goods.order_count}" />
+								<input class="price-none none" value="{$goods.price}" />
+								<input class="discount-price-none none" value="{$goods.discount_price}" />
+								<input class="is-discount-none none" value="{$goods.is_discount}" />
 							</div>
 
 							<div class="goods-img">
@@ -50,9 +54,9 @@
 								<div class="spc-goods-info-detaild">
 									<span class="discount-price fl">￥{$goods.dPrice}元</span>
 									<span class="bef-price fl">原价：{$goods.Price}元</span>
-									<a href="" class="sub-goods" data-orderId="{$goods.order_id}">-</a>
-									<input type="text" class="goods-count" value="{$goods.order_count}">
-									<a href="" class="add-goods" data-orderId="{$goods.order_id}">+</a>
+									<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
+									<input type="text" id="{$goods.order_id}" class="goods-count" value="{$goods.order_count}">
+									<a class="add-goods" data-orderId="{$goods.order_id}">+</a>
 								</div>
 							</div>
 						</li>
@@ -63,7 +67,9 @@
 			<div id="settle-accounts">
 				<input id="check-all" type="checkbox">
 				<label for="check-all">全选</label>
-				<span>合计: {$price.dPrice}元<span>{$price.Price}元</span>(已节省{$price.save}元)</span>
+				<span id="Price">合计: 0.00元</span>
+				<span id="dPrice">0.00元</span>
+				<span id="save">(已节省0.00元)</span>
 				<button id="check-button">结算</button>
 			</div>
 		</div>
@@ -93,7 +99,7 @@
 		<include file='App/Home/View/Common/commonnav2.html'/>
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<sccipt type="text/javascript" src="__PUBLIC__/script/shoppingcart.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/shoppingcart.js"></script>
 		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

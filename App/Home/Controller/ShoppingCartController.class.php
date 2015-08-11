@@ -45,10 +45,20 @@ class ShoppingCartController extends Controller{
     }
 
     public function updateOrderCount(){
-    	$Orders->D('Orders');
-    	$result = $Orders->updateOrderCount();
+    	$Orders = D('Orders');
 
-    	
+        $order_id    = I('order_id');
+        $order_count = I('order_count');
+    	$result      = $Orders->updateOrderCount($order_id,$order_count);
+
+    	if ($result !== false) {
+            $res['result'] = 1;
+            $this->ajaxReturn($res);
+        }
+        else {
+            $res['result'] = 0;
+            $this->ajaxReturn($res);
+        }
     }
 
 

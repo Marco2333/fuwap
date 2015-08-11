@@ -87,3 +87,18 @@ INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000534s ]
 
+[ 2015-08-11T15:00:41+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodsclassify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001062s ]
+
+[ 2015-08-11T15:01:03+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000772s ]
+
+[ 2015-08-11T15:20:10+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/infodetailed
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001096s ]
+

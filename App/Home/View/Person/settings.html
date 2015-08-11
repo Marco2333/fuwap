@@ -10,21 +10,18 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
 
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div id="settings-head">
-			<div class="head-top background-special">
-				<span class="glyphicon glyphicon-chevron-left fl"></span>
-				<span>设置</span>
-			</div>
+		<div class="head-top">
+			<span class="fl history-back glyphicon glyphicon-circle-arrow-left background-special"></span>
+			<span class="head-title">设置</span>
 		</div>
 		<div id="settings-body">
 		   <form action="">
-		   		<div class="user-info-input">
-		   			<span class="fl"><a class="w h inline-block"href="tel:18896554856">联系客服</a></span>
+		   		<div id="call-service" class="user-info-input">
+		   			<span class="fl">
+		   				<a href="tel:18896554856">联系客服</a>
+		   			</span>
 		   		</div>
 		   		<a href="{:U('Person/aboutforu')}">
 			   		<div class="user-info-input">
@@ -43,33 +40,9 @@
 		   		</a>
 		   </form>
 		</div>
-		<div id="common-nav">
-			<div class="row">
-			   <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-home"></span>
-			   			</dt>
-			   			<dd>首页</dd>
-			   		</dl>
-			   </div>
-			   <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-shopping-cart"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			    <div class="col-xs-4 active">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-user"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			</div>
-		</div>
+		
+		<!-- <include file='App/Home/View/Common/commonnav3.html'/> -->
+
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 	</body>
 </html>

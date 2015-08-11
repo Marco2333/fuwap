@@ -89,6 +89,7 @@ class LoginController extends Controller {
         }
     }
 
+
     // @author Tony
     public function logout(){
       unset($_SESSION['username']);
@@ -96,11 +97,12 @@ class LoginController extends Controller {
     }
 
     // @author Tony
-    public function personHomePage(){
+    public function homePage(){
+
         $Users = D('Users');
         $info  = $Users->getUserInfo();
         
         $this->assign('info',$info);
-        $this->display('personhomepage');
+        $this->display('homepage');
     }
 }

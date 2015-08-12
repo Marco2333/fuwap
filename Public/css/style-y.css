@@ -163,9 +163,15 @@
 }
 
 /*待购商品*/
-.orderconfirm-goodsdetail{
+.orderconfirm-goods{
 	width: 100%;
 	height: 120px;
+	border-bottom: 1px solid #eee;
+}
+
+.orderconfirm-goodsdetail{
+	width: 100%;
+	height: auto;
 	padding: 0 10px;
 	margin-top: 10px;
 	background-color: white;
@@ -178,6 +184,7 @@
 	height: 100px;
 	margin: 10px 10px 10px 0;
 	float: left;
+	padding-top: 3px;
 }
 .orderconfirm-goodsimg img {
 	width: 90px;
@@ -214,7 +221,8 @@
 	display: inline-block;
 }
 #order-goods-count {
-	margin-left: 8px;
+	margin-left: 12px;
+	margin-top: 6px;
 }
 a.sub-goods,
 a.add-goods {
@@ -239,6 +247,20 @@ a.add-goods {
 	border-bottom-right-radius:4px;
 	border-left: none;
 }
+
+.ocnprice-item{
+	width: 19px;
+	height: 23px;
+	border: none;
+}
+.ocoprice-item{
+	width: 19px;
+	height: 23px;
+	border: none;
+	text-decoration:line-through ;
+	font-size: 14px;
+}
+
 input.goods-count {
 	width: 26px;
 	height: 21px;
@@ -369,7 +391,7 @@ input.goods-count {
 	display: inline-block;
 	font-weight: bolder;
 }
-.slide{
+.goodsclassify-slide{
 	width:100%;
 	height: 35px;
 	overflow: hidden;
@@ -384,11 +406,11 @@ input.goods-count {
 	left: 0px;
 	padding-top: 8px;
 	
-	-webkit-transition: left 0.6s ease-in-out;
-	-ms-transition: left 0.6s ease-in-out;
-	-moz-transition: left 0.6s ease-in-out;
-	-o-transition: left 0.6s ease-in-out;
-	transition: left 0.6s ease-in-out;
+	-webkit-transition: left 0.3s ease-in-out;
+	-ms-transition: left 0.3s ease-in-out;
+	-moz-transition: left 0.3s ease-in-out;
+	-o-transition: left 0.3s ease-in-out;
+	transition: left 0.3s ease-in-out;
 }
 .goodsclassify-header li{
 	width: 12.5%;

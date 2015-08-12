@@ -8,9 +8,6 @@
 		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
-		<script src="__PUBLIC__/script/goodsclassify.js"></script>
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" />
 		<style>
 			body{
@@ -20,7 +17,7 @@
 	</head>
 	<body>
 		<div class="goodsclassify-head w" id="gch">
-			<span class="glyphicon glyphicon-circle-arrow-left fl "></span>
+			<span class="glyphicon glyphicon-circle-arrow-left fl history-back"></span>
 			<span>分类</span>
 		</div><!--register-head-->
 		
@@ -29,8 +26,8 @@
 		
 		<div class="goodsclassify-header w">
 			<a class="move moveleft"
-		      data-slide="prev"><</a>
-			    <div class="slide">
+		      ><</a>
+			    <div class="goodsclassify-slide">
 					<ul id="classifynavi">
 						<li class="goodsclassify-active">特色零食</li>
 						<li>代取快递</li>
@@ -39,7 +36,7 @@
 						<li>jzz</li>
 					</ul>
 				</div>
-			<a class="move moveright"  data-slide="next">></a>
+			<a class="move moveright"  >></a>
 		</div>
 			
 		<div class="body-y">	
@@ -148,5 +145,8 @@
 		<include file='App/Home/View/Common/commonnav1.html'/>
 		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script src="__PUBLIC__/script/goodsclassify.js"></script>
 	</body>
 </html>

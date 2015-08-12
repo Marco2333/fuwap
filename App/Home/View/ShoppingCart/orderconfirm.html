@@ -14,27 +14,11 @@
 				background-color: #FAFAFA;
 			}
 		</style>
-		<script>
-		$(document).ready(function(){
-				$(".orderconfirm-goods-txt a.sub-goods").click(function(){
-				      var v=$(this).next("input").val();
-				      if(parseInt(v)!=0){
-				          $(this).next("input").val(parseInt(v)-1);
-				      }    
-				      /*caltotalCost();*/
-				  });
-				
-				  $(".orderconfirm-goods-txt a.add-goods").click(function(){
-				      var v=$(this).prev("input").val();
-				      $(this).prev("input").val(parseInt(v)+1); 
-				      /*caltotalCost();*/
-				  });
-		  });
-		</script>
+		
 	</head>
 	<body>
 		<div class="orderconfirm-head">
-			<span class="glyphicon glyphicon-chevron-left fl"></span>
+			<span class="glyphicon glyphicon-chevron-left fl history-back"></span>
 			<span>确认订单</span>
 		</div><!--register-head-->
 		<div class="consumer-info w">
@@ -48,23 +32,75 @@
 				<span class="consumer-address">江苏省苏州市沧浪区干将东路33号本部前化四10101010</span>
 		</div>
 		<div class="orderconfirm-goodsdetail w">
-			<div class="orderconfirm-goodsimg">
-				<img src="__PUBLIC__/img/littleclock.png" />
-			</div>
-			<div class="orderconfirm-goods-txt">
-				<p class="goods-txt-name">糖果色挂表 居家风格</p>
-				<p class="goods-txt-intro">设计师原创 纯手工打造</p>
-				<div class="bo">
-					<div class="fl">
-						<div class="orderconfirm-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-					</div>
-					<div id="order-goods-count" class="fl">
-						<a class="sub-goods ">-</a>
-						<input class="goods-count" type="text" value="1" disabled="true">
-						<a class="add-goods ">+</a>
+			<ul id="orderconfirm-goods">
+				<li>
+					<div class="orderconfirm-goods" id="goods1" >
+				<div class="orderconfirm-goodsimg">
+					<img src="__PUBLIC__/img/littleclock.png" />
+				</div>
+				<div class="orderconfirm-goods-txt">
+					<p class="goods-txt-name">糖果色挂表 居家风格</p>
+					<p class="goods-txt-intro">设计师原创 纯手工打造</p>
+					<div class="bo">
+						<div class="fl">
+							<div class="orderconfirm-price fl discount-price">￥<input class="ocnprice-item" value="79"></div> 
+							<span class="orgin-price fl bef-price">原价:<input class="ocoprice-item" value="89"></span>
+						</div>
+						<div id="order-goods-count" class="fl">
+							<a class="sub-goods ">-</a>
+							<input class="goods-count" type="text" value="1" disabled="true">
+							<a class="add-goods ">+</a>	
+						</div>				
 					</div>
 				</div>
 			</div>
+				</li>
+				<li>
+			<div class="orderconfirm-goods" id="goods2" >
+				<div class="orderconfirm-goodsimg">
+					<img src="__PUBLIC__/img/littleclock.png" />
+				</div>
+				<div class="orderconfirm-goods-txt">
+					<p class="goods-txt-name">糖果色挂表 居家风格</p>
+					<p class="goods-txt-intro">设计师原创 纯手工打造</p>
+					<div class="bo">
+						<div class="fl">
+							<div class="orderconfirm-price fl discount-price">￥<input class="ocnprice-item" value="79"></div> 
+							<span class="orgin-price fl bef-price">原价:<input class="ocoprice-item" value="89"></span>
+						</div>
+						<div id="order-goods-count" class="fl">
+							<a class="sub-goods ">-</a>
+							<input class="goods-count" type="text" value="1" disabled="true">
+							<a class="add-goods ">+</a>	
+						</div>				
+					</div>
+				</div>
+			</div>
+				</li>
+				<li>
+			<div class="orderconfirm-goods" id="goods3" >
+				<div class="orderconfirm-goodsimg">
+					<img src="__PUBLIC__/img/littleclock.png" />
+				</div>
+				<div class="orderconfirm-goods-txt">
+					<p class="goods-txt-intro">设计师原创 纯手工打造</p>
+					<div class="bo">
+						<div class="fl">
+						
+							<div class="orderconfirm-price fl discount-price">￥<input class="ocnprice-item" value="79"></div> 
+							<span class="orgin-price fl bef-price">原价:<input class="ocoprice-item" value="89"></span>
+						</div>
+						<div id="order-goods-count" class="fl">
+							<a class="sub-goods ">-</a>
+							<input class="goods-count" type="text" value="1" disabled="true">
+							<a class="add-goods ">+</a>	
+						</div>				
+					</div>
+				</div>
+			</div>
+				</li>
+			</ul>
+				
 		</div>
 		<div class="orderconfirm-arrivetime w">
 			<span class="fl">送达时间</span>
@@ -100,7 +136,8 @@
 			<textarea     placeholder="留言备注：" rows="5"></textarea>
 		</div>
 		<div class="orderconfirm-totalamount">
-			合计：79元 <span class="orgin-price">129元</span>（已节省50元）
+			合计：<span id="ocnprice"> 79</span>元 <span class="orgin-price">
+				<span id="ocoprice"> 129</span>元</span>（已节省<span id="ocsavemoney">50</span>元）
 		</div>
 		<div class="orderconfirm-btn-pay" >
 			<button class="btn register-info-submit-btn">
@@ -142,5 +179,8 @@
 		</div> -->
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script src="__PUBLIC__/script/orderconfirm.js"></script>
 	</body>
 </html>

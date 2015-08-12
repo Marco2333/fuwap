@@ -364,7 +364,6 @@ input.goods-count {
 	float: left;
 	text-align: center;
 	text-decoration: none;
-	
 	position: absolute;
 	top: 9px;
 	display: inline-block;
@@ -379,14 +378,11 @@ input.goods-count {
 .goodsclassify-header  ul{
 	overflow: hidden;
 	float: left;
-	/*width: 88%;*/
 	background-color: white;
-	
 	width: 200%;
 	position: absolute;
 	left: 0px;
 	padding-top: 8px;
-	
 	
 	-webkit-transition: left 0.6s ease-in-out;
 	-ms-transition: left 0.6s ease-in-out;

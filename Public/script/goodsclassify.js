@@ -5,7 +5,6 @@ $(document).ready(function(){
 		$(".goodsclassify-header ul").css( "left", function(index, value) {return parseFloat(value)+1*$(".goodsclassify-header li").width();});
 		}
 	})
-	
 	$(".moveright").click(function(){
 		var lef=$(".goodsclassify-header ul").css("left");
 		var cou=$("#classifynavi>li").length;

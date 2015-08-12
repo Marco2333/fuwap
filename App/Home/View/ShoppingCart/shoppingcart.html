@@ -42,6 +42,7 @@
 								<input class="price-none none" value="{$goods.price}" />
 								<input class="discount-price-none none" value="{$goods.discount_price}" />
 								<input class="is-discount-none none" value="{$goods.is_discount}" />
+								<input class="order-id-none none" value="{$goods.order_id}" />
 							</div>
 
 							<div class="goods-img">
@@ -53,7 +54,7 @@
 
 								<div class="spc-goods-info-detaild">
 									<span class="discount-price fl">￥{$goods.dPrice}元</span>
-									<span class="bef-price fl">原价：{$goods.Price}元</span>
+									<span class="bef-price fl">原价：￥{$goods.Price}元</span>
 									<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
 									<input type="text" id="{$goods.order_id}" class="goods-count" value="{$goods.order_count}">
 									<a class="add-goods" data-orderId="{$goods.order_id}">+</a>
@@ -67,8 +68,8 @@
 			<div id="settle-accounts">
 				<input id="check-all" type="checkbox">
 				<label for="check-all">全选</label>
-				<span id="Price">合计: 0.00元</span>
-				<span id="dPrice">0.00元</span>
+				<span id="Price">合计: ￥0.00元</span>
+				<span id="dPrice">原价：￥0.00元</span>
 				<span id="save">(已节省0.00元)</span>
 				<button id="check-button">结算</button>
 			</div>

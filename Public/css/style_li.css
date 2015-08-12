@@ -99,6 +99,7 @@ input.innerAD{ width: 71%;}
 
 /*comment*/
 .comment-img{ width: 60px;height: 60px;}
+#commenttext{  border: 1px solid #E4E4E4;}
 
 /*aboutorder*/
 .special-icon{ font-size: 20px;}

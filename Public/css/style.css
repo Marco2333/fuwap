@@ -55,9 +55,9 @@ input {
 	text-align: center;
 	margin-top: 5px;
 }
-#slide-wrapper {
+/*#slide-wrapper {
 	height: 188px;
-}
+}*/
 #slide-wrapper .carousel-inner img {
 	width: 100%;
 	height: auto;
@@ -386,7 +386,11 @@ input {
 	border-bottom: none;
 }
 #shoppingcart-body {
-	padding-bottom: 158px;
+	padding-bottom: 165px;
+}
+.sub-add-goods-wrapper {
+	/*float: left;*/
+	margin-top: -4px;
 }
 /*.shopping-cart-body input[type='checkbox'] {
 	border-radius:5px; 
@@ -449,7 +453,7 @@ input {
 .shopcart-goods-list > div {
 	float: left;
 }
-.shopcart-goods-list .check {
+.shopcart-goods-list .check-goods {
 	padding-left:5px;
 	width: 8%;
 	padding-top: 30px;
@@ -488,7 +492,7 @@ input {
 	font-size: 12px;
 	color: #999;
 	margin-right: 6px;
-	padding-top: 5px;
+	padding-top: 3px;
 }
 a.sub-goods,
 a.add-goods {

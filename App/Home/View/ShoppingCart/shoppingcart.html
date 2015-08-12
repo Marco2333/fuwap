@@ -14,10 +14,11 @@
 	<body>
 		<div id="shoppingcart-head">
 			<div class="head-top background-special">
-				<span class="glyphicon glyphicon-chevron-left fl"></span>
+				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
 				<span class="head-title">购物车</span>
 			</div>
 		</div>
+		
 		<div id="shopping-not-empty"
 			<?php
 				if ($isEmpty != '0') {
@@ -33,10 +34,6 @@
 					<foreach name="cart" item="goods">
 						<li class="shopcart-goods-list clearfix">
 							<div class="check-goods">
-								<!-- <div class="roundedTwo">
-								  <input type="checkbox" value="None" id="roundedTwo" name="check" checked />
-								  <label for="roundedTwo"></label>
-								</div> -->
 								<input class="input-locate" type="checkbox">
 								<input class="order-count-none none" value="{$goods.order_count}" />
 								<input class="price-none none" value="{$goods.price}" />
@@ -52,12 +49,17 @@
 								<h1>{$goods.name}</h1>
 							   	<p>{$goods.message}</p>
 
-								<div class="spc-goods-info-detaild">
-									<span class="discount-price fl">￥{$goods.dPrice}元</span>
-									<span class="bef-price fl">原价：￥{$goods.Price}元</span>
-									<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
-									<input type="text" id="{$goods.order_id}" class="goods-count" value="{$goods.order_count}">
-									<a class="add-goods" data-orderId="{$goods.order_id}">+</a>
+								<div class="spc-goods-info-detaild clearfix">
+									<div class="col-6 fl clearfix">
+										<span class="discount-price fl">￥{$goods.dPrice}</span>
+										<span class="bef-price fl">￥{$goods.Price}</span>
+									</div>
+									
+									<div class="sub-add-goods-wrapper clearfix col-4 fr">
+										<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
+										<input type="text" id="{$goods.order_id}" disabled="disabled" class="goods-count" value="{$goods.order_count}">
+										<a class="add-goods" data-orderId="{$goods.order_id}">+</a>
+									</div>
 								</div>
 							</div>
 						</li>
@@ -75,7 +77,7 @@
 			</div>
 		</div>
 		
-		<div id="shopping-cart-empty">
+		<div id="shopping-cart-empty"
 			<?php
 				if ($isEmpty != '0') {
 					echo 'class=""';
@@ -84,6 +86,7 @@
 					echo 'class="none"';
 				}
 			?>
+		>
 			<dl>
 				<dt>
 					<img src="__PUBLIC__/img/shopempty.png" alt="">
@@ -100,6 +103,6 @@
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/script/shoppingcart.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/Common.js"></script>
 	</body>
 </html>

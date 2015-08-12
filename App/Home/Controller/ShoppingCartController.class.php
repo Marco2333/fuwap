@@ -62,7 +62,7 @@ class ShoppingCartController extends Controller{
     }
 
     public function orderConfirm(){
-        echo I('orderIds');
+        $this->display('orderconfirm');
     }
 
 

@@ -18,8 +18,8 @@ class OrdersModel extends Model{
 
 	protected $fields = array(
 		'orders' => array(
-			'order_id',
-			'phone',
+			'order_id',		//key
+			'phone',		//key
 			'campus_id',
 			'together_id',
 			'create_time',
@@ -120,11 +120,151 @@ class OrdersModel extends Model{
 
 		return $res;
 	}
+
+	/**
+     * 模型函数
+     * 根据大订单号获取小订单号字符串
+     * @access public
+     * @param  String $together_id 大订单号
+     * @return String $orderIds    订单号组成的字符串，以','分割
+     */
+    public function getOrderIds($together_id){
+    	$field = array(
+    		'order_id'
+    		);
+    	$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'together_id='.$together_id)
+    					   ->field($field)
+    					   ->select();
+
+    	for ($i = 0;$i < count($ordersList);$i++) {
+    		if ($i < count($ordersList)-1) {
+    			$orderIds .= $ordersList[$i]['order_id'].',';
+    		}
+    		else {
+    			$orderIds .= $ordersList[$i]['order_id'];
+    		}
+    	}
+
+    	return $orderIds;
+    }
+
+	/**
+     * 模型函数
+     * 分割订单号字符串
+     * @access public
+     * @param  String $orderIds 订单号组成的字符串，以','分割
+     * @return array() 订单号
+     */
+	public function orderIdsSplit($orderIds){
+		$ordersList = explode(',', $orderIds);
+
+		return $ordersList;
+	}
+
+	/**
+     * 模型函数
+     * 通过订单号获取单个物品信息
+     * @access public
+     * @param  String $orderId 订单号
+     * @return array() 单个物品信息
+     */
+	public function getGoodInfo($orderId){
+		$field = array(
+			'food_id',
+			'campus_id',
+			'order_count',
+			'status',
+			'together_id',
+			'together_date'
+			);
+		$where = $this->where('order_id='.$orderId)
+					  ->field($field)
+					  ->find();
+
+		$Food     = D('Food');
+		$goodInfo = $Food->getGoodInfo($where['food_id'],$where['campus_id']);
+		$goodInfo['order_id']      = $orderId;
+		$goodInfo['order_count']   = $where['order_count'];
+		$goodInfo['status']		   = $where['status'];
+		$goodInfo['together_id']   = $where['together_id'];
+		$goodInfo['together_date'] = $where['together_date'];
+		$goodInfo['Price']  	   = $goodInfo['price'] * $goodInfo['order_count'];
+		$goodInfo['dPrice'] 	   = $goodInfo['discount_price'] * $goodInfo['order_count'];
+
+		return $goodInfo;
+	}
+
+	/**
+     * 模型函数
+     * 通过订单号获取物品信息
+     * @access public
+     * @param  String $orderIds 订单号组成的字符串，以','分割
+     * @return array(array()) 物品信息
+     */
+	public function getGoodsInfo($orderIds){
+		$ordersList = $this->orderIdsSplit($orderIds);
+		for ($i = 0;$i < count($ordersList);$i++) {
+			$goodsInfo[$i] = $this->getGoodInfo($ordersList[$i]);
+		}
+
+		return $goodsInfo;
+	}
+
+	/**
+     * 模型函数
+     * 为一批订单设置一个订单号，同时设置下单时间
+     * 根据phone和order_id在orders表中记录together_id,together_date
+     * @access public
+     * @param  String $orderIds 订单号组成的字符串，以','分割
+     * @return string 订单号
+     */
+    public function setTogether($orderIds){
+        $user = $_SESSION['username'];
+
+        $together_id   = $user.Time();
+        $together_date = date("Y-m-d H:m:s",time());
+
+        $orderID = $this->orderIdsSplit($orderIds);
+
+        $Orders = M('orders');
+        $data = array(
+            'together_id'   => $together_id,
+            'together_date' => $together_date
+            );
+
+        for ($i = 0;$i < count($orderID);$i++) {
+            $where = array(
+                'phone'    => $user,
+                'order_id' => $orderID[$i]
+                );
+
+            $Orders->where($where)
+                   ->save($data);
+        }
+
+        return $together_id;
+    }
+
+    /**
+     * 模型函数
+     * 获取一个用户某种状态的所有大订单号
+     * @access public
+     * @param  String $status 状态
+     * @return array() 大订单号
+     */
+    public function getTogetherIds($status){
+    	$field = array(
+    		'together_id'
+    		);
+    	$togetherIds = $this->where('phone='.$_SESSION['username'].' and '.'status='.$status.' and tag=1')
+    						->distinct(true)
+    						->field($field)
+    						->select();
+
+    	return $togetherIds;
+    }
+
 }
-
-
-
-
 
 
 

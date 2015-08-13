@@ -20,7 +20,7 @@
 			<div class="head-bottom">
 				<dl>
 					<dt>
-						<img src="__PUBLIC__/img/userhead.png" alt="">
+						<img src="{$info.img_url}" alt="">
 					</dt>
 
 					<dd>
@@ -36,7 +36,7 @@
 			<div class="row">
 				<if condition="$info['nickname'] neq '点击登陆'">
 					<a href="{:U('Person/addressmanage')}">
-				<else/><a href="{:U('Login/login')}"></a>
+				<else/><a href="{:U('Login/login')}">
 				</if>
 				
 				   <div class="col-xs-3">
@@ -48,7 +48,10 @@
 				   		</dl>
 				   </div>
 			    </a>
-			    <a href="{:U('Index/ordermanage')}">
+			    <if condition="$info['nickname'] neq '点击登陆'">
+			    	<a href="{:U('OrderManage/orderManage',array('status'=>1))}">
+			    <else/><a href="{:U('Login/login')}">
+			    </if>
 				   <div class="col-xs-3">
 				   		<dl>
 				   			<dt>
@@ -58,7 +61,10 @@
 				   		</dl>
 				   </div>
 			   	</a>
-			   	<a href="{:U('Person/userinfo')}">
+			   	<if condition="$info['nickname'] neq '点击登陆'">
+			    	<a href="{:U('Person/userinfo')}">
+			    <else/><a href="{:U('Login/login')}">
+			    </if>
 				   <div class="col-xs-3">
 				   		<dl>
 				   			<dt>
@@ -68,7 +74,10 @@
 				   		</dl>
 				   </div>
 			   </a>
-			   <a href="{:U('Person/settings')}">
+			   <if condition="$info['nickname'] neq '点击登陆'">
+			    	<a href="{:U('Person/settings')}">
+			    <else/><a href="{:U('Login/login')}">
+			    </if>
 				    <div class="col-xs-3">
 				   		<dl>
 				   			<dt>

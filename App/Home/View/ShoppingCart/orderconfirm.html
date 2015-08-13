@@ -18,87 +18,46 @@
 	</head>
 	<body>
 		<div class="orderconfirm-head">
-			<span class="glyphicon glyphicon-chevron-left fl history-back"></span>
+			<span class="glyphicon glyphicon-circle-arrow-left fl history-back"></span>
 			<span>确认订单</span>
 		</div><!--register-head-->
 		<div class="consumer-info w">
 				<span class="glyphicon glyphicon-user"></span>
-				<span class="consumer-name">杜佳文</span>
-				<span class="consumer-phone">18012341234</span>
+				<span class="consumer-name">{$defaultAddress.name}</span>
+				<span class="consumer-phone">{$defaultAddress.phone_id}</span>
 				<span class="consumer-rightarrow ">&gt;</span>
 		</div>
 		<div class="consumer-info-add w">
 				<span class="glyphicon  glyphicon-map-marker glyadd"></span>
-				<span class="consumer-address">江苏省苏州市沧浪区干将东路33号本部前化四10101010</span>
+				<span class="consumer-address">{$defaultAddress.address}</span>
 		</div>
 		<div class="orderconfirm-goodsdetail w">
 			<ul id="orderconfirm-goods">
-				<li>
-					<div class="orderconfirm-goods" id="goods1" >
-				<div class="orderconfirm-goodsimg">
-					<img src="__PUBLIC__/img/littleclock.png" />
-				</div>
-				<div class="orderconfirm-goods-txt">
-					<p class="goods-txt-name">糖果色挂表 居家风格</p>
-					<p class="goods-txt-intro">设计师原创 纯手工打造</p>
-					<div class="bo">
-						<div class="fl">
-							<div class="orderconfirm-price fl discount-price">￥<input class="ocnprice-item" value="79"></div> 
-							<span class="orgin-price fl bef-price">原价:<input class="ocoprice-item" value="89"></span>
+				<input class="together-id-none none" value="{$together_id}"/>
+				<foreach name="goodsInfo" item="goods">
+					<li>
+						<div class="orderconfirm-goods" id="goods1" >
+							<div class="orderconfirm-goodsimg">
+								<img src="{$goods.img_url}" />
+							</div>
+							<div class="orderconfirm-goods-txt">
+								<p class="goods-txt-name">{$goods.name}</p>
+								<p class="goods-txt-intro">{$goods.message}</p>
+								<div class="bo">
+									<div id="price-present" class="fl">
+										<span class="orderconfirm-price fl discount-price">￥{$goods.dPrice}元</span> 
+										<span class="orgin-price fl bef-price">原价:￥{$goods.Price}元</span>
+									</div>
+									<div id="order-goods-count" class="fl">
+										<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
+										<input class="goods-count" type="text" id="{$goods.order_id}" value="{$goods.order_count}" disabled="true">
+										<a class="add-goods" data-orderId="{$goods.order_id}">+</a>	
+									</div>				
+								</div>
+							</div>
 						</div>
-						<div id="order-goods-count" class="fl">
-							<a class="sub-goods ">-</a>
-							<input class="goods-count" type="text" value="1" disabled="true">
-							<a class="add-goods ">+</a>	
-						</div>				
-					</div>
-				</div>
-			</div>
-				</li>
-				<li>
-			<div class="orderconfirm-goods" id="goods2" >
-				<div class="orderconfirm-goodsimg">
-					<img src="__PUBLIC__/img/littleclock.png" />
-				</div>
-				<div class="orderconfirm-goods-txt">
-					<p class="goods-txt-name">糖果色挂表 居家风格</p>
-					<p class="goods-txt-intro">设计师原创 纯手工打造</p>
-					<div class="bo">
-						<div class="fl">
-							<div class="orderconfirm-price fl discount-price">￥<input class="ocnprice-item" value="79"></div> 
-							<span class="orgin-price fl bef-price">原价:<input class="ocoprice-item" value="89"></span>
-						</div>
-						<div id="order-goods-count" class="fl">
-							<a class="sub-goods ">-</a>
-							<input class="goods-count" type="text" value="1" disabled="true">
-							<a class="add-goods ">+</a>	
-						</div>				
-					</div>
-				</div>
-			</div>
-				</li>
-				<li>
-			<div class="orderconfirm-goods" id="goods3" >
-				<div class="orderconfirm-goodsimg">
-					<img src="__PUBLIC__/img/littleclock.png" />
-				</div>
-				<div class="orderconfirm-goods-txt">
-					<p class="goods-txt-intro">设计师原创 纯手工打造</p>
-					<div class="bo">
-						<div class="fl">
-						
-							<div class="orderconfirm-price fl discount-price">￥<input class="ocnprice-item" value="79"></div> 
-							<span class="orgin-price fl bef-price">原价:<input class="ocoprice-item" value="89"></span>
-						</div>
-						<div id="order-goods-count" class="fl">
-							<a class="sub-goods ">-</a>
-							<input class="goods-count" type="text" value="1" disabled="true">
-							<a class="add-goods ">+</a>	
-						</div>				
-					</div>
-				</div>
-			</div>
-				</li>
+					</li>
+				</foreach>
 			</ul>
 				
 		</div>
@@ -136,8 +95,9 @@
 			<textarea     placeholder="留言备注：" rows="5"></textarea>
 		</div>
 		<div class="orderconfirm-totalamount">
-			合计：<span id="ocnprice"> 79</span>元 <span class="orgin-price">
-				<span id="ocoprice"> 129</span>元</span>（已节省<span id="ocsavemoney">50</span>元）
+			合计:￥<span id="settle-dprice"> {$price.dPrice}</span>元 <span class="orgin-price">
+			原价:￥<span id="settle-price"> {$price.Price}</span>元</span>
+			（已节省￥<span id="settle-save">{$price.save}</span>元）
 		</div>
 		<div class="orderconfirm-btn-pay" >
 			<button class="btn register-info-submit-btn">

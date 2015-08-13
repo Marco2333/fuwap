@@ -1,43 +1,85 @@
 $(document).ready(function(){
-				pricecalculate();
-				/*=================计算价格的函数=======================*/
-				function pricecalculate(){
-					var ocnprice=$("#ocnprice").text();
-					var length=$("#orderconfirm-goods>li").length;
-					var sum=0;
-					var orginsum=0;
-					for(var i=0;i<length;i++)
-					{
-						var count = $("#orderconfirm-goods li input.goods-count")[i].value;  
-				        var price = $("#orderconfirm-goods li input.ocnprice-item")[i].value; 
-				        var orginprice=$("#orderconfirm-goods li input.ocoprice-item")[i].value;       
-				        sum+=parseInt(price)*count;
-				        orginsum+=parseInt( orginprice )*count;
-					}
-					$("#ocnprice").text(sum);
-					$("#ocoprice").text(orginsum);
-					$("#ocsavemoney").text(orginsum-sum);
+
+	/*=================计算价格的函数=======================*/
+	function pricecalculate(){
+		var $together_id = $(".together-id-none").val();
+
+		$.ajax({
+			type:"POST",
+			url:"../../Home/ShoppingCart/settleAccounts",
+			data:{together_id:$together_id},
+			success:function(price){
+				if (price['result'] != 0) {
+					document.getElementById("settle-dprice").innerHTML = price['dPrice'];
+					document.getElementById("settle-price").innerHTML = price['Price'];
+					document.getElementById("settle-save").innerHTML = price['save'];
 				}
-				/*=================增减商品=======================*/
-				$(".orderconfirm-goods-txt a.sub-goods").click(function(){
-		
-					  var v=$(this).next("input").val();
-				      if(parseInt(v)!=0){
-				          $(this).next("input").val(parseInt(v)-1);
-				       	$(this).next("input").attr('value',parseInt(v)-1);
-				       	pricecalculate();
-				      }    
-				      
-				      /*caltotalCost();*/
-				  });
-				
-				  $(".orderconfirm-goods-txt a.add-goods").click(function(){
-			      var v=$(this).prev("input").val();
-				      $(this).prev("input").val(parseInt(v)+1); 
-				      $(this).prev("input").attr('value',parseInt(v)+1); 
-				     pricecalculate();
-				     
-				      /*caltotalCost();*/
-				  });
+				else {
+					// alert("亲~抱歉，获取总价格失败，请稍后重试！");
+				}
+			},
+			error:function(){
+				alert("o");
+			}
+		});
+	}
+	/*=================增减商品=======================*/
+	$(".orderconfirm-goods-txt a.sub-goods").click(function(){
+		var $order_count = parseInt($(this).next("input").val())-1;
+		var $order_id    = $(this).attr("data-orderId");
+		var $this        = $(this);
+
+		if ($order_count >= 0) {
+			$.ajax({
+		        type:"POST",
+		        url:'../../Home/ShoppingCart/updateSettleAccounts',
+		        data:{order_count:$order_count,order_id:$order_id},
+		        success:function(price){
+		        	if (price['result'] != 0) {
+		        		document.getElementById($order_id).value = $order_count;
+
+		        		var $text = "￥"+price['dPrice']+"元";
+		        		$this.parent().prev().children(".orderconfirm-price").text($text);
+
+		        		var $text = "原价:￥"+price['Price']+"元";
+		        		$this.parent().prev().children(".orgin-price").text($text);
+
+		        		pricecalculate();
+		        	}
+		        	else {
+		        		// alert('物品增加或减少购买失败，请稍后重试！');
+		        	}
+	       		}
+	       	});
+		}
+	});
+	
+	$(".orderconfirm-goods-txt a.add-goods").click(function(){
+	    var $order_count = parseInt($(this).prev("input").val())+1;
+	    var $order_id    = $(this).attr("data-orderId");
+	    var $this        = $(this);
+
+	    $.ajax({
+	    	type:"POST",
+		    url:'../../Home/ShoppingCart/updateSettleAccounts',
+		    data:{order_count:$order_count,order_id:$order_id},
+	        success:function(price){
+	        	if (price['result'] != 0) {
+	        		document.getElementById($order_id).value = $order_count;
+	        		
+	        		var $text = "￥"+price['dPrice']+"元";
+	        		$this.parent().prev().children(".orderconfirm-price").text($text);
+
+		        	var $text = "原价:￥"+price['Price']+"元";
+		        	$this.parent().prev().children(".orgin-price").text($text);
+
+		        	pricecalculate();
+		        }
+		       	else {
+		      		// alert('亲~物品增加或减少购买失败，请稍后重试！');
+		       	}
+	       	}
+	    });	    
+	});								
 });
 

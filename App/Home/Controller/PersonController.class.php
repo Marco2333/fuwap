@@ -1,7 +1,8 @@
 <?php
+
 namespace Home\Controller;
 use Think\Controller;
-header("Content-type:text/html;charset=utf-8");
+header('Content-type:text/html;charset=UTF-8');
 
 /**
  * 资料管理控制器

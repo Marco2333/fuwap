@@ -17,7 +17,7 @@ use Think\Model;
 class UsersModel extends Model{
 	protected $fields = array(
 		'users' => array(
-			'phone',
+			'phone',	//key
 			'password',
 			'type',
 			'create_time',

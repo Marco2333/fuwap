@@ -8,143 +8,187 @@
 		
 		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/style-y.css">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
-
+		 
 	</head>
 	<body>
-		<div id="index-head" class="container">
-			<div class="row">
-			   <div class="col-xs-2">
-			   		<span class="glyphicon glyphicon-th-list "></span>
-			   </div>
-			   <div class="col-xs-8">
-			   		苏州大学独墅湖校区 &gt;
-			   </div>
-			   <div class="col-xs-2">
-			   		<span class="glyphicon glyphicon-search fr"></span>
-			   </div>
-			</div>		
-		</div>
-		<div id="slide-wrapper" class="carousel slide">
-			<!-- 轮播（Carousel）指标 -->
-			<ol class="carousel-indicators">
-				<li data-target="#slide-wrapper" data-slide-to="0" class="active"></li>
-				<li data-target="#slide-wrapper" data-slide-to="1"></li>
-				<li data-target="#slide-wrapper" data-slide-to="2"></li>
-			</ol>
-			<!-- 轮播（Carousel）项目 -->
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="__PUBLIC__/img/slider1.png" alt="First slide">
-				</div>
-				<div class="item">
-					<img src="__PUBLIC__/img/slider2.png" alt="Second slide">
-				</div>
-				<div class="item">
-					<img src="__PUBLIC__/img/slider3.png" alt="Third slide">
-				</div>
+		<div id="index-wrapper" class="w">
+			<div id="index-head" class="container">
+				<div class="row">
+				   <div class="col-xs-2">
+				   		<a href="{:U('Commodity/goodsclassify')}"><span class="glyphicon glyphicon-th-list "></a></span>
+				   </div>
+				   <div class="col-xs-8">
+				   		<a href="{:U('Index/selectcampus')}">苏州大学独墅湖校区 &gt;</a>
+				   </div>
+				   <div class="col-xs-2">
+				   <!-- href="{:U('Commodity/searchgoods')}" -->
+				   		<a>
+				   			 <span class="glyphicon glyphicon-search fr"></span>
+				   		</a>
+				   </div>
+				</div>		
 			</div>
-			<!-- 轮播（Carousel）导航 -->
-			<a class="carousel-control left" href="#slide-wrapper"data-slide="prev"><span class="sr-only">Previous</span> </a>
-			<a class="carousel-control right" href="#slide-wrapper"data-slide="next"></span> <span class="sr-only">Previous</span> </a>
-		</div>
 
-		<div id="index-nav-part" class="container">
-		   <div class="row">
-		      <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium4.png" alt=""></dt>
-		      			<dd>早餐上门</dd>	
-		      		</dl>	
-		      </div>
-		      <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium5.png" alt=""></dt>
-		      			<dd>家政服务</dd>	
-		      		</dl>	
-		      </div>
-		       <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium6.png" alt=""></dt>
-		      			<dd>水果上门</dd>	
-		      		</dl>	
-		      </div>
-		      <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium7.png" alt=""></dt>
-		      			<dd>快递代取</dd>	
-		      		</dl>	
-		      </div>
-		   </div>
-		    <div class="row">
-		      <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium1.png" alt=""></dt>
-		      			<dd>小优推荐</dd>	
-		      		</dl>	
-		      </div>
-		      <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium2.png" alt=""></dt>
-		      			<dd>最新体验</dd>	
-		      		</dl>	
-		      </div>
-		       <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium3.png" alt=""></dt>
-		      			<dd>特惠秒杀</dd>	
-		      		</dl>	
-		      </div>
-		      <div class="col-xs-3">
-		      		<dl>
-		      			<dt><img src="__PUBLIC__/img/medium6.png" alt=""></dt>
-		      			<dd>更多</dd>	
-		      		</dl>	
-		      </div>
-		   </div>
-		</div>
-		<div id="index-hot-sale">
-			<a href="">
-				<img src="__PUBLIC__/img/hotsale.png" alt="">
-			</a>
-			<a href="">
-				<img src="__PUBLIC__/img/hotsale.png" alt="">
-			</a>
-			<a href="">
-				<img src="__PUBLIC__/img/hotsale.png" alt="">
-			</a>
-		</div>
-		<div id="common-nav">
-			<div class="row">
-			   <div class="col-xs-4 active">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-home"></span>
-			   			</dt>
-			   			<dd>首页</dd>
-			   		</dl>
+			<div id="slide-wrapper" class="carousel slide">
+				<!-- 轮播（Carousel）指标 -->
+				<ol class="carousel-indicators">
+					<li data-target="#slide-wrapper" data-slide-to="0" class="active"></li>
+					<li data-target="#slide-wrapper" data-slide-to="1"></li>
+					<li data-target="#slide-wrapper" data-slide-to="2"></li>
+				</ol>
+				<!-- 轮播（Carousel）项目 -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="__PUBLIC__/img/slider1.png" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="__PUBLIC__/img/slider2.png" alt="Second slide">
+					</div>
+					<div class="item">
+						<img src="__PUBLIC__/img/slider3.png" alt="Third slide">
+					</div>
+				</div>
+				<!-- 轮播（Carousel）导航 -->
+				<a class="carousel-control left" href="#slide-wrapper"data-slide="prev"><span class="sr-only">Previous</span> </a>
+				<a class="carousel-control right" href="#slide-wrapper"data-slide="next"></span> <span class="sr-only">Previous</span> </a>
+			</div>
+
+			<div id="index-nav-part" class="container">
+			   <div class="row">
+			      <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium4.png" alt=""></dt>
+			      			<dd>早餐上门</dd>	
+			      		</dl>	
+			      </div>
+			      <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium5.png" alt=""></dt>
+			      			<dd>家政服务</dd>	
+			      		</dl>	
+			      </div>
+			       <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium6.png" alt=""></dt>
+			      			<dd>水果上门</dd>	
+			      		</dl>	
+			      </div>
+			      <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium7.png" alt=""></dt>
+			      			<dd>快递代取</dd>	
+			      		</dl>	
+			      </div>
 			   </div>
-			   <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-shopping-cart"></span>
-			   			</dt>
-			   			<dd>购物车</dd>
-			   		</dl>
-			   </div>
-			    <div class="col-xs-4">
-			   		<dl>
-			   			<dt>
-			   				<span class="glyphicon glyphicon-user"></span>
-			   			</dt>
-			   			<dd>我的</dd>
-			   		</dl>
+			    <div class="row">
+			      <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium1.png" alt=""></dt>
+			      			<dd>小优推荐</dd>	
+			      		</dl>	
+			      </div>
+			      <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium2.png" alt=""></dt>
+			      			<dd>最新体验</dd>	
+			      		</dl>	
+			      </div>
+			       <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium3.png" alt=""></dt>
+			      			<dd>特惠秒杀</dd>	
+			      		</dl>	
+			      </div>
+			      <div class="col-xs-3">
+			      		<dl>
+			      			<dt><img src="__PUBLIC__/img/medium6.png" alt=""></dt>
+			      			<dd>更多</dd>	
+			      		</dl>	
+			      </div>
 			   </div>
 			</div>
+			<div id="index-hot-sale">
+				<a href="">
+					<img src="__PUBLIC__/img/hotsale.png" alt="">
+				</a>
+				<a href="">
+					<img src="__PUBLIC__/img/hotsale.png" alt="">
+				</a>
+			</div>
+			
+			<div id="search-wrapper" class="none">
+				<div id="searchgoods-head">
+					<div class="searchgoods-search special-bgcolor">
+						<span class="fl glyphicon glyphicon-circle-arrow-left"></span>
+						<div>
+							<span class="glyphicon glyphicon-search fl"></span>
+							<input id="search-input" type="text" placeholder="请输入搜索内容搜索 ">	
+						</div>
+						<div id="search-history-container" class="none">
+							<div id="search-history-list">
+								<ul>
+									<li class="search-history-item"><a>牛奶</a></li>
+									<li class="search-history-item"><a>水果</a></li>
+									<li class="search-history-item"><a>面包</a></li>
+									<li class="search-history-item"><a>泡面</a></li>
+									<li class="search-history-item"><a>饮料</a></li>
+								</ul>
+							</div>
+							<div id="clear-history-list">
+								<span><a>清除历史记录</a></span>
+							</div>
+						</div>	
+					</div>
+				</div>
+
+				<!-- <div class="searchgoods-example">
+					<div class="example-heading">
+						热门搜索
+					</div>
+					<div class="example-group">
+						<a class="searchgoods-example-item">西瓜</a>
+						<a class="searchgoods-example-item">瓜子</a>
+						<a class="searchgoods-example-item">麦当当</a>
+						<a class="searchgoods-example-item">面包</a>
+						<a class="searchgoods-example-item">草莓刨冰</a>
+						<a class="searchgoods-example-item">红豆纷纷雪</a>
+					</div>
+				</div>
+ --><!-- 
+				<div class="searchgoods-goodsexample">
+					<div class="searchgoods-goodsdetail">
+						<div class="searchgoods-goodsimg">
+							<img src="__PUBLIC__/img/littleclock.png" />
+						</div>
+						<div class="searchgoods-goods-txt">
+							<div> 
+								<p class="goods-txt-name">糖果色挂表 居家风格 </p>
+								<p class="bo goods-txt-intro">设计师原创 纯手工打造</p>
+							</div>
+							<div class="bo">
+								<div class="fl">
+									<div class="searchgoods-price fl discount-price">
+										￥79
+									</div> 
+									<span class="orgin-price fl bef-price"> 原价：89</span>
+								</div>
+								<div class="ri">
+									<div class="searchgoods-sales">销量：1989</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
 		</div>
+		<include file='App/Home/View/Common/commonnav1.html'/>
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/script/common.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/script/index.js" type="text/javascript"></script>
+	
 	</body>
 </html>

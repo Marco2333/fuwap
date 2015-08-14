@@ -62,7 +62,7 @@ input.innerAD{ width: 71%;}
 .Amain{ background-color: #fafafa;}
 .Amain span{ display: inline-block;}
 .Amain .round{ border:1px solid #fed1cb; border-radius: 15px; width: 30px; height: 30px; position: absolute; left: 10px; top: 5px;}
-.Amain .plus{position: absolute; font-size: 36px; left: 16px; top: -5px; color: #fed1cb;}
+.Amain .plus{position: absolute; font-size: 36px; left: 13px; top: -7px; color: #fed1cb;}
 .Amain .tonewA{ position: absolute; left: 60px; color: #fed1cb; font-size: 17px; top: -4px;}
 .userT{ width: 90%; line-height: 15px; text-align: start; margin-top: 5px;}
 .userT span{ display: inline-block; padding: 0;}

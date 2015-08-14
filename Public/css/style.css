@@ -92,10 +92,14 @@ input {
 	font-family: "黑体";
 	position: fixed;
 	bottom: 0;
-	padding: 5px 0;
+	padding: 3px 0;
 	/*padding-top: 8px;*/
 	font-size: 15px;
-	border-top: 1px solid #bbb;
+	border-top: 1px solid #ddd;
+	color: #999;
+}
+#common-nav a {
+	color: #999;
 }
 #common-nav .row > div a {
 	text-decoration: none;
@@ -199,7 +203,7 @@ input {
 .user-info-input input[type='password'] {
 	height: 38px;
 	padding-left: 10px;
-	width: 86%;
+	width: 80%;
 	font-size: 14px;
 	font-family: "黑体";
 	box-sizing:border-box;
@@ -335,7 +339,7 @@ input {
 }
 #city-campus-nav {
 	margin-top: 8px;
-	padding-bottom: 58px;
+	padding-bottom: 8px;
 }
 #city-campus-nav li {
 	width: 100%;
@@ -771,4 +775,24 @@ tr.goods-info .goods-name + div {
 .confirm-order .negative-button {
 	color: #666;
 	border: 1px solid #aaa;
+}
+
+/*reviseaddress*/
+#revise-head input {
+	border: none;
+	background: #24dfc2;
+	color: #fff;
+	margin-top: 2px;
+}
+#revise-head .head-title {
+	margin: 2px 0 0 8px;
+	color: #fff;
+}
+#revise-head .history-back {
+	color: #fff;
+}
+.forward-arrow {
+	width: 15px;
+	height: 15px;
+	margin-left: 10px;
 }

@@ -1,9 +1,20 @@
 .inlineB{ display: inline-block;}
+.userA img {
+	margin-right: 20px;
+	width: 15px;
+	height: 15px;
+	margin-top: 8px;
+}
 .special-bgcolor{ background-color: #FAFAFA;}
-.cRow{ width: 100%; height: 50px;line-height: 50px; background-color: #FFFFFF; margin-top:10px;position: relative;}
+.cRow{ width: 100%;padding-bottom: 5px; background-color: #fff; margin-top:10px;}
 .rown{ width: 100%; background-color: #FFFFFF; position: relative;}
 .cnRow{ padding: 10px 0;}
 div.nrow{ height: auto;}
+#add-location {
+	color: #fed1cb;
+	font-size: 18px;
+	vertical-align: -1px;
+}
 .one{ width: 9%;}
 .two{width: 19%;}
 .three{ width: 29%;}
@@ -51,7 +62,7 @@ body{ text-align: center; font-family: "黑体";}
 .save input{ border: 0; background-color: transparent; position: absolute; top: 0; right: 10px; font-size: 18px;}
 .NAmain{ padding-top: 2px; background-color: #fafafa;}
 .NAmain input{width: 75%; height: 30px; line-height: 30px; margin-top: 6px; border: 0; font-size: 15px;}
-.ADrow{ height: 40px; line-height: 30px; background-color: white;}
+.ADrow{ border-bottom: 1px solid #eee; height: 40px; line-height: 30px; background-color: white;}
 input.innerAD{ width: 71%;} 
 
 
@@ -61,12 +72,13 @@ input.innerAD{ width: 71%;}
 .Atitle{ width: 100%; display: inline-block; font-size: 18px;}
 .Amain{ background-color: #fafafa;}
 .Amain span{ display: inline-block;}
+.Amain .glyphicon-circle-arrow-right {color: #24dfc2}
 .Amain .round{ border:1px solid #fed1cb; border-radius: 15px; width: 30px; height: 30px; position: absolute; left: 10px; top: 5px;}
 .Amain .plus{position: absolute; font-size: 36px; left: 13px; top: -7px; color: #fed1cb;}
-.Amain .tonewA{ position: absolute; left: 60px; color: #fed1cb; font-size: 17px; top: -4px;}
+.Amain .tonewA{ color: #fed1cb; font-size: 17px;}
 .userT{ width: 90%; line-height: 15px; text-align: start; margin-top: 5px;}
 .userT span{ display: inline-block; padding: 0;}
-.userA{ width: 5%; vertical-align: 10px;}
+.userA{ width: 5%; vertical-align: 10px; font-size: 16px;}
 
 /*thing*/
 .specialicon{ padding: 3px; border-radius: 3px; color: white; margin-left: 10px;}

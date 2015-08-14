@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	$('#slide-wrapper').carousel();
+	
 	$("#index-head .glyphicon-search").click(function(){
 		$("#search-wrapper").slideDown(500);
 		$("#common-nav").addClass("none");
@@ -11,4 +13,11 @@ $(document).ready(function(){
 		// $("#common-nav").removeClass("none");
 	});
 
+	$("#slide-wrapper").on("swipeleft",function(){
+	  	$('#slide-wrapper').carousel('next');
+	});
+
+	$("#slide-wrapper").on("swiperight",function(){
+	  	$('#slide-wrapper').carousel('prev');
+	});
 });

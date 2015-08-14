@@ -28,7 +28,7 @@ $(document).ready(function(){
 		        			var $text = "￥"+$Price*$order_count+"元";
 		        			$this.prevAll(".discount-price").html($text);
 		        		}
-		        		var $text = "原价：￥"+$Price*$order_count+"元";
+		        		var $text = "原价:￥"+$Price*$order_count+"元";
 		        		$this.prevAll(".bef-price").html($text);
 
 		        		settleAccounts();
@@ -68,7 +68,7 @@ $(document).ready(function(){
 	        			var $text = "￥"+$Price*$order_count+"元";
 	        			$this.prevAll(".discount-price").html($text);
 	        		}
-	        		var $text = "原价：￥"+$Price*$order_count+"元";
+	        		var $text = "原价:￥"+$Price*$order_count+"元";
 	        		$this.prevAll(".bef-price").html($text);
 
 	        		settleAccounts();
@@ -172,7 +172,7 @@ function settleAccounts(){
 	}
 
 	var $save = $Price - $dPrice;
-	document.getElementById("Price").innerHTML  = "合计：￥"+$dPrice+"元";
-	document.getElementById("dPrice").innerHTML = "原价：￥"+$Price+"元";
+	document.getElementById("Price").innerHTML  = "合计:￥"+$dPrice+"元";
+	document.getElementById("dPrice").innerHTML = "原价:￥"+$Price+"元";
 	document.getElementById("save").innerHTML   = "(已节省"+$save+"元)";
 }

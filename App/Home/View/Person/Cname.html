@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		
+		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" /><meta charset="utf-8">
+	</head>
+	<body onload="getInfo('nickname');">
+		<div class="userinfo-change-head">
+			修改昵称
+		</div>
+		<div class="wrapper">
+			<form action="{:U('Person/infoRevise',array(''=>'','field'=>'nickname'))}" method="post">
+				<div class="kongbai"></div>
+				<input class="userinfo-change-input" id="revise-nickname" type="text" name="revise-nickname"/>
+				<div class="kongbai"></div>
+				<button class="userinfo-change-btn btn">
+						提交
+				</button>
+			</form>
+		</div>
+
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/userinfo.js"></script>
+	</body>
+</html>

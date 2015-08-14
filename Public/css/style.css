@@ -1,17 +1,21 @@
 @media all and (max-width:1800px){
 	body {
-		width: 500px;
+		width: 460px;
 		margin: 0 auto;
 	}
-	#common-nav {
-		width: 400px;
+	#common-nav,
+	#check-button,
+	#settle-accounts  {
+		width: 460px;
 	}
 }
 @media all and (max-width:500px) {
 	body {
 		width: 100%;
 	}
-	#common-nav {
+	#common-nav,
+	#check-button,
+	#settle-accounts {
 		width: 100%;
 		left: 0;
 	}
@@ -22,27 +26,37 @@ body {
 input {
 	outline: none;
 }
+
+/*index*/
+#index-wrapper {
+	/*overflow: hidden;*/
+	position: relative;
+}
 #index-head {
 	height: 45px;
 	background-color: #24dfc2;
 	width: 100%;
-	padding: 10px 10px 0 10px;
+	padding: 10px 13px 0 13px;
+}
+#index-head a {
+	color: rgba(248,248,248,.9);
 }
 #index-head .glyphicon {
-	font-size: 21px;
+	font-size: 18px;
 	color: rgba(245,245,245,.8);
+	margin: 2px 1px;
+	width: 25px;
+	height: 28px;
 }
 #index-head .col-xs-8 {
 	font-size: 18px;
-	/*margin: 1px 10px 0 65px;*/
 	font-family: "黑体";
-	color: rgba(248,248,248,.9);
 	font-weight: 100;
 	text-align: center;
-	margin-top: 3px;
+	margin-top: 5px;
 }
-/*#index-head span:last-child {
-	margin-right: 10px;
+/*#slide-wrapper {
+	height: 188px;
 }*/
 #slide-wrapper .carousel-inner img {
 	width: 100%;
@@ -63,13 +77,11 @@ input {
 }
 #index-nav-part .row img {
 	width: 43px;
-	/*height: auto;*/
 	height: 43px;
 }
 #index-hot-sale {
 	width: 100%;
 	padding-bottom: 58px;
-	/*overflow: scroll;*/
 }
 #index-hot-sale img {
 	width: 100%;
@@ -80,12 +92,19 @@ input {
 	font-family: "黑体";
 	position: fixed;
 	bottom: 0;
-	padding: 8px 0;
+	padding: 3px 0;
 	/*padding-top: 8px;*/
 	font-size: 15px;
-	border-top: 1px solid #bbb;
+	border-top: 1px solid #ddd;
+	color: #999;
 }
-#common-nav .row > div.active {
+#common-nav a {
+	color: #999;
+}
+#common-nav .row > div a {
+	text-decoration: none;
+}
+#common-nav .row > div.active a {
 	color: #24dfc2;
 }
 #common-nav .col-xs-4 {
@@ -98,8 +117,29 @@ input {
 	padding: 13px 10px 0 10px;
 	font-family: "黑体";
 }
+#search-wrapper {
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100%;
+	background: #fff;
+	height: 100%;
+}
+#searchgoods-head .glyphicon-circle-arrow-left {
+	color: #fff;
+	margin-top: 2px;
+	font-size: 20px;
+}
 
 /*personhomepage*/
+#homepage-head .history-back {
+	color: #fff;
+}
+.history-back {
+	color: #24DFC2;;
+	font-weight: bold;
+	font-size: 22px;
+}
 #homepage-head .head-top {
 	color: #fff;
 	background: #24dfc2;
@@ -118,6 +158,7 @@ input {
 	width: 80px;
 	height: 80px;
 	margin-bottom: 10px;
+	border-radius: 50px;
 }
 #homepage-nav .col-xs-3 {
 	text-align: center;
@@ -138,6 +179,9 @@ input {
 #login-head {
 	margin-bottom: 10px;
 }
+#login-head .head-title {
+	margin: 1px 0 0 18px;
+}
 #login-head .head-bottom img {
 	width: 100px;
 }
@@ -155,10 +199,11 @@ input {
 	vertical-align: middle;
 	border-left-color: #ccc; ;
 }
-.user-info-input input[type='text'] {
+.user-info-input input[type='text'],
+.user-info-input input[type='password'] {
 	height: 38px;
 	padding-left: 10px;
-	width: 86%;
+	width: 80%;
 	font-size: 14px;
 	font-family: "黑体";
 	box-sizing:border-box;
@@ -189,22 +234,40 @@ input {
 	border-radius: 3px;
 	outline: none;
 }
-#login-button-bottom {
+#rm-password {
 	font-family: "黑体";
-	padding: 0 11px;
+	padding: 0 25px;
 }
-#login-button-bottom input[type='checkbox'] {
+#rm-password input[type='checkbox'] {
 	vertical-align: sub;
 	color:  #ff573a;
 }
-#login-button-bottom a{
+#rm-password a{
 	color: #ff573a;
 }
-#login-button-bottom > span:last-child a {
+#rm-password > span:last-child a {
 	text-decoration: underline;
 }
-
+.error-message-wrapper {
+	text-align: center;
+	color: rgb(255, 87, 58);
+	/*border: 1px solid rgb(246, 179, 179);*/
+	background-color: #ffebeb;
+	border-left: none;
+	border-right: none;
+	margin-top: 3px;
+}
+.error-message {
+	text-align: center;
+	color: rgb(255, 87, 58);
+	padding-top: 7px;
+	display: inline-block;
+	height: 28px;
+}
 /*userinfo*/
+#userinfo-head .history-back {
+	color: #fff;
+}
 #userinfo-body .user-info-input {
 	padding: 10px 8px 0 8px;
 }
@@ -218,6 +281,18 @@ input {
 /*settings*/
 #settings-head {
 	border-bottom: 1px solid #eee;
+}
+#call-service span,
+#call-service a {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+#call-service a {
+	padding-top: 10px;
+}
+#settings-body a > .user-info-input {
+	padding-top: 10px;
 }
 
 /*aboutus*/
@@ -236,7 +311,6 @@ input {
 }
 
 /*selectcompus*/
-
 #selectcampus-body-search {
 	background: #24dfc2;
 	padding: 8px;
@@ -265,7 +339,7 @@ input {
 }
 #city-campus-nav {
 	margin-top: 8px;
-	padding-bottom: 58px;
+	padding-bottom: 8px;
 }
 #city-campus-nav li {
 	width: 100%;
@@ -316,7 +390,11 @@ input {
 	border-bottom: none;
 }
 #shoppingcart-body {
-	padding-bottom: 158px;
+	padding-bottom: 165px;
+}
+.sub-add-goods-wrapper {
+	/*float: left;*/
+	margin-top: -4px;
 }
 /*.shopping-cart-body input[type='checkbox'] {
 	border-radius:5px; 
@@ -345,9 +423,6 @@ input {
   left: 0;
   cursor: pointer;
   background: red;
- /* background: -moz-linear-gradient(top, #222222 0%, #45484d 100%);
-  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
-  background: linear-gradient(to bottom, #222222 0%, #45484d 100%);*/
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -382,7 +457,7 @@ input {
 .shopcart-goods-list > div {
 	float: left;
 }
-.shopcart-goods-list .check {
+.shopcart-goods-list .check-goods {
 	padding-left:5px;
 	width: 8%;
 	padding-top: 30px;
@@ -421,12 +496,12 @@ input {
 	font-size: 12px;
 	color: #999;
 	margin-right: 6px;
-	padding-top: 5px;
+	padding-top: 3px;
 }
 a.sub-goods,
 a.add-goods {
-	width: 22px;
-	height: 22px;
+	width: 25px;
+	height: 25px;
 	border: 1px solid #aaa;
 	/* border-radius: 4px; */
 	display: inline-block;
@@ -435,12 +510,13 @@ a.add-goods {
 	font-size: 16px;
 	float: left;
 	cursor: context-menu;
+	padding-top: 3px;
 }
 a.sub-goods {
 	border-bottom-left-radius:4px;
 	border-top-left-radius:4px;
 	border-right: none;
-	padding-top: 1px;
+	/*padding-top: 1px;*/
 }
 a.add-goods {
 	border-top-right-radius:4px;
@@ -453,7 +529,7 @@ a.add-goods:hover {
 } 
 input.goods-count {
 	width: 26px;
-	height: 22px;
+	height: 25px;
 	color: #aaa;
 	float: left;
 	text-align: center;
@@ -461,6 +537,7 @@ input.goods-count {
 	outline: none;
 	background: #fff;
 	border: 1px solid #aaa;
+	padding-left: 0;
 }
 .img-and-detailed-body .eval-star {
 	margin-top: 2px;
@@ -480,7 +557,7 @@ input.goods-count {
 #settle-accounts {
 	position: fixed;
 	left: 0;
-	bottom: 58px;
+	bottom: 50px; 
 	width: 100%;
 	padding: 5px;
 	font-size: 16px;
@@ -511,7 +588,7 @@ input.goods-count {
 	/*height: 100%;*/
 	height: 450px;
 	text-align: center;
-	padding-top: 160px;
+	padding-top: 120px;
 }
 #shopping-cart-empty h1 {
 	font-size: 16px;
@@ -585,4 +662,137 @@ input.goods-count {
 }
 #order-time-list .minute-list li.active {
 	border-left: 1px solid #ddd;
+}
+
+/*ordermange*/
+.nav-top {
+	width: 100%;
+	border-top:1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding-top:6px;
+}
+.nav-top li {
+	width: 20%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+.nav-top li.active a {
+	color: #fe8675;
+	border-bottom: 2px solid #fe8675;
+}
+.nav-top li a {
+	width: 80%;
+	margin: 0 auto;
+	height: 100%;
+	text-decoration: none;
+	font-size:14px;
+	display: inline-block;
+}
+.badge-count {
+	border-radius: 50px;
+	color: #fff;
+	vertical-align: top;
+}
+.nav-top .badge-count {
+	background: #fe8675;
+}
+#ordermanage-body {
+	margin-top: 10px;
+	padding-bottom: 58px;
+}
+#ordermanage-body tr {
+	border-bottom: 1px solid rgb(248,248,248);
+}
+#ordermanage-body li {
+	width: 100%;
+	border-top: 1px solid #eee;
+	/*border-bottom: 1px solid #eee;*/
+	/*margin-top: 8px;*/
+}
+tr.goods-info-top {
+	height: 25px;
+}
+tr.goods-info-top td {
+	padding: 0 5px;
+}
+tr.goods-info {
+	/*border-top: 1px solid rgb(250,250,250);
+	border-bottom: 1px solid rgb(250,250,250);*/
+	padding: 5px 4px 0 2px;
+}
+tr.goods-info .col-2 {
+	padding: 5px 0 5px 5px;
+}
+tr.goods-info .col-2 img {
+	width: 60px;
+	height:60px;
+}
+.goods-name {
+	font-size: 13px;
+	color: #111;
+	padding:8px 0 0 11px;
+}
+.goods-name p:last-child {
+	color: #bbb;
+	font-size: 11px;
+	margin-top: 3px;
+}
+tr.goods-info .goods-name + div {
+	padding-right: 8px;
+	padding-top: 8px;
+}
+.goods-price {
+	font-size: 16px;
+	color: #111;
+}
+.goods-count {
+	color: #999;
+	font-size: 13px;
+	/*padding-right: 2px;*/
+	padding-left: 10px;
+}
+.order-total-cost td {
+	padding: 4px 8px 4px 0;
+} 
+.confirm-order td {
+	padding: 5px 0;
+}
+.confirm-order button {
+	width: 68px;
+	height: 25px;
+	float: right;
+	margin: 3px 5px;
+	font-size: 13px;
+	border-radius: 3px;
+	background: #fff;
+	outline: none;
+}
+.confirm-order .positive-button {
+	color: #fe8675;
+	border: 1px solid #fe8675;
+}
+.confirm-order .negative-button {
+	color: #666;
+	border: 1px solid #aaa;
+}
+
+/*reviseaddress*/
+#revise-head input {
+	border: none;
+	background: #24dfc2;
+	color: #fff;
+	margin-top: 2px;
+}
+#revise-head .head-title {
+	margin: 2px 0 0 8px;
+	color: #fff;
+}
+#revise-head .history-back {
+	color: #fff;
+}
+.forward-arrow {
+	width: 15px;
+	height: 15px;
+	margin-left: 10px;
 }

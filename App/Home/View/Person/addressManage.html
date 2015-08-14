@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style_li.css"/>
+		
+	</head>
+	<body>
+		<div class="Ahead color24dfc2">
+			<div class="Aicon">
+				<a href="../Login/homePage.html"><span class="fl history-back glyphicon glyphicon-circle-arrow-left colorwhite"></span></a>
+			</div>
+			<span class="Atitle colorwhite">我的收货地址</span>
+		</div>
+		<div class="Amain">
+			<div class="cRow">
+				<a href="newAddress.html">
+					<span id="add-location" class="glyphicon glyphicon-plus-sign"></span>
+					<span class="tonewA">新增收货地址</span>
+				</a>
+			</div>
+			<foreach name="address" item="v">
+				<a href="{:U('Person/getAddress',array(''=>'','rank' => $v['rank']))}">
+					<div class="cRow">
+						<div class="inlineB userT">
+							<span>{$v.name}</span>
+							<span>{$v.phone_id}</span><br />
+							<span>{$v.address}</span>
+						</div>
+						<div class="inlineB userA">
+							<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
+						</div>
+					</div>
+				</a>
+			</foreach>
+		</div>
+		<div class="msg-page">
+			<div class="page">{$addressPage}</div>
+		</div>
+		
+		<include file='App/Home/View/Common/commonnav3.html'/>
+		
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/addressManage.js"></script>
+	</body>
+</html>

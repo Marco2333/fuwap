@@ -42,8 +42,8 @@ a:active {
 	text-decoration: none;
 }
 a:hover { 
-	color: #E4393C; 
-	text-decoration: underline;
+	color: #24dfc2; 
+	text-decoration: none;
 }
 i, cite, em { 
 	font-style: normal;
@@ -57,6 +57,12 @@ i, cite, em {
 }
 .h {
 	height: 100%;
+}
+.w-none {
+	width: 0;
+}
+.h-none {
+	height: 0;
 }
 /*页面整体宽度控制*/
 .fl { 
@@ -78,22 +84,22 @@ i, cite, em {
 .text-left{
 	text-align: left;
 }
-.text-center{
+.text-center {
 	text-align: center;
 }
-.text-right{
+.text-right {
 	text-align: right;
 }
-.b{
+.b{ 
 	font-weight: bold;
 }
-.cl{
+.cl {
 	clear: left;
 }
-.cr{
+.cr {
 	clear: right;
 }
-.cb{
+.cb {
 	clear: both;
 }
 .text-white{
@@ -102,8 +108,17 @@ i, cite, em {
 .text-black{
 	color:#000;
 }
+.text-middle {
+	color: #888;
+}
+.text-light {
+	color: #ccc;
+}
 .text-special{
 	color:#24dfc2;
+}
+button.disabled {
+	background-color: #aaa;
 }
 .bground-special {
 	background-color: #24dfc2;
@@ -117,4 +132,31 @@ i, cite, em {
 	height: 0;
 	clear: both;
 	visibility: hidden; 
-} 
+}
+.col-1 {
+	width: 10%;
+}
+.col-2 {
+	width:20%;
+}
+.col-3 {
+	width: 30%;
+}
+.col-4 {
+	width: 40%;
+}
+.col-5 {
+	width: 50%;
+}
+.col-6 {
+	width: 60%;
+}
+.col-7 {
+	width: 70%;
+}
+.col-8 {
+	width: 80%;
+}
+.col-9 {
+	width: 90%;
+}

@@ -90,43 +90,44 @@
 										{
 											case '1':
 											echo 
-											'<button class="negative-button">
+											'<button class="negative-button manage-button-1">
 												取消订单
 											</button>
-											<button class="positive-button">
+											<button class="positive-button manage-button-2">
 												立即付款
 											</button>';
 											break;
 											case '2':
 											echo 
-											'<button class="negative-button">
+											'<button class="negative-button manage-button-1">
 												取消订单
 											</button>';
 											break;
 											case '3':
 											echo 
-											'<button class="negative-button">
+											'<button class="negative-button manage-button-3">
 												确认收货
 											</button>';
 											break;
 											case '4':
 											echo 
-											'<button class="negative-button">
+											'<button class="negative-button manage-button-4">
 												删除订单
 											</button>
-											<button class="positive-button">
+											<button class="positive-button manage-button-5">
 												评价订单
 											</button>';
 											break;
 											case '5':
 											echo 
-											'<button class="negative-button">
+											'<button class="negative-button manage-button-4">
 												删除订单
 											</button>';
 											break;
 											default:echo '';
 										}
 									?>	
+									<input class="together-id-none none" value="{$goods[0]['together_id']}" />
 									</td>
 								</tr>
 							</tbody>

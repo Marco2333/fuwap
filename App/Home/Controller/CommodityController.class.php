@@ -8,5 +8,9 @@ class CommodityController extends Controller {
     public function index(){
         $this->display();
     }
+
+    public function comment(){
+    	$this->display('comment');
+    }
 	
 }

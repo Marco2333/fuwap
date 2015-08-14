@@ -126,15 +126,32 @@ class OrdersModel extends Model{
      * 根据大订单号获取小订单号字符串
      * @access public
      * @param  String $together_id 大订单号
+     * @param  String $is_remarked 是否评价
+     *                ''			无所谓
+     *                isRemark 		已评价
+     *                isNotRemarked 待评价
      * @return String $orderIds    订单号组成的字符串，以','分割
      */
-    public function getOrderIds($together_id){
+    public function getOrderIds($together_id,$is_remarked = ''){
     	$field = array(
     		'order_id'
     		);
-    	$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'together_id='.'\''.$together_id.'\'')
+
+    	if ($is_remarked == 'isNotRemarked') {
+	    	$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'is_remarked = 0'.' and '.'together_id='.'\''.$together_id.'\'')
+	    					   ->field($field)
+	    					   ->select();
+    	}
+    	else if ($is_remarked == 'isRemarked') {
+    		$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'is_remarked = 1'.' and '.'together_id='.'\''.$together_id.'\'')
+	    					   ->field($field)
+	    					   ->select();
+    	}
+    	else {
+    		$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'together_id='.'\''.$together_id.'\'')
     					   ->field($field)
     					   ->select();
+    	}
 
     	for ($i = 0;$i < count($ordersList);$i++) {
     		if ($i < count($ordersList)-1) {
@@ -262,6 +279,54 @@ class OrdersModel extends Model{
     						->select();
 
     	return $togetherIds;
+    }
+
+    /**
+     * 模型函数
+     * 删除或取消用户大订单
+     * @access public
+     * @param  String  $together_id 大订单号
+     * @return boolean 数据库操作结果
+     */
+    public function deleteOrCancel($together_id){
+    	$Orders = M('orders');
+
+    	$where = array(
+    		'phone'		  => $_SESSION['username'],
+    		'together_id' => $together_id
+    		);
+    	$data = array(
+    		'tag'		  => 0
+    		);
+
+    	$res = $Orders->where($where)
+    				  ->save($data);
+
+    	return $res;
+    }
+
+    /**
+     * 模型函数
+     * 用户确认大订单
+     * @access public
+     * @param  String  $together_id 大订单号
+     * @return boolean 数据库操作结果
+     */
+    public function confirmOrder($together_id){
+    	$Orders = M('orders');
+
+    	$where = array(
+    		'phone'		  => $_SESSION['username'],
+    		'together_id' => $together_id
+    		);
+    	$data = array(
+    		'status'		  => 4
+    		);
+
+    	$res = $Orders->where($where)
+    				  ->save($data);
+
+    	return $res;
     }
 
 }

@@ -1,0 +1,325 @@
+[ 2015-08-14T09:41:28+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002967s ]
+
+[ 2015-08-14T09:41:50+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001327s ]
+
+[ 2015-08-14T09:41:59+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001532s ]
+
+[ 2015-08-14T09:42:00+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/homePage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001358s ]
+
+[ 2015-08-14T09:47:52+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000914s ]
+
+[ 2015-08-14T09:50:02+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000899s ]
+
+[ 2015-08-14T09:50:46+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000073s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001060s ]
+
+[ 2015-08-14T09:51:50+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001202s ]
+
+[ 2015-08-14T09:51:50+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homePage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000863s ]
+
+[ 2015-08-14T09:51:59+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000989s ]
+
+[ 2015-08-14T09:51:59+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homePage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000935s ]
+
+[ 2015-08-14T09:52:02+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000964s ]
+
+[ 2015-08-14T09:52:24+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/tologin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000843s ]
+
+[ 2015-08-14T09:52:33+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/tologin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000866s ]
+
+[ 2015-08-14T09:52:33+08:00 ] 192.168.0.103 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001051s ]
+
+[ 2015-08-14T09:52:36+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000860s ]
+
+[ 2015-08-14T09:52:57+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000902s ]
+
+[ 2015-08-14T09:53:03+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Person/addressmanage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000871s ]
+
+[ 2015-08-14T09:53:13+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000137s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001028s ]
+
+[ 2015-08-14T09:53:13+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/homePage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000877s ]
+
+[ 2015-08-14T09:53:15+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000963s ]
+
+[ 2015-08-14T09:53:17+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/tologin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000899s ]
+
+[ 2015-08-14T09:53:17+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001025s ]
+
+[ 2015-08-14T09:53:19+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001232s ]
+
+[ 2015-08-14T09:53:25+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000950s ]
+
+[ 2015-08-14T09:53:29+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/addressmanage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001077s ]
+
+[ 2015-08-14T09:55:26+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Person/addressmanage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001023s ]
+
+[ 2015-08-14T09:57:51+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/addressmanage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000946s ]
+
+[ 2015-08-14T10:01:43+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/addressmanage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000959s ]
+
+[ 2015-08-14T10:01:55+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Person/addressmanage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000146s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001468s ]
+
+[ 2015-08-14T10:02:45+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000935s ]
+
+[ 2015-08-14T10:03:36+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000975s ]
+
+[ 2015-08-14T10:03:39+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001209s ]
+
+[ 2015-08-14T10:03:42+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Person/userinfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001038s ]
+
+[ 2015-08-14T10:04:14+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001428s ]
+
+[ 2015-08-14T10:04:19+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000958s ]
+
+[ 2015-08-14T10:04:23+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/updateOrderCount
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001117s ]
+
+[ 2015-08-14T10:06:33+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000873s ]
+
+[ 2015-08-14T10:06:36+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/OrderManage/orderManage/status/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001041s ]
+
+[ 2015-08-14T10:06:41+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/OrderManage/orderManage/status/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000870s ]
+
+[ 2015-08-14T10:06:43+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000902s ]
+
+[ 2015-08-14T10:06:44+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000947s ]
+
+[ 2015-08-14T10:06:46+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001107s ]
+
+[ 2015-08-14T10:07:07+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001056s ]
+
+[ 2015-08-14T10:07:09+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001088s ]
+
+[ 2015-08-14T10:07:11+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/OrderManage/orderManage/status/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000870s ]
+
+[ 2015-08-14T10:07:13+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000853s ]
+
+[ 2015-08-14T10:07:14+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001119s ]
+
+[ 2015-08-14T10:07:46+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000846s ]
+
+[ 2015-08-14T10:07:55+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000852s ]
+
+[ 2015-08-14T10:08:04+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001066s ]
+
+[ 2015-08-14T10:08:15+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000948s ]
+
+[ 2015-08-14T10:09:17+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001011s ]
+
+[ 2015-08-14T10:09:19+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001038s ]
+
+[ 2015-08-14T10:09:26+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000987s ]
+
+[ 2015-08-14T10:09:48+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001003s ]
+
+[ 2015-08-14T10:09:48+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000868s ]
+
+[ 2015-08-14T10:09:48+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001135s ]
+
+[ 2015-08-14T10:10:43+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000935s ]
+
+[ 2015-08-14T10:11:07+08:00 ] 127.0.0.1 /fuwebapp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001233s ]
+
+[ 2015-08-14T10:11:34+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000898s ]
+
+[ 2015-08-14T10:11:39+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001067s ]
+
+[ 2015-08-14T10:11:42+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001090s ]
+
+[ 2015-08-14T10:11:51+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/ShoppingCart/shoppingcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000940s ]
+
+[ 2015-08-14T10:11:53+08:00 ] 192.168.0.103 /fuwebapp/index.php/Home/Login/homepage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000901s ]
+

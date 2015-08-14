@@ -49,6 +49,7 @@ class CommodityController extends Controller {
         $this->display("goodsclassify");
     }
 
+
      /**
      * @access public
      * @param 
@@ -80,5 +81,8 @@ class CommodityController extends Controller {
              ->assign("campus_name",$campus_name[0]);
     }
 
+    public function comment(){
+    	$this->display('comment');
+    }
 	
 }

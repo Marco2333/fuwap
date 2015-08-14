@@ -57,6 +57,55 @@ class OrderManageController extends Controller{
 		}
 	}
 
+	public function deleteOrCancel(){
+		$Orders = D('Orders');
+
+		$together_id = I('together_id');
+		$result = $Orders->deleteOrCancel($together_id);
+
+		if ($result !== false) {
+			$res['result'] = 1;
+			$this->ajaxReturn($res);
+		}
+		else {
+			$res['result'] = 0;
+			$this->ajaxReturn($res);
+		}
+	}
+
+	public function confirmOrder(){
+		$Orders = D('Orders');
+
+		$together_id = I('together_id');
+		$result = $Orders->confirmOrder($together_id);
+
+		if ($result !== false) {
+			$res['result'] = 1;
+			$this->ajaxReturn($res);
+		}
+		else {
+			$res['result'] = 0;
+			$this->ajaxReturn($res);
+		}
+	}
+
+	public function commentOrder(){
+		$Orders = D('Orders');
+
+		$together_id = I('together_id');
+		$orderIds    = $Orders->getOrderIds($together_id,'isNotRemarked');
+
+		if ($orderIds !== false) {
+			$res['orderIds'] = $orderIds;
+			$res['result']   = 1;
+			$this->ajaxReturn($res);
+		}
+		else {
+			$res['result'] = 0;
+			$this->ajaxReturn($res);
+		}
+	}
+
 }
 
 

@@ -15,13 +15,8 @@ $(document).ready(function(){
 	})
 	
 	$("#classifynavi li").click(function(){
-		$("#classifynavi li").each(function(){
-               $(this).removeClass("goodsclassify-active");
-            });
-		$(this).addClass("goodsclassify-active");
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
 	});
-	
-	
-	
-	
+		
 })

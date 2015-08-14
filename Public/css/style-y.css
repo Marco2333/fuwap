@@ -375,10 +375,6 @@ input.goods-count {
 	position: relative;
 	padding: 0 10px;
 }
-.goodsclassify-active{
-	border-bottom: solid 3px #F7492E;
-	color: #F7492E;
-}
 
 .goodsclassify-header a.move{
 	width: 6%;
@@ -396,6 +392,10 @@ input.goods-count {
 	height: 35px;
 	overflow: hidden;
 	position: relative;
+}
+.goodsclassify-slide li.active {
+	border-bottom: solid 3px #F7492E;
+	color: #F7492E;
 }
 .goodsclassify-header  ul{
 	overflow: hidden;
@@ -431,17 +431,13 @@ input.goods-count {
 	z-index: 2;
 }
 
-
-
-
-
 .body-y{
 	width: 100%;
 	padding-bottom: 59px;
 }
 .goodsclassify-goodsdetail{
 	width: 100%;
-	height: 120px;
+	/*height: 120px;*/
 	padding: 10px;
 	background-color: white;
 	border-bottom: 1px solid #eee;
@@ -453,6 +449,11 @@ input.goods-count {
 /*	margin: 0 10px 0 0;*/
 	float: left;
 }
+.goodsclassify-goodsimg img {
+	width: 85%;
+	height: auto;
+	max-height: 120px;
+}
 .goodsclassify-goods-txt{
 	width: 60%;
 	height: 100px;
@@ -463,14 +464,12 @@ input.goods-count {
 	color: #333;
 	/*font-weight: bold;*/
 	font-size: 15px;
-	height: 40px;
+	padding: 3px 0;
 }
 .goodsclassify-goods-txt .goods-txt-intro{
 	font-family: "幼圆";
 	color: #C1C1C1;
-	height: 30px;
 	font-size: 12px;
-	padding-top: 10px;
 }
 .goodsclassify-goods-txt .goodsclassify-price{
 	color: #FE6045;
@@ -486,7 +485,8 @@ input.goods-count {
 }
 .goodsclassify-sales{
 	color: #9F9F9F;
-	margin-top:15px ;
+	margin-top: 12px;
+	margin-right: 15px;
 }
 
 /*==================搜索商品==================*/
@@ -533,7 +533,7 @@ input.goods-count {
 	padding-left: 8px;
 	height: 25px;
 	border-radius: 3px;
-	width: 100%;
+	width: 80%;
 	background: #61efdf;
 	border: none;
 	-webkit-transition: all 0.3s ease-in-out;

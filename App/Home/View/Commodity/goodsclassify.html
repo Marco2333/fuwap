@@ -21,20 +21,20 @@
 			<span>分类</span>
 		</div><!--register-head-->
 		
-		
-		
-		
 		<div class="goodsclassify-header w">
 			<a class="move moveleft">
 				&lt;
 			</a>
 			    <div class="goodsclassify-slide">
 					<ul id="classifynavi">
-						<li class="goodsclassify-active">特色零食</li>
-						<li>代取快递</li>
-						<li>水果</li>
-						<li>家政服务</li>
-						<li>jzz</li>
+						<foreach name="category" item="vo">
+							<if condition="$key eq 0">
+						 		<li class="active" data-id="{$vo.category}">
+						 	<else/><li>
+						 	</if>				     
+					     		{$vo.category}
+					     	</li>
+						</foreach>		
 					</ul>
 				</div>
 			<a class="move moveright"  >&gt;</a>
@@ -42,111 +42,44 @@
 			
 		<div class="body-y">	
 			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
+
+			<foreach name="goodlist" item="vi">
+				<div class="goodsclassify-goodsdetail clearfix">
+					<div class="goodsclassify-goodsimg">
+						<img src="{$vi.img_url}" />
 					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
+
+					<div class="goodsclassify-goods-txt">
+						<div> 
+							<div class="goods-txt-name">
+								{$vi.name}
+							</div>
+							<div class=" goods-txt-intro">
+								{$vi.message}
+							</div>
 						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
+						<div>
+							<div class="fl">
+								<div class="goodsclassify-price fl discount-price">
+									{$vi.discount_price}
+								</div> 
+								<span class="orgin-price fl bef-price"> 	{$vi.price}
+								</span>
+							</div>
+							<div class="ri">
+								<div class="goodsclassify-sales">	
+									销量：{$vi.sale_number}
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="__PUBLIC__/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
+			</foreach>		
 		</div>	
 		
 		<include file='App/Home/View/Common/commonnav1.html'/>
 		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/goodsclassify.js"></script>
 	</body>

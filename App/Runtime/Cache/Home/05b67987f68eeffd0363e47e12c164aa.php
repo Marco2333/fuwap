@@ -8,9 +8,6 @@
 		<link href="/fuwebapp/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/style.css" />
-		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery-1.11.2.js"></script>
-		<script src="/fuwebapp/Public/bootstrap/js/bootstrap.min.js"></script>
-		<script src="/fuwebapp/Public/script/goodsclassify.js"></script>
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/style-y.css" />
 		<style>
 			body{
@@ -20,129 +17,58 @@
 	</head>
 	<body>
 		<div class="goodsclassify-head w" id="gch">
-			<span class="glyphicon glyphicon-circle-arrow-left fl "></span>
+			<span class="glyphicon glyphicon-circle-arrow-left fl history-back"></span>
 			<span>分类</span>
 		</div><!--register-head-->
 		
-		
-		
-		
 		<div class="goodsclassify-header w">
-			<a class="move moveleft"
-		      data-slide="prev"><</a>
-			    <div class="slide">
+			<a class="move moveleft">
+				&lt;
+			</a>
+			    <div class="goodsclassify-slide">
 					<ul id="classifynavi">
-						<li class="goodsclassify-active">特色零食</li>
-						<li>代取快递</li>
-						<li>水果</li>
-						<li>家政服务</li>
-						<li>jzz</li>
+						<?php if(is_array($category)): foreach($category as $key=>$vo): if($key == 0): ?><li class="active" data-id="<?php echo ($vo["category"]); ?>">
+						 	<?php else: ?><li><?php endif; ?>				     
+					     		<?php echo ($vo["category"]); ?>
+					     	</li><?php endforeach; endif; ?>		
 					</ul>
 				</div>
-			<a class="move moveright"  data-slide="next">></a>
+			<a class="move moveright"  >&gt;</a>
 		</div>
 			
 		<div class="body-y">	
 			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="/fuwebapp/Public/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
+
+			<?php if(is_array($goodlist)): foreach($goodlist as $key=>$vi): ?><div class="goodsclassify-goodsdetail clearfix">
+					<div class="goodsclassify-goodsimg">
+						<img src="<?php echo ($vi["img_url"]); ?>" />
 					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
+
+					<div class="goodsclassify-goods-txt">
+						<div> 
+							<div class="goods-txt-name">
+								<?php echo ($vi["name"]); ?>
+							</div>
+							<div class=" goods-txt-intro">
+								<?php echo ($vi["message"]); ?>
+							</div>
 						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="/fuwebapp/Public/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
+						<div>
+							<div class="fl">
+								<div class="goodsclassify-price fl discount-price">
+									<?php echo ($vi["discount_price"]); ?>
+								</div> 
+								<span class="orgin-price fl bef-price"> 	<?php echo ($vi["price"]); ?>
+								</span>
+							</div>
+							<div class="ri">
+								<div class="goodsclassify-sales">	
+									销量：<?php echo ($vi["sale_number"]); ?>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="/fuwebapp/Public/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="/fuwebapp/Public/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
-			<!--<div class="goodsclassify-item w">-->
-			<div class="goodsclassify-goodsdetail">
-				<div class="goodsclassify-goodsimg">
-					<img src="/fuwebapp/Public/img/light-ps.png" />
-				</div>
-				<div class="goodsclassify-goods-txt">
-					<div> <div class="goods-txt-name">HOMEE led百变耳机台灯创意可以做耳机的台灯</div>
-					<div class=" goods-txt-intro">设计师原创 纯手工打造</div>
-					</div>
-					<div >
-						<div class="fl">
-							<div class="goodsclassify-price fl discount-price">￥79</div> <span class="orgin-price fl bef-price"> 原价：89</span>
-						</div>
-						<div class="ri">
-							<div class="goodsclassify-sales">销量：1989</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--</div>-->
+				</div><?php endforeach; endif; ?>		
 		</div>	
 		
 		<div id="common-nav">
@@ -158,7 +84,7 @@
 	   		</a> 		
 	   </div>
 	   <div class="col-xs-4">
-	   		<a href="<?php echo U('Index/shoppingcart');?>">
+	   		<a href="<?php echo U('ShoppingCart/shoppingcart');?>">
 		   		<dl>
 		   			<dt>
 		   				<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -181,5 +107,7 @@
 </div>
 		
 		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery-1.11.2.js"></script>
+		<script src="/fuwebapp/Public/script/common.js"></script>
+		<script src="/fuwebapp/Public/script/goodsclassify.js"></script>
 	</body>
 </html>

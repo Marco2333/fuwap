@@ -37,6 +37,7 @@ class LoginController extends Controller {
           session('username', $user['phone']);
           session('nickname', $user['nickname']);
           session('img_url', $user['img_url']);
+          session('campus_id',$user['campus_id']);
 
           $result['status']='success';
           $this->ajaxReturn($result);
@@ -93,7 +94,7 @@ class LoginController extends Controller {
     // @author Tony
     public function logout(){
       unset($_SESSION['username']);
-      $this->redirect('Home/Login/personHomePage');
+      $this->redirect('Home/Login/homePage');
     }
 
     // @author Tony

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>For优 主页</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		
+		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
+
+	</head>
+	<body>
+		<div id="ordermanage-head">
+			<div class="head-top background-special">
+				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
+				<span class="head-title">我的订单</span>
+			</div>
+			<div class="nav-top">
+				<ul class="clearfix" data-active="{$status}">
+					<li><a href="{:U('OrderManage/orderManage',array('status'=>1))}">代付款</a></li>
+					<li><a href="{:U('OrderManage/orderManage',array('status'=>2))}">待确认</a></li>
+					<li><a href="{:U('OrderManage/orderManage',array('status'=>3))}">配送中</a></li>
+					<li><a href="{:U('OrderManage/orderManage',array('status'=>4))}">待评价</a></li>
+					<li><a href="{:U('OrderManage/orderManage',array('status'=>5))}">已完成</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="ordermanage-body" class="w">
+			<ul>
+				<foreach name="goodsInfo" item="goods" key="key">
+					<li>
+						<table class="w">
+							<tbody>
+								<tr class="goods-info-top">
+									<td>
+										<span class="fl">
+											<?php echo $goods[0]['together_date']; ?>
+										</span>
+										<span class="fr">
+										<?php
+											switch($status)
+											{
+												case '1':echo '订单待付款';break;
+												case '2':echo '订单确认中';break;
+												case '3':echo '订单配送中';break;
+												case '4':echo '订单待评价';break;
+												case '5':echo '交易成功';break;
+												default:echo '';
+											}
+										?>
+										</span>
+									</td>
+								</tr>
+								<foreach name="goods" item="good">
+									<tr class="goods-info">
+										<td class="clearfix">
+											<div class="col-2 fl">
+												<img src="{$good.img_url}" alt="">
+											</div>
+											<div class="col-6 fl goods-name">
+												<p>
+													{$good.name}
+												</p>
+												<p>{$good.message}</p>
+											</div>
+											<div class="col-2 fl">
+												<p class="goods-price">{$good.discount_price}</p>
+												<p class="goods-count">×{$good.order_count}</p>
+											</div>
+										</td>
+									</tr>
+								</foreach>
+								<tr class="order-total-cost">
+									<td>
+										<span class="fr goods-price">
+											￥<?php echo $goods[0]['totaldPrice']; ?>
+										</span>
+										<span class="fr text-middle">
+											共<?php echo $goods[0]['goodsCount']; ?>件商品
+											实付：
+										</span>
+									</td>
+								</tr>
+								<tr class="confirm-order">
+									<td>
+									<?php
+										switch($status)
+										{
+											case '1':
+											echo 
+											'<button class="negative-button">
+												取消订单
+											</button>
+											<button class="positive-button">
+												立即付款
+											</button>';
+											break;
+											case '2':
+											echo 
+											'<button class="negative-button">
+												取消订单
+											</button>';
+											break;
+											case '3':
+											echo 
+											'<button class="negative-button">
+												确认收货
+											</button>';
+											break;
+											case '4':
+											echo 
+											'<button class="negative-button">
+												删除订单
+											</button>
+											<button class="positive-button">
+												评价订单
+											</button>';
+											break;
+											case '5':
+											echo 
+											'<button class="negative-button">
+												删除订单
+											</button>';
+											break;
+											default:echo '';
+										}
+									?>	
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</li>
+				</foreach>
+			</ul>
+		</div>
+
+		<include file='App/Home/View/Common/commonnav2.html'/>
+
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/script/ordermanage.js"></script>
+	</body>
+</html>

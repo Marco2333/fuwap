@@ -18,11 +18,11 @@ class ReceiverModel extends Model{
 	protected $fields = array(
 		'receiver' => array(
 			'phone_id',
-			'phone',
+			'phone',     //key
 			'name',
 			'address',
 			'tag',
-			'rank',
+			'rank',      //key
 			'is_out',
 			'campus_id'
 			)
@@ -258,6 +258,28 @@ class ReceiverModel extends Model{
 
     /**
      * 模型函数
+     * 获取用户默认收货地址
+     * @access public
+     * @param  null
+     * @return array() 用户默认收货地址信息
+     */
+    public function getDefaultAddress(){
+        $field = array(
+            'phone_id',
+            'name',
+            'address'
+            );
+        $defaultAddress = $this->where("phone=".$_SESSION['username'].' and tag = 0')
+                               ->field($field)
+                               ->select();
+
+        $defaultAddress = $this->addressConnect($defaultAddress);
+
+        return $defaultAddress[0];
+    }
+
+    /**
+     * 模型函数
      * 删除用户收货地址
      * @access public
      * @param  null
@@ -297,6 +319,9 @@ class ReceiverModel extends Model{
 	    	return false;
 	    }
     }
+
+
+
 
 
 }

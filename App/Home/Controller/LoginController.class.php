@@ -37,7 +37,7 @@ class LoginController extends Controller {
           session('username', $user['phone']);
           session('nickname', $user['nickname']);
           session('img_url', $user['img_url']);
-          session('campus_id',$user['campus_id']);
+          session('campus_id',$user['last_campus']);
 
           $result['status']='success';
           $this->ajaxReturn($result);

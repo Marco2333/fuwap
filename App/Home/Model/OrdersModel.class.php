@@ -320,7 +320,7 @@ class OrdersModel extends Model{
     		'together_id' => $together_id
     		);
     	$data = array(
-    		'status'		  => 4
+    		'status'	  => 4
     		);
 
     	$res = $Orders->where($where)
@@ -328,6 +328,78 @@ class OrdersModel extends Model{
 
     	return $res;
     }
+
+    /**
+     * 模型函数
+     * 设置订单已评价状态
+     * @access public
+     * @param  String  $order_id 订单号
+     * @return boolean 数据库操作结果
+     */
+    public function setRemarked($order_id){
+        $Orders = M('orders');
+        $where  = array(
+            'phone'    => $_SESSION['username'],
+            'order_id' => $order_id
+            );
+        $data   = array(
+            'is_remarked' => 1
+            );
+
+        $res = $Orders->where($where)
+                      ->save($data);
+
+        return $res;
+    }
+
+    /**
+     * 模型函数
+     * 判断该订单中是否全部评论，并做出相应改变
+     * @access public
+     * @param  String  $together_id 大订单号
+     * @return int -1 数据库操作失败
+     *              0 订单状态没有改变
+     *              1 订单状态发生改变，订单已完成
+     */
+    public function setStatus($together_id){
+        $field = array(
+            'order_id'
+            );
+        $data = $this->where('phone='.$_SESSION['username'].' and '.'together_id='.'\''.$together_id.'\''.' and '.'is_remarked=0')
+                     ->field($field)
+                     ->select();
+
+        if ($data !== false) {
+            if (count($data) != 0) {
+                return 0;
+            }
+            else {
+                $Orders = M('orders');
+                $where  = array(
+                    'phone'       => $_SESSION['username'],
+                    'together_id' => $together_id
+                    );
+                $status = array(
+                    'status' => 5
+                    );
+                $res = $Orders->where($where)
+                              ->data($status)
+                              ->save();
+
+                if ($res !== false) {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+        }
+        else {
+            return -1;
+        }
+    }
+
+
 
 }
 

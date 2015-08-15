@@ -18,47 +18,56 @@
 			</div>
 			<span class="Atitle colorwhite">评价订单</span>
 		</div>
-		<div class=" special-bgcolor">
-			<div class="rown cnRow nrow">
-				<div class="inlineB two thingMargin" style="vertical-align: top;">
-					<img src="__PUBLIC__/img/hotsale.png" class="comment-img"/>
-				</div>
-				<div class="inlineB eight txtstart">
-					<span>多思考和类进的份上就发了啥快递就发了圣诞节福利肌肤伤口恢复<span ><br />￥</span><span>57</span></span>
-					
-				</div>
-				<div>
-					<div class="two inlineB text-center">
-						描述相符
+		<foreach name="goodsInfo" item="goods">
+			<div class=" special-bgcolor">
+				<div class="rown cnRow nrow grade-star">
+					<div class="inlineB two thingMargin" style="vertical-align: top;">
+						<img src="{$goods.img_url}" class="comment-img"/>
 					</div>
-					<div class="eight inlineB txtend">
-						<span class="inlineB inforright">
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="glyphicon glyphicon-star"></span>
-								<span class="special-top">4</span><span class="special-top">分</span>
-							</span>
+					<div class="inlineB eight txtstart">
+						<span>{$goods.name}<span ><br />￥</span><span>{$goods.price}</span></span>
+						
+					</div>
+					<div class="">
+						<div class="two inlineB text-center">
+							描述相符
+						</div>
+						<div class="eight inlineB txtend">
+							<span class="inlineB inforright">
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="specialgrade">0</span><span class="special-top">分</span>
+								</span>
+						</div>
+					</div>
+				</div>
+				<div class="rown nrow">
+					<textarea class="food-comment-text" name="" rows="" cols="" placeholder="写点评价吧，对其他小伙伴有很大的帮助奥" id="commenttext"></textarea>
+				</div>
+				<div class="rown cnRow nrow">
+					<div class="inlineB three thingMargin txtstart">
+						<input type="checkbox" name="" id="" value="" class="special-top is-hidden-checked" style="border-radius: 10px;"/>
+						<span id="">
+							匿名评价
+						</span>
+					</div>
+					<div class="txtend seven inlineB">
+						<input type="button" id="" value="发表评价" class="special-button" style="margin-right: 5px;"/>
+						<input id="" class="none" value=""/>
+						<input class="food-id-none none" value="{$goods.food_id}" />
+						<input class="order-id-none none" value="{$goods.order_id}" />
+						<input class="together-id-none none" value="{$goods.together_id}" />
 					</div>
 				</div>
 			</div>
-			<div class="rown nrow">
-				<textarea name="" rows="" cols="" placeholder="写点评价吧，对其他小伙伴有很大的帮助奥" id="commenttext"></textarea>
-			</div>
-			<div class="rown cnRow nrow">
-				<div class="inlineB three thingMargin txtstart">
-					<input type="checkbox" name="" id="" value="" class="special-top" style="border-radius: 10px;"/>
-					<span id="">
-						匿名评价
-					</span>
-				</div>
-				<div class="txtend seven inlineB">
-					<input type="button" id="" value="发表评价" class="special-button" style="margin-right: 5px;"/>
-				</div>
-			</div>
-		</div>
+		</foreach>
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script src="__PUBLIC__/script/comment.js"></script>
 	</body>
 </html>

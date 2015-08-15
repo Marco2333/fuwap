@@ -45,7 +45,6 @@ $(document).ready(function(){
 				console.log(data);
 				if(data.result != 0){
 					
-
 					var goodsList = data['goodsList'];
 					console.log(goodsList);
 					$(".body-y").empty();
@@ -75,11 +74,11 @@ $(document).ready(function(){
 					}
 				}
 				else {
-					alert("刷新失败1！");
+					alert("刷新失败！");
 				}	
 			},
 			error:function(){
-				alert("刷新失败2！");
+				alert("刷新失败！");
 			}
 		});
 		

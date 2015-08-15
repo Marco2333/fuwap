@@ -12,47 +12,38 @@
 	</head>
 	<body>
 		<div id="selectcampus-head">
-			<div class="head-top background-special">
+			<div class="head-top bground-special ">
 				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
 				<span class="head-title">选择学校</span>
 			</div>
 		</div>
 		<div id="selectcampus-body" class="w">
-			<div id="selectcampus-body-search">
+			<!-- <div id="selectcampus-body-search">
 				<div>
 					<span class="glyphicon glyphicon-search"></span>
 					<input type="text" placeholder="请输入您的学校名称 ">	
 				</div>	
-			</div>
+			</div> -->
 			<div id="city-campus-nav" class="clearfix">
 				<div id="city-nav">
 					<ul>
-						<li><a>上海</a></li>
-						<li><a>北京</a></li>
-						<li><a>广州</a></li>
-						<li><a>武汉</a></li>
-						<li><a>成都</a></li>
-						<li><a>西安</a></li>
-						<li><a>南京</a></li>
-						<li><a>长沙</a></li>
-						<li><a>郑州</a></li>
-						<li><a>沈阳</a></li>
-						<li class="active"><a href="">苏州</a></li>
+						<foreach name="cityList" item="vo">
+							<if condition="$key eq 0">
+								<li class="active" data-id="{$vo.city_id}"><a>{$vo.city_name}</a></li>
+							<else/><li data-id="{$vo.city_id}"><a>{$vo.city_name}</a></li>
+							</if>
+						</foreach>
 					</ul>
 				</div>
 				<div id="campus-nav">
 					<ul>
-						<li><a href="">苏州职业大学北校区 </a></li>
-						<li class="active"><a href="">苏州大学独墅湖校区</a></li>
-						<li><a>苏州大学</a></li>
-						<li><a>武汉</a></li>
-						<li><a>成都</a></li>
-						<li><a>西安</a></li>
-						<li><a>南京</a></li>
-						<li><a>长沙</a></li>
-						<li><a>郑州</a></li>
-						<li><a>沈阳</a></li>
-						<li><a>苏州</a></li>
+						<foreach name="campusList" item="vi">
+							<li data-id="{$vi.campus_id}">
+								<a href="{:U('Index/index',array('campus_id'=>$vi['campus_id']))}">
+									{$vi.campus_name}
+								</a>
+							</li>
+						</foreach>
 					</ul>
 				</div>
 			</div>

@@ -55,6 +55,9 @@ input {
 	text-align: center;
 	margin-top: 5px;
 }
+#slide-wrapper {
+	min-height: 140px;
+}
 #slide-wrapper .carousel-inner img {
 	width: 100%;
 	height: auto;
@@ -313,6 +316,10 @@ input {
 	background: #24dfc2;
 	padding: 8px;
 }
+#selectcampus-head .history-back,
+#selectcampus-head  {
+	color: #fff;
+}
 #selectcampus-body-search > div {
 	width: 100%;
 	background: #61efdf;
@@ -333,7 +340,7 @@ input {
 	width: 25%;
 	text-align: center;
 	font-size: 16px;
-	overflow: scroll;
+	overflow: auto;
 }
 #city-campus-nav {
 	margin-top: 8px;
@@ -555,7 +562,7 @@ input.goods-count {
 #settle-accounts {
 	position: fixed;
 	left: 0;
-	bottom: 50px; 
+	bottom: 45px; 
 	width: 100%;
 	padding: 5px;
 	font-size: 16px;

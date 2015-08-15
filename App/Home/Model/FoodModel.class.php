@@ -69,10 +69,16 @@ class FoodModel extends Model{
 		return $goodInfo; 
 	}
 
+	public function getHomeSaleFood($campusId = 1) {
+		$homeFood = $this->field('food_id,home_image')
+						->where('to_home = 1')
+						->select();
+
+		return $homeFood;
+	}
+
 
 };
-
-
 
 
 ?>

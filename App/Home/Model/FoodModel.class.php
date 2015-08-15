@@ -59,6 +59,8 @@ class FoodModel extends Model{
 			'img_url',
 			'is_discount',
 			'message',
+			'grade',
+			'info'
 			);
 		$goodInfo = $this->where('food_id='.$foodId.' and campus_id='.$campusId)
 						 ->field($field)

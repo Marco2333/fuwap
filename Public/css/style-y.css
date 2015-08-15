@@ -386,6 +386,7 @@ input.goods-count {
 	top: 9px;
 	display: inline-block;
 	font-weight: bolder;
+	color: #aaa;
 }
 .goodsclassify-slide{
 	width:100%;
@@ -450,12 +451,12 @@ input.goods-count {
 	float: left;
 }
 .goodsclassify-goodsimg img {
-	width: 85%;
-	height: auto;
+	width: 90px;
+	height: 90px;
 	max-height: 120px;
 }
 .goodsclassify-goods-txt{
-	width: 60%;
+	width: 65%;
 	height: 100px;
 	float: right
 }

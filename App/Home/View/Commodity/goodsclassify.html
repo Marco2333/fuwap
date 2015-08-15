@@ -23,21 +23,21 @@
 		
 		<div class="goodsclassify-header w">
 			<a class="move moveleft">
-				&lt;
+				<span class="glyphicon glyphicon-chevron-left"></span>
 			</a>
 			    <div class="goodsclassify-slide">
 					<ul id="classifynavi">
 						<foreach name="category" item="vo">
 							<if condition="$key eq 0">
-						 		<li class="active" data-id="{$vo.category}">
-						 	<else/><li>
+						 		<li class="active" data-id="{$vo.category_id}">
+						 	<else/><li data-id="{$vo.category_id}">
 						 	</if>				     
 					     		{$vo.category}
 					     	</li>
 						</foreach>		
 					</ul>
 				</div>
-			<a class="move moveright"  >&gt;</a>
+			<a class="move moveright"><span class="glyphicon glyphicon-chevron-right"></span></a>
 		</div>
 			
 		<div class="body-y">	
@@ -45,25 +45,25 @@
 
 			<foreach name="goodlist" item="vi">
 				<div class="goodsclassify-goodsdetail clearfix">
-					<div class="goodsclassify-goodsimg">
+					<div class="goodsclassify-goodsimg" data-foodid="{$vi.food_id}">
 						<img src="{$vi.img_url}" />
 					</div>
 
 					<div class="goodsclassify-goods-txt">
-						<div> 
-							<div class="goods-txt-name">
-								{$vi.name}
-							</div>
-							<div class=" goods-txt-intro">
-								{$vi.message}
-							</div>
+					
+						<div class="goods-txt-name">
+							{$vi.name}
 						</div>
+						<div class=" goods-txt-intro">
+							{$vi.message}
+						</div>
+						
 						<div>
 							<div class="fl">
 								<div class="goodsclassify-price fl discount-price">
-									{$vi.discount_price}
+									￥{$vi.discount_price}
 								</div> 
-								<span class="orgin-price fl bef-price"> 	{$vi.price}
+								<span class="orgin-price fl bef-price"> 	￥{$vi.price}
 								</span>
 							</div>
 							<div class="ri">
@@ -82,5 +82,6 @@
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/goodsclassify.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquerymobile.js"></script>
 	</body>
 </html>

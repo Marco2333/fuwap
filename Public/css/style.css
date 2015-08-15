@@ -55,12 +55,10 @@ input {
 	text-align: center;
 	margin-top: 5px;
 }
-/*#slide-wrapper {
-	height: 188px;
-}*/
 #slide-wrapper .carousel-inner img {
 	width: 100%;
 	height: auto;
+	max-height: 178px;
 }
 #index-nav-part {
 	width: 100%;

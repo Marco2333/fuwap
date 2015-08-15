@@ -13,50 +13,53 @@ class CommodityController extends Controller {
 	}
 
     public function index(){
-    	$campusId=I('campusId');        
-        $cityId=I('cityId');          
-        $this-> getCampusName($campusId,$cityId);
-
-        if($campusId==null){
-            $campusId=1;
-        }
-        if($cityId==null){
-            $cityId=1;
-        }
-
-    	$category = D('Category');
-    	$classes = getCategory(8,$campusId);
-        
-        $good=M('food');
-        
-        foreach ($classes as $key => $cate) {
-            $goods=$good->where('category_id=%d',$cate['category_id'])
-            ->limit(5)
-            ->select();
-
-            $goodList[$key]=$goods;
-        }
-
-        $module=M('food_category')                 //获取首页八个某块的
-        ->where('campus_id=%d and serial is not null',$campusId)
-        ->order('serial')
-        ->select();
-
-        $this->assign('goodlist',$goodList)
-             ->assign('main_image',$newsImage)
-             ->assign("category",$classes)  
-             ->assign('module',$module)
-             ->assign('campusList',$campusList)
-             ->assign('cartGood',$cartGood)
-             ->assign('hiddenLocation',0)/*设置padding-top的值为0*/
-             ->assign('categoryHidden',0);
-
-        $this->display();
-
-        $this->display("goodsclassify");
+    
     }
 
+    public function goodsclassify() {
+      
+	    $campusId = $_SESSION['campusId'];          
+	  	$categoryId = I('categoryId');
 
+	    if($categoryId == null){
+	        $categoryId = 1; 
+	    }
+	    if($campusId == null){
+	        $campusId = 1;   
+	    }
+
+		$category = D('FoodCategory');
+		$classes = $category->getCategory(8,$campusId);
+	   
+	    $goodList = $category -> getGoodsByCatId($classes[0]['category_id'],$campusId);
+	    
+	    // dump($classes);
+	    $this->assign('goodlist',$goodList)
+	         ->assign("category",$classes); 
+	   
+	    $this->display("goodsclassify");
+    }
+
+    public function getGatGoods($categoryId){
+
+    	$campusId = $_SESSION['campusId'];
+
+    	if($campusId == null){
+	        $campusId = 1;   
+	    }
+
+    	$category = D('FoodCategory');
+    	$goodList = $category -> getGoodsByCatId($categoryId,$campusId);
+
+    	if($goodList !== false) {
+    		$res['result'] = 1;
+    		$res['goodsList'] = $goodList; 
+    	}      
+    	else {
+    		$res['result'] = 0;  
+    	}
+    	$this->ajaxReturn($res); 
+    }
      /**
      * @access public
      * @param 

@@ -399,6 +399,57 @@ class OrdersModel extends Model{
         }
     }
 
+    /**
+     * 模型函数
+     * 获取订单购买数量
+     * @access public
+     * @param  String  $order_id    订单号
+     * @return int     $order_count 订单购买数量 
+     */
+    public function getOrderCount($order_id){
+        $field = array(
+            'order_count'
+            );
+        $data = $this->where('order_id='.$order_id)
+                     ->field($field)
+                     ->find();
+
+        return $data['order_count'];
+    }
+
+    /**
+     * 模型函数
+     * 立即购买操作时把购买信息写入orders表
+     * @access public
+     * @param  String  $food_id     食品号
+     * @return int     $order_count 订单购买数量 
+     */
+    public function buyNowAction($food_id,$order_count){
+        $Orders = M('orders');
+
+        $data = array(
+            'phone'       => $_SESSION['username'],
+            'order_id'    => time().'000',
+            'campus_id'   => $_SESSION['campus_id'],
+            'create_time' => date("Y-m-d H:m:s",Time()),
+            'status'      => 0,
+            'order_count' => $order_count,
+            'is_remarked' => 0,
+            'food_id'     => $food_id,
+            'tag'         => 1
+            );
+
+        $res = $Orders->data($data)
+                      ->add();
+
+        if ($res !== false) {
+            return $data;
+        }
+        else {
+            return $res;
+        }
+    }
+
 
 
 }

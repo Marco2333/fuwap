@@ -76,7 +76,7 @@ function checkUserExist(){
 	var phone = $(".register-info-input input[name='phone']").val();
 	$.ajax({
 		type:"POST",
-		url: "../../Home/Login/checkUserExist",
+		url: "/fuwebapp/index.php/Home/Login/checkUserExist",
 		data: {
 			phone:phone
 		},

@@ -6,7 +6,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:"POST",
-			url:"../../Home/Person/infoSexRevise",
+			url:"/fuwebapp/index.php/Home/Person/infoSexRevise",
 			data:info,
 			success:function(res){
 				if (res['result'] != 0)	{
@@ -36,7 +36,7 @@ function getInfo(field){
 
 	$.ajax({
 		type:"POST",
-		url:"../../Home/Person/getUserInfo",
+		url:"/fuwebapp/index.php/Home/Person/getUserInfo",
 		data:info,
 		success:function(info){
 			if (info['result'] !=0) {

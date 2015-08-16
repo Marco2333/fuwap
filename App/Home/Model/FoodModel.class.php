@@ -60,11 +60,16 @@ class FoodModel extends Model{
 			'is_discount',
 			'message',
 			'grade',
-			'info'
+			'info',
+			'sale_number'
 			);
 		$goodInfo = $this->where('food_id='.$foodId.' and campus_id='.$campusId)
 						 ->field($field)
 						 ->find();
+						 
+		if ($goodInfo['is_discount'] == 0) {
+			$goodInfo['discount_price'] = $goodInfo['price'];
+		}
 
 		return $goodInfo; 
 	}

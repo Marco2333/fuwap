@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"../../Home/Commodity/postComment",
+			url:"/fuwebapp/index.php/Home/Commodity/postComment",
 			data:{food_id:$food_id,comment:$comment,grade:$grade,is_hidden:$is_hidden,order_id:$order_id,together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {

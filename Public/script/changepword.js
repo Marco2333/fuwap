@@ -36,14 +36,14 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"post",
-			url:"../../Home/Person/saveNewPWord",
+			url:"/fuwebapp/index.php/Home/Person/saveNewPWord",
 			data:info,
 			async:true,
 			success:function(result){
 				if (result['result'] != 0) {
 					checkShow(".row-check",result['message']);
 					setTimeout(function(){
-						window.location.href="../../Home/Login/personHomePage";
+						window.location.href="/fuwebapp/index.php/Home/Login/personHomePage";
 					},2600);
 				}
 				else {

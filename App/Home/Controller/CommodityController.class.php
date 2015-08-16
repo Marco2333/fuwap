@@ -131,5 +131,66 @@ class CommodityController extends Controller {
 			$this->ajaxReturn($res);
 		}
     }
+
+    public function goodsInfo(){
+        $Users       = D('Users');
+        $Orders      = D('Orders');
+        $Food        = D('Food');
+        $FoodComment = D('FoodComment');
+
+        // $food_id = I('food_id');
+        $food_id   = '10502';
+        $campus_id = $_SESSION['campus_id'];
+
+        $userInfo    = $Users->getUserInfo();
+        $goodsInfo   = $Food->getGoodInfo($food_id,$campus_id);
+        $commentInfo = $FoodComment->getGoodComment($food_id,$campus_id);
+
+        $commentCount = count($commentInfo);
+
+        for ($i = 0;$i < $commentCount;$i++) {
+            $commentInfo[$i]['order_count'] = $Orders->getOrderCount($commentInfo[$i]['order_id']);
+            $commentInfo[$i]['nickname']    = $userInfo['nickname'];
+
+            if ($commentInfo[$i]['is_hidden'] != 0) {
+                $commentInfo[$i]['img_url']     = '/fuwebapp/Public/img/userhead.png';
+            }
+            else {
+                $commentInfo[$i]['img_url']     = $userInfo['img_url'];
+            }     
+        }
+
+        $avgGrade = substr($FoodComment->getAvgGrade($commentInfo),0,3);
+
+        if ($goodsInfo) {
+            $this->assign('goodsInfo',$goodsInfo)
+                 ->assign('commentInfo',$commentInfo)
+                 ->assign('commentCount',$commentCount)
+                 ->assign('avgGrade',$avgGrade);
+            $this->display('goodsInfo');
+        }
+        else {
+            $this->redirect('Home/Commodity/goodsclassify');
+        }
+    }
+
+    public function buyNowButton(){
+        $Orders = D('Orders');
+
+        $food_id = I('food_id');
+        $order_count = I('order_count');
+
+        $result = $Orders->buyNowAction($food_id,$order_count);
+        
+        if ($result !== false) {
+            $res['result']   = 1;
+            $res['order_id'] = $result['order_id'];
+            $this->ajaxReturn($res);
+        }
+        else {
+            $res['result'] = 0;
+            $this->ajaxReturn($res);
+        }
+    }
 	
 }

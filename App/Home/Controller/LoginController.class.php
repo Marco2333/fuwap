@@ -54,6 +54,7 @@ class LoginController extends Controller {
         $data["type"] = 2;
         $data["create_time"] = time();
         $data["mail"]=I("mail");
+        $data['last_campus']= 1;
 
         if($status==1){
             if(time()-(int)I('register_time')>20*60){                    //链接超过20分钟失效

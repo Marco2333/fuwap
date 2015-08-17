@@ -22,10 +22,10 @@
 		</div><!--register-head-->
 		
 		<div class="goodsclassify-header w">
-			<a class="move moveleft">
+			<!-- <a class="move moveleft">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				<input class="count" style="display: none;" value="0">
-			</a>
+			</a> -->
 			    <div class="goodsclassify-slide">
 					<ul id="classifynavi">
 						<foreach name="category" item="vo">
@@ -38,43 +38,45 @@
 						</foreach>		
 					</ul>
 				</div>
-			<a class="move moveright"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			<!-- <a class="move moveright"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
 		</div>
 			
 		<div class="body-y">	
 			<!--<div class="goodsclassify-item w">-->
 
 			<foreach name="goodlist" item="vi">
-				<div class="goodsclassify-goodsdetail clearfix">
-					<div class="goodsclassify-goodsimg" data-foodid="{$vi.food_id}">
-						<img src="{$vi.img_url}" />
-					</div>
+				<a href="{:U('Commodity/goodsinfo',array('food_id'=>$vi['food_id']))}">
+					<div class="goodsclassify-goodsdetail clearfix">
+						<div class="goodsclassify-goodsimg" data-foodid="{$vi.food_id}">
+							<img src="{$vi.img_url}" />
+						</div>
 
-					<div class="goodsclassify-goods-txt">
-					
-						<div class="goods-txt-name">
-							{$vi.name}
-						</div>
-						<div class=" goods-txt-intro">
-							{$vi.message}
-						</div>
+						<div class="goodsclassify-goods-txt">
 						
-						<div>
-							<div class="fl">
-								<div class="goodsclassify-price fl discount-price">
-									￥{$vi.discount_price}
-								</div> 
-								<span class="orgin-price fl bef-price"> 	￥{$vi.price}
-								</span>
+							<div class="goods-txt-name">
+								{$vi.name}
 							</div>
-							<div class="ri">
-								<div class="goodsclassify-sales">	
-									销量：{$vi.sale_number}
+							<div class=" goods-txt-intro">
+								{$vi.message}
+							</div>
+							
+							<div>
+								<div class="fl">
+									<div class="goodsclassify-price fl discount-price">
+										￥{$vi.discount_price}
+									</div> 
+									<span class="orgin-price fl bef-price"> 	￥{$vi.price}
+									</span>
+								</div>
+								<div class="ri">
+									<div class="goodsclassify-sales">	
+										销量：{$vi.sale_number}
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</foreach>		
 		</div>	
 		

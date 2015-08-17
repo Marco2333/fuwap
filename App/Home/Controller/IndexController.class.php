@@ -42,6 +42,7 @@ class IndexController extends Controller {
 		$campusList = D('Campus')->getCampusByCity($cityList[0]['city_id']);
 		$this->assign("cityList",$cityList)
 			 ->assign("campusList",$campusList);
+			 
 		$this->display("selectCampus");
 	}
 
@@ -55,6 +56,7 @@ class IndexController extends Controller {
 		else {
 			$res['status'] = 0;
 		}
+
 		$this->ajaxReturn($res);
 	}
 }

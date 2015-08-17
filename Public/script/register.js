@@ -12,7 +12,7 @@ $(document).ready(function(){
 				maxlength:20
 			},
 			"confirm-password": {
-				equalTo:".user-info-div input[name='password']"
+				equalTo:".register-info-input input[name='password']"
 			},
 			phone: {
 				digits:true,

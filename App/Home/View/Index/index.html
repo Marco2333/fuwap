@@ -131,7 +131,7 @@
 			</div>
 			<div id="index-hot-sale">
 				<foreach name="goodsSale" item="vo">
-					<a href="">
+					<a href="{:U('Commodity/goodsinfo',array('food_id'=>$vo['food_id']))}">
 						<img src="{$vo.home_image}" alt="">
 					</a>
 				</foreach>

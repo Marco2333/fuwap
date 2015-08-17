@@ -31,4 +31,16 @@ class FoodCategoryModel extends Model {
 
 		return $goodList;
 	}
+
+	public function getGoodsBySerial($flag,$campusId = 1,$limit = 5) {
+		$cateid = M('food_category')->field('category_id')
+					->where('serial = %d and campus_id = %d',$flag,$campusId)
+					->select();
+		$goodList = M('food')->where("category_id = %d and campus_id = %d",$cateid,$campusId)
+					->limit($limit)
+					->select();
+		// dump($cateid);
+		// dump($campusId);
+		return $goodList;
+	}
 }

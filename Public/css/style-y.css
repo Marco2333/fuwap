@@ -446,8 +446,6 @@ input.goods-count {
 .goodsclassify-goodsimg{
 	overflow: hidden;
 	width: 33%;
-	height: 100%;
-/*	margin: 0 10px 0 0;*/
 	float: left;
 }
 .goodsclassify-goodsimg img {

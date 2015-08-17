@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>For优 商品分类</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1" />	
+		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" />
+		<style>
+			body{
+				background-color: #FAFAFA;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="goodsclassify-head w" id="gch">
+			<span class="glyphicon glyphicon-circle-arrow-left fl history-back"></span>
+			<span>
+				<?php 
+					switch ($flag) {
+						case 0:
+							echo '早餐上门';
+							break;
+						case 1:
+							echo '家政服务';
+							break;
+						case 2:
+							echo '水果上门';
+							break;
+						case 3:
+							echo '快递代取';
+							break;
+						case 4:
+							echo '小优推荐';
+							break;
+						case 5:
+							echo '最新体验';
+							break;
+						case 6:
+							echo '特惠秒杀';
+							break;
+						case 7:
+							echo '更多分类';
+							break;
+						default:
+							echo '分类';
+							break;
+					}
+				 ?>
+			</span>
+		</div>
+
+		<div class="body-y">	
+			<!--<div class="goodsclassify-item w">-->
+
+			<foreach name="goodList" item="vi">
+				<a href="{:U('Commodity/goodsinfo',array('food_id'=>$vi['food_id']))}">
+					<div class="goodsclassify-goodsdetail clearfix">
+						<div class="goodsclassify-goodsimg" data-foodid="{$vi.food_id}">
+							<img src="{$vi.img_url}" />
+						</div>
+
+						<div class="goodsclassify-goods-txt">
+						
+							<div class="goods-txt-name">
+								{$vi.name}
+							</div>
+							<div class=" goods-txt-intro">
+								{$vi.message}
+							</div>
+							
+							<div>
+								<div class="fl">
+									<div class="goodsclassify-price fl discount-price">
+										￥{$vi.discount_price}
+									</div> 
+									<span class="orgin-price fl bef-price"> 	￥{$vi.price}
+									</span>
+								</div>
+								<div class="ri">
+									<div class="goodsclassify-sales">	
+										销量：{$vi.sale_number}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</foreach>		
+		</div>	
+		
+		<include file='App/Home/View/Common/commonnav1.html'/>
+		
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script src="__PUBLIC__/script/goodsclassify.js"></script>
+
+	</body>
+</html>

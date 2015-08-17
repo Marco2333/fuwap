@@ -40,6 +40,22 @@ class CommodityController extends Controller {
 	    $this->display("goodsclassify");
     }
 
+    public function goodscategory() {
+        $campusId = $_SESSION['campusId'];          
+        $flag = I('flag');
+
+        if($campusId == null) {
+            $campusId = 1;
+        }
+        $goodList = D('FoodCategory')->getGoodsBySerial($flag,$campusId);
+
+        $this->assign('flag',$flag)
+            ->assign('goodList',$goodList);
+
+        
+        $this->display('goodscategory');
+    }
+    
     public function getGatGoods($categoryId){
 
     	$campusId = $_SESSION['campusId'];

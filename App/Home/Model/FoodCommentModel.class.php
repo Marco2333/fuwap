@@ -65,6 +65,49 @@ class FoodCommentModel extends Model{
 
 		return $orderRes&&$orderRes;
 	}
+
+	/**
+     * 模型函数
+     * 存储用户食品评价
+     * @access public
+     * @param  String $food_id   食品号
+     * @param  String $campus_id 校区号
+     * @return array() 评价信息
+     */
+	public function getGoodComment($food_id,$campus_id){
+		$field = array(
+			'phone',
+			'comment',
+			'grade',
+			'date',
+			'order_id',
+			'is_hidden'
+			);
+		$goodComment = $this->where('food_id='.$food_id.' and '.'campus_id='.$campus_id)
+							->field($field)
+							->select();
+
+		return $goodComment;
+	}
+
+	/**
+     * 模型函数
+     * 计算物品平均星级评价
+     * @access public
+     * @param  String $commentInfo 评价信息
+     * @return float  $avgGrade    平均星级评价
+     */
+	public function getAvgGrade($commentInfo){
+		$commentCount = count($commentInfo);
+
+		for ($i = 0;$i < $commentCount;$i++) {
+			$sumGrade += $commentInfo[$i]['grade'];
+		}
+
+		$avgGrade = $sumGrade / $commentCount;
+
+		return $avgGrade;
+	}
 }
 
 

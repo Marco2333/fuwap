@@ -421,9 +421,6 @@ input.goods-count {
 	text-align: center;
 	font-family: "微软雅黑";
 }
-
-
-
 .moveright{
 	right: -5px;
 }
@@ -438,7 +435,7 @@ input.goods-count {
 }
 .goodsclassify-goodsdetail{
 	width: 100%;
-	/*height: 120px;*/
+	height: auto;
 	padding: 10px;
 	background-color: white;
 	border-bottom: 1px solid #eee;
@@ -455,7 +452,7 @@ input.goods-count {
 }
 .goodsclassify-goods-txt{
 	width: 65%;
-	height: 100px;
+	height: auto;
 	float: right
 }
 .goodsclassify-goods-txt .goods-txt-name{

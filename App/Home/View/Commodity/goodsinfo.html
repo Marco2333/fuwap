@@ -30,13 +30,13 @@
 				   <!-- 轮播（Carousel）项目 -->
 				   <div class="carousel-inner">
 				      <div class="item active">
-				         <img src="__PUBLIC__/img/slider1.png" alt="First slide">
+				         <img src="{$goodsInfo.img_url}" alt="First slide">
 				      </div>
 				      <div class="item">
-				         <img src="__PUBLIC__/img/slider1.png" alt="Second slide">
+				         <img src="{$goodsInfo.img_url}" alt="Second slide">
 				      </div>
 				      <div class="item">
-				         <img src="__PUBLIC__/img/slider1.png" alt="Third slide">
+				         <img src="{$goodsInfo.img_url}" alt="Third slide">
 				      </div>
 				   </div>
 				   <!-- 轮播（Carousel）导航 -->
@@ -49,29 +49,37 @@
 			<div class="thingMain special-bgcolor" >
 				<div class="cRow cnRow">
 					<div class="thingLeft">
-						<span>四川煎饼果子</span><br />
-						<span>来就一口价 我只说一次</span>
+						<span>{$goodsInfo.name}</span><br />
+						<span>{$goodsInfo.message}</span>
 					</div>
 					<div class="thingRight">
-						<span class="gradeActive">4.3分</span><br />
-						<span>销量:</span><span>4534</span>
+						<span class="gradeActive">{$avgGrade}分</span><br />
+						<span>销量:</span><span>{$goodsInfo.sale_number}</span>
 					</div>
 				</div>
 				<div class="cRow cnRow" style="text-align: start; margin-top: 0; height: 30px; line-height: 0px;">
 					<span class="gradeActive" style="font-size: 17px;">
 						<span class="thingMargin">￥：</span>
-						<span>5.5</span>
+						<span>{$goodsInfo.discount_price}</span>
 					</span>
-					<span><del>5.5</del></span>
-					<span class="gradeActive">(省<span>5</span>元)</span>
+					<span><del>{$goodsInfo.price}</del></span>
+					<span class="gradeActive">(省<span>)
+						<?php
+							echo $goodsInfo['price'] - $goodsInfo['discount_price'];
+						?>
+					</span>元)</span>
 					<span class="specialicon bground-special">减</span>
-					<span>&or;</span>
+					<span>
+						<?php
+							if ($goodsInfo['is_discount'] != '0') {
+								echo '&or;';
+							}
+						?>
+					</span>
 				</div>
-				<div class="cRow cnRow">
-					<a href="infodetailed.html">
-						<span class="inlineB userT" style="font-size: 17px;">选择分类</span>
+				<div class="cRow cnRow" id="changenumber">
+						<span class="inlineB userT" style="font-size: 17px;">选择数量</span>
 						<span class="inlineB userA" style="vertical-align: 0px;">&gt;</span>
-					</a>
 				</div>
 				<div class="cRow cnRow" style="text-align: start; line-height: 15px;">
 					<span style="font-size: 17px;"  class="thingMargin">商品信息</span><br /><br />
@@ -155,24 +163,138 @@
 						</div>
 						<div>
 							<span>口感很好，好好好好好啊哈好的撒啊很</span>
+					<span style="font-size: 17px;" class="thingMargin"><span>商品评价(</span><span>{$commentCount}</span><span>)</span></span><br />
+					<foreach name="commentInfo" item="comment">
+						<div class="information thingMargin">
+							<div class="w">
+								<span class="inlineB inforleft">
+									<img src="{$comment.img_url}"/>
+									<span>
+										<?php
+											if ($comment['is_hidden'] != '0') {
+												echo '匿名评价';
+											}
+											else {
+												echo $comment['nickname'];
+											}
+										?>
+									</span>
+									
+								</span>
+								<span class="inlineB inforright">
+									<span 
+									<?php
+										if ($comment['grade'] >= 1) {
+											echo 'class="glyphicon glyphicon-star colorFF573A"';
+										}
+										else {
+											echo 'class="glyphicon glyphicon-star"';
+										}
+									?>
+									></span>
+									<span
+									<?php
+										if ($comment['grade'] >= 2) {
+											echo 'class="glyphicon glyphicon-star colorFF573A"';
+										}
+										else {
+											echo 'class="glyphicon glyphicon-star"';
+										}
+									?>
+									></span>
+									<span
+									<?php
+										if ($comment['grade'] >= 3) {
+											echo 'class="glyphicon glyphicon-star colorFF573A"';
+										}
+										else {
+											echo 'class="glyphicon glyphicon-star"';
+										}
+									?>
+									></span>
+									<span
+									<?php
+										if ($comment['grade'] >= 4) {
+											echo 'class="glyphicon glyphicon-star colorFF573A"';
+										}
+										else {
+											echo 'class="glyphicon glyphicon-star"';
+										}
+									?>
+									></span>
+									<span
+									<?php
+										if ($comment['grade'] >= 5) {
+											echo 'class="glyphicon glyphicon-star colorFF573A"';
+										}
+										else {
+											echo 'class="glyphicon glyphicon-star"';
+										}
+									?>
+									></span>
+									<span class="special-top thinggrade">{$comment.grade}</span><span class="special-top">分</span>
+								</span>
+							</div>
+							<div>
+								<span>{$comment.comment}</span>
+							</div>
+							<br />
+							<div class="special-color">
+								<span>{$comment.date}</span>
+								数量：<span>{$comment.order_count}</span>个
+							</div>
 						</div>
-						<br />
-						<div class="special-color">
-							<span>2015-12-07</span>
-							数量：<span>5</span>个
-						</div>
-					</div>
+					</foreach>
 				</div>
 				<div class="cRow thingsubmit">
 					<div>
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 						<span class="line" style="background-color: white;"></span>
-						<input type="button" id="" value="立即购买" />
+						<input type="button" class="add-to-shopping-cart" id="" value="立即购买" data-default="1" data-food-id="{$goodsInfo.food_id}"/>
 					</div>
 				</div>
 			</div>	
 		</div>
-
+		<div class="containchangenumber none">
+			<div class="colorblack"></div>
+			<div class="showbutton">
+				<div class="cateMain special-bgcolor">
+			<div class="cRow cateMain1 cnRow" style="position: relative; margin-top: 0;">
+				<img src="{$goodsInfo.img_url}"/>
+				<span class="gradeActive" style="font-size: 17px; margin-left: 60px;">
+				<span>￥：</span>
+				<span class="discount-dPrice-none" data-price="{$goodsInfo.discount_price}">{$goodsInfo.discount_price}</span>
+				</span>
+				<span><del class="Price-none" data-price="{$goodsInfo.price}">{$goodsInfo.price}</del></span>
+				<span class="gradeActive">(省<span  class="save-none">
+					<?php
+						echo $goodsInfo['price'] - $goodsInfo['discount_price'];
+					?>
+				</span>元)</span>
+			</div>
+			<div class="cRow cnRow specialrow margintop">
+				<span class="inlineB">购买数量</span>
+				<div class="inlineB">
+					<a class="inlineB rect text-special sub-button">-</a>
+					<input type="text" id="ordernumber" value="" class="rect" disabled="true"/>
+					<a class="inlineB rect text-special add-button">+</a>
+				</div>
+				</div>
+			</div>
+			<div class="cRow thingsubmit margintop">
+				<div>
+					<span class="glyphicon glyphicon-shopping-cart" ></span>
+					<span class="line" style="background-color: white;"></span>
+					<input type="button" class="add-to-shopping-cart" id="" value="立即购买"  data-default="0" data-food-id="{$goodsInfo.food_id}"/>
+				</div>
+			</div>
+			</div>
+		</div>
+		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/script/common.js"></script>
+		<script src="__PUBLIC__/script/goodsinfo.js"></script>
+
 	</body>
 </html>

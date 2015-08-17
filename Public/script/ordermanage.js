@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"../../../../Home/OrderManage/deleteOrCancel",
+			url:"/fuwebapp/index.php/Home/OrderManage/deleteOrCancel",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
@@ -38,7 +38,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"../../../../Home/OrderManage/confirmOrder",
+			url:"/fuwebapp/index.php/Home/OrderManage/confirmOrder",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"../../../../Home/OrderManage/deleteOrCancel",
+			url:"/fuwebapp/index.php/Home/OrderManage/deleteOrCancel",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
@@ -77,11 +77,11 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"../../../../Home/OrderManage/commentOrder",
+			url:"/fuwebapp/index.php/Home/OrderManage/commentOrder",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
-					var $href = "../../../../Home/Commodity/comment?orderIds="+result['orderIds'];
+					var $href = "/fuwebapp/index.php/Home/Commodity/comment?orderIds="+result['orderIds'];
 					window.location.href = $href;
 				}
 				else {

@@ -8,7 +8,7 @@ $(document).ready(function(){
 		if ($order_count >= 0) {
 			$.ajax({
 		        type:"POST",
-		        url:'../../Home/ShoppingCart/updateOrderCount',
+		        url:'/fuwebapp/index.php/Home/ShoppingCart/updateOrderCount',
 		        data:{order_count:$order_count,order_id:$order_id},
 		        success:function(result){
 		        	if (result['result'] != 0) {
@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 		$.ajax({
 	        type:"POST",
-	        url:'../../Home/ShoppingCart/updateOrderCount',
+	        url:'/fuwebapp/index.php/Home/ShoppingCart/updateOrderCount',
 	        data:{order_count:$order_count,order_id:$order_id},
 	        success:function(result){
 	        	if (result['result'] != 0) {

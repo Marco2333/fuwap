@@ -1,57 +1,22 @@
 $(document).ready(function(){
-	$(".moveleft").click(function(){
-		var v=parseInt( $("input.count").val());
-		if(v<0){
-			v++;
-			$("input.count").attr("value",v);
-			var width=$(".goodsclassify-header li").width();
-			$(".goodsclassify-header ul").css( "left",width*v )
-		}
-	});
-	
-	$(".moveright").click(function(){
-		var v=parseInt( $("input.count").val());
-		var length=$("ul#classify-navi>li").length;
-		length=4-length;
-		if(v>length){
-			v--;
-			$("input.count").attr("value",v);
-			var width=$(".goodsclassify-header li").width();
-			$(".goodsclassify-header ul").css( "left",width*v )
-		}		
-	});	
-	
-	$(".goodsclassify-header").on("swiperight",function(){
-	  	var lef=$(".goodsclassify-header ul").css("left");
-  			if(parseInt(lef)<0){
-  			$(".goodsclassify-header ul").css( "left", function(index, value) {return parseFloat(value)+1*$(".goodsclassify-header li").width();});
-	  	}
-	});
-
-	$(".goodsclassify-header").on("swipeleft",function(){
-	  	var lef=$(".goodsclassify-header ul").css("left");
-  		var cou=$("#classify-navi>li").length;
-  		var wid=(cou-4)*$(".goodsclassify-header li").width();
-	  	if(-parseInt(lef)<parseInt(wid)){
-	  		$(".goodsclassify-header ul").css("left", function(index, value) {return parseFloat(value)-1*$(".goodsclassify-header li").width();});
-	  	}
-	});
-
-	$("#classify-navi li").click(function(){
-
+	$("#search-standard li").click(function(){
 		$(this).siblings().removeClass("active");
 		$(this).addClass("active");
+	});
+
+	$("#search-standard li").click(function(){
+        console.log($(this).attr("data-key"));
 		$.ajax({
-			type:"POST",
-			url:"../../Home/Commodity/getGatGoods",
+			url:'../../Home/Commodity/getgoodlist',
+			type:'POST',
 			data:{
-				categoryId:$(this).attr("data-id")
+				std:$(this).attr("data-key"),
+				key:$(".body-y").attr("data-key")
 			},
 			success:function(data) {
-				if(data.result != 0){
-					
-					var goodsList = data['goodsList'];
-					console.log(goodsList);
+				if(data.result != 0){				
+					var goodsList = data['goodList'];
+					// console.log(goodsList);
 					$(".body-y").empty();
 					for(var i = 0; i<goodsList.length;i++){
 						var $goodsdetail = $("<div class='goodsclassify-goodsdetail clearfix'></div>");
@@ -88,8 +53,7 @@ $(document).ready(function(){
 			error:function(){
 				alert("刷新失败！");
 			}
+
 		});
-		
 	});
-		
-})
+});

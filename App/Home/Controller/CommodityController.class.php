@@ -47,6 +47,7 @@ class CommodityController extends Controller {
         if($campusId == null) {
             $campusId = 1;
         }
+        
         $goodList = D('FoodCategory')->getGoodsBySerial($flag,$campusId);
 
         $this->assign('flag',$flag)
@@ -210,6 +211,70 @@ class CommodityController extends Controller {
             $res['result'] = 0;
             $this->ajaxReturn($res);
         }
+    }
+
+    public function searchoutcome($key) {
+        $campus_id = $_SESSION['campus_id'];
+
+        if($campus_id == null) {
+            $campus_id = 1;
+        }
+
+        $data['campus_id'] = $campus_id;
+        $data['name|food_flag']=array('like',"%".$key."%");
+        $goodlist = M('food')->where($data)
+            ->order('modify_time desc')
+            ->select();
+        // dump($goodlist);
+        $this->assign("goodlist",$goodlist)
+            ->assign("key",$key);
+       
+        $this->display("searchoutcome");
+    }
+
+    public function getgoodlist($key) {
+        $std=(int)I('std');
+        $campus_id = $_SESSION['campus_id'];
+
+        if($campus_id == null) {
+            $campus_id = 1;
+        }
+
+        $data['campus_id'] = $campus_id;
+        $data['name|food_flag']=array('like',"%".$key."%");
+
+        switch ($std) {
+            case 0:
+                $goodlist = M('food')->where($data)
+                   ->order('modify_time desc')
+                   ->select();
+                break;
+            case 1:
+                $goodlist = M('food')->where($data)
+                    ->order('sale_number desc')
+                    ->select();
+                break;
+            case 2:
+                $goodlist = M('food')->where($data)
+                    ->order('price')
+                    ->select();
+                break;
+            default:
+                 $goodlist = M('food')->where($data)
+                    ->order('modify_time desc')
+                    ->select();
+                break;
+        }
+        // dump($goodlist);
+       if($goodlist !== false) {
+            $res['status'] = 1;
+            $res['goodList'] = $goodlist;
+        }
+        else {
+            $res['status'] = 0;
+        }
+
+        $this->ajaxReturn($res);
     }
 	
 }

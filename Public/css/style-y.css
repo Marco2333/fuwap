@@ -400,7 +400,6 @@ input.goods-count {
 }
 .goodsclassify-header  ul{
 	overflow: hidden;
-	float: left;
 	background-color: white;
 	width: 200%;
 	position: absolute;

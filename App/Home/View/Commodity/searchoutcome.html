@@ -9,34 +9,24 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" />
-		<style>
-			body{
-				background-color: #FAFAFA;
-			}
-		</style>
 	</head>
 	<body>
-		<div class="goodsclassify-head w" id="gch">
-			<span class="glyphicon glyphicon-circle-arrow-left fl history-back"></span>
-			<span>分类</span>
+		<div class="searchout-head w">
+			<div class="head-top background-special">
+				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
+				<span class="head-title">搜索结果</span>
+			</div>
 		</div><!--register-head-->
 		
-		<div class="goodsclassify-header w">
-		    <div class="goodsclassify-slide">
-				<ul id="classify-navi">
-					<foreach name="category" item="vo">
-						<if condition="$key eq 0">
-					 		<li class="active" data-id="{$vo.category_id}">
-					 	<else/><li data-id="{$vo.category_id}">
-					 	</if>				     
-				     		{$vo.category}
-				     	</li>
-					</foreach>		
-				</ul>
-			</div>
+		<div id="search-standard" class="w">
+			<ul>
+				<li class="active" data-key="0">综合</li>	
+				<li data-key="1">销量</li>
+				<li data-key="2">价格</li>
+			</ul>
 		</div>
 			
-		<div class="body-y">	
+		<div class="body-y" data-key="{$key}">	
 			<foreach name="goodlist" item="vi">
 				<a href="{:U('Commodity/goodsinfo',array('food_id'=>$vi['food_id']))}">
 					<div class="goodsclassify-goodsdetail clearfix">
@@ -73,11 +63,10 @@
 			</foreach>		
 		</div>	
 		
-		<include file='App/Home/View/Common/commonnav1.html'/>
+		<!-- <include file='App/Home/View/Common/commonnav1.html'/> -->
 		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
-		<script src="__PUBLIC__/script/goodsclassify.js"></script>
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquerymobile.js"></script>
+		<script src="__PUBLIC__/script/searchoutcome.js"></script>
 	</body>
 </html>

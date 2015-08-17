@@ -801,3 +801,19 @@ tr.goods-info .goods-name + div {
 	height: 15px;
 	margin-left: 10px;
 }
+
+/*selectoutcome*/
+#search-standard li {
+	float: left;
+	height: 35px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-left: none;
+	display: inline-block;
+	width: 33%;
+	padding-top: 8px;
+	font-size: 16px;
+}
+#search-standard li.active {
+	border-bottom: 2px solid #de6c76;
+}

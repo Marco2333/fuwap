@@ -20,4 +20,9 @@ $(document).ready(function(){
 	$("#slide-wrapper").on("swiperight",function(){
 	  	$('#slide-wrapper').carousel('prev');
 	});
+
+	$("#search-input").prev().click(function(){
+		var searchkey = $("#search-input").val();
+		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome?key="+searchkey;
+	});
 });

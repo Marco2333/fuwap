@@ -3,11 +3,16 @@ namespace Home\Model;
 use Think\Model;
 
 class FoodCategoryModel extends Model {
+    protected $_scope=array(
+        'nomal'=>array(
+          'field'=>array('category_id,name,serial'),
+        ),
+    );
 
 	public function getCategory($limit,$campusId) {
 
 		$category=M("food_category");      //获取左侧导航栏的分类
-        $classes=$category
+        $classes=$category->scope('nomal')
         ->where('campus_id=%d and tag=1',$campusId)
         ->limit($limit)
         ->select();
@@ -25,22 +30,25 @@ class FoodCategoryModel extends Model {
 			->select();
 		}
 		else {
-			$goodList = $good->where('category_id=%d and campus_id=%d',$categoryId,$campusId)
+			$goodList = $good->where('category_id=%d and campus_id=%d and tag=1 and status=1',$categoryId,$campusId)
 			->select();
 		}
 
 		return $goodList;
 	}
 
-	public function getGoodsBySerial($flag,$campusId = 1,$limit = 5) {
-		$cateid = M('food_category')->field('category_id')
+	public function getGoodsBySerial($flag,$campusId = 1,$limit = 8) {
+		
+		$cateid = M('food_category')
+		            ->scope('nomal')
 					->where('serial = %d and campus_id = %d',$flag,$campusId)
-					->select();
-		$goodList = M('food')->where("category_id = %d and campus_id = %d",$cateid,$campusId)
+					->find();
+
+		$goodList = M('food')
+		            ->where("category_id=%d and campus_id=%d",$cateid['category_id'],$campusId)
 					->limit($limit)
 					->select();
-		// dump($cateid);
-		// dump($campusId);
+
 		return $goodList;
 	}
 }

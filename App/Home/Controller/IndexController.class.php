@@ -25,6 +25,7 @@ class IndexController extends Controller {
         ->where('campus_id=%d',$campusId)
         ->select();    
 
+        // dump($_SESSION['campusId']);
         $campusName = D('Campus')->getNameByCampusId($campusId);
         $goodsSale = D('Food')->getHomeSaleFood($campusId);
         $this->assign('newsimage',$newsImage)

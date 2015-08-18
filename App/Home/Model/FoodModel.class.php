@@ -77,7 +77,7 @@ class FoodModel extends Model{
 	public function getHomeSaleFood($campusId = 1) {
 
 		$homeFood = $this->field('food_id,home_image')
-						->where('to_home = 1 and campus_id = %d',$campusId )
+						->where('to_home = 1 and campus_id = %d and tag=1 and status=1',$campusId )
 						->select();
 
 		return $homeFood;

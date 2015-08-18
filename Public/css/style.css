@@ -94,7 +94,6 @@ input {
 	position: fixed;
 	bottom: 0;
 	padding: 3px 0;
-	/*padding-top: 8px;*/
 	font-size: 15px;
 	border-top: 1px solid #ddd;
 	color: #999;
@@ -514,8 +513,8 @@ a.add-goods {
 	text-align: center;
 	font-size: 16px;
 	float: left;
-	cursor: context-menu;
-	padding-top: 3px;
+	cursor: pointer;
+	padding-top: 2px;
 }
 a.sub-goods {
 	border-bottom-left-radius:4px;
@@ -614,6 +613,49 @@ input.goods-count {
 }
 
 /*order-confirm*/
+#arr-time {
+	background: #fff;
+	width: 80%;
+	height: 65%;
+	overflow: auto;
+}
+#arr-time h1 {
+	color: #fe4d3d;
+	padding-top: 12px;
+	padding-left: 14px;
+	font-size: 20px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #fe4d3d;
+}
+#arr-time li {
+	float: left;
+	display: inline-block;
+	width: 100%;
+	padding-left: 16px;
+	padding-top: 14px;
+	height: 45px;
+	font-size: 18px;
+	border-bottom: 1px solid #eee;
+}
+#arr-time li.active {
+	color: #fe4d3d;
+}
+.orderconfirm-arrivetime .arrive-time {
+	margin-right: 20px;
+}
+.orderconfirm-arrivetime img {
+	width: 15px;
+	height: 15px;
+	float: right;
+	margin-top: 10px;
+}
+.consumer-info-add img {
+	width: 14px;
+	height: 14px;
+	margin-top: -11px;
+	float: right;
+	margin-right: 8px;
+}
 #order-confirm-time {
 	width: 100%;
 	height: 200px;

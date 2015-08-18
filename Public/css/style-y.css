@@ -99,33 +99,28 @@
 }
 .consumer-info{
 	width: 100%;
-	height: 40px;
 	padding: 0 16px;
-/*	margin-top: 10px;*/
 	background-color: white;
-
 }
 .consumer-info .glyphicon{
 	display: inline-block;
 	padding-right: 10px;
-	color: #333333;
 	font-size: 17px;
 	text-align: right;
 	width: 10%;
-/*	top: 12px;*/
+	color: #aaa;
 }
 .consumer-info .consumer-name{
 	display: inline-block;
 	margin-top: 11px;
 	font-family: "黑体";
-	font-size: 20px;
-	width: 25%;
+	font-size: 24px;
 	color: #333;
+	margin-right: 10px;
 }
 .consumer-info .consumer-phone{
 	font-family: "黑体";
 	font-size: 19px;
-	width: 60%;
 	color: #222;
 }
 .consumer-info .consumer-rightarrow{
@@ -139,33 +134,30 @@
 /*add*/
 .consumer-info-add{
 	width: 100%;
-	height: 40px;
-	padding: 0 16px;
-/*	margin-top: 10px;*/
+	padding: 0 15px;
+	padding-bottom: 5px;
 	border-bottom: 1px solid #eee;
 	background-color: white;
 }
 .consumer-info-add .consumer-address{
 	display: inline-block;
 	font-family: "黑体";
-	width: 80%;
+	width: 65%;
 	margin-top: 3px;
-	height: 35px;
 }
 .consumer-info-add .glyphicon {
 	display: inline-block;
 	padding-right: 10px;
-	color: #333333;
 	font-size: 17px;
 	text-align: right;
 	width: 10%;
-	top: -6px;
+	vertical-align: text-bottom;
+	color: #aaa;
 }
 
 /*待购商品*/
 .orderconfirm-goods{
 	width: 100%;
-	height: 120px;
 	border-bottom: 1px solid #eee;
 }
 
@@ -175,13 +167,10 @@
 	padding: 0 10px;
 	margin-top: 10px;
 	background-color: white;
-	border-bottom: 1px solid #eee;
-	border-top: 1px solid #eee;
 }
 .orderconfirm-goodsimg {
 	overflow: hidden;
 	width: 30%;
-	height: 100px;
 	margin: 10px 10px 10px 0;
 	float: left;
 	padding-top: 3px;
@@ -204,10 +193,8 @@
 	margin-top: 15px;
 }
 .orderconfirm-goods-txt {
-	width: 61%;
-	height: 100px;
+	width: 63%;
 	margin: 10px 10px 10px 0;
-/*	background-color: pink;*/
 	float: left
 }
 .orderconfirm-goods-txt .orderconfirm-price{
@@ -221,33 +208,8 @@
 	display: inline-block;
 }
 #order-goods-count {
-	margin-left: 12px;
-	margin-top: 6px;
+	margin-right: 8px;
 }
-a.sub-goods,
-a.add-goods {
-	width: 21px;
-	height: 21px;
-	border: 1px solid #aaa;
-	/* border-radius: 4px; */
-	display: inline-block;
-	color: #24dfc2;
-	text-align: center;
-	font-size: 16px;
-	float: left;
-	text-decoration: none;
-}
-a.sub-goods {
-	border-bottom-left-radius:4px;
-	border-top-left-radius:4px;
-	border-right: none;
-}
-a.add-goods {
-	border-top-right-radius:4px;
-	border-bottom-right-radius:4px;
-	border-left: none;
-}
-
 .ocnprice-item{
 	width: 19px;
 	height: 23px;
@@ -261,17 +223,6 @@ a.add-goods {
 	font-size: 14px;
 }
 
-input.goods-count {
-	width: 26px;
-	height: 21px;
-	color: #aaa;
-	float: left;
-	text-align: center;
-	font-size: 10px;
-	outline: none;
-	background: #fff;
-	border: 1px solid #aaa;
-}
 .orderconfirm-goods-txt span.block .goods-count {
 	color: #F76C3A;
 }
@@ -324,7 +275,6 @@ input.goods-count {
 
 /*总金额*/
 .orderconfirm-totalamount{
-	height: 20px;
 	padding: 0 16px;
 	margin-top: 10px;
 	text-align: center;
@@ -342,7 +292,7 @@ input.goods-count {
 	padding: 0 16px;
 	height: 40px;
 	margin-top: 10px;
-	margin-bottom: 210px;
+	margin-bottom: 60px;
 }
 .orderconfirm-btn-pay .register-info-submit-btn{
 	width: 100%;
@@ -519,6 +469,11 @@ input.goods-count {
 }
 #searchgoods-head .glyphicon-search {
 	padding-top: 5px;
+	padding-top: 5px;
+	height: 25px;
+	display: inline-block;
+	width: 9%;
+	text-align: center;
 }
 #searchgoods-head .ui-input-text {
 	float: left;
@@ -691,38 +646,27 @@ input.goods-count {
 .search-history-item {
 	width: 100%;
 	height: 35px;
+	padding-left: 30px;
+	padding-top: 8px;
 	border-bottom: 1px solid rgb(250,250,250);
 }
 .search-history-item a {
 	width: 100%;
 	height: 100%;
-	padding: 10px 0 0 10px;
+	padding: 10px 0 0 30px;
 	display: inline-block;
 	text-decoration: none;
 	color: #999;
 }
-#clear-history-list {
-	
-}
-#clear-history-list span,
-#clear-history-list a {
-	width: 100%;
-	display: inline-block;
-}
-#clear-history-list a {
+#clear-history-list p,
+#clear-history-list h1 {
 	text-align: center;
 	color: #999;
 	padding: 5px 0;
+	width: 100%;
 	background: rgb(250,250,250);
 	text-decoration: none;
 }
-
-
-
-
-
-
-
 /*=============userinfo修改子页面===========*/
 .wrapper{
 	width: 100%;
@@ -732,12 +676,11 @@ input.goods-count {
 .userinfo-change-head{
 	padding-top: 13px;
 	height: 43px;
-	border-bottom: solid 2px #333333;
+	border-bottom: solid 2px #333;
 	text-align: center;
 	font-size: 20px;
 	font-family: "黑体";
-	
-	color: #333333;
+	color: #333;
 }
 .kongbai{
 	width: 100%;
@@ -750,10 +693,10 @@ input.goods-count {
 	font-size: 16px;
 	padding-left: 10px;
 	border-radius: 2px;
-	border-bottom: solid 1px #EEEEEE;
-	border-top: solid 1px #EEEEEE;
-	border-right: solid 2px #EEEEEE;
-	border-left: solid 2px #EEEEEE;
+	border-bottom: solid 1px #eee;
+	border-top: solid 1px #eee;
+	border-right: solid 2px #eee;
+	border-left: solid 2px #eee;
 	
 }
 .userinfo-change-btn{

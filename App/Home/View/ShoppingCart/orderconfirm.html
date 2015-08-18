@@ -9,11 +9,6 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style-y.css" />
-		<style>
-			body{
-				background-color: #FAFAFA;
-			}
-		</style>
 		
 	</head>
 	<body>
@@ -21,22 +16,24 @@
 			<span class="glyphicon glyphicon-circle-arrow-left fl history-back"></span>
 			<span>确认订单</span>
 		</div><!--register-head-->
-		<div class="consumer-info w">
-				<span class="glyphicon glyphicon-user"></span>
-				<span class="consumer-name">{$defaultAddress.name}</span>
-				<span class="consumer-phone">{$defaultAddress.phone_id}</span>
-				<span class="consumer-rightarrow ">&gt;</span>
-		</div>
-		<div class="consumer-info-add w">
-				<span class="glyphicon  glyphicon-map-marker glyadd"></span>
-				<span class="consumer-address">{$defaultAddress.address}</span>
-		</div>
+		<a href="{:U('Person/addressManage')}">
+			<div class="consumer-info w">
+					<span class="glyphicon glyphicon-user"></span>
+					<span class="consumer-name">{$defaultAddress.name}</span>
+					<span class="consumer-phone">{$defaultAddress.phone_id}</span>	
+			</div>
+			<div class="consumer-info-add w">
+					<span class="glyphicon  glyphicon-map-marker glyadd text-special"></span>
+					<span class="consumer-address">{$defaultAddress.address}</span>
+					<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
+			</div>
+		<a>
 		<div class="orderconfirm-goodsdetail w">
 			<ul id="orderconfirm-goods">
 				<input class="together-id-none none" value="{$together_id}"/>
 				<foreach name="goodsInfo" item="goods">
 					<li>
-						<div class="orderconfirm-goods" id="goods1" >
+						<div class="orderconfirm-goods clearfix">
 							<div class="orderconfirm-goodsimg">
 								<img src="{$goods.img_url}" />
 							</div>
@@ -45,10 +42,10 @@
 								<p class="goods-txt-intro">{$goods.message}</p>
 								<div class="bo">
 									<div id="price-present" class="fl">
-										<span class="orderconfirm-price fl discount-price">￥{$goods.dPrice}元</span> 
-										<span class="orgin-price fl bef-price">原价:￥{$goods.Price}元</span>
+										<span class="orderconfirm-price fl discount-price">￥{$goods.dPrice}</span> 
+										<span class="orgin-price fl bef-price">原价:￥{$goods.Price}</span>
 									</div>
-									<div id="order-goods-count" class="fl">
+									<div id="order-goods-count" class="fr">
 										<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
 										<input class="goods-count" type="text" id="{$goods.order_id}" value="{$goods.order_count}" disabled="true">
 										<a class="add-goods" data-orderId="{$goods.order_id}">+</a>	
@@ -59,11 +56,24 @@
 					</li>
 				</foreach>
 			</ul>
-				
+		</div>
+		<div id="arr-time-mask" class="mask none">
+			<div id="arr-time" class="center">
+				<h1>请选择送达时间</h1>
+				<ul>
+					<li class="active">立即送出</li>
+					<li>11:55</li>
+					<li>10:90</li>
+					<li>22:10</li>
+					<li>44:10</li>
+					<li>11:55</li>
+				</ul>
+			</div>
 		</div>
 		<div class="orderconfirm-arrivetime w">
 			<span class="fl">送达时间</span>
-			<span class="ri">&gt;</span>
+			<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
+			<span class="fr arrive-time"></span>
 		</div>
 		<div class="payment-orderconfirm w">
 			<div class="payment-method-oc">
@@ -95,9 +105,9 @@
 			<textarea     placeholder="留言备注：" rows="5"></textarea>
 		</div>
 		<div class="orderconfirm-totalamount">
-			合计:￥<span id="settle-dprice"> {$price.dPrice}</span>元 <span class="orgin-price">
-			原价:￥<span id="settle-price"> {$price.Price}</span>元</span>
-			（已节省￥<span id="settle-save">{$price.save}</span>元）
+			合计:￥<span id="settle-dprice"> {$price.dPrice}</span> <span class="orgin-price">
+			原价:￥<span id="settle-price"> {$price.Price}</span></span>
+			（已节省￥<span id="settle-save">{$price.save}</span>）
 		</div>
 		<div class="orderconfirm-btn-pay" >
 			<button class="btn register-info-submit-btn">
@@ -105,41 +115,8 @@
 			</button>
 		</div>
 		
-<!-- 		<div id="order-confirm-time">
-			<div id="order-confirm-time-top" class="clearfix">
-				<span class="fl">取消</span>
-				<span class="fr">确定</span>
-			</div>
-			<div id="order-time-list">
-				<div class="hour-list">
-					<ul>
-						<li>5</li>
-						<li class="sub-active">6</li>
-						<li class="active">7</li>
-						<li class="sub-active">8</li>
-						<li>9</li>
-						<li>10</li>
-						<li>11</li>
-						<li>12</li>
-					</ul>
-				</div>
-				<div class="minute-list">
-					<ul>
-						<li>15</li>
-						<li class="sub-active">16</li>
-						<li class="active">17</li>
-						<li class="sub-active">18</li>
-						<li>19</li>
-						<li>20</li>
-						<li>21</li>
-						<li>22</li>
-					</ul>
-				</div>
-			</div>
-		</div> -->
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/orderconfirm.js"></script>
 	</body>

@@ -1,5 +1,39 @@
 $(document).ready(function(){
 
+	$(".orderconfirm-arrivetime").click(function(){
+		$("body").addClass("over-hidden");
+		// $("#arr-time-mask").removeClass("none");
+		$("#arr-time-mask").fadeIn(100);
+		$("#arr-time li").remove();
+
+		for(i=0;i<50;i++) {
+			var t = curentTime(30*i);
+			if(parseInt(t.substr(0,2))>=24){
+				break;
+			}
+			else {
+				$("#arr-time ul").append($("<li>"+t+"</li>"));
+			}
+		}
+
+		$("#arr-time-mask li").eq(0).addClass("active");
+
+		$("#arr-time-mask li").click(function(){
+			$("body").removeClass("over-hidden");
+			$(this).siblings().removeClass("active");
+			$(this).addClass("active");
+			$(".orderconfirm-arrivetime .arrive-time").text($(this).text());
+			$("#arr-time-mask").fadeOut(100);
+		});
+	});
+
+	$("#arr-time-mask li").click(function(){
+		$("body").removeClass("over-hidden");
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+		$(".orderconfirm-arrivetime .arrive-time").text($(this).text());
+		$("#arr-time-mask").fadeOut(100);
+	});
 	/*=================计算价格的函数=======================*/
 	function pricecalculate(){
 		var $together_id = $(".together-id-none").val();
@@ -38,12 +72,10 @@ $(document).ready(function(){
 		        	if (price['result'] != 0) {
 		        		document.getElementById($order_id).value = $order_count;
 
-		        		var $text = "￥"+price['dPrice']+"元";
-		        		$this.parent().prev().children(".orderconfirm-price").text($text);
-
-		        		var $text = "原价:￥"+price['Price']+"元";
-		        		$this.parent().prev().children(".orgin-price").text($text);
-
+		        		// var $text = "￥"+price['dPrice'];
+		        		// $this.parent().prev().children(".orderconfirm-price").text($text);
+		        		// var $text = "原价:￥"+price['Price'];
+		        		// $this.parent().prev().children(".orgin-price").text($text);
 		        		pricecalculate();
 		        	}
 		        	else {
@@ -65,14 +97,11 @@ $(document).ready(function(){
 		    data:{order_count:$order_count,order_id:$order_id},
 	        success:function(price){
 	        	if (price['result'] != 0) {
-	        		document.getElementById($order_id).value = $order_count;
-	        		
-	        		var $text = "￥"+price['dPrice']+"元";
-	        		$this.parent().prev().children(".orderconfirm-price").text($text);
-
-		        	var $text = "原价:￥"+price['Price']+"元";
-		        	$this.parent().prev().children(".orgin-price").text($text);
-
+	        		document.getElementById($order_id).value = $order_count;	
+	        		// var $text = "￥"+price['dPrice'];
+	        		// $this.parent().prev().children(".orderconfirm-price").text($text);
+		        	// var $text = "原价:￥"+price['Price'];
+		        	// $this.parent().prev().children(".orgin-price").text($text);
 		        	pricecalculate();
 		        }
 		       	else {
@@ -83,3 +112,25 @@ $(document).ready(function(){
 	});								
 });
 
+function curentTime(addtime)   
+{   
+    var now = new Date();    
+    var hh = now.getHours(); //时
+    var mm = (now.getMinutes() + addtime) % 60;  //分
+
+    if ((now.getMinutes() + addtime) / 60 > 1) {
+        hh += Math.floor((now.getMinutes() + addtime) / 60);
+    }
+    
+    var clock="";
+    if(hh < 10) {
+    	clock += "0";
+    }            
+    clock += hh + ":";   
+    if (mm < 10) {
+    	clock += '0';  
+    } 
+    clock += mm; 
+
+    return(clock);
+} 

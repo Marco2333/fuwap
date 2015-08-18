@@ -21,17 +21,32 @@ class FoodCategoryModel extends Model {
 	}
 
 	public function getGoodsByCatId($categoryId,$campusId,$limit = '') {
+		$field = array(
+			'food_id',
+			'campus_id',
+			'name',
+			'price',
+			'discount_price',
+			'img_url',
+			'is_discount',
+			'message',
+			'grade',
+			'info',
+			'sale_number'
+		);
 
 		$good=M('food');
 
 		if($limit !== '') {
-			$goodList = $good->where('category_id=%d and campus_id=%d',$categoryId,$campusId)
+			$goodList = $good->where('category_id=%d and campus_id=%d and tag=1 and status=1',$categoryId,$campusId)
+			->field($field)
 			->limit($limit)
 			->select();
 		}
 		else {
 			$goodList = $good->where('category_id=%d and campus_id=%d and tag=1 and status=1',$categoryId,$campusId)
-			->select();
+				->field($field)
+				->select();
 		}
 
 		return $goodList;
@@ -39,13 +54,28 @@ class FoodCategoryModel extends Model {
 
 	public function getGoodsBySerial($flag,$campusId = 1,$limit = 8) {
 		
+		$field = array(
+			'food_id',
+			'campus_id',
+			'name',
+			'price',
+			'discount_price',
+			'img_url',
+			'is_discount',
+			'message',
+			'grade',
+			'info',
+			'sale_number'
+		);
+
 		$cateid = M('food_category')
 		            ->scope('nomal')
 					->where('serial = %d and campus_id = %d',$flag,$campusId)
 					->find();
 
 		$goodList = M('food')
-		            ->where("category_id=%d and campus_id=%d",$cateid['category_id'],$campusId)
+		            ->where("category_id=%d and campus_id=%d and tag=1 and status=1",$cateid['category_id'],$campusId)
+					->field($field)
 					->limit($limit)
 					->select();
 

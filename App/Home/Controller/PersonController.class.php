@@ -77,19 +77,31 @@ class PersonController extends Controller {
 
     public function addressManage(){
     	$Receiver = D('Receiver');
-
         $row     = 9;
         $count   = $Receiver->count();
-    	$page    = $Receiver->pageProduce($count,$row);
+    	$page    = $Receiver->pageProduce($count,$row);    //分页
         $show    = $page->show();
         $limit   = $page->firstRow.','.$page->listRows;
 
-        $address = $Receiver->getAddressInfo($limit);
+        $address = $Receiver->getAddressInfo($limit);   //获取地址
         $address = $Receiver->addressConnect($address);
 
+        // dump($address);
     	$this->assign('address',$address)
              ->assign('addressPage',$show);
     	$this->display('addressManage');
+    }
+
+    public function newAddress(){
+
+        $city = M('city');
+        $cityList = $city->select();
+        
+        $campusList = D('Campus')->getCampusByCity($cityList[0]['city_id']);
+        $this->assign("cityList",$cityList)
+             ->assign("campusList",$campusList);
+
+        $this->display('newAddress');
     }
 
     public function saveNewAddress(){
@@ -105,13 +117,29 @@ class PersonController extends Controller {
         }
     }
 
+    public function deleteAdress($rank) {
+
+        $phone = $_SESSION['username'];
+        $out = D('Receiver')->deleteAddress($phone,$rank);
+
+        $this->ajaxReturn($out);
+    }
+
     public function getAddress($rank){
         $Receiver = D('Receiver');
+        $address  = $Receiver->getAddressInfo('',$rank);   //获取地址信息
 
-        $address  = $Receiver->getAddressInfo('',$rank);
-        $address  = $Receiver->addressSplit($address[0]);
+        $campusName = D('Campus')->getNameByCampusId($address[0]['campus_id']);
 
-        $this->assign('addressInfo',$address);
+        $city = M('city');
+        $cityList = $city->select();
+        
+        $campusList = D('Campus')->getCampusByCity($cityList[0]['city_id']);
+        $this->assign("cityList",$cityList)
+             ->assign("campusList",$campusList)
+             ->assign('addressInfo',$address[0])
+             ->assign('campusName',$campusName[0]['campus_name']);
+       
         $this->display('reviseaddress');
     }
 
@@ -141,6 +169,21 @@ class PersonController extends Controller {
         $Verify->imageW = 150;
         $Verify->imageH = 53;
         $Verify->entry();
+    }
+
+    public function setDefaultAddress($rank) {
+       
+        $phone = $_SESSION['username'];
+        $out = D('Receiver')->setDefaultAdd($phone,$rank);         //设置默认地址
+        
+        if($out == false) {
+            $res['status'] = 0;
+        }
+        else {
+             $res['status'] = 1;
+        }
+
+        $this->ajaxReturn($res);
     }
 
     public function saveNewPWord($phone,$verify,$pVerify,$pword){
@@ -191,7 +234,6 @@ class PersonController extends Controller {
                 );
             $this->ajaxReturn($res);
         }
-
     }
 
 }

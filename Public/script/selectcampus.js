@@ -33,7 +33,7 @@ $(document).ready(function(){
 				}
 			},
 			error:function(){
-				alert("刷新失败1！");
+				alert("刷新失败！");
 			}
 		});
 	});

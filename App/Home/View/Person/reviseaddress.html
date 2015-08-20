@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css"/>
 	</head>
 	<body>
-		<form action="{:U('Person/reviseAddress')}" method="post">
+		<form id="revise-form" action="{:U('Person/reviseAddress')}" method="post">
 			<div id="revise-head" >
 				<div class="head-top bground-special">
 					<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
@@ -26,26 +26,32 @@
 		   		</div>
 		   		<div class="user-info-input">
 		   			<span>手机号</span>
-					<input type="text" name="new-phone" value="{$addressInfo.phone_id}"/>
+					<input type="text" name="new-phone" value="{$addressInfo.phone}"/>
+		   		</div>
+		   		<div id="revise-select-campus" class="user-info-input">
+		   			<span>选择校区</span>
+					<input type="text" disabled="disabled" name="new-location" value="{$campusName}"/>
+					<input type="text" class="none" name="campusId" value="1">
+					<img class="arrow-right fr" src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">		
 		   		</div>
 		   		<div class="user-info-input">
-		   			<span>所在地区</span>
-					<input type="text" name="new-location" value="{$addressInfo.address}"/>	
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span>街道</span>
-					<input type="text" name="new-block" value="{$addressInfo.block}"/>
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span>地址</span>
-					<input type="text" name="new-deLocation" id="" value="{$addressInfo.detail}" />
+		   			<span>详细地址</span>
+					<input type="text" name="new-deLocation" id="" value="{$addressInfo.address}" />
 		   		</div>
 		   		<input type="text" class="none" id="" name="rank" value="{$addressInfo.rank}" />
 			</div>
 		</form>
+		<button class="set-default-address" data-id="{$addressInfo.phone_id}" data-rank="{$addressInfo.rank}">设为默认地址</button>
+		
+		<div class="center info-tips none">
+			
+		</div>
+		
+		<include file='App/Home/View/Common/commonlocation.html'/>
 
 	<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-	<script src="__PUBLIC__/script/common.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/script/addressManage.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.validate.js"></script>
+	<script src="__PUBLIC__/script/common.js"></script>
 	</body>
 </html>

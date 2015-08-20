@@ -158,8 +158,8 @@ class CommodityController extends Controller {
         $Food        = D('Food');
         $FoodComment = D('FoodComment');
 
-        // $food_id = I('food_id');
-        $food_id   = '10502';
+        $food_id = I('food_id');
+        // $food_id   = '40313';
         $campus_id = $_SESSION['campus_id'];
 
         $userInfo    = $Users->getUserInfo();
@@ -181,6 +181,10 @@ class CommodityController extends Controller {
         }
 
         $avgGrade = substr($FoodComment->getAvgGrade($commentInfo),0,3);
+
+        if($avgGrade == false){
+            $avgGrade = 0;
+        }
 
         if ($goodsInfo) {
             $this->assign('goodsInfo',$goodsInfo)

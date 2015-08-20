@@ -1,13 +1,70 @@
 $(document).ready(function(){
-	$("#changenumber").click(function(){
-		$(".containchangenumber").show(200);
+	$("#goods-info-number").click(function(){
+		$("body").addClass("over-hidden");
+		$(".mask").fadeIn(50);
+		$("#goods-info-number-select").slideDown(340);
 	});
 
-	$(".colorblack").click(function(){
-		$(".containchangenumber").hide(200);
+	$(".addcart-buynow,.mask").click(function(){
+		$("body").removeClass("over-hidden");
+		
+		$("#goods-info-number-select").slideUp(340);
+		$(".mask").fadeOut(340);
 	});
 
-	$("#ordernumber").val(1);
+	$(".addcart-buynow .glyphicon-shopping-cart").click(function(){
+		var $food_id  = $(this).attr("data-food-id");
+		var $this     = $(this);
+		var $count = $(".goods-count").val();
+
+		$.ajax({
+			type:"POST",
+			url:"/fuwebapp/index.php/Home/Commodity/buyNowButton",
+			data:{order_count:$count,food_id:$food_id},
+			success:function(result){
+				if (result['result'] != 0) {
+					alert("加入购物车成功");
+				}
+				else {
+					alert("亲~网速不给力哦，请稍后重试！");
+				}
+			}
+		});
+	});
+
+	$(".buy-now").on("click",function(){
+
+		var $food_id  = $(this).attr("data-food-id");
+		var $this     = $(this);
+		var $count = $(".goods-count").val();
+
+		$.ajax({
+			type:"POST",
+			url:"/fuwebapp/index.php/Home/Commodity/buyNowButton",
+			data:{order_count:$count,food_id:$food_id},
+			success:function(result){
+				if (result['result'] != 0) {
+					var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+result['order_id'];
+					window.location.href=$href;
+				}
+				else {
+					// alert("亲~网速不给力哦，请稍后重试！");
+				}
+			}
+		});
+	});
+
+	$(".sub-goods").click(function(){
+		var v = $(this).next("input").val();
+		if(parseInt(v)>1) {
+			$(this).next("input").val(parseInt(v)-1);
+		}
+	});
+
+	$(".add-goods").click(function(){
+		var v = $(this).prev("input").val();
+		$(this).prev("input").val(parseInt(v)+1);
+	});
 
 	$(".sub-button").click(function(){
 		var $number=$("#ordernumber").val();
@@ -39,32 +96,7 @@ $(document).ready(function(){
 		$(".save-none").html($Price*$number-$dPrice*$number)
 	});
 
-	$(".add-to-shopping-cart").on("click",function(){
-		var $cDefault = $(this).attr("data-default");
-		var $food_id  = $(this).attr("data-food-id");
-		var $this     = $(this);
 
-		if ($cDefault != 0) {
-			var $count = 1;
-		}
-		else {
-			var $count = $this.parent().parent().prev().find("#ordernumber").val();
-		}
 
-		$.ajax({
-			type:"POST",
-			url:"/fuwebapp/index.php/Home/Commodity/buyNowButton",
-			data:{order_count:$count,food_id:$food_id},
-			success:function(result){
-				if (result['result'] != 0) {
-					var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+result['order_id'];
-					window.location.href=$href;
-				}
-				else {
-					// alert("亲~网速不给力哦，请稍后重试！");
-				}
-			}
-		});
-	});
 
 });

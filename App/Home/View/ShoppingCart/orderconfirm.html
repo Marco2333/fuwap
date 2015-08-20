@@ -18,14 +18,14 @@
 		</div><!--register-head-->
 		<a href="{:U('Person/addressManage')}">
 			<div class="consumer-info w">
-					<span class="glyphicon glyphicon-user"></span>
-					<span class="consumer-name">{$defaultAddress.name}</span>
-					<span class="consumer-phone">{$defaultAddress.phone_id}</span>	
+				<span class="glyphicon glyphicon-user"></span>
+				<span class="consumer-name">{$defaultAddress.name}</span>
+				<span class="consumer-phone">{$defaultAddress.phone_id}</span>	
 			</div>
 			<div class="consumer-info-add w">
-					<span class="glyphicon  glyphicon-map-marker glyadd text-special"></span>
-					<span class="consumer-address">{$defaultAddress.address}</span>
-					<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
+				<span class="glyphicon  glyphicon-map-marker glyadd text-special"></span>
+				<span class="consumer-address">{$defaultAddress.address}</span>
+				<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
 			</div>
 		<a>
 		<div class="orderconfirm-goodsdetail w">
@@ -42,8 +42,8 @@
 								<p class="goods-txt-intro">{$goods.message}</p>
 								<div class="bo">
 									<div id="price-present" class="fl">
-										<span class="orderconfirm-price fl discount-price">￥{$goods.dPrice}</span> 
-										<span class="orgin-price fl bef-price">原价:￥{$goods.Price}</span>
+										<span class="orderconfirm-price fl discount-price">￥{$goods.discount_price}</span> 
+										<span class="orgin-price fl bef-price">￥{$goods.price}</span>
 									</div>
 									<div id="order-goods-count" class="fr">
 										<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>

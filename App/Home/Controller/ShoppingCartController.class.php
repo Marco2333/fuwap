@@ -69,6 +69,7 @@ class ShoppingCartController extends Controller{
         $price          = $Orders->settleAccounts($goodsInfo);
         $together_id    = $Orders->setTogether($orderIds);
 
+        // dump($goodsInfo);
         if ($defaultAddress != false && $goodsInfo != false && $result !== false) {
             $this->assign('defaultAddress',$defaultAddress)
                  ->assign('goodsInfo',$goodsInfo)

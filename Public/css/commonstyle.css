@@ -2,7 +2,8 @@
  * 重新定义Html元素
  * =============== */
 html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form,hr,p, blockquote, fieldset, input { 
-	padding: 0; margin: 0;
+	padding: 0; 
+	margin: 0;
 }
 h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td { 
 	font-size: 1em; 
@@ -117,11 +118,20 @@ i, cite, em {
 .text-special{
 	color:#24dfc2;
 }
+.text-subspecial {
+	color: #ff573a;
+}
+.del {
+	text-decoration: line-through;
+}
 button.disabled {
 	background-color: #aaa;
 }
 .bground-special {
 	background-color: #24dfc2;
+}
+.bground-white {
+	background-color:#fff;
 }
 .spliter {
 	border-left:1px solid #aaa;
@@ -170,14 +180,16 @@ button.disabled {
 	left: 0;
 	top: 0;
 	background: rgba(10,10,10,.6);
-	/*-webkit-opacity: 0.5;   
-    -moz-opacity: 0.5;   
-    -khtml-opacity: 0.5;   
-    opacity: .5;  
-    filter:alpha(opacity=50);  
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  
-    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);*/
     z-index: 99;  
+}
+.info-tips {
+	padding: 6px 12px;
+	position: fixed;
+	background: rgba(1,1,1,.6);
+	border-radius: 5px;
+	color: #fff;
+	overflow: hidden;
+	text-align: center;
 }
 .center {
 	left: 50%;
@@ -209,4 +221,33 @@ button.disabled {
 	-o-transform: translateX(-50%);
 	transform: translateX(-50%);
 	z-index: 100;
+}
+img.arrow-right {
+	width: 14px;
+	height: 14px;
+}
+.page {
+	text-align: center;
+}
+.page a,
+.page span {
+	width: 33px;
+	height: 22px;
+	border: 1px solid #24dfc2;
+	display: inline-block;
+	margin: 0 2px;
+	text-align: center;
+}
+.page span:last-child {
+	width: auto;
+	border: none;
+}
+.pos-relative {
+	position: relative;
+}
+.pos-fiex {
+	position: fixed;
+}
+.pos-absolute {
+	position: absolute;
 }

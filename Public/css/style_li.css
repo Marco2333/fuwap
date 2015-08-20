@@ -1,20 +1,11 @@
 .inlineB{ display: inline-block;}
-.userA img {
-	margin-right: 20px;
-	width: 15px;
-	height: 15px;
-	margin-top: 8px;
-}
+.userA img { margin-right: 20px; width: 15px; height: 15px;margin-top: 8px;}
 .special-bgcolor{ background-color: #FAFAFA;}
 .cRow{ width: 100%;padding-bottom: 5px; background-color: #fff; margin-top:10px;}
 .rown{ width: 100%; background-color: #FFFFFF; position: relative;}
 .cnRow{ padding: 10px 0;}
 div.nrow{ height: auto;}
-#add-location {
-	color: #fed1cb;
-	font-size: 18px;
-	vertical-align: -1px;
-}
+#add-location {color: #fed1cb; font-size: 18px; vertical-align: -1px;}
 .one{ width: 9%;}
 .two{width: 19%;}
 .three{ width: 29%;}
@@ -35,8 +26,7 @@ textarea{ width: 100%; height: 50px; border: 1px solid #F9F9F9; }
 .thingsubmit div{width: 98%;border-radius: 4px; background-color: #ff573a; margin: 0 auto; height: 30px; line-height: 30px;}
 .thingsubmit span.glyphicon{font-size: 17px; color: white; margin-right: 22px;}
 
-*{padding: 0; margin: 0;}
-body{ text-align: center; font-family: "黑体";}
+body{font-family: "黑体";}
 .head{width: 100%; height: 50px; text-align: start; line-height: 50px;}
 .head span{font-size: 20px; margin: 0 auto; display: inline-block; margin-left: 24%;}
 .main{ width: 100%; background-color: #fafafa;}
@@ -56,13 +46,13 @@ body{ text-align: center; font-family: "黑体";}
 /*newaddress*/
 .ADhead div{ display: inline-block; height: 30px; line-height: 30px;}
 .hMain{ font-size: 20px;}
-.star{ width: 18%; display: inline-block; font-size: 13px; text-align: start;}
+.star{ width: 20%; display: inline-block; font-size: 13px; padding-left: 5px;}
 .hMain{ width: 58%;}
 .save{ width: 18%; color: #fc8d7a;}
 .save input{ border: 0; background-color: transparent; position: absolute; top: 0; right: 10px; font-size: 18px;}
 .NAmain{ padding-top: 2px; background-color: #fafafa;}
-.NAmain input{width: 75%; height: 30px; line-height: 30px; margin-top: 6px; border: 0; font-size: 15px;}
-.ADrow{ border-bottom: 1px solid #eee; height: 40px; line-height: 30px; background-color: white;}
+.NAmain input{width: 75%; height: 30px; line-height: 30px; margin-top: 6px; border: 0; font-size: 14px;}
+.ADrow{ text-align:left; border-bottom: 1px solid #eee; height: 40px; line-height: 30px; background-color: white;}
 input.innerAD{ width: 71%;} 
 
 

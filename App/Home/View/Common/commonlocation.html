@@ -1,0 +1,33 @@
+<div id="revise-wrapper">
+	<div id="selectcampus-head">
+		<div class="head-top bground-special ">
+			<span class="fl history-back-temp glyphicon glyphicon-circle-arrow-left"></span>
+			<span class="head-title">选择学校</span>
+		</div>
+	</div>
+	<div id="selectcampus-body" class="w">
+		<div id="city-campus-nav" class="clearfix">
+			<div id="city-nav">
+				<ul>
+					<foreach name="cityList" item="vo">
+						<if condition="$key eq 0">
+							<li class="active" data-id="{$vo.city_id}"><a>{$vo.city_name}</a></li>
+						<else/><li data-id="{$vo.city_id}"><a>{$vo.city_name}</a></li>
+						</if>
+					</foreach>
+				</ul>
+			</div>
+			<div id="campus-nav">
+				<ul>
+					<foreach name="campusList" item="vi">
+						<li data-id="{$vi.campus_id}">		
+							<a>
+								{$vi.campus_name}
+							</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

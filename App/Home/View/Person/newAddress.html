@@ -7,48 +7,52 @@
 		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css"/>
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style_li.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css"/>
 	
 	</head>
-	<body >
-		<form action="{:U('Person/saveNewAddress')}" method="post">
-			<div class="Ahead color24dfc2">
-				<div class="Aicon">
-					<span class="fl history-back glyphicon glyphicon-circle-arrow-left colorwhite"></span>
-				</div>
-				<span class="Atitle colorwhite">新增地址</span>
-				<div class="save colorwhite">
-					<input type="submit" value="保存" />
+	<body>
+		<form  id="revise-form" action="{:U('Person/saveNewAddress')}" method="post">
+			<div id="revise-head" >
+				<div class="head-top bground-special">
+					<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
+					<span class="head-title">新增地址</span>
+					<input class="fr" type="submit" value="保存" />
 				</div>
 			</div>
-			<div class="NAmain">
-				<div class="ADrow">
-					<div class="star">联系人</div>
-					<input type="text" name="new-receiver" id="" placeholder="请填写收货人的姓名" />
-				</div>
-				<div class="ADrow">
-					<div class="star">手机号</div>
-					<input type="text" name="new-phone" id="" />
-				</div>
-				<div class="ADrow">
-					<div class="star">所在地区</div>
-					<input type="text" name="new-location" id="" placeholder="省·市·区" class="innerAD"/>
-				</div>
-				<div class="ADrow">
-					<div class="star">街道</div>
-					<input type="text" name="new-block" id="" placeholder=""  class="innerAD"/>
-				</div>
-				<div class="ADrow">
-					<div class="star">地址</div>
-					<input type="text" name="new-deLocation" id="" placeholder="" />
-				</div>
+			
+			<div id="revise-body">
+		   		<div class="user-info-input">
+		   			<span>联系人</span>
+		   			<input type="text" name="new-receiver" id="" placeholder="联系人" />
+		   		</div>
+		   		<div class="user-info-input">
+		   			<span>手机号</span>
+					<input type="text" placeholder="联系方式" name="new-phone" id="" />
+		   		</div>
+		   		<div id="revise-select-campus" class="user-info-input">
+		   			<span>选择校区</span>
+		   			<input type="text" disabled="disabled" name="new-location" value="苏州大学独墅湖校区" placeholder="校区"/>
+		   			<input type="text" class="none" name="campusId" value="1">
+		   			<img class="arrow-right fr" src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">			
+		   		</div>
+		   		<div class="user-info-input">
+		   			<span>详细地址</span>
+					<input type="text" name="new-deLocation" id="" placeholder="详细地址" />
+		   		</div>
+		   		<input type="text" class="none" id="" name="rank" value="{$addressInfo.rank}" />
 			</div>
 		</form>
+		
+		<div class="info-tips center none">
+			
+		</div>
+		<include file='App/Home/View/Common/commonlocation.html'/>
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.validate.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/addressManage.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
+		
 	</body>
 </html>

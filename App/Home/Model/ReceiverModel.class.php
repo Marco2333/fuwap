@@ -17,8 +17,8 @@ use Think\Model;
 class ReceiverModel extends Model{
 	protected $fields = array(
 		'receiver' => array(
-			'phone_id',
-			'phone',     //key
+			'phone_id',   //key
+			'phone',     
 			'name',
 			'address',
 			'tag',
@@ -38,26 +38,28 @@ class ReceiverModel extends Model{
      */
 	public function getAddressInfo($limit = '0,9',$rank = ''){
 		$field = array(
-			'phone',
+			'phone_id',
 			'rank',
 			'name',
-			'phone_id',
+			'phone',
 			'address',
-			'tag'
+            'phone',
+			'tag',
+            'campus_id'
 			);
 		$order = array(
 			'tag asc'
 			);
 
 		if ($rank != '') {
-			$info = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0'.' and '.'rank='.$rank)
+			$info = $this->where('phone_id= %s and is_out=0 and rank= %s',$_SESSION['username'],$rank)
 						 ->field($field)
 						 ->order($order)
 						 ->limit($limit)
 						 ->select();
 		}
 		else {
-			$info = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0')
+			$info = $this->where('phone_id= %s and is_out=0',$_SESSION['username'])
 						 ->field($field)
 						 ->order($order)
 						 ->limit($limit)
@@ -113,7 +115,7 @@ class ReceiverModel extends Model{
      */
 	public function count(){
 		$count = M('receiver')
-			    ->where('phone='.$_SESSION['username'].' and '.'is_out=0')
+			    ->where('phone_id=%s and is_out=0',$_SESSION['username'])
 				->count();
 
 		return $count;
@@ -162,16 +164,14 @@ class ReceiverModel extends Model{
 		$campus_id = 1;
 
 		$data = array(
-			'phone' 	=> $_SESSION['username'],
+			'phone_id' 	=> $_SESSION['username'],
 			'rank' 	 	=> $rank,
 			'name'  	=> I('new-receiver'),
-			'phone_id'  => I('new-phone'),
-			'address'   => I('new-location').'^'.
-						   I('new-block').'^'.
-						   I('new-deLocation'),
+			'phone'  => I('new-phone'),
+			'address'   => I('new-deLocation'),
 			'tag'       => $tag,
 			'is_out'    => 0,
-			'campus_id' => $campus_id
+			'campus_id' => I('campusId')
 			);
 
 		$res = $Receiver->data($data)
@@ -190,7 +190,7 @@ class ReceiverModel extends Model{
 	public function addressIsEmpty(){
         $Receiver = M('receiver');
         $where    = array(
-            'phone' => $_SESSION['username'],
+            'phone_id' => $_SESSION['username'],
             'tag'   => 0,
             'is_out'=> 0,
             '_logic'=> 'and'
@@ -215,7 +215,7 @@ class ReceiverModel extends Model{
      *                 用户不具有默认收货地址false
      */
     public function hasDefaultAddress(){
-    	$count = $this->where('phone='.$_SESSION['username'].' and '.'is_out=0'.' and '.'tag=0')
+    	$count = $this->where('phone_id= %s and is_out=0 and tag=0',$_SESSION['username'])
     				  ->count();
 
     	if ($count != 0) {
@@ -225,6 +225,52 @@ class ReceiverModel extends Model{
     		return false;
     	}
     }
+
+    public function deleteAddress($phone_id,$rank) {
+          $where = array(
+             'phone_id' => $phone_id,
+             'rank'=>$rank
+         );
+        $res = M('receiver')->where($where)->delete();
+
+        if($res === false) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+     /**
+     * 模型函数
+     * 设置用户默认收货地址
+     * @access public
+     * @param  null
+     * @return boolean 设置成功true
+     *                 设置失败false
+     */
+     public function setDefaultAdd($phone,$rank) {
+         $where = array(
+             'phone_id' => $phone,
+             'rank'=>$rank
+         );
+        
+         $where1 = array(
+            'phone_id' => $phone
+         );
+
+         $data1['tag'] = 1;
+         $data['tag'] = 0;
+
+         $res = M('receiver')->where($where1)->save($data1);
+         $res = M('receiver')->where($where)->save($data);
+
+         if ($res !== false) {
+             return true;
+         }
+         else {
+             return false;
+        }
+     }
 
     /**
      * 模型函数
@@ -237,7 +283,7 @@ class ReceiverModel extends Model{
     public function setDefaultAddress(){
     	$Receiver = M('receiver');
     	$where    = array(
-            'phone' => $_SESSION['username'],
+            'phone_id' => $_SESSION['username'],
             'is_out'=> 0,
             '_logic'=> 'and'
             );
@@ -269,7 +315,7 @@ class ReceiverModel extends Model{
             'name',
             'address'
             );
-        $defaultAddress = $this->where("phone=".$_SESSION['username'].' and tag = 0')
+        $defaultAddress = $this->where("phone_id=%s and tag = 0",$_SESSION['username'])
                                ->field($field)
                                ->select();
 
@@ -289,11 +335,11 @@ class ReceiverModel extends Model{
     public function removeAddress(){
     	$Receiver = M('receiver');
         $where    = array(
-            'phone' => $_SESSION['username'],
+            'phone_id' => $_SESSION['username'],
             'rank'  => I('rank'),
             'is_out'=> 0,
             '_logic'=> 'and'
-            );
+        );
         $data     = array(
         	'is_out'=> 1
         	);

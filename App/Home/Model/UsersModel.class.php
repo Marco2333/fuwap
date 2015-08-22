@@ -140,6 +140,52 @@ class UsersModel extends Model{
 
 	}
 
+	 /**
+    * 调用支付
+    * @param  [type] $channel 
+    * @param  [type] $amount  [description]
+    * @param  [type] $orderNo [description]
+    * @return [type]          [description]
+    */
+   public function pay($channel,$amount,$orderNo){
+        require_once(dirname(__FILE__) . '/../init.php');
+       
+        $extra = array();
+        switch ($channel) {
+            case 'alipay_wap':
+            $extra = array(
+                'success_url' => 'http://foru.com:8000/index.php',
+                'cancel_url' => 'http://foru.com:8000/index.php/Home/Login/toLogin'
+                );
+            break;
+        }
+
+        \Pingpp\Pingpp::setApiKey('sk_test_HC4CmLin9iPOTOGOW1iHqLOG');
+
+        try {
+            $ch = \Pingpp\Charge::create(
+                array(
+                    'subject'   => 'Your Subject',
+                    'body'      => 'Your Body',
+                    'amount'    => $amount*100,
+                    'order_no'  => $orderNo,
+                    'currency'  => 'cny',
+                    'extra'     => $extra,
+                    'channel'   => $channel,
+                    'client_ip' => $_SERVER['REMOTE_ADDR'],
+                    'app'       => array('id' => 'app_ffLajDzjLe181iHa')
+                    )
+                );
+            return $ch;
+        } catch (\Pingpp\Error\Base $e) {
+            header('Status: ' . $e->getHttpStatus());
+            
+           $e->getHttpBody();
+        }
+
+    }
+
+
 }
 
 

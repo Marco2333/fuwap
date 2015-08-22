@@ -13,11 +13,11 @@ $(document).ready(function(){
 					var sex = $(".sex-none").val();
 
 					if (sex != 0) {
-						$(".revise-sex .fr").html("男 &gt;");
+						$(".revise-sex .fr").html('男'+'<img class="forward-arrow"  src="/fuwebapp/public/img/icon/forwardarrow.jpg" alt="">');
 						$(".revise-sex .sex-none").attr("value","0")
 					}
 					else {
-						$(".revise-sex .fr").html("女 &gt;");
+						$(".revise-sex .fr").html("女"+'<img class="forward-arrow"  src="/fuwebapp/public/img/icon/forwardarrow.jpg" alt="">');
 						$(".revise-sex .sex-none").attr("value","1")
 					}
 				}

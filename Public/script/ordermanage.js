@@ -12,13 +12,16 @@ $(document).ready(function(){
 		var $together_id = $(this).nextAll(".together-id-none").val();
 		var $this = $(this);
 
+		if(!confirm("确定要删除吗?")){
+			return;
+		}
 		$.ajax({
 			type:"POST",
 			url:"/fuwebapp/index.php/Home/OrderManage/deleteOrCancel",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
-					$this.parent().parent().parent().parent().parent().remove();
+					$this.parents("li").remove();
 				}
 				else {
 					// alert("亲~您的订单取消失败，请重试！");
@@ -28,14 +31,22 @@ $(document).ready(function(){
 	});
 
 	$(".manage-button-2").on("click",function(){
-		var $together_id = $(this).nextAll(".together-id-none").val();
-
+		// var $together_id = $(this).nextAll(".together-id-none").val();
+		var orderIds = "";
+		var $goodsinfoList = $(this).parents("tbody").children(".goods-info");
+		for(var i=0;i<$goodsinfoList.length;i++) {
+			orderIds += $($goodsinfoList[i]).attr("data-id")+","; 
+		}
+		orderIds = orderIds.substr(0,orderIds.length-1);
+		window.location.href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+orderIds;
 	});
 
 	$(".manage-button-3").on("click",function(){
 		var $together_id = $(this).nextAll(".together-id-none").val();
 		var $this = $(this);
-
+		if(!confirm("确认收货?")){
+			return;
+		}
 		$.ajax({
 			type:"POST",
 			url:"/fuwebapp/index.php/Home/OrderManage/confirmOrder",

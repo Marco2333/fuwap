@@ -13,7 +13,8 @@
 	</head>
 	<body onload="getInfo('weixin')">
 		<div class="userinfo-change-head">
-			修改微信号
+			<span class="fl text-special history-back glyphicon glyphicon-circle-arrow-left"></span>
+			<span>修改微信号</span>
 		</div>
 		<div class="wrapper">
 			<form action="{:U('Person/infoRevise',array(''=>'','field'=>'weixin'))}" method="post">
@@ -27,7 +28,6 @@
 		</div>
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-		<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/script/userinfo.js"></script>
 	</body>

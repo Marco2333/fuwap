@@ -30,7 +30,7 @@ function login() {
 	    $.cookie("password", password, { expires: 7 });	   
 	}
 	else {
-	    $.cookie("rmbUser", "false", { expire: -1 });
+	    $.cookie("rmbUser", "", { expires: -1 });
 	    $.cookie("username", "", { expires: -1 });
 	    $.cookie("password", "", { expires: -1 });
 	}

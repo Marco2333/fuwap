@@ -28,6 +28,27 @@ class ReceiverModel extends Model{
 			)
 		);
 
+    public function getAddressList() {
+        $field = array(
+            'phone_id',
+            'rank',
+            'name',
+            'phone',
+            'address',
+            'phone',
+            'tag',
+            'campus_id'
+            );
+        $order = array(
+            'tag asc'
+            );
+        $info = $this->where('phone_id= %s and is_out=0',$_SESSION['username'])
+                         ->field($field)
+                         ->order($order)
+                         ->select();
+        return $info;
+    }
+
 	/**
      * 模型函数
      * 取得用户收货地址信息
@@ -231,6 +252,12 @@ class ReceiverModel extends Model{
              'phone_id' => $phone_id,
              'rank'=>$rank
          );
+        $defaultAdd = $this->getDefaultAddress();
+
+        if($defaultAdd['rank'] === $rank) {
+            return -1;
+        }
+
         $res = M('receiver')->where($where)->delete();
 
         if($res === false) {
@@ -313,7 +340,8 @@ class ReceiverModel extends Model{
         $field = array(
             'phone_id',
             'name',
-            'address'
+            'address',
+            'rank'
             );
         $defaultAddress = $this->where("phone_id=%s and tag = 0",$_SESSION['username'])
                                ->field($field)

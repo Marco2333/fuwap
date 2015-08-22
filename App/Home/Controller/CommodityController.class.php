@@ -6,12 +6,6 @@ header("Content-type:text/html;charset=utf-8");
 
 class CommodityController extends Controller {
 
-	public function _initialize(){
-		if (!isset($_SESSION['username'])) {
-			$this->redirect('Home/Login/homePage');
-		}
-	}
-
     public function index(){
     
     }
@@ -109,7 +103,12 @@ class CommodityController extends Controller {
     }
 
     public function comment(){
-    	$Orders = D('Orders');
+
+        if (!isset($_SESSION['username'])) {
+            $this->redirect('Home/Login/login');
+        }
+
+    	$Orders = D('Orders'); 
 
     	$orderIds = I('orderIds');
         $goodsInfo   = $Orders->getGoodsInfo($orderIds);

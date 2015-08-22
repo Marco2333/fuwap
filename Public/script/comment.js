@@ -1,38 +1,61 @@
 $(document).ready(function(){
 
-	$(".glyphicon-star").on("click",function(){
-		$(this).parent().find('.glyphicon-star').removeClass('colorFF573A');
-		$(this).addClass('colorFF573A').prevAll().addClass('colorFF573A');
-		$number=$(this).parent().find('.colorFF573A').length;
-		$(this).nextAll('.specialgrade').text($number);
+	$(".comment-star .glyphicon").on("click",function(){
+
+		$(this).removeClass("glyphicon-star-empty").addClass("glyphicon-star")
+			.addClass("text-subspecial").prevAll().removeClass("glyphicon-star-empty").addClass("glyphicon-star")
+			.addClass("text-subspecial");
+	
+		$(this).nextAll().removeClass("glyphicon-star").addClass("glyphicon-star-empty")
+			.addClass("text-light").removeClass("text-subspecial");
+
+		var grade =$(this).prevAll().length+1;
+		$(this).parents(".comment-tr-star").attr("data-grade",grade);
 	});
 
-	$(".special-button").on("click",function(){
-		var $grade       = $(this).parent().parent().prevAll(".grade-star").find(".specialgrade").html();
-		var $comment     = $(this).parent().parent().prev().find(".food-comment-text").val();
-		var $is_hidden   = $(this).parent().prev().find(".is-hidden-checked").prop("checked");
-		var $food_id     = $(this).nextAll(".food-id-none").val();
-		var $order_id    = $(this).nextAll(".order-id-none").val();
-		var $together_id = $(this).nextAll(".together-id-none").val();
-		var $this = $(this);
+	$(".positive-button").on("click",function(){
 
-		if (!$is_hidden) {
-			$is_hidden = 0;
+		var grade = $(this).parents(".comment-tr-submit")
+			.prevAll(".comment-tr-star").attr("data-grade");
+		if(grade=='0') {
+			alert("请先为商品打分");
+			return;
+		}
+
+		var mark = $(this).parents(".comment-tr-submit")
+			.prevAll(".comment-tr-mark").find("textarea").val();
+
+		var hide = $(this).prev().find("input").prop("checked");
+		
+		var food_id     = $(this).attr("data-food");
+		var order_id    = $(this).attr("data-goods");
+		var together_id = $(this).attr("data-together");
+
+		var $commentListItem = $(this).parents(".comment-list-item");
+		if (!hide) {
+			hide = 0;
 		}
 		else {
-			$is_hidden = 1;
+			hide = 1;
 		}
 
 		$.ajax({
 			type:"POST",
 			url:"/fuwebapp/index.php/Home/Commodity/postComment",
-			data:{food_id:$food_id,comment:$comment,grade:$grade,is_hidden:$is_hidden,order_id:$order_id,together_id:$together_id},
+			data:{
+				food_id:food_id,
+				comment:mark,
+				grade:grade,
+				is_hidden:hide,
+				order_id:order_id,
+				together_id:together_id
+			},
 			success:function(result){
 				if (result['result'] != 0) {
-					$this.parent().parent().parent().remove();
+					$commentListItem.remove();
 				}
 				else {
-					// alert("亲~网速不给力哦，亲重试一次！");
+					alert("亲~网速不给力哦，亲重试一次！");
 				}
 			}
 		});

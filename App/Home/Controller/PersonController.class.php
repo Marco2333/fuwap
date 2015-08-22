@@ -19,7 +19,7 @@ class PersonController extends Controller {
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {
-			$this->redirect('Home/Login/homePage');
+			$this->redirect('Home/Login/login');
 		}
 	}
 
@@ -77,18 +77,15 @@ class PersonController extends Controller {
 
     public function addressManage(){
     	$Receiver = D('Receiver');
-        $row     = 9;
-        $count   = $Receiver->count();
-    	$page    = $Receiver->pageProduce($count,$row);    //分页
-        $show    = $page->show();
-        $limit   = $page->firstRow.','.$page->listRows;
-
-        $address = $Receiver->getAddressInfo($limit);   //获取地址
-        $address = $Receiver->addressConnect($address);
-
-        // dump($address);
-    	$this->assign('address',$address)
-             ->assign('addressPage',$show);
+        // $row     = 9;
+        // $count   = $Receiver->count();
+    	// $page    = $Receiver->pageProduce($count,$row);    //分页
+        // $show    = $page->show();
+        // $limit   = $page->firstRow.','.$page->listRows;
+        $address = $Receiver->getAddressList();   //获取地址
+        // $address = $Receiver->addressConnect($address);
+    	$this->assign('address',$address);
+             // ->assign('addressPage',$show);
     	$this->display('addressManage');
     }
 
@@ -160,15 +157,30 @@ class PersonController extends Controller {
         $this->display('changepword');
     }
 
-    public function verify(){
-        $Verify = new \Think\Verify();
-        $Verify->fontSize = 23;
-        $Verify->length   = 4;
-        $Verify->useNoise = false;
-        $Verify->codeSet  = '0123456789';
-        $Verify->imageW = 150;
-        $Verify->imageH = 53;
-        $Verify->entry();
+    public function resetPassword(){
+        $oldpword = D('Users')->getOldPassword();
+        
+        if(md5(I('pre-password')) != $oldpword) {
+            echo "false";
+        }else {
+             echo "true";
+        }
+    }
+
+    public function saveNewPWord(){
+        
+        $pword = I('new-password');
+        
+        $Users  = D('Users');
+        $result = $Users->changePWord($pword);
+
+        if($result == -1) {
+            $this->redirect('Home/Person/changepword');
+        }
+        else {
+            unset($_SESSION['username']);
+            $this->redirect('Home/Login/login');
+        } 
     }
 
     public function setDefaultAddress($rank) {
@@ -184,56 +196,6 @@ class PersonController extends Controller {
         }
 
         $this->ajaxReturn($res);
-    }
-
-    public function saveNewPWord($phone,$verify,$pVerify,$pword){
-        if ($phone != $_SESSION['username']) {
-            $res =  array(
-                'result'  => 0,
-                'message' => '手机号与账户不匹配！'
-                );
-            $this->ajaxReturn($res);
-        }
-
-        if (!check_verify($verify)) {
-            $res =  array(
-                'result'  => 0,
-                'message' => '验证码输入不正确！'
-                );
-            $this->ajaxReturn($res);
-        }
-
-        $Users  = D('Users');
-        $result = $Users->changePWord($pword);
-
-        if ($result == -1) {
-            $res =  array(
-                'result'  => 0,
-                'message' => '重置密码不能与先前密码相同！'
-                );
-            $this->ajaxReturn($res);
-        }
-        else if ($result == -2) {
-            $res =  array(
-                'result'  => 0,
-                'message' => '密码不能少于8位！'
-                );
-            $this->ajaxReturn($res);
-        }
-        else if ($result !== false) {
-            $res =  array(
-                'result'  => 1,
-                'message' => '密码修改成功！'
-                );
-            $this->ajaxReturn($res);
-        }
-        else {
-            $res =  array(
-                'result'  => 0,
-                'message' => '密码修改失败，请重试！'
-                );
-            $this->ajaxReturn($res);
-        }
     }
 
 }

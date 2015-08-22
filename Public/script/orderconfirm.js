@@ -2,12 +2,11 @@ $(document).ready(function(){
 
 	$(".orderconfirm-arrivetime").click(function(){
 		$("body").addClass("over-hidden");
-		// $("#arr-time-mask").removeClass("none");
 		$("#arr-time-mask").fadeIn(100);
 		$("#arr-time li").remove();
 
 		for(i=0;i<50;i++) {
-			var t = curentTime(30*i);
+			var t = curentTime(30*i-2);
 			if(parseInt(t.substr(0,2))>=24){
 				break;
 			}
@@ -22,7 +21,27 @@ $(document).ready(function(){
 			$("body").removeClass("over-hidden");
 			$(this).siblings().removeClass("active");
 			$(this).addClass("active");
-			$(".orderconfirm-arrivetime .arrive-time").text($(this).text());
+			var t = $(this).text();
+			var now = new Date();    
+   			
+   			var bh = t.substr(0,2);
+   			var bm = t.substr(3,5);
+   			var nh = now.getHours();
+   			var nm = now.getMinutes();
+
+   			var flag = false;
+
+   			if(bh < nh){
+   				var flag = true;
+   			}
+   			else if(bh==nh&&bm<nm){
+   				var flag = true;
+   			}
+   			if(flag) {
+   				t = nh+""+nm;
+   			}
+    
+			$(".orderconfirm-arrivetime .arrive-time").text(t);
 			$("#arr-time-mask").fadeOut(100);
 		});
 	});

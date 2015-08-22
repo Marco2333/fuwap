@@ -9,11 +9,10 @@
 		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
-
 	</head>
 	<body>
 		<div id="ordermanage-head">
-			<div class="head-top background-special">
+			<div class="head-top text-special">
 				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
 				<span class="head-title">我的订单</span>
 			</div>
@@ -54,7 +53,7 @@
 									</td>
 								</tr>
 								<foreach name="goods" item="good">
-									<tr class="goods-info">
+									<tr class="goods-info" data-id="{$good.order_id}">
 										<td class="clearfix">
 											<div class="col-2 fl">
 												<img src="{$good.img_url}" alt="">

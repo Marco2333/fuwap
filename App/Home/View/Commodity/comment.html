@@ -2,69 +2,82 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>For优评价订单</title>
 		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css"/>
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style_li.css"/>
-		
+		<style>
+			body {
+				background-color: rgb(246,246,246);
+			}
+		</style>
 	</head>
 	<body>
-		<div class="Ahead color24dfc2">
-			<div class="Aicon">
-				<span class="fl history-back glyphicon glyphicon-circle-arrow-left colorwhite"></span>
+		<div id="comment-head" class="w text-white">
+			<div class="head-top bground-special">
+				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
+				<span class="head-title">评价订单</span>
 			</div>
-			<span class="Atitle colorwhite">评价订单</span>
 		</div>
-		<foreach name="goodsInfo" item="goods">
-			<div class=" special-bgcolor">
-				<div class="rown cnRow nrow grade-star">
-					<div class="inlineB two thingMargin" style="vertical-align: top;">
-						<img src="{$goods.img_url}" class="comment-img"/>
-					</div>
-					<div class="inlineB eight txtstart">
-						<span>{$goods.name}<span ><br />￥</span><span>{$goods.price}</span></span>
-						
-					</div>
-					<div class="">
-						<div class="two inlineB text-center">
-							描述相符
-						</div>
-						<div class="eight inlineB txtend">
-							<span class="inlineB inforright">
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="specialgrade">0</span><span class="special-top">分</span>
-								</span>
-						</div>
-					</div>
-				</div>
-				<div class="rown nrow">
-					<textarea class="food-comment-text" name="" rows="" cols="" placeholder="写点评价吧，对其他小伙伴有很大的帮助奥" id="commenttext"></textarea>
-				</div>
-				<div class="rown cnRow nrow">
-					<div class="inlineB three thingMargin txtstart">
-						<input type="checkbox" name="" id="" value="" class="special-top is-hidden-checked" style="border-radius: 10px;"/>
-						<span id="">
-							匿名评价
-						</span>
-					</div>
-					<div class="txtend seven inlineB">
-						<input type="button" id="" value="发表评价" class="special-button" style="margin-right: 5px;"/>
-						<input id="" class="none" value=""/>
-						<input class="food-id-none none" value="{$goods.food_id}" />
-						<input class="order-id-none none" value="{$goods.order_id}" />
-						<input class="together-id-none none" value="{$goods.together_id}" />
-					</div>
-				</div>
-			</div>
-		</foreach>
-
+		
+		<div class="comment-wrapper">
+			<foreach name="goodsInfo" item="goods">
+				<ul>
+					<li class="bground-white comment-list-item">
+						<table>
+							<tbody>
+								<tr class="comment-tr-info">
+									<td>
+										<div class="col-2 fl comment-img-wrapper">
+											<img src="{$goods.img_url}" />
+										</div>
+										<div class="col-8 comment-goods-info fl">
+											<p class="comment-name">
+												{$goods.name}
+											</p>
+											<p class="comment-price">
+												￥{$goods.price}
+											</p>
+										</div>
+									</td>
+								</tr>
+								<tr class="comment-tr-star" data-grade="0">
+									<td>
+										<span class="fl">描述相符</span>
+										<div class="comment-star fr">
+											<span class="glyphicon text-light glyphicon-star-empty"></span>
+											<span class="glyphicon text-light glyphicon-star-empty"></span>
+											<span class="glyphicon text-light glyphicon-star-empty"></span>
+											<span class="glyphicon text-light glyphicon-star-empty"></span>
+											<span class="glyphicon text-light glyphicon-star-empty"></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="comment-tr-mark">
+									<td>
+										<div class="w">
+											<textarea  placeholder="写点评价吧，对其他小伙伴有很大的帮助哦" id="commenttext"></textarea>
+										</div>
+									</td>
+								</tr>
+								<tr class="comment-tr-submit">
+									<td>
+										<div class="fl">
+											<input type="checkbox" class=""/>
+											<span>
+												匿名评价
+											</span>
+										</div>
+										<input type="button" class="fr positive-button" value="发表评价" data-food="{$goods.food_id}" data-goods="{$goods.order_id}" data-together="{$goods.together_id}"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</li>
+				</ul>
+			</foreach>
+		</div>
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/comment.js"></script>

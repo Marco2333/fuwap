@@ -109,30 +109,35 @@ class UsersModel extends Model{
      * 修改密码
      * @access public
      * @param  String $pword 新密码
-     * @return int -2：新密码长度小于8位
-     *             -1：新密码与旧密码一样
-     *         boolean  false：修改失败
-     *                 !false：修改成功
      */
 	public function changePWord($pword){
-		if (strlen($pword) < 8) {
-			return -2;
-		}
 
-		$data = $this->where('phone='.$_SESSION['username'])
+		$data = $this->where('phone=%d',$_SESSION['username'])
 					 ->field('password')
 					 ->find();
 
 		if (md5($pword) != $data['password']) {
 			$data['password'] = md5($pword);
-			$res = M('users')->where('phone='.$_SESSION['username'])
+			$res = M('users')->where('phone=%s',$_SESSION['username'])
 							 ->save($data);
-
-			return $res;
+			if($res === false) {
+				return -1;
+			}
+			else {
+				return 1;
+			}
 		}
 		else {
-			return -1;
+			return 0;
 		}
+	}
+
+	public function getOldPassword() {
+		$data = M('users')->where('phone=%s',$_SESSION['username'])
+					 ->field('password')
+					 ->find();
+		return $data['password'];
+
 	}
 
 }

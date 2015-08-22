@@ -22,6 +22,9 @@ $(document).ready(function(){
 				if(data == 1) {
 					$("#"+rank).remove();
 				}
+				else if(data == -1){
+					alert("默认地址不能删除");
+				}
 				else {
 					alert("删除失败");
 				}

@@ -194,7 +194,7 @@ class OrdersModel extends Model{
 			'together_id',
 			'together_date'
 			);
-		$where = $this->where('order_id='.$orderId)
+		$where = $this->where('order_id=%s',$orderId)
 					  ->field($field)
 					  ->find();
 
@@ -227,6 +227,24 @@ class OrdersModel extends Model{
 		return $goodsInfo;
 	}
 
+    public function deleteOrders($orderIds,$phone) {
+        $flag = 1;  
+        $ordersList = $this->orderIdsSplit($orderIds);
+        for ($i = 0;$i < count($ordersList);$i++) {
+            $res = $this->deleteOrder($ordersList[$i],$phone);
+            if($res===false) {
+                $flag = 0;
+            }
+        }
+
+        return $flag;
+    }
+
+    public function deleteOrder($orderId,$phone) {
+        $res = M('orders')->where('order_id=%s and phone=%s',$orderId,$phone)
+                ->delete();
+        return $res;
+    }
 	/**
      * 模型函数
      * 为一批订单设置一个订单号，同时设置下单时间

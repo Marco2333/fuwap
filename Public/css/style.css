@@ -103,6 +103,7 @@ input {
 	font-size: 15px;
 	border-top: 1px solid #ddd;
 	color: #999;
+	z-index: 999;
 }
 #common-nav a {
 	color: #999;
@@ -383,12 +384,69 @@ input {
 #shoppingcart-head {
 	border-bottom: 1px solid rgba(250,250,250,.9);
 }
+#shoppingcart-head .head-top {
+	padding-right: 22px;
+}
+#shoppingcart-head .head-title {
+	margin-left: 30px;
+}
 .shopcart-goods-list {
 	width: 100%;
 	border-top: 1px solid rgb(248,248,248);
 	border-bottom: 1px solid rgb(248,248,248);
 	padding: 8px 0;
 	margin: 8px 0;
+	background: #fff;
+}
+.shopcart-goods-list .mask {
+	position: absolute;
+	z-index: 99;
+}
+#dPrice {
+	text-decoration: line-through;
+	color: #999;
+	font-size: 14px;
+	margin: 0 10px;
+}
+#settle-accounts-confirm {
+	width: 88%;
+    margin: 20px auto;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    height: 40px;
+    color: #fff;
+    background-color: #ff573a;
+    border: none;
+}
+#check-button {
+	margin: 0 auto;
+}
+/*#settle-accounts-confirm .glyphicon-trash {
+	color: #fff;
+	margin-top: 2px;
+	font-size: 19px;
+}
+#check-button .spliter {
+	border: 1px solid #fff;
+	height: 23px;
+}*/
+.shopcart-goods-list input[type='checkbox'] {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    -webkit-opacity: 0;  
+    -moz-opacity: 0;  
+    -khtml-opacity: 0;   
+    opacity: 0;   
+    filter:alpha(opacity=0);  
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";  
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);  
+}
+.shopcart-goods-list input[type='checkbox']:checked + .mask {
+	display: none;
 }
 .shopcart-goods-list:first-child {
 	border-top: none;
@@ -466,7 +524,7 @@ input {
 }
 .shopcart-goods-list .check-goods {
 	padding-left:5px;
-	width: 8%;
+	width: 1%;
 	padding-top: 30px;
 }
 .goods-img {
@@ -478,7 +536,7 @@ input {
 	height: auto;
 }
 .shopcart-goods-info {
-	width: 65%;
+	width: 70%;
 	padding-left: 5px;
 }
 .shopcart-goods-info > h1 {
@@ -571,6 +629,8 @@ input.goods-count {
 	background: #fff;
 	font-family: "黑体";
 	color: #FF573A;
+	text-align: center;
+	z-index: 999;
 }
 #settle-accounts  > span > span {
 	color: #ccc;
@@ -584,11 +644,12 @@ input.goods-count {
 }
 #check-all {
 	margin-left: 10px;
+	float: left;
 }
-#check-button {
-	margin-top: 10px;
+#select-goods {
+	margin-top: 3px;
+	margin-right: 3px;
 }
-
 #shopping-cart-empty {
 	background: rgb(250,250,250);
 	width: 100%;

@@ -9,13 +9,18 @@
 		<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/style.css" />
-
+		<style>
+			body {
+				background: #fafafa;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="shoppingcart-head">
 			<div class="head-top background-special">
 				<span class="fl text-special history-back glyphicon glyphicon-circle-arrow-left"></span>
 				<span class="head-title">购物车</span>
+				<span id="select-goods" class="fr">选择</span>
 			</div>
 		</div>
 		
@@ -32,9 +37,10 @@
 			<div id="shoppingcart-body" class="w">
 				<ul>
 					<foreach name="cart" item="goods">
-						<li class="shopcart-goods-list clearfix">
+						<li class="shopcart-goods-list clearfix pos-relative">
 							<div class="check-goods">
-								<input class="input-locate" type="checkbox">
+								<input class="input-locate none" checked="true" type="checkbox">
+								<div class="mask none"></div>
 								<!-- <input class="order-count-none none" value="{$goods.order_count}" />
 								<input class="price-none none" value="{$goods.price}" />
 								<input class="discount-price-none none" value="{$goods.discount_price}" /> -->
@@ -68,12 +74,18 @@
 			</div>
 			
 			<div id="settle-accounts">
-				<input id="check-all" type="checkbox">
-				<label for="check-all">全选</label>
-				<span id="Price">合计:￥0.00元</span>
-				<span id="dPrice">原价:￥0.00元</span>
+				<!-- <input id="check-all" type="checkbox">
+				<label for="check-all">全选</label> -->
+				<span id="Price">合计:￥0.00</span>
+				<span id="dPrice">￥0.00</span>
 				<span id="save">(已节省0.00元)</span>
-				<button id="check-button">结算</button>
+			<!-- 	<div id="settle-accounts-confirm">
+					<span class="glyphicon glyphicon-trash fl none col-2"></span>
+					<span class="spliter fl none"></span>
+				</div>	 -->
+				<button id="check-button">
+					结算
+				</button>
 			</div>
 		</div>
 		

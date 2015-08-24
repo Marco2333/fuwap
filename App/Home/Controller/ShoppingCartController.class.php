@@ -86,6 +86,20 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    public function deleteOrders(){
+         $phone = $_SESSION['username'];
+         $orderIds = I('orderIds');
+         $out = D('Orders')->deleteOrders($orderIds,$phone);
+
+         if($out === 1) {
+            $res['status'] = 1;
+         }   
+         else {
+            $res['status'] = 0;
+         }
+         $this->ajaxReturn($res);
+    }
+
     public function updateSettleAccounts(){
         $Orders = D('Orders');
 

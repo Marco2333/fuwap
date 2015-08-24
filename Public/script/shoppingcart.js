@@ -1,5 +1,69 @@
 $(document).ready(function(){
 
+	calTotalCost();
+	$("#select-goods").click(function(){
+		if($(this).hasClass("text-subspecial")) {
+			 $(".shopcart-goods-list .mask,.shopcart-goods-list input[type='checkbox']").addClass("none");
+			 $(this).removeClass("text-subspecial");
+			 $(".shopcart-goods-list input[type='checkbox']").prop("checked",true);
+			 $("#settle-accounts .glyphicon,#settle-accounts .spliter").addClass("none");
+			 calTotalCost();
+		}
+		else {
+			$(this).addClass("text-subspecial");
+			$(".shopcart-goods-list input[type='checkbox']").prop("checked",false);
+			$(".shopcart-goods-list .mask,.shopcart-goods-list input[type='checkbox']").removeClass("none");
+			$("#settle-accounts .glyphicon,#settle-accounts .spliter").removeClass("none");
+			calTotalCost();
+		}
+	});
+	
+	$("#settle-accounts .glyphicon-trash").click(function(){
+		var checks = $(".input-locate");
+		var $orderIds = "";
+		for (i = 0;i < checks.length;i++) {
+
+			if ($(checks[i]).prop("checked")) {
+				var order_id = $(checks[i]).nextAll(".order-id-none").val();
+
+				if ($orderIds != "") {
+					$orderIds += ",";
+					$orderIds += order_id;
+				}
+				else {
+					$orderIds += order_id;
+				}
+			}
+		}
+
+		if ($orderIds != "") {
+			var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+$orderIds;
+			window.location.href = $href;
+
+			$.ajax({
+				url:"/fuwebapp/index.php/Home/ShoppingCart/deleteOrders",
+				type:"POST",
+				data:{
+					orderIds:$orderIds
+				},
+				success:function(data){
+					if(data.status==1){
+						$(".input-locate:checked").parents(".shopcart-goods-list").remove();
+					}
+					else {
+						alert("删除失败");
+					}
+				},
+				error:function(){
+					alert("删除失败");
+				}
+			});
+		}
+		else {
+			alert("亲~请勾选您想要购买的物品！");
+		}
+	});
+
 	$("#shoppingcart-body .sub-goods").on("click",function(){
 		var $order_count = parseInt($(this).next("input").val())-1;
 		var $order_id    = $(this).attr("data-orderId");
@@ -118,7 +182,7 @@ $(document).ready(function(){
 		calTotalCost();
 	});
 
-	$("#settle-accounts #check-button").on("click",function(){
+	$("#check-button").on("click",function(){
 		var checks = $(".input-locate");
 		var $orderIds = "";
 		for (i = 0;i < checks.length;i++) {
@@ -153,7 +217,6 @@ function calTotalCost() {
 	var goodsList = $(".shopcart-goods-list");
 	var totalCost = 0;
     var totalCostBef = 0;
-    console.log(goodsList);
     for(var i=0;i<goodsList.length;i++){
     	console.log();
     	if($(goodsList[i]).children(".check-goods").children(".input-locate").prop("checked")) {
@@ -171,8 +234,8 @@ function calTotalCost() {
     }
     save = totalCostBef - totalCost;
 
-    $("#Price").text("合计:￥"+totalCost.toFixed(2)+"元");
-    $("#dPrice").text("原价:￥"+totalCostBef.toFixed(2)+"元");
+    $("#Price").text("合计:￥"+totalCost.toFixed(2));
+    $("#dPrice").text("￥"+totalCostBef.toFixed(2));
     $("#save").text("(已节省"+save.toFixed(2)+"元)");
 }
 

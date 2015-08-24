@@ -450,12 +450,80 @@ class OrdersModel extends Model{
         }
     }
 
+    /**
+     * 计算一笔订单的总价（已折扣，已优惠）
+     * @param  [type] $togetherId [description]
+     * @return [type]             [description]
+     */
+   public function calculatePriceByOrderIds($togetherId,$campusId){
+       $goods=M('orders')
+              ->join('food on food.food_id=orders.food_id')
+              ->field('is_discount,is_full_discount,food.price,discount_price,order_count')
+              ->where('together_id=%s',$togetherId)
+              ->select();
+      
+      $discountPrice=0.0;                   //折扣之后的总价
+      $fullDiscountPrice=0.0;            //满减商品的总价
+      foreach($goods as $key => $good) {
+          if($good['is_discount']==1){
+              $price=$good['order_count']*$good['discount_price'];  
+          }else{
+              $price=$good['order_count']*$good['price'];
+          }
 
+          if($good['is_full_discount']==1){
+             $fullDiscountPrice+=$price;
+          }
+
+          $discountPrice+=$price;
+          unset($price);
+      }
+   
+     $prefer=M('preferential')
+                ->field('need_number,discount_num,preferential_id')
+                ->where("campus_id=%s",$campusId)
+                ->order('need_number DESC')
+                ->select();
+
+         foreach ($prefer as $key => $p) {
+            if($fullDiscountPrice>$p['need_number']){
+                $fullDiscount=$p['discount_num'];            //优惠d数额
+                $discount['prefer_id']=$p['preferential_id'];
+                M('orders')->where('together_id = %s',$togetherId)
+                           ->save($discount);           //将优惠力度存到表里面
+                break;
+            } 
+         }
+
+         $totalPrice=number_format($discountPrice-$fullDiscount,1);
+
+         return $totalPrice;
+   }
+
+   /**
+    * 设置一笔订单的总订单号
+    * @param [type] $orderIds [description]
+    */
+   public function setTogetherId($orderIds,$phone){
+      $togetherId=$phone.time().rand(100,999);
+
+       //为销订单设置订单号
+      $orderIdArr=explode(',', $orderIds);
+     
+      $data['status']=1;
+      $data['together_id']=$togetherId;
+      foreach ($orderIdArr as $key => $orderId) {
+        $result=M('Orders')
+               ->where('order_id=%s and phone=%s',$orderId,$phone)
+               ->save($data);
+      }
+      if($result!=false){
+         return $togetherId;
+      }
+     
+      return null;
+   }
 
 }
-
-
-
-
 
 ?>

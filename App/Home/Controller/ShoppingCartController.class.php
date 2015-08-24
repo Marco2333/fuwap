@@ -69,11 +69,11 @@ class ShoppingCartController extends Controller{
         $price          = $Orders->settleAccounts($goodsInfo);
         $together_id    = $Orders->setTogether($orderIds);
 
-        // dump($goodsInfo);
         if ($defaultAddress != false && $goodsInfo != false && $result !== false) {
             $this->assign('defaultAddress',$defaultAddress)
                  ->assign('goodsInfo',$goodsInfo)
                  ->assign('price',$price)
+                 ->assign('orderIds',$orderIds)
                  ->assign('together_id',$together_id);
             $this->display('orderconfirm');
         }
@@ -119,6 +119,7 @@ class ShoppingCartController extends Controller{
         }
     }
 
+
     public function getCloseTime() {
         if(!isset($_SESSION['campusId'])) {
             $campusId = 1;
@@ -136,6 +137,25 @@ class ShoppingCartController extends Controller{
             $res['colseTime'] = $close_time;
         }
         $this->ajaxReturn($res);
+    }
+
+    public function payAtOnce(/*$rank,*/$orderIds,$channel){
+        $order=D('Orders');
+        $phone=session('username');
+        $campusId=session('campus_id');
+        if($campusId==null){
+            $campusId=1;
+        }
+        $togetherId=$order->setTogetherId($orderIds,$phone);
+        $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
+        
+        if($togetherId!=null){
+            $charge=D('Users')->pay($channel,$totalPrice,$togetherId);
+            echo $charge;
+        }else{
+            echo "null";
+        }
+     
     }
 
 }

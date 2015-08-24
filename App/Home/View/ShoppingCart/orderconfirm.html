@@ -29,7 +29,7 @@
 			</div>
 		<a>
 		<div class="orderconfirm-goodsdetail w">
-			<ul id="orderconfirm-goods">
+			<ul id="orderconfirm-goods" data-orderIds="{$orderIds}">
 				<input class="together-id-none none" value="{$together_id}"/>
 				<foreach name="goodsInfo" item="goods">
 					<li>
@@ -68,7 +68,7 @@
 		<div class="orderconfirm-arrivetime w">
 			<span class="fl">送达时间</span>
 			<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
-			<span class="fr arrive-time"></span>
+			<span class="fr arrive-time">立即送达</span>
 		</div>
 		<div class="payment-orderconfirm w">
 			<div class="payment-method-oc">
@@ -78,16 +78,16 @@
 				<form action>
 					<div class="radio">
 					   <label>
-					      <input type="radio" name="optionsRadios" id="" 
-					         value="option1" checked> 支付宝支付<span>
+					      <input type="radio" name="pay_way" id="" 
+					         value="alipay_wap" checked> 支付宝支付<span>
 					         <img src="__PUBLIC__/img/alipay.png" />
 					         </span>
 					   </label>
 					</div>
 					<div class="radio">
 					   <label>
-					      <input type="radio" name="optionsRadios" id="" 
-					         value="option2">微信支付<span >
+					      <input type="radio" name="pay_way" id="" 
+					         value="wx">微信支付<span >
 					         	<img src="__PUBLIC__/img/wechatpay_03.png" />	
 					         </span>
 					   </label>
@@ -96,7 +96,7 @@
 			</div>
 		</div>
 		<div class="orderconfirm-message">
-<!--	<p>留言备注：</p>	-->	
+         <!--	<p>留言备注：</p>	-->	
 			<textarea     placeholder="留言备注：" rows="5"></textarea>
 		</div>
 		<div class="orderconfirm-totalamount">
@@ -110,9 +110,14 @@
 			</button>
 		</div>
 		
-
+        
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script type="text/javascript">
+           var $orderIds=$("#orderconfirm-goods").attr("data-orderIds");
+           var $payUrl="{:U('/Home/ShoppingCart/payAtOnce')}";
+		</script>
 		<script src="__PUBLIC__/script/common.js"></script>
+		<script src="__PUBLIC__/script/pingpp_pay.js"></script>
 		<script src="__PUBLIC__/script/orderconfirm.js"></script>
 	</body>
 </html>

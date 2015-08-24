@@ -1,5 +1,26 @@
 $(document).ready(function(){
 
+    $(".orderconfirm-btn-pay").on('click',function(){
+    	var data={
+    		//rank:$rank,
+    		orderIds:$orderIds,
+    		channel:$("input[type='radio'][name='pay_way']").val()
+    	}
+
+    	console.log(data);
+    	$.ajax({
+    		url:$payUrl,
+    		type:"post",
+    		data:data,
+    		success:function(data){
+    			 pingpp.createPayment(data, function(result, err) {
+                      console.log(result);
+                      console.log(err);
+                    });
+    		}
+    	});
+    });
+
 	$(".orderconfirm-arrivetime").click(function(){
 		$("body").addClass("over-hidden");
 		$("#arr-time-mask").fadeIn(100);

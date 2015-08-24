@@ -14,8 +14,7 @@ $(document).ready(function(){
     		data:data,
     		success:function(data){
     			 pingpp.createPayment(data, function(result, err) {
-                      console.log(result);
-                      console.log(err);
+                     
                     });
     		}
     	});
@@ -34,7 +33,6 @@ $(document).ready(function(){
 				if(data.status == 1) {
 					colseTime = data.colseTime;
 
-					console.log(colseTime);
 					for(i=0;i<50;i++) {
 						var t = curentTime(30*i+2);
 						if(parseInt(t.substr(0,2))>parseInt(colseTime.substr(0,2))){
@@ -71,7 +69,12 @@ $(document).ready(function(){
 			   				var flag = true;
 			   			}
 			   			if(flag) {
-			   				t = nh+":"+nm;
+	   						if(parseInt(nm)<10){
+			   					t = nh+":0"+nm;
+			   				}
+			   				else {
+			   					t = nh+":"+nm;
+			   				}	
 			   			}
 			    
 						$(".orderconfirm-arrivetime .arrive-time").text(t);
@@ -84,7 +87,58 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$("#order-confirm-location").click(function(){
+		$("#select-location-body").animate({"left":0});
+		$("body").addClass("over-hidden");
+	});
 
+	$("#select-location-body li").click(function(){
+		$("#order-confirm-location").attr("data-rank",$(this).attr("id"));
+		$("#order-confirm-location .consumer-name").text($(this).find(".location-name").text());
+		$("#order-confirm-location .consumer-phone").text($(this).find(".location-phone").text());
+		$("#order-confirm-location .consumer-address").text($(this).find(".location-address").text());
+		$("#select-location-body").animate({"left":"100%"});
+		$("body").removeClass("over-hidden");
+	});
+
+	$(".history-back-temp").click(function(){
+		$("#select-location-body").animate({"left":"100%"});
+		$("body").removeClass("over-hidden");
+	});
+
+	$("#arr-time-mask").click(function(){
+		$(".orderconfirm-arrivetime .arrive-time").text(t);
+		$("#arr-time-mask").fadeOut(100);
+
+		var t = $("#arr-time-mask li.active").text();
+
+			var now = new Date();    	
+   			var bh = t.substr(0,2);
+   			var bm = t.substr(3,5);
+   			var nh = now.getHours();
+   			var nm = now.getMinutes();
+   			var flag = false;
+
+   			if(bh < nh){
+   				var flag = true;
+   			}
+   			else if(bh==nh&&bm<nm){
+   				var flag = true;
+   			}
+   			if(flag) {
+   				if(parseInt(nm)<10){
+   					t = nh+":0"+nm;
+   				}
+   				else {
+   					t = nh+":"+nm;
+   				}	
+   			}
+    
+			$(".orderconfirm-arrivetime .arrive-time").text(t);
+			$("body").removeClass("over-hidden");
+			$("#arr-time-mask").fadeOut(100);
+	});
 
 	/*=================计算价格的函数=======================*/
 	function pricecalculate(){
@@ -105,7 +159,6 @@ $(document).ready(function(){
 				}
 			},
 			error:function(){
-				alert("o");
 			}
 		});
 	}

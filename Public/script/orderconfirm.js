@@ -5,54 +5,66 @@ $(document).ready(function(){
 		$("#arr-time-mask").fadeIn(100);
 		$("#arr-time li").remove();
 
-		for(i=0;i<50;i++) {
-			var t = curentTime(30*i-2);
-			if(parseInt(t.substr(0,2))>=24){
-				break;
+		var colseTime = "24:00";
+		$.ajax({
+			url:"/fuwebapp/index.php/Home/ShoppingCart/getCloseTime",
+			type:'POST',
+			success:function(data) {
+				if(data.status == 1) {
+					colseTime = data.colseTime;
+
+					console.log(colseTime);
+					for(i=0;i<50;i++) {
+						var t = curentTime(30*i+2);
+						if(parseInt(t.substr(0,2))>parseInt(colseTime.substr(0,2))){
+							break;
+						}
+						else if(parseInt(t.substr(0,2))==parseInt(colseTime.substr(0,2))&&parseInt(t.substr(3,5))>=parseInt(colseTime.substr(3,5))) {
+							break;
+						}
+						else {
+							$("#arr-time ul").append($("<li>"+t+"</li>"));
+						}
+					}
+
+					$("#arr-time-mask li").eq(0).addClass("active");
+
+					$("#arr-time-mask li").click(function(){
+						$("body").removeClass("over-hidden");
+						$(this).siblings().removeClass("active");
+						$(this).addClass("active");
+						var t = $(this).text();
+						var now = new Date();    
+			   			
+			   			var bh = t.substr(0,2);
+			   			var bm = t.substr(3,5);
+			   			var nh = now.getHours();
+			   			var nm = now.getMinutes();
+
+			   			var flag = false;
+
+			   			if(bh < nh){
+			   				var flag = true;
+			   			}
+			   			else if(bh==nh&&bm<nm){
+			   				var flag = true;
+			   			}
+			   			if(flag) {
+			   				t = nh+":"+nm;
+			   			}
+			    
+						$(".orderconfirm-arrivetime .arrive-time").text(t);
+						$("#arr-time-mask").fadeOut(100);
+					});
+				}
+			},
+			error:function() {
+				alert("刷新失败");
 			}
-			else {
-				$("#arr-time ul").append($("<li>"+t+"</li>"));
-			}
-		}
-
-		$("#arr-time-mask li").eq(0).addClass("active");
-
-		$("#arr-time-mask li").click(function(){
-			$("body").removeClass("over-hidden");
-			$(this).siblings().removeClass("active");
-			$(this).addClass("active");
-			var t = $(this).text();
-			var now = new Date();    
-   			
-   			var bh = t.substr(0,2);
-   			var bm = t.substr(3,5);
-   			var nh = now.getHours();
-   			var nm = now.getMinutes();
-
-   			var flag = false;
-
-   			if(bh < nh){
-   				var flag = true;
-   			}
-   			else if(bh==nh&&bm<nm){
-   				var flag = true;
-   			}
-   			if(flag) {
-   				t = nh+""+nm;
-   			}
-    
-			$(".orderconfirm-arrivetime .arrive-time").text(t);
-			$("#arr-time-mask").fadeOut(100);
 		});
 	});
 
-	$("#arr-time-mask li").click(function(){
-		$("body").removeClass("over-hidden");
-		$(this).siblings().removeClass("active");
-		$(this).addClass("active");
-		$(".orderconfirm-arrivetime .arrive-time").text($(this).text());
-		$("#arr-time-mask").fadeOut(100);
-	});
+
 	/*=================计算价格的函数=======================*/
 	function pricecalculate(){
 		var $together_id = $(".together-id-none").val();
@@ -117,10 +129,6 @@ $(document).ready(function(){
 	        success:function(price){
 	        	if (price['result'] != 0) {
 	        		document.getElementById($order_id).value = $order_count;	
-	        		// var $text = "￥"+price['dPrice'];
-	        		// $this.parent().prev().children(".orderconfirm-price").text($text);
-		        	// var $text = "原价:￥"+price['Price'];
-		        	// $this.parent().prev().children(".orgin-price").text($text);
 		        	pricecalculate();
 		        }
 		       	else {

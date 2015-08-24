@@ -119,6 +119,25 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    public function getCloseTime() {
+        if(!isset($_SESSION['campusId'])) {
+            $campusId = 1;
+        }
+        else {
+            $campusId = $_SESSION['campusId'];
+        }
+        
+        $close_time = D('Campus')->getCloseTime($campusId);
+        if($close_time === false){
+            $res['status'] = 0;
+        }
+        else {
+            $res['status'] = 1;
+            $res['colseTime'] = $close_time;
+        }
+        $this->ajaxReturn($res);
+    }
+
 }
 
 

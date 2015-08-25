@@ -13,10 +13,12 @@ $(document).ready(function(){
     		type:"post",
     		data:data,
     		success:function(data){
-    			 pingpp.createPayment(data, function(result, err) {
+    			console.log(data);
+    			 /*pingpp.createPayment(data, function(result, err) {    //调用支付
                       console.log(result);
                       console.log(err);
-                    });
+                      console.log(data);
+                    });*/
     		}
     	});
     });

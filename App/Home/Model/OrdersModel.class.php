@@ -429,7 +429,7 @@ class OrdersModel extends Model{
 
         $data = array(
             'phone'       => $_SESSION['username'],
-            'order_id'    => time().'000',
+            'order_id'    => time().rand(100,999),
             'campus_id'   => $_SESSION['campus_id'],
             'create_time' => date("Y-m-d H:m:s",Time()),
             'status'      => 0,
@@ -523,6 +523,9 @@ class OrdersModel extends Model{
      
       return null;
    }
+
+    
+   
 
 }
 

@@ -128,7 +128,7 @@ class ShoppingCartController extends Controller{
         }
         $togetherId=$order->setTogetherId($orderIds,$phone);
         $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
-        
+    
         if($togetherId!=null){
             $charge=D('Users')->pay($channel,$totalPrice,$togetherId);
             echo $charge;

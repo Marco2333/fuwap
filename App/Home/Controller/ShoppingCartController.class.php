@@ -24,15 +24,23 @@ class ShoppingCartController extends Controller{
 	}
 
 	public function index(){
-        $this->ShoppingCart();
+        
     }
 
     public function ShoppingCart(){
+        $campusId = $_SESSION['campusId'];
+        if($campusId == null){
+            $campusId = 1;
+        }
     	$Orders = D('Orders');
     	$cart   = $Orders->getShoppingCart();
 
+        $Preferential = D('Preferential');
+        $preferential   = $Preferential->getPreferentialList($campusId); 
+
     	if (count($cart) != 0) {
     		$this->assign('isEmpty','0')
+                 ->assign('preferential',$preferential)
     			 ->assign('cart',$cart);
     	}
     	else {
@@ -60,24 +68,34 @@ class ShoppingCartController extends Controller{
     }
 
     public function orderConfirm(){
+        $campusId = $_SESSION['campusId'];
+        if($campusId == null){
+            $campusId = 1;
+        }
+
         $Receiver = D('Receiver');
         $Orders   = D('Orders');
-
+        $Preferential = D('Preferential');
         $orderIds = I('orderIds');
+
         $defaultAddress = $Receiver->getDefaultAddress();
         $goodsInfo      = $Orders->getGoodsInfo($orderIds);
-        $price          = $Orders->settleAccounts($goodsInfo);
+        $price          = $Orders->settleAccounts($goodsInfo,$campusId);
         $together_id    = $Orders->setTogether($orderIds);
-
+        $preferential   = $Preferential->getPreferentialList($campusId); 
         $Receiver = D('Receiver');
         $address = $Receiver->getAddressList();   //获取地址
 
-        if ($defaultAddress != false && $goodsInfo != false && $result !== false) {
+        if($defaultAddress == false) {
+            $this->redirect('Home/Person/addressManage');
+        }
+        else if ($goodsInfo != false && $result !== false) {
             $this->assign('defaultAddress',$defaultAddress)
                  ->assign('goodsInfo',$goodsInfo)
                  ->assign('price',$price)
                  ->assign('orderIds',$orderIds)
                  ->assign('together_id',$together_id)
+                 ->assign('preferential',$preferential)
                  ->assign('address',$address);
             $this->display('orderconfirm');
         }
@@ -101,13 +119,34 @@ class ShoppingCartController extends Controller{
     }
 
     public function updateSettleAccounts(){
+
+        $campusId = $_SESSION['campusId'];
+        if($campusId == null){
+            $campusId = 1;
+        }
+
         $Orders = D('Orders');
 
         $order_id    = I('order_id');
         $order_count = I('order_count');
+        $together_id = I('together_id');
         $result      = $Orders->updateOrderCount($order_id,$order_count);
-        $goodInfo    = $Orders->getGoodsInfo($order_id);
-        $priceInfo   = $Orders->settleAccounts($goodInfo);
+    
+        $orderIds    = $Orders->getOrderIds($together_id,$campusId);
+        $goodsInfo   = $Orders->getGoodsInfo($orderIds);
+        $price       = $Orders->settleAccounts($goodsInfo,$campusId);
+
+        if ($orderIds !== false && $goodsInfo !== false && $price !== false) {
+            $price['result'] = 1;
+            $this->ajaxReturn($price);
+        }
+        else {
+            $res['result'] = 0;
+            $this->ajaxReturn($res);
+        }
+
+
+
 
         if ($result !== false && $priceInfo !== false) {
             $priceInfo['result'] = 1;
@@ -120,13 +159,20 @@ class ShoppingCartController extends Controller{
     }
 
     public function settleAccounts(){
+
+        $campusId = $_SESSION['campusId'];
+        if($campusId == null){
+            $campusId = 1;
+        }
+
         $Orders = D('Orders');
 
         $together_id = I('together_id');
-        $orderIds    = $Orders->getOrderIds($together_id);
+        $orderIds    = $Orders->getOrderIds($together_id,$campusId);
+
         $goodsInfo   = $Orders->getGoodsInfo($orderIds);
         $price       = $Orders->settleAccounts($goodsInfo);
-
+       
         if ($orderIds !== false && $goodsInfo !== false && $price !== false) {
             $price['result'] = 1;
             $this->ajaxReturn($price);

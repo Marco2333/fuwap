@@ -40,6 +40,18 @@
 							<div class="orderconfirm-goods-txt">
 								<p class="goods-txt-name">{$goods.name}</p>
 								<p class="goods-txt-intro">{$goods.message}</p>
+								<if condition="$goods.is_full_discount eq 1">
+									<div class="full-discount-wrapper">
+										<span class="full-discount">
+											减
+										</span>
+										<span>
+											<foreach name="preferential" item="vi">
+												满{$vi.need_number}减{$vi.discount_num}&nbsp;
+											</foreach>
+										</span>
+									</div>
+								</if>
 								<div class="bo">
 									<div id="price-present" class="fl">
 										<span class="orderconfirm-price fl discount-price">￥{$goods.discount_price}</span> 
@@ -96,7 +108,7 @@
 			</div>
 		</div>
 		<div class="orderconfirm-message">
-			<textarea  placeholder="留言备注：" rows="5"></textarea>
+			<textarea  placeholder="留言备注" rows="5"></textarea>
 		</div>
 		
 		<div id="select-location-body">
@@ -126,8 +138,8 @@
 		</div>
 
 		<div class="orderconfirm-totalamount">
-			合计:￥<span id="settle-dprice"> {$price.dPrice}</span> <span class="orgin-price">
-			原价:￥<span id="settle-price"> {$price.Price}</span></span>
+			合计:￥<span id="settle-dprice">{$price.dPrice}</span> <span class="orgin-price">
+			￥<span id="settle-price">{$price.Price}</span></span>
 			（已节省￥<span id="settle-save">{$price.save}</span>）
 		</div>
 		<div class="orderconfirm-btn-pay" >

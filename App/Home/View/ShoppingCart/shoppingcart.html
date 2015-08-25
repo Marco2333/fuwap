@@ -34,10 +34,15 @@
 				}
 			?>
 		>
+			<ul id="full-discount-price" class="none">
+				<foreach name="preferential" item="vo">
+					<li><span>{$vo.need_number}</span> <p>{$vo.discount_num}</p> </li>
+				</foreach>
+			</ul>
 			<div id="shoppingcart-body" class="w">
 				<ul>
 					<foreach name="cart" item="goods">
-						<li class="shopcart-goods-list clearfix pos-relative">
+						<li class="shopcart-goods-list clearfix pos-relative" data-fulldiscount="{$goods.is_full_discount}">
 							<div class="check-goods">
 								<input class="input-locate none" checked="true" type="checkbox">
 								<div class="mask none"></div>
@@ -54,7 +59,18 @@
 							<div class="shopcart-goods-info">
 								<h1>{$goods.name}</h1>
 							   	<p>{$goods.message}</p>
-
+								<if condition="$goods.is_full_discount eq 1">
+									<div class="full-discount-wrapper">
+										<span class="full-discount">
+											减
+										</span>
+										<span>
+											<foreach name="preferential" item="vi">
+												满{$vi.need_number}减{$vi.discount_num}&nbsp;
+											</foreach>
+										</span>
+									</div>
+								</if>
 								<div class="spc-goods-info-detaild clearfix">
 									<div class="col-6 fl clearfix">
 										<span class="discount-price fl">￥{$goods.discount_price}</span>

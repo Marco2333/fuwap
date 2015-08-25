@@ -83,25 +83,9 @@ $(document).ready(function(){
 	        success:function(result){
 	        	if (result['result'] != 0) {
 	        		document.getElementById($order_id).value = $order_count;
-
 	        		var $div_check_goods = $this.parent().parent().prevAll(".check-goods");
-	        		// $div_check_goods.children(".order-count-none").val($order_count);
-	        		// var $Price  = parseFloat($div_check_goods.children(".price-none").val());
-	        		// var $dPrice = parseFloat($div_check_goods.children(".discount-price-none").val());
 	        		var $is_discount = parseInt($div_check_goods.children(".is-discount-none").val());
-
-	        		// if ($is_discount != 0) {
-	        		// 	var $text = "￥"+$dPrice*$order_count+"元";
-	        		// 	$this.prevAll(".discount-price").html($text);
-	        		// }
-	        		// else {
-	        		// 	var $text = "￥"+$Price*$order_count+"元";
-	        		// 	$this.prevAll(".discount-price").html($text);
-	        		// }
-	        		// var $text = "原价:￥"+$Price*$order_count+"元";
-	        		// $this.prevAll(".bef-price").html($text);
 	        		calTotalCost();
-	        		// settleAccounts();
 	        	}
 	        	else {
 	        		
@@ -122,25 +106,9 @@ $(document).ready(function(){
 	        success:function(result){
 	        	if (result['result'] != 0) {
 	        		document.getElementById($order_id).value = $order_count;
-
 	        		var $div_check_goods = $this.parent().parent().prevAll(".check-goods");
-	        		// $div_check_goods.children(".order-count-none").val($order_count);
-	        		// var $Price  = parseFloat($div_check_goods.children(".price-none").val());
-	        		// var $dPrice = parseFloat($div_check_goods.children(".discount-price-none").val());
 	        		var $is_discount = parseInt($div_check_goods.children(".is-discount-none").val());
-
-	        		// if ($is_discount != 0) {
-	        		// 	var $text = "￥"+$dPrice*$order_count+"元";
-	        		// 	$this.prevAll(".discount-price").html($text);
-	        		// }
-	        		// else {
-	        		// 	var $text = "￥"+$Price*$order_count+"元";
-	        		// 	$this.prevAll(".discount-price").html($text);
-	        		// }
-	        		// var $text = "原价:￥"+$Price*$order_count+"元";
-	        		// $this.prevAll(".bef-price").html($text);
 	        		calTotalCost();
-	        		// settleAccounts();
 	        	}
 	        	else {
 	        		// alert('物品增加或减少购买失败，请重试！');
@@ -171,7 +139,6 @@ $(document).ready(function(){
 				$("#settle-accounts #check-all").prop("checked",true);
 			}
 		}
-
 		calTotalCost();
 	});
 
@@ -182,7 +149,6 @@ $(document).ready(function(){
 		else {
 			$("#shoppingcart-body .input-locate").prop("checked",false);
 		}
-
 		calTotalCost();
 	});
 
@@ -217,25 +183,46 @@ $(document).ready(function(){
 });
 
 function calTotalCost() {
-
+	var fulldiscountList = $("#full-discount-price li");
+	var discountPrice=new Array();
+	for(var i=0;i<fulldiscountList.length;i++) {
+		discountPrice[i] = $(fulldiscountList[i]).children("span").text()+","+$(fulldiscountList[i]).children("p").text();
+	}
+	// discountPrice.sort(sortNumber);
 	var goodsList = $(".shopcart-goods-list");
 	var totalCost = 0;
     var totalCostBef = 0;
+    var fullDiscoutCount = 0;
+
     for(var i=0;i<goodsList.length;i++){
-    	console.log();
+    	var isFulldiscount = $(goodsList[i]).attr("data-fulldiscount");
+
     	if($(goodsList[i]).children(".check-goods").children(".input-locate").prop("checked")) {
-    		// alert($(goodsList[i]).children(".check-goods").children(".input-locate").prop("checked"));
+    			
     		var pricePer = parseFloat($(goodsList[i]).find(".discount-price").text().substr(1));
     		var pricePerBef = parseFloat($(goodsList[i]).find(".bef-price").text().substr(1));
     		var coutPer = parseInt($(goodsList[i]).find(".goods-count").val());
-    		
     		var sumPer = pricePer*coutPer;
     		var sumPerBef = pricePerBef*coutPer;
 
+    		if(isFulldiscount) {
+    			fullDiscoutCount += sumPer;
+    		}
+    		
     		totalCost += sumPer;
     		totalCostBef += sumPerBef;
     	}
     }
+
+    var subprice = 0;
+    for(var i=0;i<discountPrice.length;i++) {
+    	if(fullDiscoutCount >= parseFloat(discountPrice[i].split(",")[0])) {
+    		subprice = parseFloat(discountPrice[i].split(",")[1]);
+    		break;
+    	}
+    }
+
+    totalCost -= subprice;
     save = totalCostBef - totalCost;
 
     $("#Price").text("合计:￥"+totalCost.toFixed(2));
@@ -272,3 +259,8 @@ function settleAccounts(){
 	document.getElementById("dPrice").innerHTML = "原价:￥"+$Price.toFixed(2)+"元";
 	document.getElementById("save").innerHTML   = "(已节省"+$save.toFixed(2)+"元)";
 }
+
+// function sortNumber(a, b)
+// {
+// 	return -(parseFloat(a.split(",")[0]) - parseFloat(b.split(",")[0]));
+// }

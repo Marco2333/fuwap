@@ -282,10 +282,11 @@
 	font-size: 15px;
 }
 .orderconfirm-totalamount .orgin-price{
-	color: #333333;
-	font-size: 15px;
+	color: #999;
+	font-size: 13px;
 	text-decoration: line-through;
 	display: inline-block;
+	margin: 0 6px;
 }
 /*结算按钮*/
 .orderconfirm-btn-pay{
@@ -469,11 +470,11 @@
 }
 #searchgoods-head .glyphicon-search {
 	padding-top: 5px;
-	padding-top: 5px;
 	height: 25px;
 	display: inline-block;
 	width: 9%;
 	text-align: center;
+	font-size: 16px;
 }
 #searchgoods-head .ui-input-text {
 	float: left;

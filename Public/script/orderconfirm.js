@@ -6,8 +6,6 @@ $(document).ready(function(){
     		orderIds:$orderIds,
     		channel:$("input[type='radio'][name='pay_way']").val()
     	}
-
-    	console.log(data);
     	$.ajax({
     		url:$payUrl,
     		type:"post",
@@ -141,29 +139,10 @@ $(document).ready(function(){
 	});
 
 	/*=================计算价格的函数=======================*/
-	function pricecalculate(){
-		var $together_id = $(".together-id-none").val();
-
-		$.ajax({
-			type:"POST",
-			url:"/fuwebapp/index.php/Home/ShoppingCart/settleAccounts",
-			data:{together_id:$together_id},
-			success:function(price){
-				if (price['result'] != 0) {
-					document.getElementById("settle-dprice").innerHTML = price['dPrice'];
-					document.getElementById("settle-price").innerHTML = price['Price'];
-					document.getElementById("settle-save").innerHTML = price['save'];
-				}
-				else {
-					// alert("亲~抱歉，获取总价格失败，请稍后重试！");
-				}
-			},
-			error:function(){
-			}
-		});
-	}
+	
 	/*=================增减商品=======================*/
 	$(".orderconfirm-goods-txt a.sub-goods").click(function(){
+		var $together_id = $(".together-id-none").val();
 		var $order_count = parseInt($(this).next("input").val())-1;
 		var $order_id    = $(this).attr("data-orderId");
 		var $this        = $(this);
@@ -172,16 +151,13 @@ $(document).ready(function(){
 			$.ajax({
 		        type:"POST",
 		        url:'/fuwebapp/index.php/Home/ShoppingCart/updateSettleAccounts',
-		        data:{order_count:$order_count,order_id:$order_id},
+		        data:{order_count:$order_count,order_id:$order_id,together_id:$together_id},
 		        success:function(price){
 		        	if (price['result'] != 0) {
 		        		document.getElementById($order_id).value = $order_count;
-
-		        		// var $text = "￥"+price['dPrice'];
-		        		// $this.parent().prev().children(".orderconfirm-price").text($text);
-		        		// var $text = "原价:￥"+price['Price'];
-		        		// $this.parent().prev().children(".orgin-price").text($text);
-		        		pricecalculate();
+		        		$("#settle-dprice").text(price['dPrice']);
+		        		$("#settle-price").text(price['Price']);
+		        		$("#settle-save").text((price['Price']-price['dPrice']).toFixed(2));
 		        	}
 		        	else {
 		        		// alert('物品增加或减少购买失败，请稍后重试！');
@@ -192,6 +168,7 @@ $(document).ready(function(){
 	});
 	
 	$(".orderconfirm-goods-txt a.add-goods").click(function(){
+		var $together_id = $(".together-id-none").val();
 	    var $order_count = parseInt($(this).prev("input").val())+1;
 	    var $order_id    = $(this).attr("data-orderId");
 	    var $this        = $(this);
@@ -199,11 +176,13 @@ $(document).ready(function(){
 	    $.ajax({
 	    	type:"POST",
 		    url:'/fuwebapp/index.php/Home/ShoppingCart/updateSettleAccounts',
-		    data:{order_count:$order_count,order_id:$order_id},
+		    data:{order_count:$order_count,order_id:$order_id,together_id:$together_id},
 	        success:function(price){
 	        	if (price['result'] != 0) {
 	        		document.getElementById($order_id).value = $order_count;	
-		        	pricecalculate();
+		        	$("#settle-dprice").text(price['dPrice']);
+		        	$("#settle-price").text(price['Price']);
+		        	$("#settle-save").text((price['Price']-price['dPrice']).toFixed(2));
 		        }
 		       	else {
 		      		// alert('亲~物品增加或减少购买失败，请稍后重试！');
@@ -235,3 +214,24 @@ function curentTime(addtime)
 
     return(clock);
 } 
+
+function pricecalculate(){
+	var $together_id = $(".together-id-none").val();
+	$.ajax({
+		type:"POST",
+		url:"/fuwebapp/index.php/Home/ShoppingCart/settleAccounts",
+		data:{together_id:$together_id},
+		success:function(price){
+			if (price['result'] != 0) {
+				document.getElementById("settle-dprice").innerHTML = price['dPrice'];
+				document.getElementById("settle-price").innerHTML = price['Price'];
+				document.getElementById("settle-save").innerHTML = price['save'];
+			}
+			else {
+				// alert("亲~抱歉，获取总价格失败，请稍后重试！");
+			}
+		},
+		error:function(){
+		}
+	});
+}

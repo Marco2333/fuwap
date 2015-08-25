@@ -61,9 +61,10 @@ class FoodModel extends Model{
 			'message',
 			'grade',
 			'info',
-			'sale_number'
+			'sale_number',
+			'is_full_discount',
 			);
-		$goodInfo = $this->where('food_id='.$foodId.' and campus_id='.$campusId)
+		$goodInfo = $this->where('food_id=%s and campus_id=%s',$foodId,$campusId)
 						 ->field($field)
 						 ->find();
 						 

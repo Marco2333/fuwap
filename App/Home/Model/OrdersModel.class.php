@@ -56,25 +56,28 @@ class OrdersModel extends Model{
 			'food.discount_price',
 			'food.is_discount',
 			'food.message',
-			'food.img_url'
+			'food.img_url',
+            'is_full_discount'
 			);
 		$order = 'create_time desc';
 
 		$cart  = $this->join($join)
-					  ->where('phone='.$_SESSION['username'].' and orders.status=0 and orders.tag=1 and food.tag=1')
+					  ->where('phone=%s and orders.status=0 and orders.tag=1 and food.tag=1',$_SESSION['username'])
 					  ->field($field)
 					  ->order($order)
 					  ->select();
+        // for ($i = 0;$i < count($cart);$i++) {
 
-		for ($i = 0;$i < count($cart);$i++) {
-			$cart[$i]['Price'] = $cart[$i]['price']*$cart[$i]['order_count'];
-			if ($cart[$i]['is_discount'] != 0) {
-				$cart[$i]['dPrice'] = $cart[$i]['discount_price']*$cart[$i]['order_count'];
-			}
-			else {
-				$cart[$i]['dPrice'] = $cart[$i]['Price'];
-			}
-		}
+        // }
+		// for ($i = 0;$i < count($cart);$i++) {
+		// 	$cart[$i]['Price'] = $cart[$i]['price']*$cart[$i]['order_count'];
+		// 	if ($cart[$i]['is_discount'] != 0) {
+		// 		$cart[$i]['dPrice'] = $cart[$i]['discount_price']*$cart[$i]['order_count'];
+		// 	}
+		// 	else {
+		// 		$cart[$i]['dPrice'] = $cart[$i]['Price'];
+		// 	}
+		// }
 
 		return $cart;
 	}
@@ -86,12 +89,38 @@ class OrdersModel extends Model{
      * @param  array(array()) 购物车数据
      * @return array() 价格状况：原价Price，折扣价dPrice，节省save
      */
-	public function settleAccounts($cart){
+	public function settleAccounts($cart,$campusId){
+        $fullDiscount = 0;
+
 		for ($i = 0;$i < count($cart);$i++) {
+            if($cart[$i]['is_full_discount']) {
+                $fullDiscount += $cart[$i]['dPrice'];
+            }
 			$price['Price']  += $cart[$i]['Price'];
 			$price['dPrice'] += $cart[$i]['dPrice'];
 		}
-		$price['save'] = $price['Price'] - $price['dPrice'];
+
+        $preferential = D('Preferential')->getPreferentialList($campusId);
+        $discount['prefer_id']=0;
+        foreach ($preferential as $key => $p) {
+            if($fullDiscount > $p['need_number']){
+                $fullDiscountPrice = $p['discount_num'];            //优惠d数额
+                $discount['prefer_id']=$p['preferential_id'];
+                       //将优惠力度存到表里面
+                break;
+            } 
+        }
+       
+       for ($i = 0;$i < count($cart);$i++) {
+            if($cart[$i]['is_full_discount']) {
+                //dump()
+                M('orders')->where('order_id = %s',$cart[$i]['order_id'])
+                           ->save($discount);
+            }
+       }
+          
+       $price['dPrice'] -= $fullDiscountPrice;
+	   $price['save'] = $price['Price'] - $price['dPrice'];
 
 		return $price;
 	}
@@ -138,21 +167,21 @@ class OrdersModel extends Model{
     		);
 
     	if ($is_remarked == 'isNotRemarked') {
-	    	$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'is_remarked = 0'.' and '.'together_id='.'\''.$together_id.'\'')
+	    	$ordersList = $this->where('phone= %s and together_id=%s and is_remarked =0',$_SESSION['username'],$together_id)
 	    					   ->field($field)
 	    					   ->select();
     	}
     	else if ($is_remarked == 'isRemarked') {
-    		$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'is_remarked = 1'.' and '.'together_id='.'\''.$together_id.'\'')
+    		$ordersList = $this->where('phone= %s and together_id=%s and is_remarked =1',$_SESSION['username'],$together_id)
 	    					   ->field($field)
 	    					   ->select();
     	}
     	else {
-    		$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'together_id='.'\''.$together_id.'\'')
+    		$ordersList = $this->where('phone= %s and together_id=%s',$_SESSION['username'],$together_id)
     					   ->field($field)
     					   ->select();
     	}
-
+       
     	for ($i = 0;$i < count($ordersList);$i++) {
     		if ($i < count($ordersList)-1) {
     			$orderIds .= $ordersList[$i]['order_id'].',';
@@ -194,10 +223,10 @@ class OrdersModel extends Model{
 			'together_id',
 			'together_date'
 			);
+
 		$where = $this->where('order_id=%s',$orderId)
 					  ->field($field)
 					  ->find();
-
 		$Food     = D('Food');
 		$goodInfo = $Food->getGoodInfo($where['food_id'],$where['campus_id']);
 		$goodInfo['order_id']      = $orderId;

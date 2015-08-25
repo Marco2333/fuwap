@@ -5,15 +5,22 @@ $(document).ready(function(){
 		if($(this).hasClass("text-subspecial")) {
 			 $(".shopcart-goods-list .mask,.shopcart-goods-list input[type='checkbox']").addClass("none");
 			 $(this).removeClass("text-subspecial");
+
 			 $(".shopcart-goods-list input[type='checkbox']").prop("checked",true);
 			 $("#settle-accounts .glyphicon,#settle-accounts .spliter").addClass("none");
+			 $("#settle-accounts-confirm > div.fl").addClass("none");
+			 $("#check-button").addClass("w").removeClass("col-8");
+			 $("body").css("background","#fafafa");
 			 calTotalCost();
 		}
 		else {
 			$(this).addClass("text-subspecial");
+			$("#settle-accounts-confirm > div.fl").removeClass("none");
+			$("#check-button").addClass("col-8").removeClass("w");
 			$(".shopcart-goods-list input[type='checkbox']").prop("checked",false);
 			$(".shopcart-goods-list .mask,.shopcart-goods-list input[type='checkbox']").removeClass("none");
 			$("#settle-accounts .glyphicon,#settle-accounts .spliter").removeClass("none");
+			$("body").css("background","rgb(244,244,244)");
 			calTotalCost();
 		}
 	});
@@ -37,9 +44,6 @@ $(document).ready(function(){
 		}
 
 		if ($orderIds != "") {
-			var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+$orderIds;
-			window.location.href = $href;
-
 			$.ajax({
 				url:"/fuwebapp/index.php/Home/ShoppingCart/deleteOrders",
 				type:"POST",

@@ -3,9 +3,7 @@
 		width: 460px;
 		margin: 0 auto;
 	}
-	#common-nav,
-	#check-button,
-	#settle-accounts  {
+	#common-nav {
 		width: 460px;
 	}
 }
@@ -13,9 +11,7 @@
 	body {
 		width: 100%;
 	}
-	#common-nav,
-	#check-button,
-	#settle-accounts {
+	#common-nav {
 		width: 100%;
 		left: 0;
 	}
@@ -223,7 +219,6 @@ input {
 }
 #quitlog-button,
 #login-button,
-#check-button,
 #chanpword-button {
 	width: 88%;
 	margin: 20px auto;
@@ -408,6 +403,15 @@ input {
 	font-size: 14px;
 	margin: 0 10px;
 }
+#check-button {
+	color: #fff;
+	background-color: #ff573a;
+	border: none;
+	font-family: "黑体";
+	font-size: 17px;
+	border-radius: 3px;
+	outline: none;
+}
 #settle-accounts-confirm {
 	width: 88%;
     margin: 20px auto;
@@ -418,18 +422,16 @@ input {
     background-color: #ff573a;
     border: none;
 }
-#check-button {
-	margin: 0 auto;
+
+#settle-accounts-confirm .glyphicon-trash {
+	margin-top: 10px;
+	font-size: 20px;
 }
-/*#settle-accounts-confirm .glyphicon-trash {
-	color: #fff;
-	margin-top: 2px;
-	font-size: 19px;
-}
-#check-button .spliter {
+#settle-accounts-confirm .spliter {
 	border: 1px solid #fff;
-	height: 23px;
-}*/
+    height: 26px;
+    margin-top: 7px;
+}   
 .shopcart-goods-list input[type='checkbox'] {
 	position: absolute;
     width: 100%;
@@ -448,6 +450,9 @@ input {
 .shopcart-goods-list input[type='checkbox']:checked + .mask {
 	display: none;
 }
+.shopcart-goods-list .mask {
+	background: rgba(10,10,10,.3);
+}
 .shopcart-goods-list:first-child {
 	border-top: none;
 }
@@ -458,27 +463,17 @@ input {
 	padding-bottom: 165px;
 }
 .sub-add-goods-wrapper {
-	/*float: left;*/
 	margin-top: -4px;
 }
-/*.shopping-cart-body input[type='checkbox'] {
-	border-radius:5px; 
-}*/
 .roundedTwo {
   width: 18px;
   height: 18px;
   position: relative;
   margin: 20px auto;
   background: red;
-  /*background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
   border-radius: 50px;
- /* -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);*/
 }
 .roundedTwo label {
   width: 18px;

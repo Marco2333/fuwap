@@ -605,7 +605,7 @@ input.goods-count {
 	font-size: 13px;
 	color: #bbb;
 }
-#shopping-cart-empty button {
+.hang-around{
 	width: 80px;
 	height: 30px;
 	background: #fff;
@@ -613,6 +613,8 @@ input.goods-count {
 	border: 2px solid #ccc;
 	border-radius: 4px;
 	margin: 10px 0;
+	display: inline-block;
+	padding-top: 5px;
 }
 
 /*order-confirm*/
@@ -1224,4 +1226,26 @@ tr.goods-info .goods-name + div {
 .comment-tr-submit input[type='checkbox'] {
 	vertical-align: -2px;
 	margin-right: 5px;
+}
+
+/*orderconfirm*/
+#select-location-body li {
+	margin-bottom: 8px;
+	padding: 6px 10px;
+	background: #fff;
+}
+#select-location-body li.active span,
+#select-location-body li.active p {
+	color: #24dfc2;
+}
+#select-location-body li span {
+	font-size: 16px;
+}
+#select-location-body {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 100%;
+	background: rgb(248,248,248);
 }

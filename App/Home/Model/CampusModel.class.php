@@ -29,4 +29,11 @@ class CampusModel extends Model {
 
 		return $campus_name;
 	}
+
+	public function getCloseTime($campusId) {
+		$close_time = M('campus')->field('close_time')
+					->where('campus_id=%d',$campusId)
+					->find();
+		return $close_time['close_time'];
+	}
 }

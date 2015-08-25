@@ -15,8 +15,8 @@
 		<div class="orderconfirm-head">
 			<span class="glyphicon text-special glyphicon-circle-arrow-left fl history-back"></span>
 			<span>确认订单</span>
-		</div><!--register-head-->
-		<a href="{:U('Person/addressManage')}">
+		</div>
+		<div id="order-confirm-location" data-rank="{$defaultAddress.rank}">
 			<div class="consumer-info w">
 				<span class="glyphicon glyphicon-user"></span>
 				<span class="consumer-name">{$defaultAddress.name}</span>
@@ -27,7 +27,7 @@
 				<span class="consumer-address">{$defaultAddress.address}</span>
 				<img src="__PUBLIC__/img/icon/forwardarrow.jpg" alt="">
 			</div>
-		<a>
+		</div>
 		<div class="orderconfirm-goodsdetail w">
 			<ul id="orderconfirm-goods" data-orderIds="{$orderIds}">
 				<input class="together-id-none none" value="{$together_id}"/>
@@ -62,11 +62,6 @@
 				<h1>请选择送达时间</h1>
 				<ul>
 					<li class="active">立即送出</li>
-					<li>11:55</li>
-					<li>10:90</li>
-					<li>22:10</li>
-					<li>44:10</li>
-					<li>11:55</li>
 				</ul>
 			</div>
 		</div>
@@ -101,9 +96,35 @@
 			</div>
 		</div>
 		<div class="orderconfirm-message">
-         <!--	<p>留言备注：</p>	-->	
-			<textarea     placeholder="留言备注：" rows="5"></textarea>
+			<textarea  placeholder="留言备注：" rows="5"></textarea>
 		</div>
+		
+		<div id="select-location-body">
+			<div class="orderconfirm-head">
+				<span class="glyphicon text-special glyphicon-circle-arrow-left fl history-back-temp"></span>
+				<span>选择地址</span>
+			</div><!--register-head-->
+			<ul class="w over-hidden">
+				<foreach name="address" item="v">
+					<li id="{$v['rank']}" 
+					<?php 
+						if($v['tag'] == 0) {
+							echo 'class="bground-white clearfix active">';
+						}
+						else {
+							echo 'class="bground-white clearfix">';
+						}
+					 ?>
+						<div class="fl w">
+							<span class="location-name">{$v.name}</span>
+							<span  class="location-phone">{$v.phone}</span>
+							<p class="text-middle location-address">{$v.address}</p>
+						</div>
+					</li>
+				</foreach>
+			</ul>
+		</div>
+
 		<div class="orderconfirm-totalamount">
 			合计:￥<span id="settle-dprice"> {$price.dPrice}</span> <span class="orgin-price">
 			原价:￥<span id="settle-price"> {$price.Price}</span></span>
@@ -115,7 +136,6 @@
 			</button>
 		</div>
 		
-        
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script type="text/javascript">
            var $orderIds=$("#orderconfirm-goods").attr("data-orderIds");

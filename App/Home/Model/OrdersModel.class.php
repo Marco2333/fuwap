@@ -301,11 +301,12 @@ class OrdersModel extends Model{
                 'phone'    => $user,
                 'order_id' => $orderID[$i]
                 );
-
+            dump($orderID[$i]);
+            dump($user);
             $Orders->where($where)
                    ->save($data);
         }
-
+        dump($together_id);
         return $together_id;
     }
 

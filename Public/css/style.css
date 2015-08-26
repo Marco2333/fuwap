@@ -32,17 +32,27 @@ input {
 	height: 45px;
 	background-color: #24dfc2;
 	width: 100%;
-	padding: 10px 13px 0 13px;
+	padding: 10px 6px 0 11px;
 }
 #index-head a {
-	color: rgba(248,248,248,.9);
+	color: #fff;
+}
+#index-head img{
+	width: 27px;	
+	height: 22px;
+	margin-top: 3px;
+}
+#index-head img.img-search {
+	width: 24px;	
+	height: 24px;
 }
 #index-head .glyphicon {
 	font-size: 21px;
-	color: rgba(245,245,245,.8);
+	color: #fff;
 	margin: 2px 1px;
 	width: 25px;
 	height: 28px;
+	font-weight: 100;
 }
 #index-head .col-xs-8 {
 	font-size: 18px;
@@ -50,6 +60,10 @@ input {
 	font-weight: 100;
 	text-align: center;
 	margin-top: 5px;
+}
+#slider .image{
+	width: 100%;
+	height: 190px;
 }
 #slide-wrapper {
 	min-height: 140px;
@@ -915,7 +929,12 @@ tr.goods-info .goods-name + div {
 	border-left: none;
 	display: inline-block;
 	width: 33%;
+}
+#search-standard li a {
 	padding-top: 8px;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
 	font-size: 16px;
 }
 #search-standard li.active {
@@ -924,6 +943,9 @@ tr.goods-info .goods-name + div {
 /*goods-info*/
 #goodsinfo-head .history-back {
 	color: #fff;
+}
+#goodsinfo-head .head-title {
+	margin-left: 10px;
 }
 #goodsinfo-head img {
 	width: 25px;
@@ -1121,13 +1143,13 @@ tr.goods-info .goods-name + div {
 }
 #add-location-body li {
 	margin: 5px 0;
-	width: 120%;
+	width: 130%;
 	/*left:-20%;*/
 	height: 50px;
 	overflow: hidden;
 }
 .slide-delete {
-	width: 14%;
+	width: 16%;
 	background: #ff573a;
 	text-align: center;
 	font-size: 19px;
@@ -1158,9 +1180,8 @@ tr.goods-info .goods-name + div {
 }
 #add-location-body .arrow-right-wrapper {
 	padding: 14px 0;
-	/*padding-right: 15px;*/
-	text-align: center;
-	width: 16%;
+	text-align: left;
+	width: 14%;
 }
 #add-location-body {
 	margin-bottom: 15px;

@@ -15,20 +15,22 @@ class CommodityController extends Controller {
 	    $campusId = $_SESSION['campusId'];          
 	  	$categoryId = I('categoryId');
 
-	    if($categoryId == null){
-	        $categoryId = 1; 
-	    }
 	    if($campusId == null){
 	        $campusId = 1;   
 	    }
 
 		$category = D('FoodCategory');
-		$classes = $category->getCategory(8,$campusId);
+		$classes = $category->getCategory($campusId);
+
+        if($categoryId == null){
+            $categoryId = $classes[0]['category_id']; 
+        }
 	   
-	    $goodList = $category -> getGoodsByCatId($classes[0]['category_id'],$campusId);
-	    
-	    // dump($classes);
-	    $this->assign('goodlist',$goodList)
+        $res = D('Food')->getFoodByCatId($campusId,$categoryId);
+
+	    $this->assign('goodlist',$res['goodList'])
+             ->assign('page',$res['show'])
+             ->assign('categoryId',$categoryId)
 	         ->assign("category",$classes); 
 	   
 	    $this->display("goodsclassify");
@@ -42,10 +44,11 @@ class CommodityController extends Controller {
             $campusId = 1;
         }
         
-        $goodList = D('FoodCategory')->getGoodsBySerial($flag,$campusId);
+        $res = D('FoodCategory')->getGoodsBySerial($flag,$campusId);
 
         $this->assign('flag',$flag)
-            ->assign('goodList',$goodList);
+            ->assign('page',$res['show'])
+            ->assign('goodList',$res['goodList']);
 
         
         $this->display('goodscategory');
@@ -216,68 +219,41 @@ class CommodityController extends Controller {
         }
     }
 
-    public function searchoutcome($key) {
+    public function searchoutcome() {
+        $key = I('key');
         $campus_id = $_SESSION['campus_id'];
 
         if($campus_id == null) {
             $campus_id = 1;
         }
 
-        $data['campus_id'] = $campus_id;
-        $data['name|food_flag']=array('like',"%".$key."%");
-        $goodlist = M('food')->where($data)
-            ->order('modify_time desc')
-            ->select();
-        // dump($goodlist);
-        $this->assign("goodlist",$goodlist)
-            ->assign("key",$key);
-       
-        $this->display("searchoutcome");
-    }
-
-    public function getgoodlist($key) {
         $std=(int)I('std');
-        $campus_id = $_SESSION['campus_id'];
 
-        if($campus_id == null) {
-            $campus_id = 1;
+        if($std==null) {
+            $std = 0;
         }
-
-        $data['campus_id'] = $campus_id;
-        $data['name|food_flag']=array('like',"%".$key."%");
 
         switch ($std) {
             case 0:
-                $goodlist = M('food')->where($data)
-                   ->order('modify_time desc')
-                   ->select();
+                $out = D('Food')->getsearchList($campus_id,$key,0);
                 break;
             case 1:
-                $goodlist = M('food')->where($data)
-                    ->order('sale_number desc')
-                    ->select();
+                $out = D('Food')->getsearchList($campus_id,$key,1);
                 break;
             case 2:
-                $goodlist = M('food')->where($data)
-                    ->order('price')
-                    ->select();
+                $out = D('Food')->getsearchList($campus_id,$key,2);
                 break;
             default:
-                 $goodlist = M('food')->where($data)
-                    ->order('modify_time desc')
-                    ->select();
+                $out = D('Food')->getsearchList($campus_id,$key,0);
                 break;
         }
-        // dump($goodlist);
-       if($goodlist !== false) {
-            $res['status'] = 1;
-            $res['goodList'] = $goodlist;
-        }
-        else {
-            $res['status'] = 0;
-        }
-
-        $this->ajaxReturn($res);
+        
+        $this->assign("goodlist",$out['goodlist'])
+            ->assign('page',$out['show'])
+            ->assign('std',$std)
+            ->assign("key",$key);
+       
+        $this->display("searchoutcome");
     }
 	
 }

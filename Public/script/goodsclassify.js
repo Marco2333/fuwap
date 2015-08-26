@@ -1,95 +1,82 @@
 $(document).ready(function(){
-	$(".moveleft").click(function(){
-		var v=parseInt( $("input.count").val());
-		if(v<0){
-			v++;
-			$("input.count").attr("value",v);
-			var width=$(".goodsclassify-header li").width();
-			$(".goodsclassify-header ul").css( "left",width*v )
-		}
+
+	$("#classify-navi").css("width",""+($("#classify-navi li").length*90+6)+"px");
+
+	$(".goodsclassify-header").swipeRight(function(){
+	  	var left=$(".goodsclassify-header ul").css("left");
+	  	var left = left.substr(0,left.length-2);
+	  	
+  		if(parseInt(left)<0){
+  			var newleft = parseFloat(left)+90+"px";
+  			$(".goodsclassify-header ul").css( "left",newleft);
+  		}
 	});
-	
-	$(".moveright").click(function(){
-		var v=parseInt( $("input.count").val());
-		var length=$("ul#classify-navi>li").length;
-		length=4-length;
-		if(v>length){
-			v--;
-			$("input.count").attr("value",v);
-			var width=$(".goodsclassify-header li").width();
-			$(".goodsclassify-header ul").css( "left",width*v )
-		}		
-	});	
-	
-	$(".goodsclassify-header").on("swiperight",function(){
-	  	var lef=$(".goodsclassify-header ul").css("left");
-  			if(parseInt(lef)<0){
-  			$(".goodsclassify-header ul").css( "left", function(index, value) {return parseFloat(value)+1*$(".goodsclassify-header li").width();});
+
+	$(".goodsclassify-header").swipeLeft(function(){
+
+	  	var left=$(".goodsclassify-header ul").css("left");
+  		var width = $("#classify-navi").css("width");
+  		var width = width.substr(0,width.length-2);
+
+	  	if(-parseInt(left) < parseInt(width)-document.body.clientWidth){
+	  		var newleft = parseFloat(left)-90+"px";
+	  		$(".goodsclassify-header ul").css("left",newleft);
 	  	}
 	});
 
-	$(".goodsclassify-header").on("swipeleft",function(){
-	  	var lef=$(".goodsclassify-header ul").css("left");
-  		var cou=$("#classify-navi>li").length;
-  		var wid=(cou-4)*$(".goodsclassify-header li").width();
-	  	if(-parseInt(lef)<parseInt(wid)){
-	  		$(".goodsclassify-header ul").css("left", function(index, value) {return parseFloat(value)-1*$(".goodsclassify-header li").width();});
-	  	}
-	});
+	// $("#classify-navi li").click(function(){
 
-	$("#classify-navi li").click(function(){
-
-		$(this).siblings().removeClass("active");
-		$(this).addClass("active");
-		$.ajax({
-			type:"POST",
-			url:"../../Home/Commodity/getGatGoods",
-			data:{
-				categoryId:$(this).attr("data-id")
-			},
-			success:function(data) {
-				if(data.result != 0){
+	// 	$(this).siblings().removeClass("active");
+	// 	$(this).addClass("active");
+	// 	$.ajax({
+	// 		type:"POST",
+	// 		url:"/fuwebapp/index.php/Home/Commodity/getGatGoods",
+	// 		data:{
+	// 			categoryId:$(this).attr("data-id")
+	// 		},
+	// 		success:function(data) {
+	// 			if(data.result != 0){
 					
-					var goodsList = data['goodsList'];
-					console.log(goodsList);
-					$(".body-y").empty();
-					for(var i = 0; i<goodsList.length;i++){
-						var $goodsdetail = $("<div class='goodsclassify-goodsdetail clearfix'></div>");
-						$("<div class='goodsclassify-goodsimg'></div>")
-							.append($("<img src="+goodsList[i].img_url+">"))
-							.appendTo($goodsdetail);
+	// 				var goodsList = data['goodsList'];
 
-						var $goodtxt = $("<div class='goodsclassify-goods-txt'></div>");
-						$goodtxt.append($("<div class='goods-txt-name'>"+goodsList[i].name+"</div>"))
-							.append($("<div class='goods-txt-intro'>"+goodsList[i].message+"</div>"));
+	// 				$(".body-y").empty();
+	// 				for(var i = 0; i<goodsList.length;i++){
+	// 					var $goodsdetail = $("<div class='goodsclassify-goodsdetail clearfix'></div>");
+	// 					$("<div class='goodsclassify-goodsimg'></div>")
+	// 						.append($("<img src="+goodsList[i].img_url+">"))
+	// 						.appendTo($goodsdetail);
+
+	// 					var $goodtxt = $("<div class='goodsclassify-goods-txt'></div>");
+	// 					$goodtxt.append($("<div class='goods-txt-name'>"+goodsList[i].name+"</div>"))
+	// 						.append($("<div class='goods-txt-intro'>"+goodsList[i].message+"</div>"));
 						
-						var htmlString = "<div class='fl'>"
-								+ "<div class='goodsclassify-price fl discount-price'>"
-								+ goodsList[i].discount_price
-								+ "</div> "
-								+ "<span class='orgin-price fl bef-price'> ￥"
-								+ goodsList[i].price
-								+ "</span>"
-								+ "</div> <div class='ri'> <div class='goodsclassify-sales'> 销量："
-								+ goodsList[i].sale_number
-								+ "</div> </div>";
-						$("<div></div>").html(htmlString)
-							.appendTo($goodtxt);
-						var $awrapper = $("<a href='../../Home/Commodity/goodsinfo/food_id/"+goodsList[i].food_id+"'></a>");
-						$goodsdetail.append($goodtxt)
-						.appendTo($awrapper);
-						$(".body-y").append($awrapper);
-					}
-				}
-				else {
-					alert("刷新失败！");
-				}	
-			},
-			error:function(){
-				alert("刷新失败！");
-			}
-		});
+	// 					var htmlString = "<div class='fl'>"
+	// 							+ "<div class='goodsclassify-price fl discount-price'>"
+	// 							+ goodsList[i].discount_price
+	// 							+ "</div> "
+	// 							+ "<span class='orgin-price fl bef-price'> ￥"
+	// 							+ goodsList[i].price
+	// 							+ "</span>"
+	// 							+ "</div> <div class='ri'> <div class='goodsclassify-sales'> 销量："
+	// 							+ goodsList[i].sale_number
+	// 							+ "</div> </div>";
+	// 					$("<div></div>").html(htmlString)
+	// 						.appendTo($goodtxt);
+	// 					var $awrapper = $("<a href='../../Home/Commodity/goodsinfo/food_id/"+goodsList[i].food_id+"'></a>");
+	// 					$goodsdetail.append($goodtxt)
+	// 					.appendTo($awrapper);
+	// 					$(".body-y").append($awrapper);
+	// 				}
+	// 			}
+	// 			else {
+	// 				alert("刷新失败！");
+	// 			}	
+	// 		},
+	// 		error:function(){
+	// 			alert("刷新失败！");
+	// 		}
+	// 	});
 		
-	});
+	// });
 		
 })

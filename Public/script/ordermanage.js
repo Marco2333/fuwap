@@ -85,7 +85,7 @@ $(document).ready(function(){
 
 	$(".manage-button-5").on("click",function(){
 		var $together_id = $(this).nextAll(".together-id-none").val();
-
+		console.log($together_id);
 		$.ajax({
 			type:"POST",
 			url:"/fuwebapp/index.php/Home/OrderManage/commentOrder",
@@ -93,6 +93,7 @@ $(document).ready(function(){
 			success:function(result){
 				if (result['result'] != 0) {
 					var $href = "/fuwebapp/index.php/Home/Commodity/comment?orderIds="+result['orderIds'];
+		
 					window.location.href = $href;
 				}
 				else {

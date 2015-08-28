@@ -142,7 +142,8 @@ class CommodityController extends Controller {
     	$together_id = I('together_id');
 
     	$result    = $FoodComment->postComment($food_id,$comment,$grade,$is_hidden,$order_id);
-    	$setStatus = $Orders->setStatus($together_id);
+
+        $setStatus = $Orders->setStatus($together_id);
 
     	if ($result !== false) {
 			$res['result'] = 1;
@@ -161,8 +162,11 @@ class CommodityController extends Controller {
         $FoodComment = D('FoodComment');
 
         $food_id = I('food_id');
-        // $food_id   = '40313';
-        $campus_id = $_SESSION['campus_id'];
+        $campus_id = $_SESSION['campusId'];
+
+        if($campus_id==null){
+            $campus_id = 1;
+        }
 
         $userInfo    = $Users->getUserInfo();
         $goodsInfo   = $Food->getGoodInfo($food_id,$campus_id);
@@ -221,7 +225,7 @@ class CommodityController extends Controller {
 
     public function searchoutcome() {
         $key = I('key');
-        $campus_id = $_SESSION['campus_id'];
+        $campus_id = $_SESSION['campusId'];
 
         if($campus_id == null) {
             $campus_id = 1;

@@ -1,12 +1,14 @@
 $(document).ready(function(){
 
 	$("#classify-navi").css("width",""+($("#classify-navi li").length*90+6)+"px");
+	// var initleft = -parseInt($("#classify-navi li.active").index()/4)*360;
+	// $("#classify-navi").css("left",initleft+"px");
 
 	$(".goodsclassify-header").swipeRight(function(){
 	  	var left=$(".goodsclassify-header ul").css("left");
 	  	var left = left.substr(0,left.length-2);
 	  	
-  		if(parseInt(left)<0){
+  		if(parseInt(left) < 0){
   			var newleft = parseFloat(left)+90+"px";
   			$(".goodsclassify-header ul").css( "left",newleft);
   		}

@@ -137,8 +137,6 @@ $(document).ready(function(){
 			$("body").removeClass("over-hidden");
 			$("#arr-time-mask").fadeOut(100);
 	});
-
-	/*=================计算价格的函数=======================*/
 	
 	/*=================增减商品=======================*/
 	$(".orderconfirm-goods-txt a.sub-goods").click(function(){
@@ -147,7 +145,7 @@ $(document).ready(function(){
 		var $order_id    = $(this).attr("data-orderId");
 		var $this        = $(this);
 
-		if ($order_count >= 0) {
+		if ($order_count > 0) {
 			$.ajax({
 		        type:"POST",
 		        url:'/fuwebapp/index.php/Home/ShoppingCart/updateSettleAccounts',

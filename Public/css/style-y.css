@@ -348,9 +348,8 @@
 .goodsclassify-header  ul{
 	overflow: hidden;
 	background-color: white;
-	width: 200%;
 	position: absolute;
-	left: 0px;
+	left: 0;
 	padding-top: 8px;
 	-webkit-transition: left 0.3s ease-in-out;
 	-ms-transition: left 0.3s ease-in-out;

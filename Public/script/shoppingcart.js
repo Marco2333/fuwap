@@ -1,4 +1,4 @@
-$(document).ready(function(){
+ $(document).ready(function(){
 
 	calTotalCost();
 	$("#select-goods").click(function(){
@@ -205,7 +205,8 @@ function calTotalCost() {
     		var sumPer = pricePer*coutPer;
     		var sumPerBef = pricePerBef*coutPer;
 
-    		if(isFulldiscount) {
+    		if(isFulldiscount == 1) {
+    			console.log(isFulldiscount);
     			fullDiscoutCount += sumPer;
     		}
     		

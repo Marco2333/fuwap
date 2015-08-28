@@ -57,9 +57,13 @@ class FoodCategoryModel extends Model {
 		            ->scope('nomal')
 					->where('serial = %d and campus_id = %d',$flag,$campusId)
 					->find();
-
-		$res = D('Food')->getFoodByCatId($campusId,$cateid['category_id']);
-
+		if($cateid == null) {
+			$res = null;
+		}
+		else {
+			$res = D('Food')->getFoodByCatId($campusId,$cateid['category_id']);
+		}
+		
 		return $res;
 	}
 }

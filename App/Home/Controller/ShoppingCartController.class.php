@@ -73,6 +73,8 @@ class ShoppingCartController extends Controller{
             $campusId = 1;
         }
 
+        $phone=$_SESSION['username'];
+
         $Receiver = D('Receiver');
         $Orders   = D('Orders');
         $Preferential = D('Preferential');
@@ -81,7 +83,7 @@ class ShoppingCartController extends Controller{
         $defaultAddress = $Receiver->getDefaultAddress();
         $goodsInfo      = $Orders->getGoodsInfo($orderIds);
         $price          = $Orders->settleAccounts($goodsInfo,$campusId);
-        $together_id    = $Orders->setTogether($orderIds);
+        $together_id    = $Orders->setTogether($orderIds,$phone);
         $preferential   = $Preferential->getPreferentialList($campusId); 
         $Receiver = D('Receiver');
         $address = $Receiver->getAddressList();   //获取地址
@@ -131,11 +133,13 @@ class ShoppingCartController extends Controller{
         $order_count = I('order_count');
         $together_id = I('together_id');
         $result      = $Orders->updateOrderCount($order_id,$order_count);
-    
-        $orderIds    = $Orders->getOrderIds($together_id,$campusId);
+        
+        $orderIds    = $Orders->getOrderIds($together_id);
+
         $goodsInfo   = $Orders->getGoodsInfo($orderIds);
         $price       = $Orders->settleAccounts($goodsInfo,$campusId);
 
+        
         if ($orderIds !== false && $goodsInfo !== false && $price !== false) {
             $price['result'] = 1;
             $this->ajaxReturn($price);
@@ -210,10 +214,13 @@ class ShoppingCartController extends Controller{
     public function payAtOnce(/*$rank,*/$orderIds,$channel){
         $order=D('Orders');
         $phone=session('username');
-        $campusId=session('campus_id');
-        if($campusId==null){
-            $campusId=1;
+        if(!isset($_SESSION['campusId'])) {
+            $campusId = 1;
         }
+        else {
+            $campusId = $_SESSION['campusId'];
+        }
+        
         $togetherId=$order->setTogetherId($orderIds,$phone);
         $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
         

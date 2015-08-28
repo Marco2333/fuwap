@@ -23,27 +23,38 @@ class OrderManageController extends Controller{
 	}
 
 	public function index(){
-		$this->orderManage();
+		
 	}
 
 	public function orderManage(){
+
+		$campusId=session('campusID');
+        if($campusId==null){
+            $campusId=1;
+        }
 		$Orders = D('Orders');
 
 		$status 		= I('status');
 		$togetherIds 	= $Orders->getTogetherIds($status);
-
+		
+		
 		for ($i = 0;$i < count($togetherIds);$i++) {
 			$orderIds      = $Orders->getOrderIds($togetherIds[$i]['together_id']);
-			$goodsInfo[$i] = $Orders->getGoodsInfo($orderIds);
-			$price[$i]     = $Orders->settleAccounts($goodsInfo[$i]);
 
-			for ($j = 0;$j < count($goodsInfo[$i]);$j++) {
-				$goodsInfo[$i][0]['goodsCount'] += $goodsInfo[$i][$j]['order_count'];
+			if($orderIds != null) {
+				$goodsInfo[$i] = $Orders->getGoodsInfo($orderIds);
+				$price[$i]     = $Orders->settleAccounts($goodsInfo[$i],$campusId);
+
+
+				for ($j = 0;$j < count($goodsInfo[$i]);$j++) {
+					$goodsInfo[$i][0]['goodsCount'] += $goodsInfo[$i][$j]['order_count'];
+				}
+				
+				$goodsInfo[$i][0]['totaldPrice'] = $price[$i]['dPrice'];
+				$goodsInfo[$i][0]['totalPrice']  = $price[$i]['Price'];
+				$goodsInfo[$i][0]['totalSave']   = $price[$i]['save'];
 			}
 			
-			$goodsInfo[$i][0]['totaldPrice'] = $price[$i]['dPrice'];
-			$goodsInfo[$i][0]['totalPrice']  = $price[$i]['Price'];
-			$goodsInfo[$i][0]['totalSave']   = $price[$i]['save'];
 		}
 
 		if ($togetherIds !== false) {
@@ -94,7 +105,6 @@ class OrderManageController extends Controller{
 
 		$together_id = I('together_id');
 		$orderIds    = $Orders->getOrderIds($together_id,'isNotRemarked');
-
 		if ($orderIds !== false) {
 			$res['orderIds'] = $orderIds;
 			$res['result']   = 1;

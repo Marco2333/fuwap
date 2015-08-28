@@ -72,7 +72,7 @@ $(document).ready(function(){
 
 		$("#search-history-list li").remove();
 		$.cookie("record", "", { expires: -1 });
-
+		// delCookie("record");
 		$("#clear-history-list p").removeClass("none");
 		$("#clear-history-list h1").addClass("none"); 
 	});
@@ -82,3 +82,23 @@ $(document).ready(function(){
 		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome/key/"+$(this).text();
 	});
 });
+
+function delCookie(name) 
+{ 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() - 1); 
+    var cval=getCookie(name); 
+    if(cval!=null) 
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+} 
+
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 

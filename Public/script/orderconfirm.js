@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
     $(".orderconfirm-btn-pay").on('click',function(){
+
+    	var $rank = $("#order-confirm-location").attr("data-rank");
     	var data={
-    		//rank:$rank,
+    		rank:$rank,
     		orderIds:$orderIds,
     		channel:$("input[type='radio'][name='pay_way']").val()
     	}
@@ -11,9 +13,17 @@ $(document).ready(function(){
     		type:"post",
     		data:data,
     		success:function(data){
-    			 pingpp.createPayment(data, function(result, err) {
-                     
-                    });
+    			if(data.status == 2){
+    			    pingpp.createPayment(data, function(result, err) {
+    			    
+    			    });
+    			}else if(data.status == -1){
+    			   alert("支付失败，请重试");
+    			}else if(data.status == 1) {
+    			   alert("亲,收货地址超出配送范围哦");
+    			}else if(data.status == 0) {
+    			   alert("亲，休息喽，下次再来");
+    			}
     		}
     	});
     });

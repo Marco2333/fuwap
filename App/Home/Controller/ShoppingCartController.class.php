@@ -211,7 +211,7 @@ class ShoppingCartController extends Controller{
         $this->ajaxReturn($res);
     }
 
-    public function payAtOnce(/*$rank,*/$orderIds,$channel){
+    public function payAtOnce($rank,$orderIds,$channel){
         $order=D('Orders');
         $phone=session('username');
         if(!isset($_SESSION['campusId'])) {
@@ -224,13 +224,46 @@ class ShoppingCartController extends Controller{
         $togetherId=$order->setTogetherId($orderIds,$phone);
         $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
         
-        if($togetherId!=null){
-            $charge=D('Users')->pay($channel,$totalPrice,$togetherId);
-            echo $charge;
+        if($togetherId != null){
+
+            $out = $this->checkLegal($togetherId,$rank,$phone);
+
+            if($out==0) {
+                $res['status'] = 0;
+                $this->ajaxReturn($res);
+            }
+            else if($out==1) {
+                $res['status'] = 1;
+                $this->ajaxReturn($res);
+            }
+            else {
+                $charge=D('Users')->pay($channel,$totalPrice,$togetherId);
+                $res['status'] = 2;
+                $res['charge'] = $charge;
+                $this->ajaxReturn($res);
+            } 
         }else{
-            echo "null";
+             $res['status'] = -1;
+             $this->ajaxReturn($res);
         }
-     
+    }
+
+    public function checkLegal($togetherId,$rank,$phone) {
+        $status = D('Orders')->getCampusStateByTogeId($togetherId);
+
+        if($status != 1) 
+        { 
+            return 0;
+        }
+
+        $campus_id1 = D('Orders')->getCampusIdByRank($phone,$rank);
+
+        $campus_id2 = D('Orders')->getCampusIdByTog($phone,$togetherId);
+ 
+        if($campus_id1 !== $campus_id2) {
+            return 1;
+        }
+        return  2;
     }
 
 }

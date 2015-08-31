@@ -205,6 +205,10 @@ class CommodityController extends Controller {
     }
 
     public function buyNowButton(){
+
+        if (!isset($_SESSION['username'])) {
+            $this->redirect('Home/Login/login');
+        }
         $Orders = D('Orders');
 
         $food_id = I('food_id');

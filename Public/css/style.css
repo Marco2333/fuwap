@@ -545,6 +545,7 @@ input {
 .goods-img img {
 	width: 95%;
 	height: auto;
+	max-height: 100px;
 }
 .shopcart-goods-info {
 	width: 70%;

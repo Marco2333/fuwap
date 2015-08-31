@@ -170,12 +170,13 @@ class OrdersModel extends Model{
         $where['together_id']=$together_id;
 
     	if ($is_remarked == 'isNotRemarked') {
+            $where['is_remarked']=0;
 	    	$ordersList = M('orders')->where($where)
 	    					   ->field($field)
 	    					   ->select();
     	}
     	else if ($is_remarked == 'isRemarked') {
-
+             $where['is_remarked']=1;
     		$ordersList = M('orders')->where($where)
 	    					   ->field($field)
 	    					   ->select();
@@ -184,7 +185,7 @@ class OrdersModel extends Model{
 
     		$ordersList = M('orders')->where($where)
     					   ->field($field)
-    					   ->select(); 
+    					   ->select();
     	}
        
     	for ($i = 0;$i < count($ordersList);$i++) {
@@ -301,7 +302,7 @@ class OrdersModel extends Model{
                             ->where('together_id is not null')
     						->distinct('together_id')
     						->select();
-       
+       // dump($togetherIds);
     	return $togetherIds;
     }
 

@@ -18,7 +18,7 @@ class OrderManageController extends Controller{
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {
-			$this->redirect('Home/Login/homePage');
+			$this->redirect('Home/Login/login');
 		}
 	}
 
@@ -61,10 +61,11 @@ class OrderManageController extends Controller{
 			$this->assign('status',$status)
 				 ->assign('goodsInfo',$goodsInfo)
 				 ->assign('price',$price);
+
 			$this->display('ordermanage');
 		}
 		else {
-			$this->redirect('Home/Login/homePage');
+			$this->redirect('Home/Login/login');
 		}
 	}
 
@@ -105,6 +106,7 @@ class OrderManageController extends Controller{
 
 		$together_id = I('together_id');
 		$orderIds    = $Orders->getOrderIds($together_id,'isNotRemarked');
+
 		if ($orderIds !== false) {
 			$res['orderIds'] = $orderIds;
 			$res['result']   = 1;

@@ -71,8 +71,8 @@ $(document).ready(function(){
 	$("#clear-history-list h1").click(function(){
 
 		$("#search-history-list li").remove();
-		$.cookie("record", "", { expires: -1 });
-		// delCookie("record");
+		// $.cookie("record", "", { expires: -1 });
+		delCookie("record");
 		$("#clear-history-list p").removeClass("none");
 		$("#clear-history-list h1").addClass("none"); 
 	});
@@ -96,9 +96,10 @@ function getCookie(name)
 { 
     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
  
-    if(arr=document.cookie.match(reg))
- 
+    if(arr=document.cookie.match(reg)){
         return unescape(arr[2]); 
-    else 
+ 	}
+    else {
         return null; 
+    }
 } 

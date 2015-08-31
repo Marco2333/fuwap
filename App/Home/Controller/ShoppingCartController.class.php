@@ -242,9 +242,6 @@ class ShoppingCartController extends Controller{
                 $res['charge'] = $charge;
                 $this->ajaxReturn($res);
             } 
-        }else{
-             $res['status'] = -1;
-             $this->ajaxReturn($res);
         }
     }
 

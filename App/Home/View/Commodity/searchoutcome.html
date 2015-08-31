@@ -22,24 +22,24 @@
 			<ul>
 				<switch name="std">
 				    <case value="0">
-						<li class="active" data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0))}">综合</a></li>	
-						<li data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1))}">销量</a></li>
-						<li data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2))}">价格</a></li>
+						<li class="active" data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0,'key'=>$key))}">综合</a></li>	
+						<li data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1,'key'=>$key))}">销量</a></li>
+						<li data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2,'key'=>$key))}">价格</a></li>
 				    </case>
 				    <case value="1">
-						<li data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0))}">综合</a></li>	
-						<li class="active" data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1))}">销量</a></li>
-						<li data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2))}">价格</a></li>
+						<li data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0,'key'=>$key))}">综合</a></li>	
+						<li class="active" data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1,'key'=>$key))}">销量</a></li>
+						<li data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2,'key'=>$key))}">价格</a></li>
 				    </case>
 				    <case value="2">
-						<li data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0))}">综合</a></li>	
-						<li data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1))}">销量</a></li>
-						<li class="active" data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2))}">价格</a></li>
+						<li data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0,'key'=>$key))}">综合</a></li>	
+						<li data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1,'key'=>$key))}">销量</a></li>
+						<li class="active" data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2,'key'=>$key))}">价格</a></li>
 				    </case>
 				    <default />
-				    	<li class="active"  data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0))}">综合</a></li>	
-				    	<li data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1))}">销量</a></li>
-				    	<li data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2))}">价格</a></li>
+				    	<li class="active"  data-key="0"><a href="{:U('Commodity/searchoutcome',array('std'=>0,'key'=>$key))}">综合</a></li>	
+				    	<li data-key="1"><a href="{:U('Commodity/searchoutcome',array('std'=>1,'key'=>$key))}">销量</a></li>
+				    	<li data-key="2"><a href="{:U('Commodity/searchoutcome',array('std'=>2,'key'=>$key))}">价格</a></li>
 				</switch>
 			</ul>
 		</div>

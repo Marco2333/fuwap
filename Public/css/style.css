@@ -112,7 +112,7 @@ input {
 	font-family: "黑体";
 	position: fixed;
 	bottom: 0;
-	padding: 3px 0;
+	padding: 1px 0;
 	font-size: 15px;
 	border-top: 1px solid #ddd;
 	color: #999;
@@ -200,9 +200,6 @@ input {
 	padding: 28px 0;
 	font-family: "黑体";
 	border-bottom: 1px solid rgb(245,245,245);
-}
-#homepage-nav + #common-nav dl {
-	margin-bottom: 20px;
 }
 #homepage-nav .col-xs-3 dt img {
 	width: 40px;

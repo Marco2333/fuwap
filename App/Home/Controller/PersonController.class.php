@@ -77,15 +77,11 @@ class PersonController extends Controller {
 
     public function addressManage(){
     	$Receiver = D('Receiver');
-        // $row     = 9;
-        // $count   = $Receiver->count();
-    	// $page    = $Receiver->pageProduce($count,$row);    //分页
-        // $show    = $page->show();
-        // $limit   = $page->firstRow.','.$page->listRows;
+     
         $address = $Receiver->getAddressList();   //获取地址
-        // $address = $Receiver->addressConnect($address);
+       
     	$this->assign('address',$address);
-             // ->assign('addressPage',$show);
+           
     	$this->display('addressManage');
     }
 

@@ -45,6 +45,13 @@ class OrdersModel extends Model{
      * @return array(array()) 购物车数据
      */
 	public function getShoppingCart(){
+
+        $campus_id = $_SESSION['campusId'];
+
+        if($campus_id==null) {
+            $campus_id = 1;
+        }
+
 		$join  = 'food On orders.food_id = food.food_id and orders.campus_id = food.campus_id';
 		$field = array(
 			'orders.order_id',
@@ -61,8 +68,12 @@ class OrdersModel extends Model{
 			);
 		$order = 'create_time desc';
 
+        $where['phone'] = $_SESSION['username'];
+        $where['orders.campus_id'] = $campus_id;
+
 		$cart  = $this->join($join)
-					  ->where('phone=%s and orders.status=0 and orders.tag=1 and food.tag=1',$_SESSION['username'])
+					  ->where('orders.status=0 and orders.tag=1 and food.tag=1')
+                      ->where($where)
 					  ->field($field)
 					  ->order($order)
 					  ->select();
@@ -449,7 +460,7 @@ class OrdersModel extends Model{
         $data = array(
             'phone'       => $_SESSION['username'],
             'order_id'    => time().rand(100,999),
-            'campus_id'   => $_SESSION['campus_id'],
+            'campus_id'   => $_SESSION['campusId'],
             'create_time' => date("Y-m-d H:m:s",Time()),
             'status'      => 0,
             'order_count' => $order_count,

@@ -57,20 +57,10 @@ $(document).ready(function(){
     	},
     	errorClass:"error-message"
 	});
-	// $("#user-protocol-input").click(function() { 
-	// 	// promptMessage();
-	// 	if(document.getElementById("user-protocol-input").checked){
-	// 		$("#button-register").css("background-color","#24dfc2");
-	// 		$("#button-register").attr("disabled", false);
-	// 	}
-	// 	else{
-	// 		$("#button-register").css("background-color","#ddd");
-	// 		$("#button-register").attr("disabled", true);
-	// 	}
-	// })
+
 	$(".register-info-input input[name='phone']").blur(function(){
 		checkUserExist();
-	})
+	});
 })
 
 function checkUserExist(){

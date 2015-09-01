@@ -51,6 +51,7 @@ $(document).ready(function(){
 	        //error是错误提示元素span对象  element是触发错误的input对象
 	        //发现即使通过验证 本方法仍被触发
 	        //当通过验证时 error是一个内容为空的span元素
+	        element.parent().next(".error-message-wrapper").empty();
 	        error.appendTo(element.parent().next(".error-message-wrapper"));
 	        // element.parent().next(".error-message").removeClass("none");
     	},
@@ -73,6 +74,8 @@ $(document).ready(function(){
 })
 
 function checkUserExist(){
+	$(".register-info-input input[name='phone']")
+				.parent().next().empty();
 	var phone = $(".register-info-input input[name='phone']").val();
 	$.ajax({
 		type:"POST",
@@ -83,7 +86,6 @@ function checkUserExist(){
 		success: function(data){
 			var json = eval(data);
 			if(json.status==0){
-				$(".register-info-input input[name='phone']")
 				$(".register-info-input input[name='phone']")
 				.parent().next()
 				.append("<label class='error-message'>该手机号已被注册</label>");

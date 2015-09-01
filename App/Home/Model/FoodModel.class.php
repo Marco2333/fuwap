@@ -89,7 +89,7 @@ class FoodModel extends Model{
 		$data['name|food_flag']=array('like',"%".$key."%");
 		$count    = M('food')->where($data)->count();
 
-		$Page = pageProduct($count,20,2);
+		$Page = pageProduct($count,8,2);
 		$show = $Page->show();// 分页显示输出
 
 		switch ($flag) {
@@ -107,7 +107,7 @@ class FoodModel extends Model{
                 break;
             case 2:
                 $goodlist = M('food')->where($data)
-                    ->order('price')
+                    ->order('case when is_discount=1 then discount_price else price end')
                     ->limit($Page->firstRow.','.$Page->listRows)
                     ->select();
                 break;

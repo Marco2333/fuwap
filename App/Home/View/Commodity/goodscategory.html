@@ -21,32 +21,32 @@
 			<span>
 				<?php 
 					switch ($flag) {
-						case 0:
+						case 1:
 							echo '早餐上门';
 							break;
-						case 1:
+						case 2:
 							echo '家政服务';
 							break;
-						case 2:
+						case 3:
 							echo '水果上门';
 							break;
-						case 3:
+						case 4:
 							echo '快递代取';
 							break;
-						case 4:
+						case 5:
 							echo '小优推荐';
 							break;
-						case 5:
+						case 6:
 							echo '最新体验';
 							break;
-						case 6:
+						case 7:
 							echo '特惠秒杀';
 							break;
-						case 7:
+						case 8:
 							echo '更多分类';
 							break;
 						default:
-							echo '分类';
+							echo '更多';
 							break;
 					}
 				 ?>
@@ -89,9 +89,11 @@
 						</div>
 					</div>
 				</a>
-			</foreach>		
+			</foreach>	
+			<div class="msg-page">
+				<div class="page">{$page}</div>
+			</div>	
 		</div>	
-		
 		<include file='App/Home/View/Common/commonnav1.html'/>
 		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>

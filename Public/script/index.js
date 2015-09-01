@@ -1,7 +1,6 @@
 $(document).ready(function(){
-	$('#slide-wrapper').carousel();
 	
-	$("#index-head .glyphicon-search").click(function(){
+	$("#index-head .img-search").click(function(){
 		$("#search-wrapper").animate({left:0});
 		$("#common-nav").addClass("none");
 		$("#search-input").focus();
@@ -10,14 +9,6 @@ $(document).ready(function(){
 	$("#searchgoods-head .glyphicon-circle-arrow-left").click(function(){
 		$("#search-wrapper").animate({left:"100%"},180);;
 		setTimeout("$('#common-nav').removeClass('none')",250);
-	});
-
-	$("#slide-wrapper").on("swipeleft",function(){
-	  	$('#slide-wrapper').carousel('next');
-	});
-
-	$("#slide-wrapper").on("swiperight",function(){
-	  	$('#slide-wrapper').carousel('prev');
 	});
 
 	$("#search-input").prev().click(function(){
@@ -48,7 +39,7 @@ $(document).ready(function(){
 		    } 
 		}
 
-		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome?key="+searchkey;
+		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome/key/"+searchkey;
 	});
 
 	$("#search-input").focus(function(){
@@ -67,13 +58,13 @@ $(document).ready(function(){
 		}
 		var recordList = record.split(",");
 
-		for(var i=0;i<recordList.length;i++) {
+		for(var i=recordList.length-1;i>=0;i--) {
 			$("#search-history-list ul").append($("<li class='search-history-item'>"+recordList[i]+"</li>"))
 		}
 
 		$(".search-history-item").click(function(){
 			$("#search-input").val($(this).text());
-			window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome?key="+$(this).text();
+			window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome/key/"+$(this).text();
 		});
 	});
 
@@ -81,13 +72,33 @@ $(document).ready(function(){
 
 		$("#search-history-list li").remove();
 		$.cookie("record", "", { expires: -1 });
-
+		// delCookie("record");
 		$("#clear-history-list p").removeClass("none");
 		$("#clear-history-list h1").addClass("none"); 
 	});
 
 	$(".search-history-item").click(function(){
 		$("#search-input").val($(this).text());
-		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome?key="+$(this).text();
+		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome/key/"+$(this).text();
 	});
 });
+
+function delCookie(name) 
+{ 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() - 1); 
+    var cval=getCookie(name); 
+    if(cval!=null) 
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+} 
+
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 

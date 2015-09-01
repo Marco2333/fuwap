@@ -56,25 +56,28 @@ class OrdersModel extends Model{
 			'food.discount_price',
 			'food.is_discount',
 			'food.message',
-			'food.img_url'
+			'food.img_url',
+            'is_full_discount'
 			);
 		$order = 'create_time desc';
 
 		$cart  = $this->join($join)
-					  ->where('phone='.$_SESSION['username'].' and orders.status=0 and orders.tag=1 and food.tag=1')
+					  ->where('phone=%s and orders.status=0 and orders.tag=1 and food.tag=1',$_SESSION['username'])
 					  ->field($field)
 					  ->order($order)
 					  ->select();
+        // for ($i = 0;$i < count($cart);$i++) {
 
-		for ($i = 0;$i < count($cart);$i++) {
-			$cart[$i]['Price'] = $cart[$i]['price']*$cart[$i]['order_count'];
-			if ($cart[$i]['is_discount'] != 0) {
-				$cart[$i]['dPrice'] = $cart[$i]['discount_price']*$cart[$i]['order_count'];
-			}
-			else {
-				$cart[$i]['dPrice'] = $cart[$i]['Price'];
-			}
-		}
+        // }
+		// for ($i = 0;$i < count($cart);$i++) {
+		// 	$cart[$i]['Price'] = $cart[$i]['price']*$cart[$i]['order_count'];
+		// 	if ($cart[$i]['is_discount'] != 0) {
+		// 		$cart[$i]['dPrice'] = $cart[$i]['discount_price']*$cart[$i]['order_count'];
+		// 	}
+		// 	else {
+		// 		$cart[$i]['dPrice'] = $cart[$i]['Price'];
+		// 	}
+		// }
 
 		return $cart;
 	}
@@ -86,12 +89,37 @@ class OrdersModel extends Model{
      * @param  array(array()) 购物车数据
      * @return array() 价格状况：原价Price，折扣价dPrice，节省save
      */
-	public function settleAccounts($cart){
+	public function settleAccounts($cart,$campusId){
+        $fullDiscount = 0;
+
 		for ($i = 0;$i < count($cart);$i++) {
+            if($cart[$i]['is_full_discount']) {
+                $fullDiscount += $cart[$i]['dPrice'];
+            }
 			$price['Price']  += $cart[$i]['Price'];
 			$price['dPrice'] += $cart[$i]['dPrice'];
 		}
-		$price['save'] = $price['Price'] - $price['dPrice'];
+
+        $preferential = D('Preferential')->getPreferentialList($campusId);
+        $discount['prefer_id']=0;
+        foreach ($preferential as $key => $p) {
+            if($fullDiscount >= $p['need_number']){
+                $fullDiscountPrice = $p['discount_num'];            //优惠d数额
+                $discount['prefer_id']=$p['preferential_id'];
+                       //将优惠力度存到表里面
+                break;
+            } 
+        }
+       
+       for ($i = 0;$i < count($cart);$i++) {
+            if($cart[$i]['is_full_discount']) {
+                M('orders')->where('order_id = %s',$cart[$i]['order_id'])
+                           ->save($discount);
+            }
+       }
+          
+       $price['dPrice'] -= $fullDiscountPrice;
+	   $price['save'] = $price['Price'] - $price['dPrice'];
 
 		return $price;
 	}
@@ -133,26 +161,33 @@ class OrdersModel extends Model{
      * @return String $orderIds    订单号组成的字符串，以','分割
      */
     public function getOrderIds($together_id,$is_remarked = ''){
+
+
     	$field = array(
     		'order_id'
     		);
+        $where['phone']=$_SESSION['username'];
+        $where['together_id']=$together_id;
 
     	if ($is_remarked == 'isNotRemarked') {
-	    	$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'is_remarked = 0'.' and '.'together_id='.'\''.$together_id.'\'')
+            $where['is_remarked']=0;
+	    	$ordersList = M('orders')->where($where)
 	    					   ->field($field)
 	    					   ->select();
     	}
     	else if ($is_remarked == 'isRemarked') {
-    		$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'is_remarked = 1'.' and '.'together_id='.'\''.$together_id.'\'')
+             $where['is_remarked']=1;
+    		$ordersList = M('orders')->where($where)
 	    					   ->field($field)
 	    					   ->select();
     	}
     	else {
-    		$ordersList = $this->where('phone='.$_SESSION['username'].' and '.'together_id='.'\''.$together_id.'\'')
+
+    		$ordersList = M('orders')->where($where)
     					   ->field($field)
     					   ->select();
     	}
-
+       
     	for ($i = 0;$i < count($ordersList);$i++) {
     		if ($i < count($ordersList)-1) {
     			$orderIds .= $ordersList[$i]['order_id'].',';
@@ -194,10 +229,10 @@ class OrdersModel extends Model{
 			'together_id',
 			'together_date'
 			);
-		$where = $this->where('order_id='.$orderId)
+
+		$where = $this->where('order_id=%s',$orderId)
 					  ->field($field)
 					  ->find();
-
 		$Food     = D('Food');
 		$goodInfo = $Food->getGoodInfo($where['food_id'],$where['campus_id']);
 		$goodInfo['order_id']      = $orderId;
@@ -227,39 +262,23 @@ class OrdersModel extends Model{
 		return $goodsInfo;
 	}
 
-	/**
-     * 模型函数
-     * 为一批订单设置一个订单号，同时设置下单时间
-     * 根据phone和order_id在orders表中记录together_id,together_date
-     * @access public
-     * @param  String $orderIds 订单号组成的字符串，以','分割
-     * @return string 订单号
-     */
-    public function setTogether($orderIds){
-        $user = $_SESSION['username'];
-
-        $together_id   = $user.Time();
-        $together_date = date("Y-m-d H:m:s",time());
-
-        $orderID = $this->orderIdsSplit($orderIds);
-
-        $Orders = M('orders');
-        $data = array(
-            'together_id'   => $together_id,
-            'together_date' => $together_date
-            );
-
-        for ($i = 0;$i < count($orderID);$i++) {
-            $where = array(
-                'phone'    => $user,
-                'order_id' => $orderID[$i]
-                );
-
-            $Orders->where($where)
-                   ->save($data);
+    public function deleteOrders($orderIds,$phone) {
+        $flag = 1;  
+        $ordersList = $this->orderIdsSplit($orderIds);
+        for ($i = 0;$i < count($ordersList);$i++) {
+            $res = $this->deleteOrder($ordersList[$i],$phone);
+            if($res===false) {
+                $flag = 0;
+            }
         }
 
-        return $together_id;
+        return $flag;
+    }
+
+    public function deleteOrder($orderId,$phone) {
+        $res = M('orders')->where('order_id=%s and phone=%s',$orderId,$phone)
+                ->delete();
+        return $res;
     }
 
     /**
@@ -271,13 +290,18 @@ class OrdersModel extends Model{
      */
     public function getTogetherIds($status){
     	$field = array(
-    		'together_id'
+    		'together_id',
+            'tag'
     		);
-    	$togetherIds = $this->where('phone='.$_SESSION['username'].' and '.'status='.$status.' and tag=1')
-    						->distinct(true)
-    						->field($field)
+        $where['phone'] = $_SESSION['username'];
+        $where['status'] = $status;
+        $where['tag'] = '1';
+        
+    	$togetherIds = M('orders')->field($field)
+                            ->where($where)
+                            ->where('together_id is not null')
+    						->distinct('together_id')
     						->select();
-
     	return $togetherIds;
     }
 
@@ -347,8 +371,7 @@ class OrdersModel extends Model{
             );
 
         $res = $Orders->where($where)
-                      ->save($data);
-
+                      ->save($data);     
         return $res;
     }
 
@@ -512,7 +535,9 @@ class OrdersModel extends Model{
      
       $data['status']=1;
       $data['together_id']=$togetherId;
+      $together_date = date("Y-m-d H:m:s",time());
       foreach ($orderIdArr as $key => $orderId) {
+        
         $result=M('Orders')
                ->where('order_id=%s and phone=%s',$orderId,$phone)
                ->save($data);
@@ -523,6 +548,65 @@ class OrdersModel extends Model{
      
       return null;
    }
+
+
+    /**
+        * 模型函数
+        * 为一批订单设置一个订单号，同时设置下单时间
+        * 根据phone和order_id在orders表中记录together_id,together_date
+        * @access public
+        * @param  String $orderIds 订单号组成的字符串，以','分割
+        * @return string 订单号
+    */
+    public function setTogether($orderIds,$phone){
+
+       $togetherId=$phone.time().rand(100,999);
+
+        //为销订单设置订单号
+       $orderIdArr=explode(',', $orderIds);
+
+       $data['together_id']=$togetherId;
+       $together_date = date("Y-m-d H:m:s",time());
+       foreach ($orderIdArr as $key => $orderId) {  
+         $result=M('Orders')
+                ->where('order_id=%s and phone=%s',$orderId,$phone)
+                ->save($data);
+       }
+    
+       return $togetherId;
+    }
+
+    public function getCampusStateByTogeId($together_id) {
+        $where['together_id']=$together_id;
+        $campus_id = M('orders')->field('campus_id')
+                                ->where($where)
+                                ->find();
+
+
+        $where1['campus_id']=$campus_id['campus_id'];
+        $state = M('campus')->field('status')
+                          ->where($where1)
+                          ->find();
+        return $state['status'];
+    }
+
+    public function getCampusIdByRank($user,$rank) {
+      $campus_id = M('receiver')->field('campus_id')
+                              ->where('phone_id=%s and rank=%s',$user,$rank)
+                              ->find();
+
+      return $campus_id['campus_id'];
+    }
+
+    public function getCampusIdByTog($user,$togetherId) {
+        $where['together_id'] = $togetherId;
+        $where['phone_id'] = $user;
+        $campus_id = M('orders')->field('campus_id')
+                                ->where($where)
+                                ->find();
+
+        return $campus_id['campus_id'];
+    }
 
     
    

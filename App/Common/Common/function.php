@@ -73,3 +73,13 @@ function think_send_mail($to, $name, $subject = '', $body = '', $attachment = nu
     return  $mail->Send() ? true : $mail->ErrorInfo;
 
 }
+
+function pageProduct($count,$row,$page){
+    $page = new \Think\Page($count,$row);
+    $page->setConfig('prev','上一页');
+    $page->setConfig('next','下一页');
+    $page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
+    $page->rollPage = $page; 
+        
+    return $page;
+}

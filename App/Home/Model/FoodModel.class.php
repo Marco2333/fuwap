@@ -61,9 +61,10 @@ class FoodModel extends Model{
 			'message',
 			'grade',
 			'info',
-			'sale_number'
+			'sale_number',
+			'is_full_discount',
 			);
-		$goodInfo = $this->where('food_id='.$foodId.' and campus_id='.$campusId)
+		$goodInfo = $this->where('food_id=%s and campus_id=%s',$foodId,$campusId)
 						 ->field($field)
 						 ->find();
 						 
@@ -83,7 +84,80 @@ class FoodModel extends Model{
 		return $homeFood;
 	}
 
+	public function getsearchList($campusId,$key,$flag) {
+		$data['campus_id'] = $campusId;
+		$data['name|food_flag']=array('like',"%".$key."%");
+		$count    = M('food')->where($data)->count();
 
+		$Page = pageProduct($count,20,2);
+		$show = $Page->show();// 分页显示输出
+
+		switch ($flag) {
+            case 0:
+                $goodlist = M('food')->where($data)
+                   ->order('modify_time desc')
+                   ->limit($Page->firstRow.','.$Page->listRows)
+                   ->select();
+                break;
+            case 1:
+                $goodlist = M('food')->where($data)
+                    ->order('sale_number desc')
+                    ->limit($Page->firstRow.','.$Page->listRows)
+                    ->select();
+                break;
+            case 2:
+                $goodlist = M('food')->where($data)
+                    ->order('price')
+                    ->limit($Page->firstRow.','.$Page->listRows)
+                    ->select();
+                break;
+            default:
+                 $goodlist = M('food')->where($data)
+                    ->order('modify_time desc')
+                    ->limit($Page->firstRow.','.$Page->listRows)
+                    ->select();
+                break;
+        }
+		
+		$res['show'] = $show;
+		$res['goodlist'] = $goodlist;
+
+		return $res;
+	}
+
+	public function getFoodByCatId($campusId,$categoryId) {
+
+		$field = array(
+			'food_id',
+			'campus_id',
+			'name',
+			'price',
+			'discount_price',
+			'img_url',
+			'is_discount',
+			'message',
+			'grade',
+			'info',
+			'sale_number'
+		);
+
+		$count = M('food')
+				->where("category_id=%d and campus_id=%d and tag=1 and status=1",$categoryId,$campusId)
+				->count();
+
+		$Page = pageProduct($count,20,2);
+		$show = $Page->show();// 分页显示输出
+
+		$goodList = M('food')
+		            ->where("category_id=%d and campus_id=%d and tag=1 and status=1",$categoryId,$campusId)
+					->field($field)
+					->limit($Page->firstRow.','.$Page->listRows)
+					->select();
+
+		$res['show'] = $show;
+		$res['goodList'] = $goodList;
+		return $res;
+	}
 };
 
 

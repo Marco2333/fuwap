@@ -226,6 +226,30 @@ class CommodityController extends Controller {
         }
     }
 
+     public function addToShopCart(){
+
+        if (!isset($_SESSION['username'])) {
+            $res['result'] = 2;
+            $this->ajaxReturn($res);
+        }
+        $Orders = D('Orders');
+
+        $food_id = I('food_id');
+        $order_count = I('order_count');
+
+        $result = $Orders->buyNowAction($food_id,$order_count);
+        
+        if ($result !== false) {
+            $res['result']   = 1;
+            $res['order_id'] = $result['order_id'];
+            $this->ajaxReturn($res);
+        }
+        else {
+            $res['result'] = 0;
+            $this->ajaxReturn($res);
+        }
+    }
+    
     public function searchoutcome() {
         $key = I('key');
         $campus_id = $_SESSION['campusId'];

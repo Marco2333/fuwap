@@ -14,7 +14,7 @@ $(document).ready(function(){
     		data:data,
     		success:function(data){
     			if(data.status == 2){
-    			    pingpp.createPayment(data, function(result, err) {
+    			    pingpp.createPayment(data.charge, function(result, err) {
     			    
     			    });
     			}else if(data.status == -1){

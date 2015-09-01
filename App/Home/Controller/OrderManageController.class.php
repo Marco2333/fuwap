@@ -25,7 +25,11 @@ class OrderManageController extends Controller{
 	public function index(){
 		
 	}
-
+    
+    /**
+     * 订单管理
+     * @return [type] [description]
+     */
 	public function orderManage(){
 
 		$campusId=session('campusID');
@@ -69,6 +73,10 @@ class OrderManageController extends Controller{
 		}
 	}
 
+    /**
+     * 删除订单
+     * @return [type] [description]
+     */
 	public function deleteOrCancel(){
 		$Orders = D('Orders');
 
@@ -85,6 +93,30 @@ class OrderManageController extends Controller{
 		}
 	}
 
+     /**
+     * 取消订单并退款
+     * @return [type] [description]
+     */
+	public function refundOrder(){
+		$Orders = D('Orders');
+
+		$together_id = I('together_id');
+		$result = $Orders->refundOrder($together_id);
+
+		if ($result) {
+			$res['result'] = 1;
+			$this->ajaxReturn($res);			
+		}
+		else {	
+			$res['result'] = 0;
+			$this->ajaxReturn($res);
+		}
+	}
+
+    /**
+     * 确定订单
+     * @return [type] [description]
+     */
 	public function confirmOrder(){
 		$Orders = D('Orders');
 
@@ -101,6 +133,10 @@ class OrderManageController extends Controller{
 		}
 	}
 
+    /**
+     * 评论订单
+     * @return [type] [description]
+     */
 	public function commentOrder(){
 		$Orders = D('Orders');
 

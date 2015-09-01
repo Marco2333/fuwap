@@ -615,7 +615,18 @@ class OrdersModel extends Model{
         return $campus_id['campus_id'];
     }
 
-    
+    /**
+     * 取消订单并退款
+     * @param  [type] $togetherId [description]
+     * @return [type]             [description]
+     */
+    public function refundOrder($togetherId){
+        $where['together_id']=$togetherId;
+         
+        $data['status']=9;
+        $flag=M('orders')->where($where)->save($data);
+        return $flag;
+    }
    
 
 }

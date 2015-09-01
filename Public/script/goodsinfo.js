@@ -19,14 +19,15 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"/fuwebapp/index.php/Home/Commodity/buyNowButton",
+			url:"/fuwebapp/index.php/Home/Commodity/addToShopCart",
 			data:{order_count:$count,food_id:$food_id},
 			success:function(result){
-				if (result['result'] != 0) {
-					alert("加入购物车成功");
-				}
-				else {
+				if (result['result'] == 2) {
+					location.href=$loginUrl;
+				}else if(result['result']==0 ){
 					alert("亲~网速不给力哦，请稍后重试！");
+				}else {
+					alert("加入购物车成功");
 				}
 			}
 		});

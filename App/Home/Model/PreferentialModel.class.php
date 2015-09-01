@@ -11,7 +11,6 @@ class PreferentialModel extends Model{
                 ->where($where)
                 ->order('need_number DESC')
                 ->select();
-
         return $res;
     }
 

@@ -24,7 +24,7 @@ class ShoppingCartController extends Controller{
 	}
 
 	public function index(){
-        
+        $this->ShoppingCart();
     }
 
     public function ShoppingCart(){
@@ -92,8 +92,6 @@ class ShoppingCartController extends Controller{
         if($defaultAddress == false) {
             $this->redirect('Home/Person/addressManage');
         }
-
-
         else if ($goodsInfo != false && $result !== false) {
             $this->assign('defaultAddress',$defaultAddress)
                  ->assign('goodsInfo',$goodsInfo)
@@ -239,7 +237,7 @@ class ShoppingCartController extends Controller{
             else {
                 $charge=D('Users')->pay($channel,$totalPrice,$togetherId);
                 $res['status'] = 2;
-                $res['charge'] = $charge;
+                $res['charge'] = $charge."";
                 $this->ajaxReturn($res);
             } 
         }

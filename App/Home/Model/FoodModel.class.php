@@ -9,7 +9,7 @@ use Think\Model;
  * @package     app
  * @subpackage  Home
  * @category    MODEL
- * @author      Tony<879833043@qq.com>
+ * @author     
  *
  */ 
 
@@ -145,7 +145,7 @@ class FoodModel extends Model{
 				->where("category_id=%d and campus_id=%d and tag=1 and status=1",$categoryId,$campusId)
 				->count();
 
-		$Page = pageProduct($count,20,2);
+		$Page = pageProduct($count,8,2);
 		$show = $Page->show();// 分页显示输出
 
 		$goodList = M('food')

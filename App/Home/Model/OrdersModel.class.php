@@ -66,18 +66,11 @@ class OrdersModel extends Model{
 					  ->field($field)
 					  ->order($order)
 					  ->select();
-        // for ($i = 0;$i < count($cart);$i++) {
-
-        // }
-		// for ($i = 0;$i < count($cart);$i++) {
-		// 	$cart[$i]['Price'] = $cart[$i]['price']*$cart[$i]['order_count'];
-		// 	if ($cart[$i]['is_discount'] != 0) {
-		// 		$cart[$i]['dPrice'] = $cart[$i]['discount_price']*$cart[$i]['order_count'];
-		// 	}
-		// 	else {
-		// 		$cart[$i]['dPrice'] = $cart[$i]['Price'];
-		// 	}
-		// }
+		for ($i = 0;$i < count($cart);$i++) {
+			if ($cart[$i]['is_discount'] == 0) {
+				$cart[$i]['discount_price'] = $cart[$i]['price'];
+			}
+		}
 
 		return $cart;
 	}
@@ -235,6 +228,8 @@ class OrdersModel extends Model{
 					  ->find();
 		$Food     = D('Food');
 		$goodInfo = $Food->getGoodInfo($where['food_id'],$where['campus_id']);
+
+
 		$goodInfo['order_id']      = $orderId;
 		$goodInfo['order_count']   = $where['order_count'];
 		$goodInfo['status']		   = $where['status'];
@@ -242,6 +237,7 @@ class OrdersModel extends Model{
 		$goodInfo['together_date'] = $where['together_date'];
 		$goodInfo['Price']  	   = $goodInfo['price'] * $goodInfo['order_count'];
 		$goodInfo['dPrice'] 	   = $goodInfo['discount_price'] * $goodInfo['order_count'];
+
 
 		return $goodInfo;
 	}

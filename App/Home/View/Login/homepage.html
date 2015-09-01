@@ -17,7 +17,7 @@
 				<img class="vertical-center" src="{$info.img_url}" alt="">
 			</div>
 			<div class="head-top">
-				<span class="fl history-back glyphicon glyphicon-circle-arrow-left"></span>
+				<span class="fl pos-relative z-99 history-back glyphicon glyphicon-circle-arrow-left"></span>
 				<span class="head-title">个人中心</span>
 			</div>
 			<div class="head-bottom">
@@ -26,7 +26,7 @@
 						<img src="{$info.img_url}" alt="">
 					</dt>
 
-					<dd>
+					<dd  class="pos-relative z-99">
 					<if condition="$info['nickname'] neq '点击登陆'">
 						{$info.nickname}
 					<else/><a href="{:U('Login/login')}">点击登陆</a>

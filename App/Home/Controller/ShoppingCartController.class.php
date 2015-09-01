@@ -35,6 +35,7 @@ class ShoppingCartController extends Controller{
     	$Orders = D('Orders');
     	$cart   = $Orders->getShoppingCart();
 
+       
         $Preferential = D('Preferential');
         $preferential   = $Preferential->getPreferentialList($campusId); 
 
@@ -91,6 +92,8 @@ class ShoppingCartController extends Controller{
         if($defaultAddress == false) {
             $this->redirect('Home/Person/addressManage');
         }
+
+
         else if ($goodsInfo != false && $result !== false) {
             $this->assign('defaultAddress',$defaultAddress)
                  ->assign('goodsInfo',$goodsInfo)
@@ -148,9 +151,6 @@ class ShoppingCartController extends Controller{
             $res['result'] = 0;
             $this->ajaxReturn($res);
         }
-
-
-
 
         if ($result !== false && $priceInfo !== false) {
             $priceInfo['result'] = 1;

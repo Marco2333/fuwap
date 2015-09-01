@@ -23,7 +23,8 @@ caption, th {
 	 text-align: left;
 }
 table { 
-	border-collapse: collapse; border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 body { 
@@ -124,7 +125,7 @@ i, cite, em {
 .del {
 	text-decoration: line-through;
 }
-button.disabled {
+.disabled {
 	background-color: #aaa;
 }
 .bground-special {
@@ -181,6 +182,9 @@ button.disabled {
 	top: 0;
 	background: rgba(10,10,10,.6);
     z-index: 99;  
+}
+.z-99 {
+	z-index: 99;
 }
 .info-tips {
 	padding: 6px 12px;

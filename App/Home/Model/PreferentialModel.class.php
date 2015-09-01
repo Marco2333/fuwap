@@ -6,9 +6,9 @@ use Think\Model;
 class PreferentialModel extends Model{
 
     public function getPreferentialList($campusId) {
-       
+        $where['campus_id']=$campusId;
         $res = $this->field("preferential_id,need_number,discount_num")
-                ->where("campus_id=%s",$campusId)
+                ->where($where)
                 ->order('need_number DESC')
                 ->select();
 

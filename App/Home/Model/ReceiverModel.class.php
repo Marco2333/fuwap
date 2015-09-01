@@ -34,18 +34,22 @@ class ReceiverModel extends Model{
             'rank',
             'name',
             'phone',
-            'address',
+            'concat(campus_name,address) as address',    //连接两个字段作为地址
             'phone',
             'tag',
-            'campus_id'
-            );
+            'receiver.campus_id'
+        );
+
         $order = array(
             'tag asc'
-            );
-        $info = $this->where('phone_id= %s and is_out=0',$_SESSION['username'])
-                         ->field($field)
-                         ->order($order)
-                         ->select();
+        );
+
+         $info=$this->join('campus on receiver.campus_id=campus.campus_id')
+                    ->field($field)
+                    ->where('phone_id= %s and is_out=0',$_SESSION['username'])
+                    ->order($order)
+                    ->select();
+
         return $info;
     }
 

@@ -70,6 +70,9 @@ $(document).ready(function(){
 	// })
 	$(".register-info-input input[name='phone']").blur(function(){
 		checkUserExist();
+	});
+	$(".register-info-input input[name='mail']").blur(function(){
+		checkMailExist();
 	})
 })
 
@@ -91,6 +94,29 @@ function checkUserExist(){
 				.append("<label class='error-message'>该手机号已被注册</label>");
 				// $("#register-info input[name='phone']").attr("value","");
 				$(".register-info-input input[name='phone']").val("");
+			}
+		}
+	})
+}
+
+function checkMailExist(){
+	$(".register-info-input input[name='mail']")
+				.parent().next().empty();
+	var mail = $(".register-info-input input[name='mail']").val();
+	$.ajax({
+		type:"POST",
+		url: "/fuwebapp/index.php/Home/Login/checkMailExist",
+		data: {
+			mail:mail
+		},
+		success: function(data){
+			var json = eval(data);
+			if(json.status==0){
+				$(".register-info-input input[name='mail']")
+				.parent().next()
+				.append("<label class='error-message'>该邮箱已被注册</label>");
+				// $("#register-info input[name='phone']").attr("value","");
+				$(".register-info-input input[name='mail']").val("");
 			}
 		}
 	})

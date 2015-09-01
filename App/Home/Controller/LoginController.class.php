@@ -72,7 +72,7 @@ class LoginController extends Controller {
                 }              
             }   
         }else{
-             $r = think_send_mail($data['mail'],'','ForU邀请您激活账号',"<strong>小优邀请你点击以下链接完成注册验证</strong><a href='http://localhost/".U('/Home/Login/toRegister',array('status'=>1,'phone'=>$data['phone'],"nickname"=>$data['nickname'],"password"=>$data['password'],"mail"=>$data['mail'],"register_time"=>$data['create_time'],"isClick"=>0))."'>点击这里</a>");
+             $r = think_send_mail($data['mail'],'','ForU邀请您激活账号',"<strong>小优邀请你点击以下链接完成注册验证</strong><a href='http://www.enjoyfu.com.cn".U('/Home/Login/toRegister',array('status'=>1,'phone'=>$data['phone'],"nickname"=>$data['nickname'],"password"=>$data['password'],"mail"=>$data['mail'],"register_time"=>$data['create_time'],"isClick"=>0))."'>点击这里</a>");
              $this->success("请前往邮箱进行验证,二十分钟内有效哦",U('/Home/Login/index'),5);
         }
     }
@@ -106,5 +106,23 @@ class LoginController extends Controller {
         
         $this->assign('info',$info);
         $this->display('homepage');
+    }
+     
+     /**
+      * 校验邮箱是否存在
+      * @return [type] [description]
+      */
+     public function checkMailExist(){
+        $mail = I('mail');
+        $map['mail'] = $mail;
+        $user = M('users')->where($map)->find();
+        if(!isset($user)&&empty($user)){
+            $result['status']=1;
+            $this->ajaxReturn($result);
+        }
+        else {
+             $result['status']=0;
+             $this->ajaxReturn($result);
+        }
     }
 }

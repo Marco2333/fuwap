@@ -456,7 +456,7 @@ class OrdersModel extends Model{
      */
     public function buyNowAction($food_id,$order_count){
         $Orders = M('orders');
-
+       
         $data = array(
             'phone'       => $_SESSION['username'],
             'order_id'    => time().rand(100,999),

@@ -44,6 +44,7 @@ $(document).ready(function(){
 			data:{order_count:$count,food_id:$food_id},
 			success:function(result){
 				if (result['result'] != 0) {
+				
 					var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+result['order_id'];
 					window.location.href=$href;
 				}

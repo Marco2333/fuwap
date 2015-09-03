@@ -139,17 +139,17 @@ class OrdersModel extends Model{
 	public function updateOrderCount($order_id,$order_count){
 		$Orders = M('orders');
 		
-		$where = array(
+		/*$where = array(
 			'phone'    => $_SESSION['username'],
 			'order_id' => $order_id, 
-			);
+			);*/
 		$data  = array(
 			'order_count' => $order_count
 			);
 
-		$res = $Orders->where($where)
+        //只允许代付款订单和购物车里面订单
+		$res = $Orders->where('phone = %s and order_id = %s and tag=1 and (status=0 OR status=1)',array($_SESSION['username'],$order_id))
 					  ->save($data);
-
 		return $res;
 	}
 
@@ -165,31 +165,24 @@ class OrdersModel extends Model{
      * @return String $orderIds    订单号组成的字符串，以','分割
      */
     public function getOrderIds($together_id,$is_remarked = ''){
-
-
     	$field = array(
     		'order_id'
-    		);
-        $where['phone']=$_SESSION['username'];
-        $where['together_id']=$together_id;
+    	);
+  
+      /*  $where=array(
+            "phone"=>session('username'),
+            "together_id"=>$together_id
+        );*/
 
     	if ($is_remarked == 'isNotRemarked') {
-            $where['is_remarked']=0;
-	    	$ordersList = M('orders')->where($where)
-	    					   ->field($field)
-	    					   ->select();
+	    	 $ordersList=M('orders')->field('order_id')->where("together_id='%s' and phone = '%s' and is_remarked=0",array($together_id,session('username')))->select();
     	}
     	else if ($is_remarked == 'isRemarked') {
-             $where['is_remarked']=1;
-    		$ordersList = M('orders')->where($where)
-	    					   ->field($field)
-	    					   ->select();
+    	    $ordersList=M('orders')->field('order_id')->where("together_id='%s' and phone = '%s' and is_remarked=1",array($together_id,session('username')))->select();
     	}
     	else {
-
-    		$ordersList = M('orders')->where($where)
-    					   ->field($field)
-    					   ->select();
+             $ordersList=M('orders')->field('order_id')->where("together_id='%s' and phone = '%s'",array($together_id,session('username')))->select();
+            // dump(M('orders')->getLastSql());
     	}
        
     	for ($i = 0;$i < count($ordersList);$i++) {
@@ -309,6 +302,8 @@ class OrdersModel extends Model{
                             ->where('together_id is not null')
     						->distinct('together_id')
     						->select();
+
+        //dump(M('orders')->getLastSql());
     	return $togetherIds;
     }
 
@@ -520,7 +515,7 @@ class OrdersModel extends Model{
                 $data['total_price']=$totalPrice;
                 $flag=$order->where($savePriceWhere)->save($data);    //将该笔订单的小订单写进数据库
                 
-                dump($order->getLastSql());
+                //dump($order->getLastSql());
                 if($flag===false){
                     break;
                 }
@@ -581,9 +576,11 @@ class OrdersModel extends Model{
          foreach ($prefer as $key => $p) {
             if($fullDiscountPrice>=$p['need_number']){
                 $fullDiscount=$p['discount_num'];            //优惠d数额
-                $discount['prefer_id']=$p['preferential_id'];
+                $discount['prefere_id']=$p['preferential_id'];
+                //dump($discount);
                 M('orders')->where($where)
                            ->save($discount);           //将优惠力度存到表里面
+                //dump(M('orders')->getLastSql());
                 break;
             } 
          }

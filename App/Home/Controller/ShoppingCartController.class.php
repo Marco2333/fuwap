@@ -14,7 +14,6 @@ header('Content-type:text/html;charset=UTF-8');
  *
  */ 
 
-
 class ShoppingCartController extends Controller{
 
 	public function _initialize(){
@@ -107,6 +106,10 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    /**
+     * 删除订单
+     * @return [type] [description]
+     */
     public function deleteOrders(){
          $phone = $_SESSION['username'];
          $orderIds = I('orderIds');
@@ -121,6 +124,10 @@ class ShoppingCartController extends Controller{
          $this->ajaxReturn($res);
     }
 
+    /**
+     * 重新设置订单数目
+     * @return [type] [description]
+     */
     public function updateSettleAccounts(){
 
         $campusId = $_SESSION['campusId'];
@@ -136,7 +143,6 @@ class ShoppingCartController extends Controller{
         $result      = $Orders->updateOrderCount($order_id,$order_count);
         
         $orderIds    = $Orders->getOrderIds($together_id);
-
         $goodsInfo   = $Orders->getGoodsInfo($orderIds);
         $price       = $Orders->settleAccounts($goodsInfo,$campusId);
 
@@ -160,6 +166,10 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    /**
+     * 
+     * @return [type] [description]
+     */
     public function settleAccounts(){
 
         $campusId = $_SESSION['campusId'];
@@ -185,7 +195,10 @@ class ShoppingCartController extends Controller{
         }
     }
 
-
+    /**
+     * 获取关闭时间
+     * @return 
+     */
     public function getCloseTime() {
         if(!isset($_SESSION['campusId'])) {
             $campusId = 1;
@@ -209,6 +222,13 @@ class ShoppingCartController extends Controller{
         $this->ajaxReturn($res);
     }
 
+    /**
+     * 立即支付
+     * @param  [type] $rank     [description]
+     * @param  [type] $orderIds [description]
+     * @param  [type] $channel  [description]
+     * @return [type]           [description]
+     */
     public function payAtOnce($rank,$orderIds,$channel){
         $order=D('Orders');
         $phone=session('username');

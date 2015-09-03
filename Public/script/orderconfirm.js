@@ -18,9 +18,9 @@ $(document).ready(function(){
     		data:data,
     		success:function(data){
     			if(data.status == 2){
-    			  /*  pingpp.createPayment(data.charge, function(result, err) {
+    			    pingpp.createPayment(data.charge, function(result, err) {
     			      
-    			    });*/
+    			    });
     			}else if(data.status == -1){
     			   alert("支付失败，请重试");
     			}else if(data.status == 1) {

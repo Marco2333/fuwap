@@ -168,11 +168,6 @@ class OrdersModel extends Model{
     	$field = array(
     		'order_id'
     	);
-  
-      /*  $where=array(
-            "phone"=>session('username'),
-            "together_id"=>$together_id
-        );*/
 
     	if ($is_remarked == 'isNotRemarked') {
 	    	 $ordersList=M('orders')->field('order_id')->where("together_id='%s' and phone = '%s' and is_remarked=0",array($together_id,session('username')))->select();

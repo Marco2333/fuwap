@@ -212,17 +212,31 @@ class ShoppingCartController extends Controller{
     public function payAtOnce($rank,$orderIds,$channel){
         $order=D('Orders');
         $phone=session('username');
+        $reserveTime=I('reserveTime');
+        $message=I('message');
+
         if(!isset($_SESSION['campusId'])) {
             $campusId = 1;
-        }
-        else {
+        }else {
             $campusId = $_SESSION['campusId'];
         }
         
+        $orderIdSingle=split(",", $orderIds);
+        
+        $where['order_id']=$orderIdSingle[0];
+        $where['phone']=$_SESSION['username'];
+        $ifHasPaid=M('orders')->where($where)->find();
+        if($ifHasPaid['status']!=0&&$ifHasPaid['status']!=1){           //确认这笔订单是否已经支付过
+            $res['status'] = 3;
+            $this->ajaxReturn($res);
+            return;
+        }
         $togetherId=$order->setTogetherId($orderIds,$phone);
         $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
-        
-        if($togetherId != null){
+
+        $flag=$order->updateOrder($togetherId,$phone,$rank,$reserveTime,$message,$totalPrice);  //$togetherId,$phone,$rank,$reserveTime,$message,$totalPrice
+       
+        if($togetherId != null&&$flag!=0){
 
             $out = $this->checkLegal($togetherId,$rank,$phone);
 
@@ -243,6 +257,13 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    /**
+     * 校验校区配送范围
+     * @param  [type] $togetherId [description]
+     * @param  [type] $rank       [description]
+     * @param  [type] $phone      [description]
+     * @return [type]             [description]
+     */
     public function checkLegal($togetherId,$rank,$phone) {
         $status = D('Orders')->getCampusStateByTogeId($togetherId);
 

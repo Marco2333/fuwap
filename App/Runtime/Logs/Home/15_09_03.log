@@ -1,0 +1,20 @@
+[ 2015-09-03T19:20:17+08:00 ] 127.0.0.1 /fuwebapp/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011790s ]
+
+[ 2015-09-03T19:20:24+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Index/selectCampus.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000072s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001185s ]
+
+[ 2015-09-03T19:20:26+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Index/index/campus_id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001171s ]
+
+[ 2015-09-03T19:20:31+08:00 ] 127.0.0.1 /fuwebapp/index.php/Home/Commodity/goodscategory/flag/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000926s ]
+

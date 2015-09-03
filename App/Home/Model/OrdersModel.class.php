@@ -481,15 +481,76 @@ class OrdersModel extends Model{
     }
 
     /**
+     * 更新订单
+     * @param  [type] $togetherId  [description]
+     * @param  [type] $phone       [description]
+     * @param  [type] $campusId    [description]
+     * @param  [type] $rank        [description]
+     * @param  [type] $reserveTime [description]
+     * @param  [type] $message     [description]
+     * @param  [type] $totalPrice  [description]
+     * @return [type]              [description]
+     */
+    public function updateOrder($togetherId,$phone,$rank,$reserveTime,$message,$totalPrice){
+       $order=M('orders');
+      
+       try{
+             $where['together_id']=$togetherId;
+             $goods=$order
+                    ->join('food on food.food_id=orders.food_id')
+                    ->field('order_id,is_discount,is_full_discount,food.price,discount_price,order_count')
+                    ->where($where)
+                    ->select();
+
+            $savePriceWhere['phone']=$phone;
+            
+            foreach($goods as $key => $good) {
+                if($good['is_discount']==1){
+                    $price=$good['order_count']*$good['discount_price'];  
+                }else{
+                    $price=$good['order_count']*$good['price'];
+                }
+                
+                $savePriceWhere['order_id']=$good['order_id'];
+                $data['price']=$price;
+                $data['pay_way']=1;
+                $data['reserve_time']=$reserveTime;
+                $data['message']=$message;
+                $data['rank']=$rank;
+                $data['total_price']=$totalPrice;
+                $flag=$order->where($savePriceWhere)->save($data);    //将该笔订单的小订单写进数据库
+                
+                dump($order->getLastSql());
+                if($flag===false){
+                    break;
+                }
+                unset($price);
+            }
+
+            if($falg!==false){ 
+               return 1;
+            }else{
+             
+               return 0;
+            }
+       }catch(exception $e){
+           echo $e;
+           return 0;
+       }
+    }
+    /**
      * 计算一笔订单的总价（已折扣，已优惠）
      * @param  [type] $togetherId [description]
      * @return [type]             [description]
      */
    public function calculatePriceByOrderIds($togetherId,$campusId){
-       $goods=M('orders')
+       $order=M('orders');
+
+       $where['together_id']=$togetherId;
+       $goods=$order
               ->join('food on food.food_id=orders.food_id')
-              ->field('is_discount,is_full_discount,food.price,discount_price,order_count')
-              ->where('together_id=%s',$togetherId)
+              ->field('order_id,is_discount,is_full_discount,food.price,discount_price,order_count')
+              ->where($where)
               ->select();
       
       $discountPrice=0.0;                   //折扣之后的总价
@@ -500,7 +561,7 @@ class OrdersModel extends Model{
           }else{
               $price=$good['order_count']*$good['price'];
           }
-
+    
           if($good['is_full_discount']==1){
              $fullDiscountPrice+=$price;
           }
@@ -509,17 +570,19 @@ class OrdersModel extends Model{
           unset($price);
       }
    
+     $preferWhere['campus_id']=$campusId;
      $prefer=M('preferential')
-                ->field('need_number,discount_num,preferential_id')
-                ->where("campus_id=%s",$campusId)
-                ->order('need_number DESC')
-                ->select();
+             ->field('need_number,discount_num,preferential_id')
+             ->where($preferWhere)
+             ->order('need_number DESC')
+             ->select();
 
+         
          foreach ($prefer as $key => $p) {
             if($fullDiscountPrice>=$p['need_number']){
                 $fullDiscount=$p['discount_num'];            //优惠d数额
                 $discount['prefer_id']=$p['preferential_id'];
-                M('orders')->where('together_id = %s',$togetherId)
+                M('orders')->where($where)
                            ->save($discount);           //将优惠力度存到表里面
                 break;
             } 
@@ -536,17 +599,19 @@ class OrdersModel extends Model{
     */
    public function setTogetherId($orderIds,$phone){
       $togetherId=$phone.time().rand(100,999);
-
        //为销订单设置订单号
       $orderIdArr=explode(',', $orderIds);
      
       $data['status']=1;
       $data['together_id']=$togetherId;
+    
       $together_date = date("Y-m-d H:m:s",time());
-      foreach ($orderIdArr as $key => $orderId) {
-        
-        $result=M('Orders')
-               ->where('order_id=%s and phone=%s',$orderId,$phone)
+      $data['together_date']=$together_date;
+      $where['phone']=$phone;
+      foreach ($orderIdArr as $key => $orderId) {   
+        $where['order_id']=$orderId;
+        $result=M('orders')
+               ->where($where)
                ->save($data);
       }
       if($result!=false){

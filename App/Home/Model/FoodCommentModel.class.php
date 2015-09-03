@@ -47,7 +47,7 @@ class FoodCommentModel extends Model{
 
 		$commentData = array(
 			'food_id'   => $food_id,
-			'campus_id' => $_SESSION['campus_id'],
+			'campus_id' => $_SESSION['campusId'],
 			'phone'     => $_SESSION['username'],
 			'date'		=> date('Y-m-d H:h:s',time()),
 			'comment'  	=> $comment,

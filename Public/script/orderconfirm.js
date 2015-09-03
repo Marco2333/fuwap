@@ -48,7 +48,7 @@ $(document).ready(function(){
 					colseTime = data.colseTime;
 
 					for(i=0;i<50;i++) {
-						var t = curentTime(30*i+2);
+						var t = curentTime(30*i);
 						if(parseInt(t.substr(0,2))>parseInt(colseTime.substr(0,2))){
 							break;
 						}
@@ -60,7 +60,7 @@ $(document).ready(function(){
 						}
 					}
 
-					$("#arr-time-mask li").eq(0).addClass("active");
+					$("#arr-time-mask li").eq(0).replaceWith("<li class='active'>立即送达</li>");
 
 					$("#arr-time-mask li").click(function(){
 						$("body").removeClass("over-hidden");

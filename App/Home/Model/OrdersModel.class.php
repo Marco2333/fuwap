@@ -295,7 +295,9 @@ class OrdersModel extends Model{
     	$togetherIds = M('orders')->field($field)
                             ->where($where)
                             ->where('together_id is not null')
+                            ->limit(8)
     						->distinct('together_id')
+                            ->order('together_date desc')
     						->select();
 
         //dump(M('orders')->getLastSql());

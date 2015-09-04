@@ -344,12 +344,14 @@ class ReceiverModel extends Model{
         $field = array(
             'phone_id',
             'name',
-            'address',
+            'concat(campus.campus_name,address) as address',
             'rank'
             );
-        $defaultAddress = $this->where("phone_id=%s and tag = 0",$_SESSION['username'])
-                               ->field($field)
-                               ->select();
+        $defaultAddress = M('receiver')
+                        ->join("campus on campus.campus_id = receiver.campus_id")
+                        ->where("phone_id='%s' and tag = 0",$_SESSION['username'])
+                        ->field($field)
+                        ->select();
 
         $defaultAddress = $this->addressConnect($defaultAddress);
 

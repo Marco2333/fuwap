@@ -14,7 +14,6 @@ header('Content-type:text/html;charset=UTF-8');
  *
  */ 
 
-
 class PersonController extends Controller {
 
 	public function _initialize(){
@@ -194,5 +193,24 @@ class PersonController extends Controller {
         $this->ajaxReturn($res);
     }
 
-   
+   //设置页面
+   public function settings(){
+       $campusId=session('campusId');
+
+       $telphone=D('Campus')->getServicePhone($campusId);
+       $this->assign('telphone',$telphone);
+       $this->display();
+   }
+
+   public function cqq(){
+      $this->display();
+   }
+
+   public function cwechat(){
+      $this->display();
+   }
+
+   public function cacademy(){
+     $this->display();
+   }
 }

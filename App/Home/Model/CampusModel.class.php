@@ -36,4 +36,9 @@ class CampusModel extends Model {
 					->find();
 		return $close_time['close_time'];
 	}
+
+	public function getServicePhone($campusId){
+		$phone=M('campus')->getFieldByCampusId($campusId,'custom_service');
+		return $phone;
+	}
 }

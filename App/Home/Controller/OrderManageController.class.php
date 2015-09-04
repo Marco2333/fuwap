@@ -31,7 +31,6 @@ class OrderManageController extends Controller{
      * @return [type] [description]
      */
 	public function orderManage(){
-
 		$campusId=session('campusID');
         if($campusId==null){
             $campusId=1;
@@ -41,14 +40,12 @@ class OrderManageController extends Controller{
 		$status 		= I('status');
 		$togetherIds 	= $Orders->getTogetherIds($status);
 		
-		//dump($togetherIds);
 		for ($i = 0;$i < count($togetherIds);$i++) {
 			$orderIds      = $Orders->getOrderIds($togetherIds[$i]['together_id']);
             //dump($orderIds);
 			if($orderIds != null) {
 				$goodsInfo[$i] = $Orders->getGoodsInfo($orderIds);
 				$price[$i]     = $Orders->settleAccounts($goodsInfo[$i],$campusId);
-
 
 				for ($j = 0;$j < count($goodsInfo[$i]);$j++) {
 					$goodsInfo[$i][0]['goodsCount'] += $goodsInfo[$i][$j]['order_count'];

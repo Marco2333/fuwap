@@ -80,7 +80,7 @@ class ShoppingCartController extends Controller{
         $Preferential = D('Preferential');
         $orderIds = I('orderIds');
 
-        $defaultAddress = $Receiver->getDefaultAddress();
+        $defaultAddress = $Receiver->getDefaultAddress();              //获取默认地址
         $goodsInfo      = $Orders->getGoodsInfo($orderIds);
         $price          = $Orders->settleAccounts($goodsInfo,$campusId);
         $together_id    = $Orders->setTogether($orderIds,$phone);

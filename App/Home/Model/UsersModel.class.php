@@ -58,7 +58,7 @@ class UsersModel extends Model{
 				'qq',
 				'weixin'
 				);
-			$info = $this->where("phone=".$_SESSION['username'])//写成where($where)就不对了。。。。坑。。。
+			$info = $this->where("phone=%s",$_SESSION['username'])//写成where($where)就不对了。。。。坑。。。
 						 ->field($field)
 						 ->find();
 
@@ -71,6 +71,22 @@ class UsersModel extends Model{
 		return $info;
 	}
 
+	public function getUserInfoById($phone) {
+		$field = array(
+			'phone',
+			'nickname',
+			'img_url'
+			);
+		$info = $this->where("phone=%s",$phone)//写成where($where)就不对了。。。。坑。。。
+					 ->field($field)
+					 ->find();
+
+		if ($info['img_url'] == null) {
+			$info['img_url'] = '/fuwebapp/Public/img/userhead.png';
+		}
+
+		return $info;
+	}
 	/**
      * 模型函数
      * 修改用户基本信息

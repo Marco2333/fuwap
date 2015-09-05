@@ -86,7 +86,7 @@ class FoodCommentModel extends Model{
 		$goodComment = $this->where('food_id='.$food_id.' and '.'campus_id='.$campus_id)
 							->field($field)
 							->select();
-
+							
 		return $goodComment;
 	}
 

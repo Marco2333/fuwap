@@ -167,15 +167,16 @@
 									<span
 									<?php
 										if ($comment['grade'] >= 5) {
-											echo 'class="glyphicon glyphicon-star-empty text-subspecial"';
+											echo 'class="glyphicon glyphicon-star text-subspecial"';				
 										}
 										else {
 											echo 'class="glyphicon glyphicon-star-empty text-light"';
 										}
 									?>
 									></span>
-
+							
 									<span class="goods-grade-score text-subspecial">
+										
 										<?php
 											if($comment['grade'] == null){
 												echo "0";

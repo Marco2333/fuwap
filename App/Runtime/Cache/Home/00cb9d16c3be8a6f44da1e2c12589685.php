@@ -19,7 +19,7 @@
 		   <form action="">
 		   		<div id="call-service" class="user-info-input">
 		   			<span class="fl">
-		   				<a href="tel:18896554856">联系客服</a>
+		   				<a href="tel:<?php echo ($telphone); ?>">联系客服</a>
 		   			</span>
 		   		</div>
 		   		<a href="<?php echo U('Person/aboutforu');?>">

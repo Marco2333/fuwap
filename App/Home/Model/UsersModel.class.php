@@ -154,13 +154,15 @@ class UsersModel extends Model{
         switch ($channel) {
             case 'alipay_wap':
             $extra = array(
-                'success_url' => C('IPUrl').'/index.php',
-                'cancel_url' => C('IPUrl').'/index.php/Home/Login/toLogin'
+                /*'success_url' => C('IPUrl').'/index.php',
+                'cancel_url' => C('IPUrl').'/index.php/Home/Login/toLogin'*/
+                'success_url'=>'http://we.com:8000/fuwebapp/index.php',
+                'cancel_url'=>'http://we.com:8000/fuwebapp/index.php'
                 );
             break;
         }
 
-        \Pingpp\Pingpp::setApiKey('sk_test_HC4CmLin9iPOTOGOW1iHqLOG');
+        \Pingpp\Pingpp::setApiKey('sk_live_vBNcIdIOKPBJEU9YOq3C02PU');
 
         try {
             $ch = \Pingpp\Charge::create(
@@ -173,14 +175,14 @@ class UsersModel extends Model{
                     'extra'     => $extra,
                     'channel'   => $channel,
                     'client_ip' => $_SERVER['REMOTE_ADDR'],
-                    'app'       => array('id' => 'app_ffLajDzjLe181iHa')
+                    'app'       => array('id' => 'app_La1y14yrPa10SeHS')
                     )
                 );
             return $ch;
         } catch (\Pingpp\Error\Base $e) {
             header('Status: ' . $e->getHttpStatus());
-            
-           $e->getHttpBody();
+            echo $e;
+            $e->getHttpBody();
         }
 
     }

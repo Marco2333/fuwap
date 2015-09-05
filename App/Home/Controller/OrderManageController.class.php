@@ -25,9 +25,12 @@ class OrderManageController extends Controller{
 	public function index(){
 		
 	}
-
+    
+    /**
+     * 订单管理
+     * @return [type] [description]
+     */
 	public function orderManage(){
-
 		$campusId=session('campusID');
         if($campusId==null){
             $campusId=1;
@@ -37,14 +40,12 @@ class OrderManageController extends Controller{
 		$status 		= I('status');
 		$togetherIds 	= $Orders->getTogetherIds($status);
 		
-		
 		for ($i = 0;$i < count($togetherIds);$i++) {
 			$orderIds      = $Orders->getOrderIds($togetherIds[$i]['together_id']);
-
+            //dump($orderIds);
 			if($orderIds != null) {
 				$goodsInfo[$i] = $Orders->getGoodsInfo($orderIds);
 				$price[$i]     = $Orders->settleAccounts($goodsInfo[$i],$campusId);
-
 
 				for ($j = 0;$j < count($goodsInfo[$i]);$j++) {
 					$goodsInfo[$i][0]['goodsCount'] += $goodsInfo[$i][$j]['order_count'];
@@ -69,6 +70,10 @@ class OrderManageController extends Controller{
 		}
 	}
 
+    /**
+     * 删除订单
+     * @return [type] [description]
+     */
 	public function deleteOrCancel(){
 		$Orders = D('Orders');
 
@@ -85,6 +90,30 @@ class OrderManageController extends Controller{
 		}
 	}
 
+     /**
+     * 取消订单并退款
+     * @return [type] [description]
+     */
+	public function refundOrder(){
+		$Orders = D('Orders');
+
+		$together_id = I('together_id');
+		$result = $Orders->refundOrder($together_id);
+
+		if ($result) {
+			$res['result'] = 1;
+			$this->ajaxReturn($res);			
+		}
+		else {	
+			$res['result'] = 0;
+			$this->ajaxReturn($res);
+		}
+	}
+
+    /**
+     * 确定订单
+     * @return [type] [description]
+     */
 	public function confirmOrder(){
 		$Orders = D('Orders');
 
@@ -101,6 +130,10 @@ class OrderManageController extends Controller{
 		}
 	}
 
+    /**
+     * 评论订单
+     * @return [type] [description]
+     */
 	public function commentOrder(){
 		$Orders = D('Orders');
 

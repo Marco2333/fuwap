@@ -63,6 +63,29 @@ $(document).ready(function(){
 
 	});
 
+    $(".manage-button-6").on("click",function(){
+    	var $together_id = $(this).nextAll(".together-id-none").val();
+    	var $this = $(this);
+        
+        if(confirm('是否确定取消订单?')){
+           $.ajax({
+    		type:"POST",
+    		url:"/fuwebapp/index.php/Home/OrderManage/refundOrder",
+    		data:{together_id:$together_id},
+    		success:function(result){
+    			if (result['result'] != 0) {
+    				alert("取消订单成功，再在退款处理");
+    				$this.parent().parent().parent().parent().parent().remove();         
+    			}
+    			else {
+    				// alert("亲~您的订单删除失败，请重试！");
+    			}
+    		}
+    	});
+        }
+
+    });
+
 	$(".manage-button-4").on("click",function(){
 		var $together_id = $(this).nextAll(".together-id-none").val();
 		var $this = $(this);

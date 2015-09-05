@@ -3,10 +3,14 @@ $(document).ready(function(){
     $(".orderconfirm-btn-pay").on('click',function(){
 
     	var $rank = $("#order-confirm-location").attr("data-rank");
+    	var $reserveTime = $(".arrive-time").text();
+    	var $message =　$(".orderconfirm-message>textarea").val();
     	var data={
     		rank:$rank,
     		orderIds:$orderIds,
-    		channel:$("input[type='radio'][name='pay_way']").val()
+    		channel:$("input[type='radio'][name='pay_way']").val(),
+    		reserveTime:$reserveTime,
+    		message:$message
     	}
     	$.ajax({
     		url:$payUrl,
@@ -14,8 +18,8 @@ $(document).ready(function(){
     		data:data,
     		success:function(data){
     			if(data.status == 2){
-    			    pingpp.createPayment(data, function(result, err) {
-    			    
+    			    pingpp.createPayment(data.charge, function(result, err) {
+    			      
     			    });
     			}else if(data.status == -1){
     			   alert("支付失败，请重试");
@@ -23,6 +27,8 @@ $(document).ready(function(){
     			   alert("亲,收货地址超出配送范围哦");
     			}else if(data.status == 0) {
     			   alert("亲，休息喽，下次再来");
+    			}else if(data.status ==3){
+    			   alert("该笔订单已经支付过，请不要重复支付");
     			}
     		}
     	});

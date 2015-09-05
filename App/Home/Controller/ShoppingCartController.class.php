@@ -14,7 +14,6 @@ header('Content-type:text/html;charset=UTF-8');
  *
  */ 
 
-
 class ShoppingCartController extends Controller{
 
 	public function _initialize(){
@@ -24,7 +23,7 @@ class ShoppingCartController extends Controller{
 	}
 
 	public function index(){
-        
+        $this->ShoppingCart();
     }
 
     public function ShoppingCart(){
@@ -81,7 +80,7 @@ class ShoppingCartController extends Controller{
         $Preferential = D('Preferential');
         $orderIds = I('orderIds');
 
-        $defaultAddress = $Receiver->getDefaultAddress();
+        $defaultAddress = $Receiver->getDefaultAddress();              //获取默认地址
         $goodsInfo      = $Orders->getGoodsInfo($orderIds);
         $price          = $Orders->settleAccounts($goodsInfo,$campusId);
         $together_id    = $Orders->setTogether($orderIds,$phone);
@@ -92,8 +91,6 @@ class ShoppingCartController extends Controller{
         if($defaultAddress == false) {
             $this->redirect('Home/Person/addressManage');
         }
-
-
         else if ($goodsInfo != false && $result !== false) {
             $this->assign('defaultAddress',$defaultAddress)
                  ->assign('goodsInfo',$goodsInfo)
@@ -109,6 +106,10 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    /**
+     * 删除订单
+     * @return [type] [description]
+     */
     public function deleteOrders(){
          $phone = $_SESSION['username'];
          $orderIds = I('orderIds');
@@ -123,6 +124,10 @@ class ShoppingCartController extends Controller{
          $this->ajaxReturn($res);
     }
 
+    /**
+     * 重新设置订单数目
+     * @return [type] [description]
+     */
     public function updateSettleAccounts(){
 
         $campusId = $_SESSION['campusId'];
@@ -138,7 +143,6 @@ class ShoppingCartController extends Controller{
         $result      = $Orders->updateOrderCount($order_id,$order_count);
         
         $orderIds    = $Orders->getOrderIds($together_id);
-
         $goodsInfo   = $Orders->getGoodsInfo($orderIds);
         $price       = $Orders->settleAccounts($goodsInfo,$campusId);
 
@@ -162,6 +166,10 @@ class ShoppingCartController extends Controller{
         }
     }
 
+    /**
+     * 
+     * @return [type] [description]
+     */
     public function settleAccounts(){
 
         $campusId = $_SESSION['campusId'];
@@ -187,7 +195,10 @@ class ShoppingCartController extends Controller{
         }
     }
 
-
+    /**
+     * 获取关闭时间
+     * @return 
+     */
     public function getCloseTime() {
         if(!isset($_SESSION['campusId'])) {
             $campusId = 1;
@@ -211,20 +222,41 @@ class ShoppingCartController extends Controller{
         $this->ajaxReturn($res);
     }
 
+    /**
+     * 立即支付
+     * @param  [type] $rank     [description]
+     * @param  [type] $orderIds [description]
+     * @param  [type] $channel  [description]
+     * @return [type]           [description]
+     */
     public function payAtOnce($rank,$orderIds,$channel){
         $order=D('Orders');
         $phone=session('username');
+        $reserveTime=I('reserveTime');
+        $message=I('message');
+
         if(!isset($_SESSION['campusId'])) {
             $campusId = 1;
-        }
-        else {
+        }else {
             $campusId = $_SESSION['campusId'];
         }
         
+        $orderIdSingle=split(",", $orderIds);
+        
+        $where['order_id']=$orderIdSingle[0];
+        $where['phone']=$_SESSION['username'];
+        $ifHasPaid=M('orders')->where($where)->find();
+        if($ifHasPaid['status']!=0&&$ifHasPaid['status']!=1){           //确认这笔订单是否已经支付过
+            $res['status'] = 3;
+            $this->ajaxReturn($res);
+            return;
+        }
         $togetherId=$order->setTogetherId($orderIds,$phone);
         $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
-        
-        if($togetherId != null){
+
+        $flag=$order->updateOrder($togetherId,$phone,$rank,$reserveTime,$message,$totalPrice);  //$togetherId,$phone,$rank,$reserveTime,$message,$totalPrice
+       
+        if($togetherId != null&&$flag!=0){
 
             $out = $this->checkLegal($togetherId,$rank,$phone);
 
@@ -239,12 +271,19 @@ class ShoppingCartController extends Controller{
             else {
                 $charge=D('Users')->pay($channel,$totalPrice,$togetherId);
                 $res['status'] = 2;
-                $res['charge'] = $charge;
+                $res['charge'] = $charge."";
                 $this->ajaxReturn($res);
             } 
         }
     }
 
+    /**
+     * 校验校区配送范围
+     * @param  [type] $togetherId [description]
+     * @param  [type] $rank       [description]
+     * @param  [type] $phone      [description]
+     * @return [type]             [description]
+     */
     public function checkLegal($togetherId,$rank,$phone) {
         $status = D('Orders')->getCampusStateByTogeId($togetherId);
 

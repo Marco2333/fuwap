@@ -170,8 +170,8 @@ class UsersModel extends Model{
         switch ($channel) {
             case 'alipay_wap':
             $extra = array(
-                'success_url' => 'http://foru.com:8000/index.php',
-                'cancel_url' => 'http://foru.com:8000/index.php/Home/Login/toLogin'
+                'success_url' => C('IPUrl').'/index.php',
+                'cancel_url' => C('IPUrl').'/index.php/Home/Login/toLogin'
                 );
             break;
         }
@@ -181,8 +181,8 @@ class UsersModel extends Model{
         try {
             $ch = \Pingpp\Charge::create(
                 array(
-                    'subject'   => 'Your Subject',
-                    'body'      => 'Your Body',
+                    'subject'   => 'For优商品',
+                    'body'      => '通过wap网页支付',
                     'amount'    => $amount*100,
                     'order_no'  => $orderNo,
                     'currency'  => 'cny',

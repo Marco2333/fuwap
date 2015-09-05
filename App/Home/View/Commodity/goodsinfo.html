@@ -39,22 +39,29 @@
 						</p>
 					</div>
 					<div class="fr col-2">
-						<p class="score">{$avgGrade}分</p>
+					    <if condition="$avgGrade eq 0">
+					   	    <p class="score">暂无评分</p>
+					   	<else/><p class="score">{$avgGrade}分</p>
+					    </if>			
 						<p class="text-light">销量: {$goodsInfo.sale_number}</p>
 					</div>
 				</div>
 				<div id="goods-info-price" class="text-left">
-					<span class="discount-price">
-						￥{$goodsInfo.discount_price}
-					</span>
-					<span class="bef-price">
-						￥{$goodsInfo.price}
-					</span>
-					<span class="text-subspecial">
-						(省<?php
-							echo $goodsInfo['price'] - $goodsInfo['discount_price'];
-						?>元)
-					</span>
+				    <if condition="$goodInfo.is_discount eq 1">
+				    	<span class="discount-price">
+				    		￥{$goodsInfo.discount_price}
+				    	</span>
+				    	<span class="bef-price">
+				    		￥{$goodsInfo.price}
+				    	</span>
+				    	<span class="text-subspecial">
+				    		(省<?php
+				    			echo $goodsInfo['price'] - $goodsInfo['discount_price'];
+				    		?>元)
+				    	</span>
+				    <else/>	<span class="discount-price">￥{$goodsInfo.price}</span>
+				    </if>
+					
 				<!-- 	<span class="text-center inline-block bground-special">
 						减
 					</span> -->
@@ -210,7 +217,9 @@
 		</div>
 		
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
-
+        <script type="text/javascript">
+             $loginUrl="{:U('/Home/Login/login')}";
+        </script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/goodsinfo.js"></script>
 		<script src="__PUBLIC__/assets/js/amazeui.min.js"></script>

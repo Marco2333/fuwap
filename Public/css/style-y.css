@@ -414,6 +414,11 @@
 	font-family: "幼圆";
 	color: #C1C1C1;
 	font-size: 12px;
+	word-wrap: break-word;
+	white-space:nowrap;
+	/*word-break:keep-all;*/
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 .goodsclassify-goods-txt .goodsclassify-price{
 	color: #FE6045;

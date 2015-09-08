@@ -167,7 +167,6 @@ class CommodityController extends Controller {
             $campus_id = 1;
         }
 
-        $userInfo    = $Users->getUserInfo();
         $goodsInfo   = $Food->getGoodInfo($food_id,$campus_id);
         $commentInfo = $FoodComment->getGoodComment($food_id,$campus_id);
 
@@ -175,6 +174,7 @@ class CommodityController extends Controller {
 
         for ($i = 0;$i < $commentCount;$i++) {
             $commentInfo[$i]['order_count'] = $Orders->getOrderCount($commentInfo[$i]['order_id']);
+            $userInfo    = $Users->getUserInfoById($commentInfo[$i]['phone']);
             $commentInfo[$i]['nickname']    = $userInfo['nickname'];
 
             if ($commentInfo[$i]['is_hidden'] != 0) {
@@ -186,6 +186,7 @@ class CommodityController extends Controller {
         }
 
         $avgGrade = substr($FoodComment->getAvgGrade($commentInfo),0,3);
+
 
         if($avgGrade == false){
             $avgGrade = 0;

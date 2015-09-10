@@ -15,7 +15,8 @@ $(document).ready(function(){
 				required:true
 			},
 			"new-deLocation": {
-				required:true
+				required:true,
+				maxlength:25
 			}
 		},
 		messages:{
@@ -33,7 +34,8 @@ $(document).ready(function(){
 				required:"手机号不能为空"
 			},
 			"new-deLocation": {
-				required:"详细地址不能为空"
+				required:"详细地址不能为空",
+				maxlength:"详细地址长度不能超过25"
 			}
 		},
 		errorPlacement:function(error, element) {

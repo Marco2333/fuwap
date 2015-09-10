@@ -109,8 +109,9 @@ class PersonController extends Controller {
         }
     }
 
-    public function deleteAdress($rank) {
+    public function deleteAdress() {
 
+        $rank = I('rank');
         $phone = $_SESSION['username'];
         $out = D('Receiver')->deleteAddress($phone,$rank);
 

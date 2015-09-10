@@ -188,6 +188,9 @@ input {
 	font-size: 20px;
 	font-family: "黑体";
 	z-index: 3;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .head-bottom img {
 	width: 80px;
@@ -306,10 +309,17 @@ input {
 .user-info-input .fl {
 	font-size: 16px;
 }
-.user-info-input .fr {
+.user-info-input span.fr {
 	font-size: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 70%;
+	text-align: right;
 }
-
+.user-info-input .fr img {
+	float: right;
+}
 /*settings*/
 #settings-head {
 	border-bottom: 1px solid #eee;

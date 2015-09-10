@@ -30,6 +30,7 @@ $(document).ready(function(){
 })
 
 function getInfo(field){
+	// alert();
 	info = {
 		field:field
 	};

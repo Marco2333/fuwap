@@ -54,7 +54,7 @@ class CommodityController extends Controller {
     }
     
     public function getGatGoods($categoryId){
-
+        
     	$campusId = $_SESSION['campusId'];
 
     	if($campusId == null){

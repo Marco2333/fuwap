@@ -19,7 +19,7 @@
 		<div class="wrapper">
 			<form action="{:U('Person/infoRevise',array(''=>'','field'=>'nickname'))}" method="post">
 				<div class="kongbai"></div>
-				<input class="userinfo-change-input" id="revise-nickname" type="text" name="revise-nickname"/>
+				<input class="userinfo-change-input" id="revise-nickname" required='required' maxlength='10' type="text" name="revise-nickname"/>
 				<div class="kongbai"></div>
 				<button class="userinfo-change-btn btn">
 						提交

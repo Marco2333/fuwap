@@ -19,7 +19,7 @@
 		<div class="wrapper">
 			<form action="{:U('Person/infoRevise',array(''=>'','field'=>'weixin'))}" method="post">
 				<div class="kongbai"></div>
-				<input class="userinfo-change-input" type="text" id="revise-weixin" name="revise-weixin" placeholder="请输入微信号"/>
+				<input class="userinfo-change-input" type="text" id="revise-weixin" name="revise-weixin" required='required' maxlength='20' placeholder="请输入微信号"/>
 				<div class="kongbai"></div>
 				<button class="userinfo-change-btn btn">
 						提交

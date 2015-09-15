@@ -70,7 +70,7 @@ $(document).ready(function(){
         if(confirm('是否确定取消订单?')){
            $.ajax({
     		type:"POST",
-    		url:"/fuwebapp/index.php/Home/OrderManage/refundOrder",
+    		url:"/fuwebapp/index.php/Home/Ordermanage/refundOrder",
     		data:{together_id:$together_id},
     		success:function(result){
     			if (result['result'] != 0) {
@@ -92,7 +92,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"POST",
-			url:"/fuwebapp/index.php/Home/OrderManage/deleteOrCancel",
+			url:"/fuwebapp/index.php/Home/Ordermanage/deleteOrCancel",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
@@ -111,13 +111,14 @@ $(document).ready(function(){
 		console.log($together_id);
 		$.ajax({
 			type:"POST",
-			url:"/fuwebapp/index.php/Home/OrderManage/commentOrder",
+			url:"/fuwebapp/index.php/Home/Ordermanage/commentOrder",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
-					var $href = "/fuwebapp/index.php/Home/Commodity/comment?orderIds="+result['orderIds'];
+					
+					//var $href = "/fuwebapp/index.php/Home/Commodity/comment?orderIds="+result['orderIds'];
 		
-					window.location.href = $href;
+					//window.location.href = $href;
 				}
 				else {
 					// alert("亲~网络不给力哦，请重试！");

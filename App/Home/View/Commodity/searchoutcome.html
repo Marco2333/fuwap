@@ -19,7 +19,16 @@
 			</div>
 		</div>
 		
-		<div id="search-standard" class="w">
+		<div id="search-standard" class="w
+			<?php
+				if (count($goodlist) != 0) {
+					echo '';
+				}
+				else {
+					echo 'none';
+				}
+			?>
+		">
 			<ul>
 				<switch name="std">
 				    <case value="0">
@@ -61,7 +70,18 @@
 							<div class=" goods-txt-intro">
 								{$vi.message}
 							</div>
-							
+							<if condition="$vi.is_full_discount eq 1">
+								<div class="full-discount-wrapper">
+									<span class="full-discount">
+										减
+									</span>
+									<span>
+										<foreach name="preferential" item="vo">
+											满{$vo.need_number}减{$vo.discount_num}&nbsp;
+										</foreach>
+									</span>
+								</div>
+							</if>
 							<div>
 								<div class="fl">
 									<div class="goodsclassify-price fl discount-price">
@@ -80,7 +100,30 @@
 					</div>
 				</a>
 			</foreach>		
-		</div>	
+		</div>
+
+		<div id="shopping-cart-empty"
+			<?php
+				if (count($goodlist) == 0) {
+					echo 'class=""';
+				}
+				else {
+					echo 'class="none"';
+				}
+			?>
+		>
+			<dl>
+				<dt>
+					<img src="__PUBLIC__/img/shopempty.png" alt="">
+				</dt>
+				<dd>
+					<h1>没有找到您想要的结果</h1>
+					<h2>去看看有那些想买的</h2>
+					<a class="hang-around" href="{:U('Index/index')}">随便逛逛</a href="U('Index/index')">
+				</dd>
+			</dl>
+		</div>
+
 		<div class="msg-page">
 			<div class="page">{$page}</div>
 		</div>

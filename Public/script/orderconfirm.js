@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	$(".consumer-phone").click(function(event){
+		 event.preventDefault(); 
+	});
+
     $(".orderconfirm-btn-pay").on('click',function(){
 
     	var $rank = $("#order-confirm-location").attr("data-rank");

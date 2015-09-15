@@ -27,9 +27,13 @@ class CommodityController extends Controller {
 	   
         $res = D('Food')->getFoodByCatId($campusId,$categoryId);
 
+        $Preferential = D('Preferential');
+        $preferential   = $Preferential->getPreferentialList($campusId); 
+
 	    $this->assign('goodlist',$res['goodList'])
              ->assign('page',$res['show'])
              ->assign('categoryId',$categoryId)
+             ->assign('preferential',$preferential)
 	         ->assign("category",$classes); 
 	   
 	    $this->display("goodsclassify");
@@ -45,10 +49,13 @@ class CommodityController extends Controller {
         
         $res = D('FoodCategory')->getGoodsBySerial($flag,$campusId);
 
+        $Preferential = D('Preferential');
+        $preferential   = $Preferential->getPreferentialList($campusId); 
+
         $this->assign('flag',$flag)
             ->assign('page',$res['show'])
+            ->assign('preferential',$preferential)
             ->assign('goodList',$res['goodList']);
-
         
         $this->display('goodscategory');
     }
@@ -187,6 +194,8 @@ class CommodityController extends Controller {
 
         $avgGrade = substr($FoodComment->getAvgGrade($commentInfo),0,3);
 
+        $Preferential = D('Preferential');
+        $preferential   = $Preferential->getPreferentialList($campus_id); 
 
         if($avgGrade == false){
             $avgGrade = 0;
@@ -196,6 +205,7 @@ class CommodityController extends Controller {
             $this->assign('goodsInfo',$goodsInfo)
                  ->assign('commentInfo',$commentInfo)
                  ->assign('commentCount',$commentCount)
+                 ->assign('preferential',$preferential)
                  ->assign('avgGrade',$avgGrade);
             $this->display('goodsInfo');
         }
@@ -280,9 +290,13 @@ class CommodityController extends Controller {
                 break;
         }
         
+        $Preferential = D('Preferential');
+        $preferential   = $Preferential->getPreferentialList($campus_id); 
+
         $this->assign("goodlist",$out['goodlist'])
             ->assign('page',$out['show'])
             ->assign('std',$std)
+            ->assign('preferential',$preferential)
             ->assign("key",$key);
        
         $this->display("searchoutcome");

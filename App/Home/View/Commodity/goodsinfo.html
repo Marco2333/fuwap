@@ -38,6 +38,19 @@
 						<p class="message w text-left">
 							{$goodsInfo.message}
 						</p>
+					
+						<if condition="$goodsInfo.is_full_discount eq 1">
+							<div class="full-discount-wrapper">
+								<span class="full-discount">
+									减
+								</span>
+								<span>
+									<foreach name="preferential" item="vi">
+										满{$vi.need_number}减{$vi.discount_num}&nbsp;
+									</foreach>
+								</span>
+							</div>
+						</if>
 					</div>
 					<div class="fr col-2">
 					    <if condition="$avgGrade eq 0">

@@ -349,7 +349,7 @@ class ReceiverModel extends Model{
             );
         $defaultAddress = M('receiver')
                         ->join("campus on campus.campus_id = receiver.campus_id")
-                        ->where("phone_id='%s' and tag = 0",$_SESSION['username'])
+                        ->where("phone_id='%s' and tag = 0 and is_out=0",$_SESSION['username'])
                         ->field($field)
                         ->select();
 

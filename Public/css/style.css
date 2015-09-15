@@ -643,8 +643,9 @@ input.goods-count {
 	font-size: 10px;
 	outline: none;
 	background: #fff;
-	border: 1px solid #aaa;
+	border: 1px solid #888;
 	padding-left: 0;
+	border-radius: 0;
 }
 .img-and-detailed-body .eval-star {
 	margin-top: 2px;

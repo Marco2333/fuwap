@@ -42,6 +42,40 @@ $(document).ready(function(){
 		window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome/key/"+searchkey;
 	});
 
+	$("#search-input").on('keydown',function(e){
+        if(e.keyCode==13){
+ 
+        	var searchkey = $("#search-input").val();
+
+        	if(searchkey != ""){
+        	    record = $.cookie("record");
+
+        	    if(record == null) {
+        	        var record = searchkey;
+        	        $.cookie("record", record,{ expires: 14 });
+        	    }
+        	    else {     
+        	        var recordList = record.split(",");
+        	        var newrecord = "";
+        	        for(var i=0;i<recordList.length;i++){
+        	            if(recordList[i] != searchkey.trim()){
+        	                newrecord += recordList[i] + ",";
+        	            }
+        	        }
+        	        newrecord += searchkey.trim();
+
+        	        recordList = newrecord.split(",");
+        	        if(recordList.length > 6){                  
+        	            newrecord = newrecord.substr(newrecord.indexOf(",")+1);
+        	        }
+        	        $.cookie("record", newrecord,{ expires: 14 });    
+        	    } 
+        	}
+
+        	window.location.href = "/fuwebapp/index.php/Home/Commodity/searchoutcome/key/"+searchkey;
+        }
+    });
+
 	$("#search-input").focus(function(){
 
 		$("#search-history-container").removeClass("none");

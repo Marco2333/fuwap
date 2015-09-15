@@ -55,7 +55,18 @@
 							<div class=" goods-txt-intro">
 								{$vi.message}
 							</div>
-							
+							<if condition="$vi.is_full_discount eq 1">
+								<div class="full-discount-wrapper">
+									<span class="full-discount">
+										减
+									</span>
+									<span>
+										<foreach name="preferential" item="vo">
+											满{$vo.need_number}减{$vo.discount_num}&nbsp;
+										</foreach>
+									</span>
+								</div>
+							</if>
 							<div>
 								<div class="fl">
 									<div class="goodsclassify-price fl discount-price">

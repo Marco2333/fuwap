@@ -144,7 +144,8 @@ class FoodModel extends Model{
 			'message',
 			'grade',
 			'info',
-			'sale_number'
+			'sale_number',
+			'is_full_discount'
 		);
 
 		$count = M('food')

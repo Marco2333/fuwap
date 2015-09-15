@@ -53,6 +53,7 @@
 				success:function(data){
 					if(data.status==1){
 						$(".input-locate:checked").parents(".shopcart-goods-list").remove();
+						calTotalCost();
 					}
 					else {
 						alert("删除失败");
@@ -66,6 +67,8 @@
 		else {
 			alert("亲~请勾选您想要删除的物品！");
 		}
+
+
 	});
 
 	$("#shoppingcart-body .sub-goods").on("click",function(){

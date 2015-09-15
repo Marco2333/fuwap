@@ -248,11 +248,57 @@ class CommodityController extends Controller {
         $food_id = I('food_id');
         $order_count = I('order_count');
 
-        $result = $Orders->buyNowAction($food_id,$order_count);
-        
+        $where = array(
+            'phone'       => $_SESSION['username'],
+            'status'      => 0,
+           'order_count' => array('gt',0),
+        );
+     
+        $field = array(
+            'order_id',
+            'food_id',
+            'order_count'
+        );
+        $preOrders = M('orders')->where($where)
+                           ->field($field)
+                           ->select();
+
+        $have = 0;
+        for ($i = 0; $i < count($preOrders); $i++) 
+        { 
+            if ($preOrders[$i]['food_id'] != $food_id)
+            {
+                continue;
+            }
+            else
+            {
+                $order_count = $preOrders[$i]['order_count'] + $order_count;
+                $have = 1;
+                break;
+            }
+        }
+
+
+        if ($have != 1)
+        {
+            $result = $Orders->buyNowAction($food_id,$order_count);
+
+            $res['order_id'] = $result['order_id'];
+        }
+        else
+        {
+            $wherefood = array(
+                'phone'     => $_SESSION['username'],
+                'food_id'   => $food_id
+                );
+            $data = array(
+                'order_count' => $order_count
+                );
+            $result = $Orders->where($wherefood)
+                             ->save($data);
+        }   
         if ($result !== false) {
             $res['result']   = 1;
-            $res['order_id'] = $result['order_id'];
             $this->ajaxReturn($res);
         }
         else {

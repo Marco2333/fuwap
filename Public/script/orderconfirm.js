@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$(".consumer-phone").click(function(event){
+	$(".consumer-phone,.location-phone").click(function(event){
 		 event.preventDefault(); 
 	});
 

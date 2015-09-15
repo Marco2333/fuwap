@@ -38,14 +38,12 @@ a {
 	color: #555; 
 	outline: medium none;
 }
+a:hover,
 a:link,
 a:visited,
 a:active { 
 	text-decoration: none;
-}
-a:hover { 
-	color: #24dfc2; 
-	text-decoration: none;
+	color: #555;
 }
 i, cite, em { 
 	font-style: normal;

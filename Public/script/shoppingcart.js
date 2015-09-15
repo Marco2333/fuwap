@@ -25,7 +25,17 @@
 		}
 	});
 	
-	$("#settle-accounts .glyphicon-trash").click(function(){
+	$(".mask").click(function(){
+		if($(this).prev().prop("checked")) {
+			$(this).prev().prop("checked",false);
+		}
+		else {
+			$(this).prev().prop("checked",true);
+		}
+		calTotalCost();	
+	});
+
+	$("#settle-accounts .trash").click(function(){
 		var checks = $(".input-locate");
 		var $orderIds = "";
 		for (i = 0;i < checks.length;i++) {

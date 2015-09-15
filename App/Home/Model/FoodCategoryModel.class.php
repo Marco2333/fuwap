@@ -13,6 +13,7 @@ class FoodCategoryModel extends Model {
 
 		$category=M("food_category");      //获取左侧导航栏的分类
         $classes=$category->scope('nomal')
+            ->cache(true)
         	->where('campus_id=%d and tag=1',$campusId)
         	->select();
 
@@ -55,6 +56,7 @@ class FoodCategoryModel extends Model {
 		
 		$cateid = M('food_category')
 		            ->scope('nomal')
+		            ->cache(true)
 					->where('serial = %d and campus_id = %d',$flag,$campusId)
 					->find();
 		if($cateid == null) {

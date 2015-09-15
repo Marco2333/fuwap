@@ -17,7 +17,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			type:"POST",
-			url:"/fuwebapp/index.php/Home/OrderManage/deleteOrCancel",
+			url:"/fuwebapp/index.php/Home/Ordermanage/deleteOrCancel",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {
@@ -38,7 +38,7 @@ $(document).ready(function(){
 			orderIds += $($goodsinfoList[i]).attr("data-id")+","; 
 		}
 		orderIds = orderIds.substr(0,orderIds.length-1);
-		window.location.href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+orderIds;
+		window.location.href = "/fuwebapp/index.php/Home/Shoppingcart/orderConfirm?orderIds="+orderIds;
 	});
 
 	$(".manage-button-3").on("click",function(){
@@ -49,7 +49,7 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			type:"POST",
-			url:"/fuwebapp/index.php/Home/OrderManage/confirmOrder",
+			url:"/fuwebapp/index.php/Home/Ordermanage/confirmOrder",
 			data:{together_id:$together_id},
 			success:function(result){
 				if (result['result'] != 0) {

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		
+		<link rel="icon" href="/fuwebapp/favicon.ico" type="image/x-icon" />
 		<link href="/fuwebapp/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/style.css" />
@@ -57,7 +57,7 @@
 	   		</a> 		
 	   </div>
 	   <div class="col-xs-4">
-	   		<a href="<?php echo U('ShoppingCart/shoppingcart');?>">
+	   		<a href="<?php echo U('Shoppingcart/shoppingCart');?>">
 		   		<dl>
 		   			<dt>
 		   				<span class="glyphicon glyphicon-shopping-cart"></span>

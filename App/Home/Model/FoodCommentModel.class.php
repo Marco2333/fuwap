@@ -84,6 +84,7 @@ class FoodCommentModel extends Model{
 			'is_hidden'
 			);
 		$goodComment = $this->where('food_id='.$food_id.' and '.'campus_id='.$campus_id)
+							->cache(true)
 							->field($field)
 							->select();
 							

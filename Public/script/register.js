@@ -21,6 +21,7 @@ $(document).ready(function(){
 				required:true
 			},
 			mail: {
+				required:true,
 				email:true
 			}
 		},
@@ -44,6 +45,7 @@ $(document).ready(function(){
 				required:"手机号不能为空"
 			},
 			mail: {
+				required:"邮箱不能为空",
 				email:"请输入正确的邮箱"
 			}
 		},

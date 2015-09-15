@@ -46,7 +46,7 @@ $(document).ready(function(){
 			success:function(result){
 				if (result['result'] != 0) {
 				
-					var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+result['order_id'];
+					var $href = "/fuwebapp/index.php/Home/Shoppingcart/orderConfirm?orderIds="+result['order_id'];
 					window.location.href=$href;
 				}
 				else {

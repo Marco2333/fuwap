@@ -31,7 +31,7 @@ class PersonController extends Controller {
     	$info  = $Users->getUserInfo();
 
     	$this->assign('info',$info);
-    	$this->display('userInfo');
+    	$this->display('userinfo');
     }
 
     public function getUserInfo($field){
@@ -203,14 +203,18 @@ class PersonController extends Controller {
    }
 
    public function cqq(){
-      $this->display();
+      $this->display("Cqq");
    }
 
+   public function cname(){
+      $this->display("Cname");
+   }
+   
    public function cwechat(){
-      $this->display();
+      $this->display("Cwechat");
    }
 
    public function cacademy(){
-     $this->display();
+     $this->display("Cacademy");
    }
 }

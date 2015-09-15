@@ -45,7 +45,7 @@
 
 		if ($orderIds != "") {
 			$.ajax({
-				url:"/fuwebapp/index.php/Home/ShoppingCart/deleteOrders",
+				url:"/fuwebapp/index.php/Home/Shoppingcart/deleteOrders",
 				type:"POST",
 				data:{
 					orderIds:$orderIds
@@ -78,7 +78,7 @@
 		}
 		$.ajax({
 	        type:"POST",
-	        url:'/fuwebapp/index.php/Home/ShoppingCart/updateOrderCount',
+	        url:'/fuwebapp/index.php/Home/Shoppingcart/updateOrderCount',
 	        data:{order_count:$order_count,order_id:$order_id},
 	        success:function(result){
 	        	if (result['result'] != 0) {
@@ -101,7 +101,7 @@
 
 		$.ajax({
 	        type:"POST",
-	        url:'/fuwebapp/index.php/Home/ShoppingCart/updateOrderCount',
+	        url:'/fuwebapp/index.php/Home/Shoppingcart/updateOrderCount',
 	        data:{order_count:$order_count,order_id:$order_id},
 	        success:function(result){
 	        	if (result['result'] != 0) {
@@ -171,7 +171,7 @@
 		}
 
 		if ($orderIds != "") {
-			var $href = "/fuwebapp/index.php/Home/ShoppingCart/orderConfirm?orderIds="+$orderIds;
+			var $href = "/fuwebapp/index.php/Home/Shoppingcart/orderConfirm?orderIds="+$orderIds;
 			window.location.href = $href;
 		}
 		else {

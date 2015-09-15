@@ -41,7 +41,7 @@ $(document).ready(function(){
 
 		var colseTime = "24:00";
 		$.ajax({
-			url:"/fuwebapp/index.php/Home/ShoppingCart/getCloseTime",
+			url:"/fuwebapp/index.php/Home/Shoppingcart/getCloseTime",
 			type:'POST',
 			success:function(data) {
 				if(data.status == 1) {
@@ -164,7 +164,7 @@ $(document).ready(function(){
 		if ($order_count > 0) {
 			$.ajax({
 		        type:"POST",
-		        url:'/fuwebapp/index.php/Home/ShoppingCart/updateSettleAccounts',
+		        url:'/fuwebapp/index.php/Home/Shoppingcart/updateSettleAccounts',
 		        data:{order_count:$order_count,order_id:$order_id,together_id:$together_id},
 		        success:function(price){
 		        	if (price['result'] != 0) {
@@ -189,7 +189,7 @@ $(document).ready(function(){
 
 	    $.ajax({
 	    	type:"POST",
-		    url:'/fuwebapp/index.php/Home/ShoppingCart/updateSettleAccounts',
+		    url:'/fuwebapp/index.php/Home/Shoppingcart/updateSettleAccounts',
 		    data:{order_count:$order_count,order_id:$order_id,together_id:$together_id},
 	        success:function(price){
 	        	if (price['result'] != 0) {
@@ -233,7 +233,7 @@ function pricecalculate(){
 	var $together_id = $(".together-id-none").val();
 	$.ajax({
 		type:"POST",
-		url:"/fuwebapp/index.php/Home/ShoppingCart/settleAccounts",
+		url:"/fuwebapp/index.php/Home/Shoppingcart/settleAccounts",
 		data:{together_id:$together_id},
 		success:function(price){
 			if (price['result'] != 0) {

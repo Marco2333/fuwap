@@ -125,7 +125,7 @@ class CommodityController extends Controller {
     		$this->display('comment');
     	}
     	else {
-    		$this->redirect('Home/OrderManage/orderManage',array('status'=>'4'));
+    		$this->redirect('Home/Ordermanage/orderManage',array('status'=>'4'));
     	}
     }
 

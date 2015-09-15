@@ -12,12 +12,12 @@ class CampusModel extends Model {
 	);
 
 	public function getAllCity(){
-		$city=M('city')->select();
+		$city=M('city')->cache(true)->select();
 		return $city;
 	}
 
 	public function getCampusByCity($cityId){
-       $campus=M('campus')->field('campus_id,campus_name')->where('city_id=%d',$cityId)->select();
+       $campus=M('campus')->field('campus_id,campus_name')->where('city_id=%d',$cityId)->cache(true)->select();
        
        return $campus;
 	}
@@ -25,6 +25,7 @@ class CampusModel extends Model {
 	public function getNameByCampusId($campusId) {
 		$campus_name = M('campus')->field('campus_name')
 							->where("campus_id=%d",$campusId)
+							->cache(true)
 							->select();
 
 		return $campus_name;
@@ -33,6 +34,7 @@ class CampusModel extends Model {
 	public function getCloseTime($campusId) {
 		$close_time = M('campus')->field('close_time')
 					->where('campus_id=%d',$campusId)
+					->cache(true)
 					->find();
 		return $close_time['close_time'];
 	}

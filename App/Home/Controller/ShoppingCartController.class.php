@@ -102,7 +102,7 @@ class ShoppingCartController extends Controller{
             $this->display('orderconfirm');
         }
         else {
-            $this->redirect('Home/ShoppingCart/ShoppingCart');
+            $this->redirect('Home/Shoppingcart/ShoppingCart');
         }
     }
 

@@ -65,6 +65,7 @@ class FoodModel extends Model{
 			'is_full_discount',
 			);
 		$goodInfo = $this->where('food_id=%s and campus_id=%s',$foodId,$campusId)
+						 ->cache(true)
 						 ->field($field)
 						 ->find();
 						 
@@ -78,6 +79,7 @@ class FoodModel extends Model{
 	public function getHomeSaleFood($campusId = 1) {
 
 		$homeFood = $this->field('food_id,home_image')
+						->cache(true)
 						->where('to_home = 1 and campus_id = %d and tag=1 and status=1',$campusId )
 						->select();
 
@@ -96,17 +98,20 @@ class FoodModel extends Model{
             case 0:
                 $goodlist = M('food')->where($data)
                    ->order('modify_time desc')
+                   ->cache(true)
                    ->limit($Page->firstRow.','.$Page->listRows)
                    ->select();
                 break;
             case 1:
                 $goodlist = M('food')->where($data)
                     ->order('sale_number desc')
+                    ->cache(true)
                     ->limit($Page->firstRow.','.$Page->listRows)
                     ->select();
                 break;
             case 2:
                 $goodlist = M('food')->where($data)
+                	->cache(true)
                     ->order('case when is_discount=1 then discount_price else price end')
                     ->limit($Page->firstRow.','.$Page->listRows)
                     ->select();
@@ -114,6 +119,7 @@ class FoodModel extends Model{
             default:
                  $goodlist = M('food')->where($data)
                     ->order('modify_time desc')
+                    ->cache(true)
                     ->limit($Page->firstRow.','.$Page->listRows)
                     ->select();
                 break;
@@ -142,6 +148,7 @@ class FoodModel extends Model{
 		);
 
 		$count = M('food')
+				->cache(true)
 				->where("category_id=%d and campus_id=%d and tag=1 and status=1",$categoryId,$campusId)
 				->count();
 
@@ -149,6 +156,7 @@ class FoodModel extends Model{
 		$show = $Page->show();// 分页显示输出
 
 		$goodList = M('food')
+					->cache(true)
 		            ->where("category_id=%d and campus_id=%d and tag=1 and status=1",$categoryId,$campusId)
 					->field($field)
 					->limit($Page->firstRow.','.$Page->listRows)

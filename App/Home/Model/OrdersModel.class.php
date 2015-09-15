@@ -292,13 +292,19 @@ class OrdersModel extends Model{
         $where['status'] = $status;
         $where['tag'] = '1';
         
+        if($status==5){
+            $where['status']=4;
+            $where['is_remarked']=1;
+        }else{
+            $where['is_remarked']=0;
+        }
     	$togetherIds = M('orders')->field($field)
-                            ->where($where)
-                            ->where('together_id is not null')
-                            ->limit(8)
-    						->distinct('together_id')
-                            ->order('together_date desc')
-    						->select();
+                        ->where($where)
+                        ->where('together_id is not null')
+                        ->limit(8)
+						->distinct('together_id')
+                        ->order('together_date desc')
+						->select();
 
         //dump(M('orders')->getLastSql());
     	return $togetherIds;

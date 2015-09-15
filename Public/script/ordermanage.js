@@ -116,9 +116,9 @@ $(document).ready(function(){
 			success:function(result){
 				if (result['result'] != 0) {
 					
-					//var $href = "/fuwebapp/index.php/Home/Commodity/comment?orderIds="+result['orderIds'];
+					var $href = "/fuwebapp/index.php/Home/Commodity/comment?orderIds="+result['orderIds'];
 		
-					//window.location.href = $href;
+					window.location.href = $href;
 				}
 				else {
 					// alert("亲~网络不给力哦，请重试！");

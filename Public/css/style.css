@@ -1098,7 +1098,7 @@ tr.goods-info .goods-name + div {
     width: 18%;
     font-size: 22px;
     text-align: center;
-    vertical-align: sub;
+    vertical-align: -6px;
 }
 .addcart-buynow .spliter {
 	border: 1px solid #fff;

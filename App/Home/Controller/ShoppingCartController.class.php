@@ -14,7 +14,7 @@ header('Content-type:text/html;charset=UTF-8');
  *
  */ 
 
-class ShoppingCartController extends Controller{
+class ShoppingcartController extends Controller{
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {
@@ -23,16 +23,16 @@ class ShoppingCartController extends Controller{
 	}
 
 	public function index(){
-        $this->ShoppingCart();
+        $this->Shoppingcart();
     }
 
-    public function ShoppingCart(){
+    public function Shoppingcart(){
         $campusId = $_SESSION['campusId'];
         if($campusId == null){
             $campusId = 1;
         }
     	$Orders = D('Orders');
-    	$cart   = $Orders->getShoppingCart();
+    	$cart   = $Orders->getShoppingcart();
 
        
         $Preferential = D('Preferential');
@@ -102,7 +102,7 @@ class ShoppingCartController extends Controller{
             $this->display('orderconfirm');
         }
         else {
-            $this->redirect('Home/Shoppingcart/ShoppingCart');
+            $this->redirect('Home/Shoppingcart/Shoppingcart');
         }
     }
 

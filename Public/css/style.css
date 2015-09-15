@@ -300,6 +300,9 @@ input {
 	height: 28px;
 }
 /*userinfo*/
+#userinfo-body {
+	margin-bottom: 65px;
+}
 #userinfo-head .history-back {
 	color: #fff;
 }

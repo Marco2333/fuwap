@@ -44,7 +44,7 @@ class OrdersModel extends Model{
      * @param  null
      * @return array(array()) 购物车数据
      */
-	public function getShoppingCart(){
+	public function getShoppingcart(){
 
         $campus_id = $_SESSION['campusId'];
 

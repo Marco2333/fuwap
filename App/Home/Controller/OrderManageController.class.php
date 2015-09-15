@@ -14,7 +14,7 @@ header('Content-type:text/html;charset:UTF-8');
  *
  */ 
 
-class OrderManageController extends Controller{
+class OrdermanageController extends Controller{
 
 	public function _initialize(){
 		if (!isset($_SESSION['username'])) {

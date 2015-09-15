@@ -188,6 +188,9 @@ input {
 	font-size: 20px;
 	font-family: "黑体";
 	z-index: 3;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .head-bottom img {
 	width: 80px;
@@ -306,10 +309,17 @@ input {
 .user-info-input .fl {
 	font-size: 16px;
 }
-.user-info-input .fr {
+.user-info-input span.fr {
 	font-size: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 70%;
+	text-align: right;
 }
-
+.user-info-input .fr img {
+	float: right;
+}
 /*settings*/
 #settings-head {
 	border-bottom: 1px solid #eee;
@@ -1016,6 +1026,7 @@ tr.goods-info .goods-name + div {
 	margin-left: 10px;
 	margin-top: -2px;
 	vertical-align: super;
+
 }
 #goods-info-number {
 	padding: 9px 10px;
@@ -1195,6 +1206,9 @@ tr.goods-info .goods-name + div {
 #add-location-body .col-7 p {
 	width: 100%;
 	font-size: 14px;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 #add-location-body .arrow-right-wrapper {
 	padding: 14px 0;

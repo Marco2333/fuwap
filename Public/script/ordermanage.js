@@ -74,7 +74,7 @@ $(document).ready(function(){
     		data:{together_id:$together_id},
     		success:function(result){
     			if (result['result'] != 0) {
-    				alert("取消订单成功，再在退款处理");
+    				alert("取消订单成功，正在进行退款处理");
     				$this.parent().parent().parent().parent().parent().remove();         
     			}
     			else {

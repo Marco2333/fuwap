@@ -12,6 +12,7 @@ $(document).ready(function(){
     		reserveTime:$reserveTime,
     		message:$message
     	}
+    	$("#loader-wrapper").removeClass('none');
     	$.ajax({
     		url:$payUrl,
     		type:"post",
@@ -22,12 +23,16 @@ $(document).ready(function(){
     			      
     			    });
     			}else if(data.status == -1){
+    			   $("#loader-wrapper").addClass('none');
     			   alert("支付失败，请重试");
     			}else if(data.status == 1) {
+    			   $("#loader-wrapper").addClass('none');
     			   alert("亲,收货地址超出配送范围哦");
     			}else if(data.status == 0) {
+    			   $("#loader-wrapper").addClass('none');
     			   alert("亲，休息喽，下次再来");
     			}else if(data.status ==3){
+    			   $("#loader-wrapper").addClass('none');
     			   alert("该笔订单已经支付过，请不要重复支付");
     			}
     		}

@@ -207,7 +207,7 @@ class CommodityController extends Controller {
                  ->assign('commentCount',$commentCount)
                  ->assign('preferential',$preferential)
                  ->assign('avgGrade',$avgGrade);
-            $this->display('goodsInfo');
+            $this->display('goodsinfo');
         }
         else {
             $this->redirect('Home/Commodity/goodsclassify');

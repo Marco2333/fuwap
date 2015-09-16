@@ -1113,6 +1113,8 @@ tr.goods-info .goods-name + div {
     vertical-align: -10px;
     height: auto;
     margin: 0 8px;
+    max-height: 30px;
+    max-width: 35px
 }
 .addcart-buynow .spliter {
 	border: 1px solid #fff;

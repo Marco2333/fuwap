@@ -279,6 +279,7 @@ class CommodityController extends Controller {
         }
 
 
+
         if ($have != 1)
         {
             $result = $Orders->buyNowAction($food_id,$order_count);
@@ -291,10 +292,11 @@ class CommodityController extends Controller {
                 'phone'     => $_SESSION['username'],
                 'food_id'   => $food_id
                 );
+
             $data = array(
                 'order_count' => $order_count
                 );
-            $result = $Orders->where($wherefood)
+            $result = M('orders')->where($wherefood)
                              ->save($data);
         }   
         if ($result !== false) {

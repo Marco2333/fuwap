@@ -1,14 +1,12 @@
 $(document).ready(function(){
 
-	$("#add-location-body li").swipeLeft(function(){
-		$(this).siblings().animate({left:"0%"},200);
-	  	$(this).animate({left:"-30%"},200);
-	});
-
-	$("#add-location-body li").swipeRight(function(){
-	  	$(this).animate({left:"0%"},200);
-	});
-
+	 $('#add-location-body li').swipeEvents()
+          .bind("swipeLeft",  function(){  
+          	$(this).siblings().animate({left:"0%"},200);
+	    	$(this).animate({left:"-30%"},200); 
+	      })
+          .bind("swipeRight", function(){ $(this).animate({left:"0%"},200); });
+	
 	$(".slide-delete").click(function(){
 		var rank = $(this).attr("data-rank");
 

@@ -90,9 +90,32 @@
 			</div>			
 		</div>	
 		
+		<div id="shopping-cart-empty"
+			<?php
+				if (count($goodlist) == 0) {
+					echo 'class=""';
+				}
+				else {
+					echo 'class="none"';
+				}
+			?>
+		>
+			<dl>
+				<dt>
+					<img src="__PUBLIC__/img/shopempty.png" alt="">
+				</dt>
+				<dd>
+					<h1>没有找到该分类的商品</h1>
+					<h2>去看看有哪些想买的</h2>
+					<a class="hang-around" href="{:U('Index/index')}">随便逛逛</a href="U('Index/index')">
+				</dd>
+			</dl>
+		</div>
+		
 		<include file='App/Home/View/Common/commonnav1.html'/>
 		
-		<script type="text/javascript" src="__PUBLIC__/script/plugins/zepto.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.swipe-events.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/goodsclassify.js"></script>
 	

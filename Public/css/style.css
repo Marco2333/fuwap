@@ -130,6 +130,10 @@ input {
 #common-nav .col-xs-4 {
 	text-align: center;
 }
+#common-nav .col-xs-4 img {
+	width: 25px;
+	height: 25px;
+}
 .head-top {
 	height: 43px;
 	text-align: center;
@@ -641,13 +645,13 @@ a.add-goods:hover {
 input.goods-count {
 	width: 26px;
 	height: 28px;
-	color: #aaa;
+	color: #555;
 	float: left;
 	text-align: center;
 	font-size: 10px;
 	outline: none;
 	background: #fff;
-	border: 1px solid #888;
+	border: 1px solid #777;
 	padding-left: 0;
 	border-radius: 0;
 }
@@ -700,10 +704,16 @@ input.goods-count {
 #shopping-cart-empty {
 	background: rgb(250,250,250);
 	width: 100%;
-	/*height: 100%;*/
-	height: 450px;
+	left: 50%;
+	top: 50%;
+	position: absolute;
+	-webkit-transform: translate3D(-50%,-50%,0);
+	-ms-transform: translate3D(-50%,-50%,0);
+	-moz-transform: translate3D(-50%,-50%,0);
+	-o-transform: translate3D(-50%,-50%,0);
+	transform: translate3D(-50%,-50%,0);
+	z-index: 100;
 	text-align: center;
-	padding-top: 120px;
 }
 #shopping-cart-empty h1 {
 	font-size: 16px;
@@ -1150,6 +1160,10 @@ tr.goods-info .goods-name + div {
 }
 .mark-detailed-info span {
 	word-wrap:break-word;
+	word-wrap: break-word;
+    max-height: 70px;
+    display: block;
+    overflow: hidden;
 }
 .goods-grade-score {
 	font-size: 18px;
@@ -1177,6 +1191,13 @@ tr.goods-info .goods-name + div {
 	padding-left: 16px;
 	font-size: 18px;
 }
+#add-location a {
+	color: #ff573a;
+}
+#add-location .glyphicon {
+	top: 2px;
+	margin-right: 4px;
+}
 #add-location-body li {
 	margin: 5px 0;
 	width: 130%;
@@ -1189,7 +1210,10 @@ tr.goods-info .goods-name + div {
 	background: #ff573a;
 	text-align: center;
 	font-size: 19px;
-	padding-top: 14px;
+	padding-top: 12px;
+}
+.slide-delete img {
+	width: 38%;
 }
 .slide-delete .glyphicon {
 	color: #fff;
@@ -1385,6 +1409,9 @@ tr.goods-info .goods-name + div {
 	width: 88%;
 	margin: 0 auto;
 	margin-top: 20px;
+}
+#user-protocol .text-subspecial {
+	color:#ff573a;
 }
 #user-protocol input {
 	/*vertical-align: -1px;*/

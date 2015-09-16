@@ -68,7 +68,19 @@ $(document).ready(function(){
 		checkMailExist();
 	});
 
+	$("#user-protocol-input").click(function() { 
+		if(document.getElementById("user-protocol-input").checked){
+			$("#button-register").css("background-color","#ff573a");
+			$("#button-register").attr("disabled", false);
+		}
+		else{
+			$("#button-register").css("background-color","#ddd");
+			$("#button-register").attr("disabled", true);
+		}
+	});
+
 })
+
 
 function checkUserExist(){
 	$(".register-info-input input[name='phone']")

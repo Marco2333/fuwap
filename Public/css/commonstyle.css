@@ -129,6 +129,9 @@ i, cite, em {
 .bground-special {
 	background-color: #24dfc2;
 }
+.bground-subspecial {
+	background-color: #ff573a;
+}
 .bground-white {
 	background-color:#fff;
 }

@@ -4,27 +4,27 @@ $(document).ready(function(){
 	// var initleft = -parseInt($("#classify-navi li.active").index()/4)*360;
 	// $("#classify-navi").css("left",initleft+"px");
 
-	$(".goodsclassify-header").swipeRight(function(){
-	  	var left=$(".goodsclassify-header ul").css("left");
-	  	var left = left.substr(0,left.length-2);
-	  	
-  		if(parseInt(left) < 0){
-  			var newleft = parseFloat(left)+90+"px";
-  			$(".goodsclassify-header ul").css( "left",newleft);
-  		}
-	});
+	 $('.goodsclassify-header').swipeEvents()
+          .bind("swipeLeft",  function(){  
+      		  	var left=$(".goodsclassify-header ul").css("left");
+      	  		var width = $("#classify-navi").css("width");
+      	  		var width = width.substr(0,width.length-2);
 
-	$(".goodsclassify-header").swipeLeft(function(){
+      		  	if(-parseInt(left) < parseInt(width)-document.body.clientWidth){
+      		  		var newleft = parseFloat(left)-90+"px";
+      		  		$(".goodsclassify-header ul").css("left",newleft);
+      		  	}
+	      })
+          .bind("swipeRight", function(){ 
+			  	var left=$(".goodsclassify-header ul").css("left");
+			  	var left = left.substr(0,left.length-2);
+			  	
+		  		if(parseInt(left) < 0){
+		  			var newleft = parseFloat(left)+90+"px";
+		  			$(".goodsclassify-header ul").css( "left",newleft);
+		  		}
+          });
 
-	  	var left=$(".goodsclassify-header ul").css("left");
-  		var width = $("#classify-navi").css("width");
-  		var width = width.substr(0,width.length-2);
-
-	  	if(-parseInt(left) < parseInt(width)-document.body.clientWidth){
-	  		var newleft = parseFloat(left)-90+"px";
-	  		$(".goodsclassify-header ul").css("left",newleft);
-	  	}
-	});
 
 	// $("#classify-navi li").click(function(){
 

@@ -16,7 +16,7 @@
           $this.bind('touchmove', touchmove);
           $this.bind('touchend', touchend);
         }
-        event.preventDefault();
+        // event.preventDefault();
       }
       
       function touchmove(event) {
@@ -47,7 +47,7 @@
       
       function touchend(event) {
         $this.unbind('touchmove', touchmove);
-        event.preventDefault();
+        // event.preventDefault();
       }
       
     });

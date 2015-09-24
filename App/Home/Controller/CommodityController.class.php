@@ -30,6 +30,7 @@ class CommodityController extends Controller {
         $Preferential = D('Preferential');
         $preferential   = $Preferential->getPreferentialList($campusId); 
 
+
 	    $this->assign('goodlist',$res['goodList'])
              ->assign('page',$res['show'])
              ->assign('categoryId',$categoryId)

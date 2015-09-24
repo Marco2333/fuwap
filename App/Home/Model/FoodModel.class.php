@@ -162,9 +162,11 @@ class FoodModel extends Model{
 					->field($field)
 					->limit($Page->firstRow.','.$Page->listRows)
 					->select();
-
+				
 		$res['show'] = $show;
 		$res['goodList'] = $goodList;
+
+
 		return $res;
 	}
 };

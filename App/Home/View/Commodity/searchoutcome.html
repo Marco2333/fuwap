@@ -84,11 +84,17 @@
 							</if>
 							<div>
 								<div class="fl">
-									<div class="goodsclassify-price fl discount-price">
-										￥{$vi.discount_price}
-									</div> 
-									<span class="orgin-price fl bef-price"> 	￥{$vi.price}
-									</span>
+									<if condition='$vi.is_discount eq 1'>
+										<div class="goodsclassify-price fl discount-price">
+											￥{$vi.discount_price}
+										</div> 
+										<span class="orgin-price fl bef-price"> 	￥{$vi.price}
+										</span>
+									<else/>
+										<span class="fl discount-price"> 	￥{$vi.price}
+										</span>
+
+									</if>
 								</div>
 								<div class="ri">
 									<div class="goodsclassify-sales">	

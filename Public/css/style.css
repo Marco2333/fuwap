@@ -604,7 +604,8 @@ input.input-locate {
 	font-size: 18px;
 	color: #fe7a63;
 	margin-right: 8px;
-	padding-top: 2px;
+	padding-top: 1px;
+	margin-top: 10px;
 }
 .bef-price {
 	text-decoration: line-through;

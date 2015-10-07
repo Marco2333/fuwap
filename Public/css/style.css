@@ -1108,6 +1108,7 @@ tr.goods-info .goods-name + div {
 	margin-top: 45px;
 	background-color: #ff573a;
 	border-radius: 3px;
+	margin-bottom: 3px;
 }
 .addcart-buynow img.glyphicon {
     width: 9%;
@@ -1174,11 +1175,10 @@ tr.goods-info .goods-name + div {
 }
 .buy-now-wrapper {
 	position: fixed;
-	bottom: -3px;
+	bottom: 0;
 	left: 0;
 	width: 100%;
 	margin-top: 10px;	
-	margin-bottom: 10px;	
 	background: #fff;
 }
 #goods-info-mark {

@@ -58,7 +58,7 @@ class UsersModel extends Model{
 				'qq',
 				'weixin'
 				);
-			$info = $this->where("phone=%s",$_SESSION['username'])//写成where($where)就不对了。。。。坑。。。
+			$info = $this->where("phone=%s",$_SESSION['username'])
 						 ->field($field)
 						 ->find();
 
@@ -77,7 +77,7 @@ class UsersModel extends Model{
 			'nickname',
 			'img_url'
 			);
-		$info = $this->where("phone=%s",$phone)//写成where($where)就不对了。。。。坑。。。
+		$info = $this->where("phone=%s",$phone)
 					 ->field($field)
 					 ->find();
 
@@ -170,11 +170,9 @@ class UsersModel extends Model{
         switch ($channel) {
             case 'alipay_wap':
             $extra = array(
-                /*'success_url' => C('IPUrl').'/index.php',
-                'cancel_url' => C('IPUrl').'/index.php/Home/Login/toLogin'*/
-                'success_url'=>'http://we.com:8000/fuwebapp/index.php',
-                'cancel_url'=>'http://we.com:8000/fuwebapp/index.php'
-                );
+                'success_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/2.html',
+                'cancel_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/1.html'
+            );
             break;
         }
 

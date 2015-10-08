@@ -495,7 +495,7 @@ class OrdersModel extends Model{
        try{
              $where['together_id']=$togetherId;
              $goods=$order
-                    ->join('food on food.food_id=orders.food_id')
+                    ->join('food on food.food_id=orders.food_id and food.campus_id=orders.campus_id')
                     ->field('order_id,is_discount,is_full_discount,food.price,discount_price,order_count')
                     ->where($where)
                     ->select();
@@ -546,11 +546,11 @@ class OrdersModel extends Model{
 
        $where['together_id']=$togetherId;
        $goods=$order
-              ->join('food on food.food_id=orders.food_id')
+              ->join('food on food.food_id=orders.food_id and orders.campus_id=food.campus_id','left')
               ->field('order_id,is_discount,is_full_discount,food.price,discount_price,order_count')
               ->where($where)
               ->select();
-      
+
       $discountPrice=0.0;                   //折扣之后的总价
       $fullDiscountPrice=0.0;            //满减商品的总价
       foreach($goods as $key => $good) {
@@ -576,21 +576,21 @@ class OrdersModel extends Model{
              ->select();
 
          
-         foreach ($prefer as $key => $p) {
-            if($fullDiscountPrice>=$p['need_number']){
-                $fullDiscount=$p['discount_num'];            //优惠d数额
-                $discount['prefere_id']=$p['preferential_id'];
-                //dump($discount);
-                M('orders')->where($where)
-                           ->save($discount);           //将优惠力度存到表里面
-                //dump(M('orders')->getLastSql());
-                break;
-            } 
-         }
+     foreach ($prefer as $key => $p) {
+        if($fullDiscountPrice>=$p['need_number']){
+            $fullDiscount=$p['discount_num'];            //优惠d数额
+            $discount['prefere_id']=$p['preferential_id'];
+            //dump($discount);
+            M('orders')->where($where)
+                       ->save($discount);           //将优惠力度存到表里面
+            //dump(M('orders')->getLastSql());
+            break;
+        } 
+     }
 
-         $totalPrice=number_format($discountPrice-$fullDiscount,1);
+     $totalPrice=number_format($discountPrice-$fullDiscount,1);
 
-         return $totalPrice;
+     return $totalPrice;
    }
 
    /**
@@ -599,12 +599,13 @@ class OrdersModel extends Model{
     */
    public function setTogetherId($orderIds,$phone){
       $togetherId=$phone.time().rand(100,999);
-       //为销订单设置订单号
+       //为订单设置订单号
       $orderIdArr=explode(',', $orderIds);
      
       $data['status']=1;
       $data['together_id']=$togetherId;
     
+      //dump($orderIds);
       $together_date = date("Y-m-d H:m:s",time());
       $data['together_date']=$together_date;
       $where['phone']=$phone;

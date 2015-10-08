@@ -231,9 +231,9 @@ class ShoppingcartController extends Controller{
      */
     public function payAtOnce($rank,$orderIds,$channel){
         $order=D('Orders');
-        $phone=session('username');
-        $reserveTime=I('reserveTime');
-        $message=I('message');
+        $phone=session('username');           //手机号
+        $reserveTime=I('reserveTime');        //预定时间
+        $message=I('message');                //信息
 
         if(!isset($_SESSION['campusId'])) {
             $campusId = 1;
@@ -246,14 +246,13 @@ class ShoppingcartController extends Controller{
         $where['order_id']=$orderIdSingle[0];
         $where['phone']=$_SESSION['username'];
         $ifHasPaid=M('orders')->where($where)->find();
-        if($ifHasPaid['status']!=0&&$ifHasPaid['status']!=1){           //确认这笔订单是否已经支付过
+        if($ifHasPaid['status']!=0&&$ifHasPaid['status']!=1&&$ifHasPaid['status']!=7){           //确认这笔订单是否已经支付过
             $res['status'] = 3;
             $this->ajaxReturn($res);
             return;
         }
         $togetherId=$order->setTogetherId($orderIds,$phone);
         $totalPrice=$order->calculatePriceByOrderIds($togetherId,$campusId);        //获取总价
-
         $flag=$order->updateOrder($togetherId,$phone,$rank,$reserveTime,$message,$totalPrice);  //$togetherId,$phone,$rank,$reserveTime,$message,$totalPrice
        
         if($togetherId != null&&$flag!=0){

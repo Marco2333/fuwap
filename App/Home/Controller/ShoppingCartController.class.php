@@ -301,6 +301,10 @@ class ShoppingcartController extends Controller{
         return  2;
     }
 
+    public function pay(){
+        $this->display();
+    }
+
 }
 
 

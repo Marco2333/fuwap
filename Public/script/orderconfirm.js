@@ -12,7 +12,7 @@ $(document).ready(function(){
     	var data={
     		rank:$rank,
     		orderIds:$orderIds,
-    		channel:$("input[type='radio'][name='pay_way']").val(),
+    		channel:$("input[type='radio'][name='pay_way']:checked").val(),
     		reserveTime:$reserveTime,
     		message:$message
     	}

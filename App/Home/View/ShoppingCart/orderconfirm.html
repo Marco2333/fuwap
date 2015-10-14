@@ -95,6 +95,13 @@
 					         <img src="__PUBLIC__/img/alipay.png" />
 					         </span>
 					   </label>
+					   <br/>
+					    <label>
+					      <input type="radio" name="pay_way" id="" 
+					         value="wx_pub" checked> 微信支付<span>
+					         <img src="__PUBLIC__/img/icon_wechat.jpg" />
+					         </span>
+					   </label>
 					</div>
 				</form>
 			</div>
@@ -149,11 +156,13 @@
 				<span></span>
 			</div>
 		</div>
+
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script type="text/javascript">
            var $orderIds=$("#orderconfirm-goods").attr("data-orderIds");
            var $payUrl="{:U('/Home/Shoppingcart/payAtOnce')}";
 		</script>
+		<script type="text/javascript" src="__PUBLIC__/script/ap.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>
 		<script src="__PUBLIC__/script/pingpp_pay.js"></script>
 		<script src="__PUBLIC__/script/orderconfirm.js"></script>

@@ -60,4 +60,14 @@ class IndexController extends Controller {
 
 		$this->ajaxReturn($res);
 	}
+
+    //获取微信支付平台的openid
+	public function getOpenId(){
+         // /index.php/Home/Ordermanage/orderManage/status/2.html
+		//vendor('pingplusplus.lib.WxpubOAuth');
+        require(VENDOR_PATH . '/pingplusplus/lib/WxpubOAuth.php');
+		$wxpubOAuth = new \pingpp\WxpubOAuth();
+		$url=$wxpubOAuth->createOauthUrlForCode("wx9f37078a33527060","http://www.enjoyfu.com.cn/");
+		header('Location: ' . $url);
+	}
 }

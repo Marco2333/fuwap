@@ -174,6 +174,11 @@ class UsersModel extends Model{
                 'cancel_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/1.html'
             );
             break;
+           case 'wx_pub':
+			$extra = array(
+				'open_id' => 'Openid'
+				);		
+            break;
         }
 
         \Pingpp\Pingpp::setApiKey('sk_live_vBNcIdIOKPBJEU9YOq3C02PU');

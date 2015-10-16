@@ -460,7 +460,7 @@ class OrdersModel extends Model{
             'order_id'    => time().rand(100,999),
             'campus_id'   => $_SESSION['campusId'],
             'create_time' => date("Y-m-d H:m:s",Time()),
-            'status'      => 0,
+            'status'      => 7,
             'order_count' => $order_count,
             'is_remarked' => 0,
             'food_id'     => $food_id,

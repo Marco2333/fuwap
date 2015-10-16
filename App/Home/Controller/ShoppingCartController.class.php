@@ -88,6 +88,7 @@ class ShoppingcartController extends Controller{
         $Receiver = D('Receiver');
         $address = $Receiver->getAddressList();   //获取地址
 
+        //dump($goodsInfo);
         if($defaultAddress == false) {
             $this->redirect('Home/Person/addressManage');
         }
@@ -301,9 +302,7 @@ class ShoppingcartController extends Controller{
         return  2;
     }
 
-    public function pay(){
-        $this->display();
-    }
+   
 
 }
 

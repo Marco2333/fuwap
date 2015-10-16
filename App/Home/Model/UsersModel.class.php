@@ -165,24 +165,32 @@ class UsersModel extends Model{
     */
    public function pay($channel,$amount,$orderNo){
         require_once(dirname(__FILE__) . '/../init.php');
-       
+        
+        if(!isset($_SESSION['username'])){
+        	$extraurl=array(
+        		'success_url' => C('IPUrl').'/index.php',
+                'cancel_url' => C('IPUrl').'/index.php'
+        	);  
+        }else{
+        	$extraurl=array(
+        	  'success_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/2.html',
+              'cancel_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/1.html'
+        	); 
+        }
+
         $extra = array();
         switch ($channel) {
             case 'alipay_wap':
-            $extra = array(
-                'success_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/2.html',
-                'cancel_url' => C('IPUrl').'/index.php/Home/Ordermanage/orderManage/status/1.html'
-            );
+                 $extra = $extraurl;
             break;
            case 'wx_pub':
 			$extra = array(
-				'open_id' => 'Openid'
+				'open_id' => 'oh2HkskTQEBdPaIzROjMMuoeCqrI'
 				);		
             break;
         }
 
         \Pingpp\Pingpp::setApiKey('sk_live_vBNcIdIOKPBJEU9YOq3C02PU');
-
         try {
             $ch = \Pingpp\Charge::create(
                 array(
@@ -197,6 +205,7 @@ class UsersModel extends Model{
                     'app'       => array('id' => 'app_La1y14yrPa10SeHS')
                     )
                 );
+
             return $ch;
         } catch (\Pingpp\Error\Base $e) {
             header('Status: ' . $e->getHttpStatus());

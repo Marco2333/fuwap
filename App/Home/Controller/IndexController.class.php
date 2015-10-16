@@ -61,13 +61,30 @@ class IndexController extends Controller {
 		$this->ajaxReturn($res);
 	}
 
-    //获取微信支付平台的openid
+    //获取微信支付平台
 	public function getOpenId(){
-         // /index.php/Home/Ordermanage/orderManage/status/2.html
-		//vendor('pingplusplus.lib.WxpubOAuth');
         require(VENDOR_PATH . '/pingplusplus/lib/WxpubOAuth.php');
 		$wxpubOAuth = new \pingpp\WxpubOAuth();
-		$url=$wxpubOAuth->createOauthUrlForCode("wx9f37078a33527060","http://www.enjoyfu.com.cn/");
+		$url=$wxpubOAuth->createOauthUrlForCode("wx9f37078a33527060","http://www.enjoyfu.com.cn/fuwebapp/index.php/Home/Index/getCode");
 		header('Location: ' . $url);
 	}
+
+    //获取微信公众平台code
+	public function getCode(){
+       require(VENDOR_PATH . '/pingplusplus/lib/WxpubOAuth.php');
+       $wxpubOAuth = new \pingpp\WxpubOAuth();
+       $code=I("code");
+       dump($code);    //$app_id, $app_secret, $cod
+       $openId=$wxpubOAuth->getOpenid("wx9f37078a33527060","fd86e8e6135973fbee6fd6204e322984",$code);
+       dump($openId);
+	}
+
+	 public function pay(){
+	 	$phone=I('phone');
+	 	if($phone!=null){
+	 		session('username',$phone);
+	 	}
+	 
+        $this->display();
+    }
 }

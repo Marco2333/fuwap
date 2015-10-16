@@ -53,9 +53,12 @@
 									</div>
 								</if>
 								<div class="bo">
-									<div id="price-present" class="fl">
-										<span class="orderconfirm-price fl discount-price">￥{$goods.discount_price}</span> 
-										<span class="orgin-price fl bef-price">￥{$goods.price}</span>
+									<div id="price-present" class="fl">			
+										<if condition="$goods['discount_price'] eq $goods['price']">
+											<span class="orderconfirm-price fl discount-price">￥{$goods.discount_price}</span>
+										<else/><span class="orderconfirm-price fl discount-price">￥{$goods.discount_price}</span>
+										     <span class="orgin-price fl bef-price">￥{$goods.price}</span>
+										</if>								
 									</div>
 									<div id="order-goods-count" class="fr">
 										<a class="sub-goods" data-orderId="{$goods.order_id}">-</a>
@@ -96,13 +99,15 @@
 					         </span>
 					   </label>
 					   <br/>
-					    <label>
+					    <label id="weixin">
 					      <input type="radio" name="pay_way" id="" 
-					         value="wx_pub" checked> 微信支付<span>
+					         value="wx_pub"> 微信支付<span>
 					         <img src="__PUBLIC__/img/icon_wechat.jpg" />
 					         </span>
+					      
 					   </label>
 					</div>
+					<br/>
 				</form>
 			</div>
 		</div>
@@ -137,9 +142,12 @@
 		</div>
 
 		<div class="orderconfirm-totalamount">
-			合计:￥<span id="settle-dprice">{$price.dPrice}</span> <span class="orgin-price">
+		   <if condition="$price['dPrice'] eq $price['Price']">
+		   		合计:￥<span id="settle-dprice">{$price.dPrice}</span>
+		   <else/>合计:￥<span id="settle-dprice">{$price.dPrice}</span> <span class="orgin-price">
 			￥<span id="settle-price">{$price.Price}</span></span>
 			（已节省￥<span id="settle-save">{$price.save}</span>）
+		   </if>		
 		</div>
 		<div class="orderconfirm-btn-pay" >
 			<button class="btn register-info-submit-btn bground-subspecial">
@@ -156,11 +164,15 @@
 				<span></span>
 			</div>
 		</div>
-
+       
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script type="text/javascript">
            var $orderIds=$("#orderconfirm-goods").attr("data-orderIds");
            var $payUrl="{:U('/Home/Shoppingcart/payAtOnce')}";
+           var $ForWechatPayUrl="{:U('/Home/Index/pay',array('phone'=>session('username')))}";
+           var $weixinPaySuccessUrl="{:U('/Home/Ordermanage/orderManage',array('status'=>2))}";
+           var $weixinPayCancelUrl="{:U('/Home/Ordermanage/orderManage',array('status'=>1))}";
+           
 		</script>
 		<script type="text/javascript" src="__PUBLIC__/script/ap.js"></script>
 		<script src="__PUBLIC__/script/common.js"></script>

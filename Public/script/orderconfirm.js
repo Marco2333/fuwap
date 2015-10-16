@@ -1,4 +1,17 @@
 $(document).ready(function(){
+    
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    if(!isWeiXin()){
+       $("#weixin").hide();
+    }
 
 	$(".consumer-phone,.location-phone").click(function(event){
 		 event.preventDefault(); 
@@ -14,7 +27,8 @@ $(document).ready(function(){
     		orderIds:$orderIds,
     		channel:$("input[type='radio'][name='pay_way']:checked").val(),
     		reserveTime:$reserveTime,
-    		message:$message
+    		message:$message,
+    		phone:$phone,
     	}
     	$("#loader-wrapper").removeClass('none');
     	$.ajax({
@@ -24,7 +38,16 @@ $(document).ready(function(){
     		success:function(data){
     			if(data.status == 2){
     			    pingpp.createPayment(data.charge, function(result, err) {
-    			      
+    			        if (result == "success") {
+			                // 只有微信公众账号 wx_pub 支付成功的结果会在这里返回，其他的 wap 支付结果都是在 extra 中对应的 URL 跳转。
+			                window.location.href=$weixinPaySuccessUrl;
+			            } else if (result == "fail") {
+			                // charge 不正确或者微信公众账号支付失败时会在此处返回
+			                window.location.href=$weixinPayCancelUrl;
+			            } else if (result == "cancel") {
+			                // 微信公众账号支付取消支付
+			                window.location.href=$weixinPayCancelUrl;
+			            }
     			    });
     			}else if(data.status == -1){
     			   $("#loader-wrapper").addClass('none');
@@ -257,4 +280,13 @@ function pricecalculate(){
 		error:function(){
 		}
 	});
+}
+
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
 }

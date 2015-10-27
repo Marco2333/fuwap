@@ -296,6 +296,30 @@ input {
 	border-right: none;
 	margin-top: 3px;
 }
+#security-code-wrapper input {
+	height: 35px;
+	width: 40%;
+	margin-left: 48px;
+	padding-left: 5px;
+	border-radius: 2px;
+	margin: 0
+	box-sizing: border-box;
+	border: 1px solid #eee;
+}
+#security-code-wrapper img {
+	width: 35%;
+	margin: 0;
+	height: 36px;
+}
+.sub-number {
+	font-family: "微软雅黑";
+	background: #B0E0D9 !important;
+}
+.error-info {
+	color: rgb(255, 87, 58);
+	padding-top: 7px;
+	height: 28px;
+}
 .error-message {
 	text-align: center;
 	color: rgb(255, 87, 58);
@@ -1407,6 +1431,17 @@ tr.goods-info .goods-name + div {
 	top: 0;
 	left: 100%;
 	background: rgb(248,248,248);
+}
+#confirm-code input[name='confirmcode'] {
+	width: 38%;
+}
+#confirm-code input[type='button'] {
+	width: 43%;
+	height: 80%;
+	color: #fff;
+	border-radius: 3px;
+	background-color: #24dfc2;
+	padding-left: 0;
 }
 #user-protocol {
 	width: 88%;

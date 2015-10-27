@@ -1,3 +1,0 @@
-<?php
-//000000000060a:12:{s:7:"food_id";s:5:"10504";s:9:"campus_id";s:1:"1";s:4:"name";s:25:"绿力500 芒果汁 490ml";s:5:"price";s:4:"6.00";s:14:"discount_price";s:4:"5.00";s:7:"img_url";s:69:"http://120.26.76.252:8080/MickeyImage/food/1430356805592-29297593.jpg";s:11:"is_discount";s:1:"1";s:7:"message";s:84:"所有食品都是绿色食品，不含防腐剂，您吃的放心是我们的荣幸";s:5:"grade";N;s:4:"info";s:173:"http://pic29.nipic.com/20130525/5890690_184803578000_2.jpg,http://pica.nipic.com/2007-12-19/2007121911592513_2.jpg,http://pic22.nipic.com/20120720/8989765_092835333150_2.jpg";s:11:"sale_number";s:2:"14";s:16:"is_full_discount";s:1:"0";}
-?>

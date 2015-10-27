@@ -45,7 +45,7 @@
 				
 	   		</div>
 
-			<div class="register-info-input">
+			<div id="phone-user-info" class="register-info-input">
 				<span class="glyphicon glyphicon-phone"></span>
 				<span class="spliter"></span>
 				<input type="text" name="phone" placeholder="手机号码">
@@ -53,16 +53,26 @@
 			<div class="error-message-wrapper">
 				
 	   		</div>
+			
+			<div id="security-code-wrapper">
+				
+				<input type="text" name="confirmcode" placeholder="验证码">
+				<span id="security-code-img"><img id="securityCode" src="__URL__/verify/id/'+Math.random()" onclick="this.src='__URL__/verify/id/'+Math.random()"/> </span>
+				<!-- <button class="btn verify-code">发送验证码</button>	 -->
+			</div>
 
-			<div class="register-info-input">
-				<span class="glyphicon glyphicon-envelope"></span>
+
+			<div id="confirm-code" class="register-info-input">
+				<span class="glyphicon glyphicon-comment"></span>
 				<span class="spliter"></span>
-				<input  type="text" name="mail" placeholder="验证邮箱">
+				<input type="text" name="confirmcode" placeholder="验证码">
+				<input id="resent-secword" type="button" value="发送验证码">
 				<!-- <button class="btn verify-code">发送验证码</button>	 -->
 			</div>
 			<div class="error-message-wrapper">
 				
 	   		</div>
+
 	   		<div id="user-protocol">
 				<p><input id="user-protocol-input" type="checkbox">已阅读并同意<a class="text-subspecial" href="{:U('Login/protocol')}">《For优用户服务协议》</a></p>
 			</div>
@@ -71,7 +81,7 @@
 
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="__PUBLIC__/script/plugins/jquery.validate.js"></script>
-		<script src="__PUBLIC__/script/register.js" type="text/javascript"></script>
 		<script src="__PUBLIC__/script/common.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/script/register.js" type="text/javascript"></script>
 	</body>
 </html>

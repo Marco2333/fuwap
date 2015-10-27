@@ -22,6 +22,23 @@ class LoginController extends Controller {
         $Verify->entry();
     }
 
+      public function toRegisterCheck() {
+
+
+         $verify = I('param.verify','');
+
+         // dump( $verify);
+         
+         if(check_verify($verify)) {
+            $result['status']=1;
+            $this->ajaxReturn($result);
+         }
+         else {
+            $result['status']=0;
+            $this->ajaxReturn($result);
+         }
+    }
+
      public function tologin()
      {
           $username = I('username');                        //获取用户手机号

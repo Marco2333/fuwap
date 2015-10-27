@@ -57,7 +57,7 @@ $(document).ready(function(){
 	        error.appendTo(element.parent().next(".error-message-wrapper"));
 	        // element.parent().next(".error-message").removeClass("none");
     	},
-    	errorClass:"error-message"
+    	errorClass:"error-info"
 	});
 
 	$(".register-info-input input[name='phone']").blur(function(){
@@ -77,6 +77,63 @@ $(document).ready(function(){
 			$("#button-register").css("background-color","#ddd");
 			$("#button-register").attr("disabled", true);
 		}
+	});
+	
+	$("#resent-secword").click(function(){
+
+		var $this = $(this);
+		var val = $("#phone-user-info input").val().trim();
+		if(val.length == 0) {
+			$('#confirm-code + .error-message-wrapper').text('手机号不能为空').addClass('error-info');
+			return;
+		}
+
+		if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(val))) {
+			$('#confirm-code + .error-message-wrapper').text('请输入规范的手机号').addClass('error-info');
+			return;
+		}
+
+		// if($("#phone-user-info label").text()=="该手机号已经被注册") {
+		// 	$('#confirmcode .userinfo-behind').text('该手机号已被注册').addClass('error-info');
+		// 	return;
+		// }
+
+		$.ajax({
+			type:'POST',
+			url:'../Login/toRegisterCheck',
+			data:{
+				verify: $('#security-code-wrapper input').val()
+			},
+			success:function(data) {
+				if(data.status == 0) {
+					$('#confirm-code + .error-message-wrapper').text('验证码错误').addClass('error-info');
+				}
+				else {
+
+					$('#confirm-code + .error-message-wrapper').text('').removeClass('error-info');
+
+					$this.val("59秒后重新发送").addClass("sub-number")
+						.attr("disabled",true);
+					var a = setInterval(function(){
+						var num = $("#resent-secword").val().substr(0,2);
+
+						if(parseInt(num)-1<10) {
+							$("#resent-secword").val("0"+parseInt(num)-1+"秒后重新发送");
+						}
+						else if (parseInt(num)-1 >= 10) {
+							$("#resent-secword").val(parseInt(num)-1+"秒后重新发送");
+						}
+						if(parseInt(num)==0) {
+							clearInterval(a);
+							$("#resent-secword").val("重新获取验证码")
+							.removeClass("sub-number").attr("disabled",false);
+						}
+						
+						
+					},1000);
+				}
+			}
+		});	
 	});
 
 })

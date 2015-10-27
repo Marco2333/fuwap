@@ -4,94 +4,57 @@
 		<title>For优个人中心</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+		<link rel="icon" href="/fuwebapp/favicon.ico" type="image/x-icon" />
 		<link href="/fuwebapp/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/commonstyle.css" />
 		<link type="text/css" rel="stylesheet" href="/fuwebapp/Public/css/style.css" />
-
-		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery-1.11.2.js"></script>
-
-		<script src="/fuwebapp/Public/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div id="login-head">
-			<div class="head-top">
-				<span class="glyphicon glyphicon-chevron-left fl"></span>
-				<span>个人中心</span>
-				<span class="fr">注册</span>
+			<div class="head-top background-special">
+				<span class="fl text-special history-back glyphicon glyphicon-circle-arrow-left"></span>
+				<span class="head-title">登录</span>
+				<span class="fr"><a class="text-middle" href="/fuwebapp/index.php/home/login/register">注册</a></span>
 			</div>
 			<div class="head-bottom">
 				<dl>
 					<dt>
-						<img src="/fuwebapp/Public/img/userhead.png" alt="">
+						<img src="/fuwebapp/Public/img/loginshow.png" alt="">
 					</dt>
 					<dd>
-						点击登录
+						For优
 					</dd>
 				</dl>
 			</div>
 		</div>
 		<div id="login-input">
-		 <!--   <form class="bs-example bs-example-form" role="form">
-		      <div class="input-group">
-		      	<span input-group-addon > <span class="glyphicon glyphicon-earphone"> </span></span>
-		         
-		         <input type="text" class="form-control" placeholder="请输入手机号">
-		      </div>
-			
-			  <div class="input-group">
-		         <span class="input-group-addon glyphicon glyphicon-lock"> </span>
-		         <input type="text" class="form-control" placeholder="请输入密码">
-		      </div>
-		   </form> -->
-
-		   <form action="">
-		   		<div class="user-info-input">
-		   			<span class="glyphicon glyphicon-earphone"></span>
-		   			<span class="spliter"></span>
-		   			<input type="text" placeholder="请输入手机号">
-		   		</div>
-		   		<div class="user-info-input">
-		   			<span class="glyphicon glyphicon-lock"></span>
-		   			<span class="spliter"></span>
-		   			<input type="text" placeholder="请输入密码">
-		   		</div>
-		   		<input type="submit" id="login-button" value="登陆">
-		   		<div id="login-button-bottom">
-		   			<input type="checkbox">
-		   			<span>已阅读并同意<a href="">《For优用户服务协议》</a></span>
-		   			<span class="fr"><a href="">忘记密码</a></span>
-		   		</div>
-		   </form>
+			<div class="error-message-wrapper none">
+				 <label class="error-message" ></label>
+	   		</div>
+	   		<div class="user-info-input">
+	   			<span class="glyphicon glyphicon-earphone"></span>
+	   			<span class="spliter"></span>
+	   			<input type="text" id="username" name="username" placeholder="请输入手机号">
+	   		</div>
+	   		<div class="user-info-input">
+	   			<span class="glyphicon glyphicon-lock"></span>
+	   			<span class="spliter"></span>
+	   			<input id="password" type="password" name="password" placeholder="请输入密码">
+	   		</div>
+	   		<div id="rm-password">
+	   			<input id="ck_rmbUser" type="checkbox">
+	   			<span>记住密码</span>
+	   			<!-- <span class="fr"><a href="">忘记密码</a></span> -->
+	   		</div>
+	   		<input type="button" id="login-button" value="登陆" onclick="login();">
 		</div>
-		<div id="common-nav">
-	<div class="row">
-	   <div class="col-xs-4 active">
-	   		<dl>
-	   			<dt>
-	   				<span class="glyphicon glyphicon-home"></span>
-	   			</dt>
-	   			<dd>首页</dd>
-	   		</dl>
-	   </div>
-	   <div class="col-xs-4">
-	   		<dl>
-	   			<dt>
-	   				<span class="glyphicon glyphicon-shopping-cart"></span>
-	   			</dt>
-	   			<dd>购物车</dd>
-	   		</dl>
-	   </div>
-	    <div class="col-xs-4">
-	   		<dl>
-	   			<dt>
-	   				<span class="glyphicon glyphicon-user"></span>
-	   			</dt>
-	   			<dd>购物车</dd>
-	   		</dl>
-	   </div>
-	</div>
-</div>
+		
+		 
+		
+		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/fuwebapp/Public/script/plugins/jquery.cookie.js"></script>
+		<script src="/fuwebapp/Public/script/login.js" type="text/javascript"></script>
+		<script src="/fuwebapp/Public/script/common.js" type="text/javascript"></script>
 	</body>
 </html>

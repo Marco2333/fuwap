@@ -63,37 +63,32 @@ class LoginController extends Controller {
       }
 
     public function toRegister()
-    {
-       // $User = M("customer"); // 实例化User对象
-        // $verify = I('param.verify','');  //获取验证码
-        $status=I('status');
-        $data["nickname"] = I("nickname");
-        $data["password"] = I("password",'','md5');
-        $data["phone"] = I("phone");
-        $data["type"] = 2;
-        $data["create_time"] = time();
-        $data["mail"]=I("mail");
-        $data['last_campus']= 1;
-
-        if($status==1){
-            if(time()-(int)I('register_time')>20*60){                    //链接超过20分钟失效
-                $this->error("超过20分钟，该链接已经失效了哦，去重新注册吧。",U('/Home/Login/toRegister'),3);
+    {        
+        $verify=I('confirmcode');
+        if($verify==session('phone_security')){
+              $data["nickname"] = I("nickname");
+              $data["password"] = I("password",'','md5');
+              $data["phone"] = I("phone");
+              $data["type"] = 2;
+              $data['create_time']=date('Y-m-d',I('register_time'));
+              $data['last_campus']= 1;
+              //校验是否已经注册过
+              $result=M("users")->where("phone = '%s'",$data['phone'])->find();
+            
+              if($result!=null){
+                  $this->error("该用户已经注册,请不要重复注册，快前往登陆吧",U('/Home/Login/index'),3);
+              }
+              $status=M("users")->data($data)->add();
+              
+              if($status==false){
+                 $this->error("注册失败！");
+              }
+              else{
+                  $this->success("恭喜您，注册成功了哦！正在为你转向登陆页面",U('/Home/Login/index'),3);
+              }  
             }else{
-                $data['password']=I("password");   //在验证时已经加密
-                $data['create_time']=date('Y-m-d',I('register_time'));
-                $status=M("users")->data($data)->add();
-                
-                if($status==false){ 
-                    $this->error("注册失败！");
-                }
-                else{
-                    $this->success("恭喜您，注册成功了哦！正在为你转向登陆页面",U('/Home/Login/index'),3);
-                }              
-            }   
-        }else{
-             $r = think_send_mail($data['mail'],'','ForU邀请您激活账号',"<strong>小优邀请你点击以下链接完成注册验证</strong><a href='http://www.enjoyfu.com.cn".U('/Home/Login/toRegister',array('status'=>1,'phone'=>$data['phone'],"nickname"=>$data['nickname'],"password"=>$data['password'],"mail"=>$data['mail'],"register_time"=>$data['create_time'],"isClick"=>0))."'>点击这里</a>");
-             $this->success("请前往邮箱进行验证,二十分钟内有效哦",U('/Home/Login/index'),5);
-        }
+                 $this->error("短信验证码错误！");
+            }
     }
 
     public function checkUserExist(){
@@ -143,5 +138,16 @@ class LoginController extends Controller {
              $result['status']=0;
              $this->ajaxReturn($result);
         }
+    }
+
+    /**
+    **发送短信验证码
+    */
+    public function sendPhoneSecurity(){
+        $phone=I("code");
+        require_once(dirname(__FILE__) . '/../Model/SendSMS.php');
+        $securitycode=rand(1000,9999);
+        session("phone_security",$securitycode);
+        sendTemplateSMS($phone,array($securitycode,'10'),"1");//手机号码，替换内容数组，
     }
 }

@@ -92,6 +92,10 @@ $(document).ready(function(){
 			$('#confirm-code + .error-message-wrapper').text('请输入规范的手机号').addClass('error-info');
 			return;
 		}
+		if($('#security-code-wrapper input').val().trim()==""){
+			$('#confirm-code + .error-message-wrapper').text('验证码不能为空').addClass('error-info');
+			return;
+		}
 
 		// if($("#phone-user-info label").text()=="该手机号已经被注册") {
 		// 	$('#confirmcode .userinfo-behind').text('该手机号已被注册').addClass('error-info');
@@ -107,13 +111,19 @@ $(document).ready(function(){
 			success:function(data) {
 				if(data.status == 0) {
 					$('#confirm-code + .error-message-wrapper').text('验证码错误').addClass('error-info');
+					$('#securityCode').attr("src",$getPictureSecutiryUrl);
 				}
 				else {
 
 					$('#confirm-code + .error-message-wrapper').text('').removeClass('error-info');
+                    // $code=$("#phoneCode").val();
+                    $.post("../Login/sendPhoneSecurity",
+						{code:val},function(){
 
+					});
 					$this.val("59秒后重新发送").addClass("sub-number")
 						.attr("disabled",true);
+
 					var a = setInterval(function(){
 						var num = $("#resent-secword").val().substr(0,2);
 
@@ -123,7 +133,7 @@ $(document).ready(function(){
 						else if (parseInt(num)-1 >= 10) {
 							$("#resent-secword").val(parseInt(num)-1+"秒后重新发送");
 						}
-						if(parseInt(num)==0) {
+						if(parseInt(num)==1) {
 							clearInterval(a);
 							$("#resent-secword").val("重新获取验证码")
 							.removeClass("sub-number").attr("disabled",false);
